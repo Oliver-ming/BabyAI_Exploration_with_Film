@@ -67,6 +67,9 @@ N_EXPERT_VAL = len(VAL_SEEDS)  # 500
 N_EXPERT_TOTAL = N_EXPERT_TRAIN + N_EXPERT_VAL  # 5000
 EXPERT_ALL_SEEDS = TRAIN_SEEDS + VAL_SEEDS  # 4500 + 500，恰好 5000 个唯一 seed
 VAL_SET = frozenset(VAL_SEEDS)
+TRAIN_SEED_SET = frozenset(TRAIN_SEEDS)
+TEST_SET = frozenset(TEST_SEEDS)
+TEST_S7_SET = frozenset(TEST_SEEDS_S7)
 
 
 def split_of(seed: int) -> str:
@@ -82,9 +85,10 @@ def split_of(seed: int) -> str:
     return "unknown"
 
 
-TRAIN_SEED_SET = frozenset(TRAIN_SEEDS)
-TEST_SET = frozenset(TEST_SEEDS)
-TEST_S7_SET = frozenset(TEST_SEEDS_S7)
+def assert_no_leak(seeds) -> None:
+    """断言一批 seed 里不含任何测试 seed（在数据生成/训练入口调用）。"""
+    bad = set(seeds) & (TEST_SET | TEST_S7_SET)
+    assert not bad, f"检测到测试 seed 泄漏进训练数据：{sorted(bad)[:5]}"
 
 # --------------------------------------------------------------------------
 # 语言

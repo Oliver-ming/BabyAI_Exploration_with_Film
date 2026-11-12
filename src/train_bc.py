@@ -35,6 +35,7 @@ from common import (  # noqa: E402
     VOCAB,
     BCNet,
     mission_to_ids,
+    assert_no_leak,
     set_all_seeds,
     split_of,
 )
@@ -143,6 +144,10 @@ def main() -> None:
         train_eps = [e for e in all_eps if e.get("split", split_of(e["seed"])) == "train"]
         val_eps = [e for e in all_eps if e.get("split", split_of(e["seed"])) == "val"]
         data_desc = {"train_path": args.data, "val_path": args.data + " (split=val)"}
+
+    # 防泄漏硬断言：任何训练/验证数据都不得含测试 seed
+    assert_no_leak(e["seed"] for e in train_eps)
+    assert_no_leak(e["seed"] for e in val_eps)
 
     # 数据效率消融：按 episode 取子集（不是按转移取，避免破坏 episode 结构）
     if args.data_frac < 1.0:
