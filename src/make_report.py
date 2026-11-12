@@ -398,11 +398,15 @@ def main() -> None:
             "但幅度落在 seed 噪声范围内，只能说「embedding 至少不差」，不能说「必须用 embedding」。"
         )
         L.append(
-            "- **语言输入**：抹掉 mission 后 val 准确率只掉 ~0.07，Success 掉 ~0.15。"
-            "GoToLocal 场景里通常只有 3 个物体，「去哪个物体」在很多状态下可以由「哪个最显眼/最近」推断出来，"
-            "所以语言信号对**这个任务**的边际贡献有限。这是一个诚实的负面结果："
-            "若要把「语言接地」做成有说服力的分析，必须换干扰物更多、目标更不显眼的变体"
-            "（如 `GoToLocalS7N4` 或 `GoToObjMaze`），否则测不出语言的作用。"
+            "- **语言输入**：抹掉 mission 后 val 准确率掉 ~0.07，Success 掉 ~0.15。"
+            "有意思的是，这与失败归因「一半以上是认错物体属性」互相矛盾——"
+            "如果语言真的没用，模型就不会把「purple box」和「purple key」搞混；"
+            "反过来，如果语言很关键，抹掉它应该掉得更狠。合理推断是："
+            "**模型只用了语言里的一部分信息**（可能只是「有个物体要去找」这个信号），"
+            "颜色的区分更多靠「场景里最显眼的那一个」这个捷径。"
+            "这是一个诚实的负面结果：要把「语言接地」做成有说服力的分析，"
+            "必须换干扰物更多、目标更不显眼的变体（如 `GoToLocalS7N4` 或 `GoToObjMaze`），"
+            "否则测不出语言的作用。"
         )
         L.append(
             "- 两个消融的 forward 占比都**上升**（37.5% → 42–40%），说明信息变少时模型更倾向退回到"
@@ -420,7 +424,8 @@ def main() -> None:
             "attribute_confusion": "盯着属性相近的物体（同类不同色 / 同色不同类），颜色或类型认错",
             "distractor_priority": "停在离干扰物比离目标更近的位置，被「更近的物体」带偏",
             "turn_oscillation": "原地 left/right 交替，位置一格不动，不敢往前走",
-            "orientation_lock": "已站在目标旁边（距离 1）但朝向不对，转圈到超时",
+            "orientation_lock": "已在目标旁边（距离 1）但朝向不对，转圈到超时",
+            "approach_then_lost": "曾经走到目标旁边却没面向它，之后又转开",
             "forward_stall": "一直 forward 顶着墙，从不转向",
             "wander_timeout": "全程没靠近过目标",
         }
@@ -429,10 +434,10 @@ def main() -> None:
             L.append(f"| `{k}` | {v} | {v / max(1, nf):.1%} | {mech.get(k, '—')} |")
         L.append("")
         L.append(
-            "四类主要失败里，`attribute_confusion` 与 `distractor_priority` 就是**语言接地失败**："
-            "模型看到了目标，但没有把指令里的「颜色 + 类型」正确绑定到那个物体上。"
-            "`turn_oscillation` 与 `orientation_lock` 则是**执行层**失败：它大概知道该去哪，"
-            "但在「转身」这一维上没有足够的信心。\n"
+            "把占比较高的两类归到一起看，`attribute_confusion` 与 `distractor_priority` 就是"
+            "**语言接地失败**：模型看到了目标，但没有把指令里的「颜色 + 类型」正确绑定到那个物体上。"
+            "剩下几类（`turn_oscillation` / `orientation_lock` / `wander_timeout`）是**执行层**失败："
+            "它大概知道该去哪，但在「转身」这一维上没有足够的信心。\n"
         )
         L.append("逐案例的 gif + 逐步动作日志 + 明确归因见 `reports/failures/`，"
                  "统计与典型轨迹摘要见 `reports/failure_analysis.md`。\n")

@@ -1,6 +1,6 @@
 {
   "run": "runs/ablation_nolang_seed0",
-  "git_commit": "75eb8b57336eee0503d295ba55765876a03268ad",
+  "git_commit": "96931ed3baab8ce441105759127de90f04070135",
   "env_id": "BabyAI-GoToLocalS6N3-v0",
   "seed": 0,
   "arch": {
@@ -41,7 +41,7 @@
     "best_val_acc": 0.820499,
     "best_epoch": 12,
     "epochs_run": 17,
-    "train_seconds": 34.23,
+    "train_seconds": 35.33,
     "trivial_baselines": {
       "always_forward": 0.555315,
       "always_left": 0.222885,

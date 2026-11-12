@@ -34,6 +34,7 @@
 | `attribute_confusion` | 19 |
 | `distractor_priority` | 12 |
 | `turn_oscillation` | 4 |
-| `orientation_lock` | 2 |
+| `wander_timeout` | 1 |
+| `orientation_lock` | 1 |
 
 - 数据审计：已完成 `reports/data_audit.md`

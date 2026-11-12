@@ -2,8 +2,8 @@
   "env_id": "BabyAI-GoToLocalS6N3-v0",
   "seeds": "4500:4800",
   "n_episodes_per_run": 300,
-  "generated_at": "2026-11-12 23:17:17",
-  "total_seconds": 10.89,
+  "generated_at": "2026-11-12 23:21:56",
+  "total_seconds": 10.76,
   "runs": [
     {
       "n_episodes": 300,
@@ -156,7 +156,7 @@
       "train_seed": 0,
       "val_action_acc": 0.889913,
       "best_epoch": 26,
-      "eval_seconds": 1.75
+      "eval_seconds": 1.72
     },
     {
       "n_episodes": 300,
@@ -462,7 +462,7 @@
       "train_seed": 2,
       "val_action_acc": 0.822668,
       "best_epoch": 9,
-      "eval_seconds": 2.75
+      "eval_seconds": 2.71
     },
     {
       "n_episodes": 300,
@@ -613,7 +613,7 @@
       "train_seed": null,
       "val_action_acc": null,
       "best_epoch": null,
-      "eval_seconds": 1.14
+      "eval_seconds": 1.13
     },
     {
       "n_episodes": 300,
@@ -764,7 +764,7 @@
       "train_seed": null,
       "val_action_acc": null,
       "best_epoch": null,
-      "eval_seconds": 1.31
+      "eval_seconds": 1.27
     },
     {
       "n_episodes": 300,
@@ -917,7 +917,7 @@
       "train_seed": null,
       "val_action_acc": null,
       "best_epoch": null,
-      "eval_seconds": 0.93
+      "eval_seconds": 0.92
     }
   ]
 }

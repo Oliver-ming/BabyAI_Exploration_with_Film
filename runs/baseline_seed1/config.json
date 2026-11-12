@@ -1,6 +1,6 @@
 {
   "run": "runs/baseline_seed1",
-  "git_commit": "75eb8b57336eee0503d295ba55765876a03268ad",
+  "git_commit": "96931ed3baab8ce441105759127de90f04070135",
   "env_id": "BabyAI-GoToLocalS6N3-v0",
   "seed": 1,
   "arch": {
@@ -41,7 +41,7 @@
     "best_val_acc": 0.816703,
     "best_epoch": 8,
     "epochs_run": 13,
-    "train_seconds": 24.15,
+    "train_seconds": 27.55,
     "trivial_baselines": {
       "always_forward": 0.555315,
       "always_left": 0.222885,
