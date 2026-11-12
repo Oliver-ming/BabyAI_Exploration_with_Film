@@ -357,6 +357,25 @@ def main() -> None:
     env.close()
 
     n_fail = sum(1 for r in records if r["outcome"] == "failure")
+
+    # 合并成一条演示视频（§8.1：30–60 秒）：成功 2 条 → 失败全部
+    if records:
+        seq = []
+        for r in sorted(records, key=lambda x: (x["outcome"] != "success", x["seed"])):
+            gif_path = Path(r["gif"])
+            if not gif_path.exists():
+                continue
+            frames = list(imageio.mimread(gif_path))  # mimread 才能读出 gif 的全部帧
+            for i, f in enumerate(frames):
+                seq.append(f)
+            # 段间加 4 帧定格，便于区分不同 episode
+            seq += [frames[-1]] * 4
+        demo = outdir / "demo_all.gif"
+        # §8.1 要求合并后的演示视频 30–60 秒；用 4 fps 压到 ~50 秒
+        demo_fps = max(args.fps, round(len(seq) / 55)) or 4
+        imageio.mimsave(demo, seq, fps=demo_fps, loop=0)
+        print(f"wrote {demo}  ({len(seq)} frames @ {demo_fps}fps，约 {len(seq) / demo_fps:.0f} 秒)")
+
     index = {
         "run": args.run,
         "env_id": args.env_id,
@@ -370,6 +389,7 @@ def main() -> None:
     }
     (outdir / "index.json").write_text(json.dumps(index, indent=2, ensure_ascii=False))
     print(f"wrote {outdir}/index.json  ({n_ok} success, {n_fail} failure) types={dict(type_counts)}")
+    print(f"合并演示视频：{outdir}/demo_all.gif")
 
 
 if __name__ == "__main__":

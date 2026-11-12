@@ -155,7 +155,7 @@ p3-babyai/
 │   ├── failure_analysis.{md,json}
 │   ├── failures/              # 失败案例 gif/png/json（4 类各 1 个）
 │   └── figures/               # 图 1/2/4/6/7 + summary_table.md
-├── videos/                    # 成功/失败轨迹 gif
+├── videos/                    # 成功/失败轨迹 gif + demo_all.gif（合并演示）
 ├── docs/                      # 指导文档
 └── third_party/               # 只读参考源码（不提交）
 ```

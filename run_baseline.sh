@@ -73,8 +73,9 @@ echo "=== ⑧ mission 分解 / 失败归因 / 轨迹可视化 ==="
 python src/mission_breakdown.py
 python src/analyze_failures.py --run runs/baseline_seed0 --seeds test
 rm -f videos/*.gif videos/index.json reports/failures/* 2>/dev/null || true
-python src/render_episodes.py --run runs/baseline_seed0 --n-success 2 --n-failure 4 \
-  --require-types orientation_lock,attribute_confusion,distractor_priority,turn_oscillation --scan 300
+python src/render_episodes.py --run runs/baseline_seed0 --n-success 2 --n-failure 5 \
+  --require-types orientation_lock,attribute_confusion,distractor_priority,turn_oscillation,approach_then_lost \
+  --scan 300
 
 echo
 echo "=== ⑨ 作图 + 汇总报告 ==="
