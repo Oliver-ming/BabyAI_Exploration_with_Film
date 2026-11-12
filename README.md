@@ -130,7 +130,9 @@ python src/make_report.py                        # -> reports/baseline_report.md
 - **S7N4 零样本迁移**：Success 从 0.747 降到 0.674（Δ = −0.072），零适配直接加载。
 - **mission 分解**：`a` 冠词 0.937 > `the` 冠词 0.724（多目标场景容错更高）。
 - **失败归因**（seed0, 300 ep）：`attribute_confusion` 19、`distractor_priority` 12、
-  `turn_oscillation` 4、`orientation_lock` 2；**全部 37 条失败都跑满 36 步**。
+  `turn_oscillation` 4、`approach_then_lost` 1、`orientation_lock` 1；**全部 37 条失败都跑满 36 步**。
+- **失败案例**：`reports/failures/` 5 个（覆盖 §8.3 要求的 `attribute_confusion` /
+  `distractor_priority` / `orientation_lock` 三类 + 两个补充类），各含 gif、逐步动作日志、明确归因。
 
 ## 6. 目录
 

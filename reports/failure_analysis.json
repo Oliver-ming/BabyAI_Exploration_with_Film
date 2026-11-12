@@ -7,7 +7,7 @@
     "distractor_priority": 12,
     "attribute_confusion": 19,
     "turn_oscillation": 4,
-    "wander_timeout": 1,
+    "approach_then_lost": 1,
     "orientation_lock": 1
   },
   "lengths_of_failures": {

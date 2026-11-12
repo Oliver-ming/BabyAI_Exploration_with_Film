@@ -202,14 +202,14 @@ def classify_failure(traj: dict) -> tuple[str, str]:
             "——训练集里 forward 占 57%，一旦进入「前方不可走」的状态就成为死循环"
         )
 
-    if best is not None and best <= 1:
+    if best is not None and best <= 2:
         return "approach_then_lost", (
-            f"曾经走到距目标 {best} 格的位置，但没面向它，之后又转开，最终停在 "
+            f"曾经走到距目标只有 {best} 格的位置，但没面向它，之后又转开，最终停在 "
             f"{traj['final_agent_pos']}（距目标 {final_d} 格）——"
             "它其实已经找到了目标，只是没有完成「面向」这个动作就离开了"
         )
     return "wander_timeout", (
-        f"全程从未靠近目标（最近也有 {best} 格），{traj['episode_len']} 步耗尽——"
+        f"全程离目标最近也有 {best} 格，{traj['episode_len']} 步耗尽——"
         "模型在专家从未访问过的状态里拿不到可用的方向信息"
     )
 

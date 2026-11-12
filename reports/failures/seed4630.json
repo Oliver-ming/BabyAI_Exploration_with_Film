@@ -483,7 +483,7 @@
       "manhattan_to_target": 2
     }
   ],
-  "failure_type": "wander_timeout",
-  "note": "全程从未靠近目标（最近也有 2 格），36 步耗尽——模型在专家从未访问过的状态里拿不到可用的方向信息",
+  "failure_type": "approach_then_lost",
+  "note": "曾经走到距目标只有 2 格的位置，但没面向它，之后又转开，最终停在 [2, 2]（距目标 2 格）——它其实已经找到了目标，只是没有完成「面向」这个动作就离开了",
   "modification_would_help": "DAgger 会在这个具体状态上让 BabyAIBot 标注正确的转向/前进动作并加入训练集，直接补上该状态下的正确行为。"
 }

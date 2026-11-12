@@ -195,7 +195,7 @@
 | `attribute_confusion` | 19 | 51.4% | 盯着属性相近的物体（同类不同色 / 同色不同类），颜色或类型认错 |
 | `distractor_priority` | 12 | 32.4% | 停在离干扰物比离目标更近的位置，被「更近的物体」带偏 |
 | `turn_oscillation` | 4 | 10.8% | 原地 left/right 交替，位置一格不动，不敢往前走 |
-| `wander_timeout` | 1 | 2.7% | 全程没靠近过目标 |
+| `approach_then_lost` | 1 | 2.7% | 曾经走到目标旁边却没面向它，之后又转开 |
 | `orientation_lock` | 1 | 2.7% | 已在目标旁边（距离 1）但朝向不对，转圈到超时 |
 
 把占比较高的两类归到一起看，`attribute_confusion` 与 `distractor_priority` 就是**语言接地失败**：模型看到了目标，但没有把指令里的「颜色 + 类型」正确绑定到那个物体上。剩下几类（`turn_oscillation` / `orientation_lock` / `wander_timeout`）是**执行层**失败：它大概知道该去哪，但在「转身」这一维上没有足够的信心。
