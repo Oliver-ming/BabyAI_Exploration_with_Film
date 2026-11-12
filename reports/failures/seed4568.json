@@ -49,7 +49,7 @@
     },
     {
       "t": 2,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -64,6 +64,33 @@
     },
     {
       "t": 3,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "box",
+        "color": "blue"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 4
+    },
+    {
+      "t": 4,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 4
+    },
+    {
+      "t": 5,
       "action": "left",
       "agent_pos": [
         1,
@@ -78,35 +105,8 @@
       "manhattan_to_target": 4
     },
     {
-      "t": 4,
-      "action": "left",
-      "agent_pos": [
-        1,
-        2
-      ],
-      "agent_dir": 0,
-      "front_cell": null,
-      "facing_target": false,
-      "manhattan_to_target": 4
-    },
-    {
-      "t": 5,
-      "action": "right",
-      "agent_pos": [
-        1,
-        2
-      ],
-      "agent_dir": 3,
-      "front_cell": {
-        "type": "box",
-        "color": "blue"
-      },
-      "facing_target": false,
-      "manhattan_to_target": 4
-    },
-    {
       "t": 6,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -118,22 +118,22 @@
     },
     {
       "t": 7,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 8,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -145,22 +145,22 @@
     },
     {
       "t": 9,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 10,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -172,22 +172,22 @@
     },
     {
       "t": 11,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 12,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -199,22 +199,22 @@
     },
     {
       "t": 13,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 14,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -226,22 +226,22 @@
     },
     {
       "t": 15,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 16,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -253,22 +253,22 @@
     },
     {
       "t": 17,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 18,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -280,22 +280,22 @@
     },
     {
       "t": 19,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 20,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -307,22 +307,22 @@
     },
     {
       "t": 21,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 22,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -334,22 +334,22 @@
     },
     {
       "t": 23,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 24,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -361,22 +361,22 @@
     },
     {
       "t": 25,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 26,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -388,22 +388,22 @@
     },
     {
       "t": 27,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 28,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -415,22 +415,22 @@
     },
     {
       "t": 29,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 30,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -442,22 +442,22 @@
     },
     {
       "t": 31,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 32,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -469,22 +469,22 @@
     },
     {
       "t": 33,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4
     },
     {
       "t": 34,
-      "action": "left",
+      "action": "right",
       "agent_pos": [
         1,
         2
@@ -496,15 +496,15 @@
     },
     {
       "t": 35,
-      "action": "right",
+      "action": "left",
       "agent_pos": [
         1,
         2
       ],
-      "agent_dir": 3,
+      "agent_dir": 1,
       "front_cell": {
-        "type": "box",
-        "color": "blue"
+        "type": "key",
+        "color": "purple"
       },
       "facing_target": false,
       "manhattan_to_target": 4

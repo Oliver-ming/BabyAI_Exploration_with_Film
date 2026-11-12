@@ -2,7 +2,7 @@
 
 **当前进度：P0 + P1 + P2 全部完成（基准复现阶段）。P3（DAgger-lite）与 P4（数据效率消融）尚未动工。**
 
-核心结论一句话：**验证集动作准确率 0.842，闭环 Success 只有 0.781；最强平凡基线「永远 forward」准确率 56.4% 但 Success 0.060。
+核心结论一句话：**验证集动作准确率 0.843，闭环 Success 只有 0.747；最强平凡基线「永远 forward」准确率 56.4% 但 Success 0.060。
 所有失败 episode 都跑满 36 步上限——失败不是「走得远」，而是「卡住」。** 完整分析见 `reports/baseline_report.md`。
 
 ---
@@ -116,10 +116,10 @@ python src/make_report.py                        # -> reports/baseline_report.md
 
 | run | val 动作准确率 | 闭环 Success | 平均回报 | 成功长度中位数 | 超时 |
 |---|---|---|---|---|---|
-| baseline_seed0 | 0.881 | **0.837** | 0.742 | 4.0 | 49/300 |
-| baseline_seed1 | 0.823 | **0.797** | 0.689 | 5.0 | 61/300 |
-| baseline_seed2 | 0.823 | **0.710** | 0.623 | 4.0 | 87/300 |
-| **mean ± SD** | 0.842 ± 0.027 | **0.781 ± 0.053** | 0.685 | 4.0 | — |
+| baseline_seed0 | 0.890 | **0.877** | 0.773 | 4.0 | 37/300 |
+| baseline_seed1 | 0.817 | **0.663** | 0.584 | 4.0 | 101/300 |
+| baseline_seed2 | 0.823 | **0.700** | 0.612 | 4.0 | 90/300 |
+| **mean ± SD** | 0.843 ± 0.033 | **0.747 ± 0.093** | 0.656 | 4.0 | — |
 
 | 平凡策略 | teacher-forcing 准确率 | 闭环 Success |
 |---|---|---|
@@ -127,11 +127,10 @@ python src/make_report.py                        # -> reports/baseline_report.md
 | always `left` | 22.0% | 0.000 |
 | uniform random（转向/前进） | ≈33% | 0.543 |
 
-- **S7N4 零样本迁移**：Success 从 0.781 降到 0.734（Δ = −0.080 ± 0.033），零适配直接加载。
-- **mission 分解**：`a` 冠词 0.948 > `the` 冠词 0.761（多目标场景容错更高）。
-- **失败归因**（seed0, 300 ep）：`attribute_confusion` 18、`distractor_priority` 15、
-  `turn_oscillation` 9、`orientation_lock` 5、`forward_stall` 1、`wander_timeout` 1；
-  **全部 46 条失败都跑满 36 步**。
+- **S7N4 零样本迁移**：Success 从 0.747 降到 0.674（Δ = −0.072），零适配直接加载。
+- **mission 分解**：`a` 冠词 0.937 > `the` 冠词 0.724（多目标场景容错更高）。
+- **失败归因**（seed0, 300 ep）：`attribute_confusion` 19、`distractor_priority` 12、
+  `turn_oscillation` 4、`orientation_lock` 2；**全部 37 条失败都跑满 36 步**。
 
 ## 6. 目录
 
@@ -140,6 +139,7 @@ p3-babyai/
 ├── env_embodied/              # 虚拟环境（不提交）
 ├── requirements-lock.txt      # uv pip freeze，复现凭证
 ├── pyproject.toml
+├── run_baseline.sh            # 一键跑完 P0→P2
 ├── src/                       # 全部脚本（见 §3）
 ├── data/expert_5000.pkl       # 5000 条专家 episode（含 split 字段）
 ├── runs/*/                    # config.json / vocab.json / best_model.pt / history.json / predictions_val.npz
@@ -154,5 +154,6 @@ p3-babyai/
 │   ├── failures/              # 失败案例 gif/png/json（4 类各 1 个）
 │   └── figures/               # 图 1/2/4/6/7 + summary_table.md
 ├── videos/                    # 成功/失败轨迹 gif
+├── docs/                      # 指导文档
 └── third_party/               # 只读参考源码（不提交）
 ```

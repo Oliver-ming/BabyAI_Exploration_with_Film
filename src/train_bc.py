@@ -118,17 +118,20 @@ def main() -> None:
     ap.add_argument("--train-data", default="", help="覆盖：直接指定训练集 pkl")
     ap.add_argument("--val-data", default="", help="覆盖：直接指定验证集 pkl")
     ap.add_argument("--out", default="runs/baseline_seed0")
-    ap.add_argument("--threads", type=int, default=4,
-                    help="torch CPU 线程数。112 核服务器上默认值会让多个并行训练互相抢线程，"
-                         "单进程 4 线程比默认快很多")
+    ap.add_argument("--threads", type=int, default=1,
+                    help="torch CPU 线程数。默认 1 是为了**可复现**：多线程会改变浮点归约顺序，"
+                         "使同一 seed 的 val_acc 出现 ~0.01 量级的抖动（实测 0.8807 / 0.8888 / 0.8899）。"
+                         "本任务数据量极小，单线程 30 epoch 约需 55 秒，多进程并行跑 seed 更划算")
     args = ap.parse_args()
 
     torch.set_num_threads(args.threads)
+    torch.manual_seed(args.seed)  # 双保险：set_num_threads 之后再设一次
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
 
     set_all_seeds(args.seed)
+    torch.manual_seed(args.seed)
     g = torch.Generator().manual_seed(args.seed)
 
     if args.train_data:

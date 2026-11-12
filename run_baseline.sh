@@ -8,7 +8,7 @@ cd "$(dirname "$0")"
 source env_embodied/bin/activate
 export SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy
 
-THREADS=${THREADS:-6}
+THREADS=${THREADS:-1}
 
 echo "=== ① 环境验收 ==="
 python src/check_env.py

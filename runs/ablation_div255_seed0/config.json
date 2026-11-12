@@ -1,6 +1,6 @@
 {
   "run": "runs/ablation_div255_seed0",
-  "git_commit": "unknown",
+  "git_commit": "75eb8b57336eee0503d295ba55765876a03268ad",
   "env_id": "BabyAI-GoToLocalS6N3-v0",
   "seed": 0,
   "arch": {
@@ -38,10 +38,10 @@
     }
   },
   "result": {
-    "best_val_acc": 0.815618,
-    "best_epoch": 22,
-    "epochs_run": 27,
-    "train_seconds": 19.87,
+    "best_val_acc": 0.813991,
+    "best_epoch": 29,
+    "epochs_run": 30,
+    "train_seconds": 43.86,
     "trivial_baselines": {
       "always_forward": 0.555315,
       "always_left": 0.222885,
