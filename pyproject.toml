@@ -1,0 +1,22 @@
+[project]
+name = "p3-babyai"
+version = "0.1.0"
+description = "AIAA 4220 Project 3 · Track 2 · BabyAI GoToLocal behaviour cloning baseline"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "torch==2.15.0",
+    "minigrid==3.2.0",
+    "gymnasium==1.4.0",
+    "numpy==2.5.4",
+    "pygame-ce>=2.5.0",
+    "matplotlib>=3.10",
+    "pandas>=2.2",
+    "tqdm>=4.66",
+    "imageio>=2.35",
+    "tensorboard>=2.16",
+]
+
+[tool.uv]
+# 本项目的虚拟环境叫 env_embodied，不是默认的 .venv
+# 所以统一用 `source env_embodied/bin/activate` 或 `uv pip install --python env_embodied/bin/python`

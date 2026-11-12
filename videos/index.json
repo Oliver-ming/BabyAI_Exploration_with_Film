@@ -1,0 +1,195 @@
+{
+  "run": "runs/baseline_seed0",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "n_success": 2,
+  "n_failure": 4,
+  "failure_type_counts": {
+    "attribute_confusion": 1,
+    "distractor_priority": 1,
+    "orientation_lock": 1,
+    "turn_oscillation": 1
+  },
+  "items": [
+    {
+      "seed": 4501,
+      "mission": "go to the blue key",
+      "outcome": "success",
+      "gif": "videos/success_seed4501.gif",
+      "episode_len": 8,
+      "target": {
+        "color": "blue",
+        "type": "key"
+      },
+      "target_poss": [
+        [
+          3,
+          1
+        ]
+      ],
+      "final_agent_pos": [
+        2,
+        1
+      ],
+      "final_agent_dir": 0,
+      "final_front_cell": {
+        "type": "key",
+        "color": "blue"
+      },
+      "final_distance_to_target": 1,
+      "final_facing_target": true,
+      "n_steps": 8
+    },
+    {
+      "seed": 4503,
+      "mission": "go to a purple key",
+      "outcome": "success",
+      "gif": "videos/success_seed4503.gif",
+      "episode_len": 2,
+      "target": {
+        "color": "purple",
+        "type": "key"
+      },
+      "target_poss": [
+        [
+          2,
+          1
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "final_agent_pos": [
+        2,
+        2
+      ],
+      "final_agent_dir": 3,
+      "final_front_cell": {
+        "type": "key",
+        "color": "purple"
+      },
+      "final_distance_to_target": 1,
+      "final_facing_target": true,
+      "n_steps": 2
+    },
+    {
+      "seed": 4516,
+      "mission": "go to the purple box",
+      "outcome": "failure",
+      "gif": "videos/failure_seed4516.gif",
+      "episode_len": 36,
+      "target": {
+        "color": "purple",
+        "type": "box"
+      },
+      "target_poss": [
+        [
+          1,
+          3
+        ]
+      ],
+      "final_agent_pos": [
+        3,
+        2
+      ],
+      "final_agent_dir": 1,
+      "final_front_cell": {
+        "type": "key",
+        "color": "purple"
+      },
+      "final_distance_to_target": 3,
+      "final_facing_target": false,
+      "failure_type": "attribute_confusion",
+      "note": "最终停在 [3, 2] 面向 purple key（同色不同类），但指令要的是 purple box——模型把目标属性认错了。场景里确实有 purple box（坐标 [[1, 3]]），它被这个属性相近的物体抢走了注意力",
+      "modification_would_help": "这一类（属性/干扰物混淆）本质上是表征能力问题，仅靠加同分布样本收益有限，需要在报告里诚实说明 DAgger 未必能解决",
+      "n_steps": 36
+    },
+    {
+      "seed": 4520,
+      "mission": "go to the grey ball",
+      "outcome": "failure",
+      "gif": "videos/failure_seed4520.gif",
+      "episode_len": 36,
+      "target": {
+        "color": "grey",
+        "type": "ball"
+      },
+      "target_poss": [
+        [
+          1,
+          3
+        ]
+      ],
+      "final_agent_pos": [
+        3,
+        2
+      ],
+      "final_agent_dir": 0,
+      "final_front_cell": null,
+      "final_distance_to_target": 3,
+      "final_facing_target": false,
+      "failure_type": "distractor_priority",
+      "note": "最终站在 [3, 2]：离最近的干扰物 1 格，离真正的目标 3 格——走去更近的同类物体了",
+      "modification_would_help": "这一类（属性/干扰物混淆）本质上是表征能力问题，仅靠加同分布样本收益有限，需要在报告里诚实说明 DAgger 未必能解决",
+      "n_steps": 36
+    },
+    {
+      "seed": 4547,
+      "mission": "go to the yellow ball",
+      "outcome": "failure",
+      "gif": "videos/failure_seed4547.gif",
+      "episode_len": 36,
+      "target": {
+        "color": "yellow",
+        "type": "ball"
+      },
+      "target_poss": [
+        [
+          2,
+          3
+        ]
+      ],
+      "final_agent_pos": [
+        2,
+        2
+      ],
+      "final_agent_dir": 2,
+      "final_front_cell": null,
+      "final_distance_to_target": 1,
+      "final_facing_target": false,
+      "failure_type": "orientation_lock",
+      "note": "最终位置 [2, 2] 距目标只有 1 格（目标 [[2, 3]]），但朝向 2 没有面向它，而且最后几步一直在原地左右转——GoToLocal 的成功条件是「站在旁边 + 面向它」，位置对了朝向错了照样失败",
+      "modification_would_help": "DAgger 会在这个具体状态上让 BabyAIBot 标注正确的转向/前进动作并加入训练集，直接补上该状态下的正确行为。",
+      "n_steps": 36
+    },
+    {
+      "seed": 4568,
+      "mission": "go to the green ball",
+      "outcome": "failure",
+      "gif": "videos/failure_seed4568.gif",
+      "episode_len": 36,
+      "target": {
+        "color": "green",
+        "type": "ball"
+      },
+      "target_poss": [
+        [
+          4,
+          1
+        ]
+      ],
+      "final_agent_pos": [
+        1,
+        2
+      ],
+      "final_agent_dir": 0,
+      "final_front_cell": null,
+      "final_distance_to_target": 4,
+      "final_facing_target": false,
+      "failure_type": "turn_oscillation",
+      "note": "最后 5 步停在 (1, 2) 原地 left/right 交替，位置一格没动，离目标还有 4 格——模型对「该往哪边转」两侧 logit 交替占优，永远不敢往前走",
+      "modification_would_help": "DAgger 会在这个具体状态上让 BabyAIBot 标注正确的转向/前进动作并加入训练集，直接补上该状态下的正确行为。",
+      "n_steps": 36
+    }
+  ]
+}

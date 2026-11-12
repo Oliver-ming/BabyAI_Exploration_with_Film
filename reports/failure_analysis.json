@@ -1,0 +1,17 @@
+{
+  "run": "runs/baseline_seed0",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "n_episodes": 300,
+  "n_success": 251,
+  "failure_types": {
+    "distractor_priority": 15,
+    "attribute_confusion": 18,
+    "orientation_lock": 5,
+    "turn_oscillation": 9,
+    "forward_stall": 1,
+    "wander_timeout": 1
+  },
+  "lengths_of_failures": {
+    "36": 49
+  }
+}

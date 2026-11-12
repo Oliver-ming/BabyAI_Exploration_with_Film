@@ -1,0 +1,513 @@
+{
+  "seed": 4520,
+  "mission": "go to the grey ball",
+  "outcome": "failure",
+  "gif": "videos/failure_seed4520.gif",
+  "episode_len": 36,
+  "target": {
+    "color": "grey",
+    "type": "ball"
+  },
+  "target_poss": [
+    [
+      1,
+      3
+    ]
+  ],
+  "final_agent_pos": [
+    3,
+    2
+  ],
+  "final_agent_dir": 0,
+  "final_front_cell": null,
+  "final_distance_to_target": 3,
+  "final_facing_target": false,
+  "steps": [
+    {
+      "t": 0,
+      "action": "forward",
+      "agent_pos": [
+        4,
+        4
+      ],
+      "agent_dir": 3,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 4
+    },
+    {
+      "t": 1,
+      "action": "forward",
+      "agent_pos": [
+        4,
+        3
+      ],
+      "agent_dir": 3,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 2,
+      "action": "left",
+      "agent_pos": [
+        4,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "key",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 4
+    },
+    {
+      "t": 3,
+      "action": "forward",
+      "agent_pos": [
+        4,
+        2
+      ],
+      "agent_dir": 2,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 4
+    },
+    {
+      "t": 4,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 2,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 5,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 6,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 7,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 8,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 9,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 10,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 11,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 12,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 13,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 14,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 15,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 16,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 17,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 18,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 19,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 20,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 21,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 22,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 23,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 24,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 25,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 26,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 27,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 28,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 29,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 30,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 31,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 32,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 33,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 34,
+      "action": "left",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 35,
+      "action": "right",
+      "agent_pos": [
+        3,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": {
+        "type": "ball",
+        "color": "green"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    }
+  ],
+  "failure_type": "distractor_priority",
+  "note": "最终站在 [3, 2]：离最近的干扰物 1 格，离真正的目标 3 格——走去更近的同类物体了",
+  "modification_would_help": "这一类（属性/干扰物混淆）本质上是表征能力问题，仅靠加同分布样本收益有限，需要在报告里诚实说明 DAgger 未必能解决"
+}
