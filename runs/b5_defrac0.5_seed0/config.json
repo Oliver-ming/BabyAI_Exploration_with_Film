@@ -1,0 +1,51 @@
+{
+  "run": "runs/b5_defrac0.5_seed0",
+  "git_commit": "6d91f9c165f2ef8c9986d3cd6a36a2c4df9b7a01",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seed": 0,
+  "arch": {
+    "img_mode": "embed",
+    "obj_emb_dim": 8,
+    "lang_dim": 32,
+    "hidden": 128,
+    "dropout": 0.0,
+    "n_params": 223071,
+    "no_language": false
+  },
+  "optim": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "batch_size": 128,
+    "max_epochs": 30,
+    "early_stop_patience": 30,
+    "early_stop_metric": "val_action_accuracy"
+  },
+  "data": {
+    "train_path": "data/expert_5000.pkl",
+    "val_path": "data/expert_5000.pkl (split=val)",
+    "data_frac": 0.5,
+    "frac_scheme": "random",
+    "n_train_episodes": 2250,
+    "n_train_transitions": 8290,
+    "n_val_episodes": 500,
+    "n_val_transitions": 1844,
+    "train_seeds": {
+      "n": 2250,
+      "segments": "0..4000 ∪ 4800..5300（见 src/common.py）",
+      "first": 3155,
+      "last": 4914
+    }
+  },
+  "result": {
+    "best_val_acc": 0.820499,
+    "best_epoch": 20,
+    "epochs_run": 30,
+    "train_seconds": 21.09,
+    "trivial_baselines": {
+      "always_forward": 0.555315,
+      "always_left": 0.222885,
+      "train_majority_class": 0.555315
+    }
+  }
+}

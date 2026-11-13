@@ -1,0 +1,23 @@
+{
+  "data": "data/expert_5000.pkl",
+  "split": "train",
+  "n_episodes": 4500,
+  "n_transitions": 16534,
+  "n_unique_states": 15291,
+  "n_ambiguous_states": 1,
+  "ambiguous_state_rate": 6.5e-05,
+  "affected_transition_rate": 0.000121,
+  "revisited_state_rate": 0.047283,
+  "examples": [
+    {
+      "mission": "go to the grey key",
+      "direction": 1,
+      "n_labels": 2,
+      "labels": [
+        1,
+        2
+      ],
+      "count": 2
+    }
+  ]
+}

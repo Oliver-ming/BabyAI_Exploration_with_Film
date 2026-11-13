@@ -1,0 +1,92 @@
+{
+  "branch": "b3_dagger",
+  "variant": "dagger",
+  "run": "runs/b3_r2_seed0",
+  "git_commit": "6d91f9c165f2ef8c9986d3cd6a36a2c4df9b7a01",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seed": 0,
+  "arch": {
+    "img_mode": "embed",
+    "obj_emb_dim": 8,
+    "lang_dim": 32,
+    "hidden": 128,
+    "dropout": 0.0,
+    "n_params": 223071
+  },
+  "optim": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "batch_size": 128,
+    "max_epochs": 30,
+    "early_stop_patience": 0,
+    "early_stop_metric": "val_action_accuracy"
+  },
+  "data": {
+    "official_data": "data/expert_5000.pkl",
+    "n_expert_train": 4500,
+    "n_extra": 3000,
+    "n_extra_train": 2400,
+    "n_extra_holdout": 600,
+    "n_train_episodes": 6900,
+    "n_train_transitions": 26276,
+    "n_val_episodes": 500,
+    "n_val_transitions": 1844,
+    "dedup": "episode",
+    "extra_meta": {
+      "sources": [
+        {
+          "path": "data/b3_dagger1500_pol0.pkl",
+          "episodes": 1500,
+          "kept": 1500,
+          "branch": "b3_dagger",
+          "mode": "dagger",
+          "failure_only": false,
+          "policy_run": "runs/baseline_seed0",
+          "policy_seed": 0,
+          "policy_val_acc": 0.889913,
+          "env_id": "BabyAI-GoToLocalS6N3-v0",
+          "seed_pool": "train",
+          "n_episodes": 1500,
+          "n_transitions": 10200,
+          "dagger_policy_success_rate": 0.9166666666666666,
+          "elapsed_sec": 11.2,
+          "dedup": "episode",
+          "n_transitions_raw": 10200,
+          "n_transitions_kept": 6424,
+          "n_episodes_kept": 1500
+        },
+        {
+          "path": "data/b3_dagger_r2_pol0.pkl",
+          "episodes": 1500,
+          "kept": 1500,
+          "branch": "b3_dagger",
+          "mode": "dagger",
+          "round": 2,
+          "policy_run": "runs/b3_dagger_seed0",
+          "policy_val_acc": 0.886659,
+          "env_id": "BabyAI-GoToLocalS6N3-v0",
+          "seed_pool": "train",
+          "n_episodes": 1500,
+          "n_transitions": 6523,
+          "policy_success_rate": 0.982,
+          "elapsed_sec": 7.8,
+          "dedup": "episode",
+          "n_transitions_raw": 6523,
+          "n_transitions_kept": 5698,
+          "n_episodes_kept": 1500
+        }
+      ],
+      "dedup": "episode"
+    }
+  },
+  "notes": {
+    "val_metric_caveat": "best_val_acc 用的是纯专家验证集（冻结口径，也是选 checkpoint 的唯一依据）。DAgger 有意把训练分布移向 d_π，因此这个数字下降不代表策略变差；判断是否有效的依据是 closed_loop_success 与 onpolicy_action_acc。"
+  },
+  "result": {
+    "best_val_acc": 0.887202,
+    "best_epoch": 20,
+    "epochs_run": 30,
+    "train_seconds": 98.57,
+    "onpolicy_action_acc": 0.947899
+  }
+}

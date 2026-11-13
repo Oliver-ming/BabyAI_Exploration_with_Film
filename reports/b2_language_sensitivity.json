@@ -1,0 +1,132 @@
+{
+  "n_states": 183,
+  "article_distribution": {
+    "the": 166,
+    "a": 17
+  },
+  "probe_definition": "固定 (image, direction)，把 mission 换成「同色异类」或「同类异色」，贪心动作改变的比例",
+  "runs": [
+    {
+      "run": "runs/b2_film_nwd_seed0",
+      "variant": "film",
+      "train_seed": 0,
+      "val_action_acc": 0.967462,
+      "n_states": 183,
+      "color_swap_sensitivity": 0.2609,
+      "type_swap_sensitivity": 0.339,
+      "combined_sensitivity": 0.2843,
+      "n_color_pairs": 138,
+      "n_type_pairs": 59
+    },
+    {
+      "run": "runs/b2_film_nwd_seed1",
+      "variant": "film",
+      "train_seed": 1,
+      "val_action_acc": 0.970716,
+      "n_states": 183,
+      "color_swap_sensitivity": 0.2971,
+      "type_swap_sensitivity": 0.2712,
+      "combined_sensitivity": 0.2893,
+      "n_color_pairs": 138,
+      "n_type_pairs": 59
+    },
+    {
+      "run": "runs/b2_film_nwd_seed2",
+      "variant": "film",
+      "train_seed": 2,
+      "val_action_acc": 0.976681,
+      "n_states": 183,
+      "color_swap_sensitivity": 0.2464,
+      "type_swap_sensitivity": 0.2881,
+      "combined_sensitivity": 0.2589,
+      "n_color_pairs": 138,
+      "n_type_pairs": 59
+    },
+    {
+      "run": "runs/b2_concat_nwd_seed0",
+      "variant": "concat",
+      "train_seed": 0,
+      "val_action_acc": 0.876898,
+      "n_states": 183,
+      "color_swap_sensitivity": 0.0145,
+      "type_swap_sensitivity": 0.2881,
+      "combined_sensitivity": 0.0964,
+      "n_color_pairs": 138,
+      "n_type_pairs": 59
+    },
+    {
+      "run": "runs/b2_concat_nwd_seed1",
+      "variant": "concat",
+      "train_seed": 1,
+      "val_action_acc": 0.893167,
+      "n_states": 183,
+      "color_swap_sensitivity": 0.1377,
+      "type_swap_sensitivity": 0.1525,
+      "combined_sensitivity": 0.1421,
+      "n_color_pairs": 138,
+      "n_type_pairs": 59
+    },
+    {
+      "run": "runs/b2_concat_nwd_seed2",
+      "variant": "concat",
+      "train_seed": 2,
+      "val_action_acc": 0.871475,
+      "n_states": 183,
+      "color_swap_sensitivity": 0.087,
+      "type_swap_sensitivity": 0.1864,
+      "combined_sensitivity": 0.1168,
+      "n_color_pairs": 138,
+      "n_type_pairs": 59
+    },
+    {
+      "run": "runs/b3_bc30_seed0",
+      "variant": "concat",
+      "train_seed": 0,
+      "val_action_acc": 0.889913,
+      "n_states": 183,
+      "color_swap_sensitivity": 0.0145,
+      "type_swap_sensitivity": 0.2881,
+      "combined_sensitivity": 0.0964,
+      "n_color_pairs": 138,
+      "n_type_pairs": 59
+    },
+    {
+      "run": "runs/b3_bc30_seed1",
+      "variant": "concat",
+      "train_seed": 1,
+      "val_action_acc": 0.872017,
+      "n_states": 183,
+      "color_swap_sensitivity": 0.0797,
+      "type_swap_sensitivity": 0.2203,
+      "combined_sensitivity": 0.1218,
+      "n_color_pairs": 138,
+      "n_type_pairs": 59
+    },
+    {
+      "run": "runs/b3_bc30_seed2",
+      "variant": "concat",
+      "train_seed": 2,
+      "val_action_acc": 0.857918,
+      "n_states": 183,
+      "color_swap_sensitivity": 0.058,
+      "type_swap_sensitivity": 0.1695,
+      "combined_sensitivity": 0.0914,
+      "n_color_pairs": 138,
+      "n_type_pairs": 59
+    }
+  ],
+  "by_variant": {
+    "film": {
+      "n": 3,
+      "combined_sensitivity_mean": 0.2775,
+      "color_sensitivity_mean": 0.2681,
+      "type_sensitivity_mean": 0.2994
+    },
+    "concat": {
+      "n": 6,
+      "combined_sensitivity_mean": 0.1108,
+      "color_sensitivity_mean": 0.0652,
+      "type_sensitivity_mean": 0.2175
+    }
+  }
+}

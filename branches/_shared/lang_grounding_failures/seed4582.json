@@ -1,0 +1,513 @@
+{
+  "seed": 4582,
+  "mission": "go to the blue box",
+  "outcome": "failure",
+  "gif": "videos/failure_seed4582.gif",
+  "episode_len": 36,
+  "target": {
+    "color": "blue",
+    "type": "box"
+  },
+  "target_poss": [
+    [
+      3,
+      2
+    ]
+  ],
+  "final_agent_pos": [
+    1,
+    2
+  ],
+  "final_agent_dir": 0,
+  "final_front_cell": {
+    "type": "box",
+    "color": "purple"
+  },
+  "final_distance_to_target": 2,
+  "final_facing_target": false,
+  "steps": [
+    {
+      "t": 0,
+      "action": "right",
+      "agent_pos": [
+        4,
+        4
+      ],
+      "agent_dir": 1,
+      "front_cell": {
+        "type": "wall",
+        "color": "grey"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 1,
+      "action": "forward",
+      "agent_pos": [
+        4,
+        4
+      ],
+      "agent_dir": 2,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 2,
+      "action": "forward",
+      "agent_pos": [
+        3,
+        4
+      ],
+      "agent_dir": 2,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 3,
+      "action": "forward",
+      "agent_pos": [
+        2,
+        4
+      ],
+      "agent_dir": 2,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 4,
+      "action": "right",
+      "agent_pos": [
+        1,
+        4
+      ],
+      "agent_dir": 2,
+      "front_cell": {
+        "type": "wall",
+        "color": "grey"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 4
+    },
+    {
+      "t": 5,
+      "action": "forward",
+      "agent_pos": [
+        1,
+        4
+      ],
+      "agent_dir": 3,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 4
+    },
+    {
+      "t": 6,
+      "action": "forward",
+      "agent_pos": [
+        1,
+        3
+      ],
+      "agent_dir": 3,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 3
+    },
+    {
+      "t": 7,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 3,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 8,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 9,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 10,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 11,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 12,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 13,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 14,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 15,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 16,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 17,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 18,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 19,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 20,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 21,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 22,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 23,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 24,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 25,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 26,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 27,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 28,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 29,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 30,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 31,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 32,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 33,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 34,
+      "action": "right",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 0,
+      "front_cell": {
+        "type": "box",
+        "color": "purple"
+      },
+      "facing_target": false,
+      "manhattan_to_target": 2
+    },
+    {
+      "t": 35,
+      "action": "left",
+      "agent_pos": [
+        1,
+        2
+      ],
+      "agent_dir": 1,
+      "front_cell": null,
+      "facing_target": false,
+      "manhattan_to_target": 2
+    }
+  ],
+  "failure_type": "attribute_confusion",
+  "note": "最终停在 [1, 2] 面向 purple box（同类不同色），但指令要的是 blue box——模型把目标属性认错了。场景里确实有 blue box（坐标 [[3, 2]]），它被这个属性相近的物体抢走了注意力",
+  "modification_would_help": "这一类（属性/干扰物混淆）本质上是表征能力问题，仅靠加同分布样本收益有限，需要在报告里诚实说明 DAgger 未必能解决"
+}

@@ -1,0 +1,64 @@
+{
+  "branch": "b3_dagger",
+  "variant": "bc_extra",
+  "run": "runs/b3_bcextraMATCH_seed2",
+  "git_commit": "6d91f9c165f2ef8c9986d3cd6a36a2c4df9b7a01",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seed": 2,
+  "arch": {
+    "img_mode": "embed",
+    "obj_emb_dim": 8,
+    "lang_dim": 32,
+    "hidden": 128,
+    "dropout": 0.0,
+    "n_params": 223071
+  },
+  "optim": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "batch_size": 128,
+    "max_epochs": 30,
+    "early_stop_patience": 99,
+    "early_stop_metric": "val_action_accuracy"
+  },
+  "data": {
+    "official_data": "data/expert_5000.pkl",
+    "n_expert_train": 4500,
+    "n_extra": 2700,
+    "n_extra_train": 2160,
+    "n_extra_holdout": 540,
+    "n_train_episodes": 6660,
+    "n_train_transitions": 24522,
+    "n_val_episodes": 500,
+    "n_val_transitions": 1844,
+    "dedup": "episode",
+    "extra_meta": {
+      "branch": "b3_dagger",
+      "mode": "expert",
+      "failure_only": false,
+      "policy_run": "runs/baseline_seed0",
+      "policy_seed": 0,
+      "policy_val_acc": 0.889913,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "seed_pool": "train",
+      "n_episodes": 2700,
+      "n_transitions": 9999,
+      "dagger_policy_success_rate": null,
+      "elapsed_sec": 4.7,
+      "dedup": "episode",
+      "n_transitions_raw": 9999,
+      "n_transitions_kept": 9999,
+      "n_episodes_kept": 2700
+    }
+  },
+  "notes": {
+    "val_metric_caveat": "best_val_acc 用的是纯专家验证集（冻结口径，也是选 checkpoint 的唯一依据）。DAgger 有意把训练分布移向 d_π，因此这个数字下降不代表策略变差；判断是否有效的依据是 closed_loop_success 与 onpolicy_action_acc。"
+  },
+  "result": {
+    "best_val_acc": 0.87961,
+    "best_epoch": 23,
+    "epochs_run": 30,
+    "train_seconds": 89.74,
+    "onpolicy_action_acc": 0.9637
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "data": "data/b3_dagger_400.pkl",
+  "split": null,
+  "n_episodes": 400,
+  "n_transitions": 2648,
+  "n_unique_states": 1652,
+  "n_ambiguous_states": 1,
+  "ambiguous_state_rate": 0.000605,
+  "affected_transition_rate": 0.006798,
+  "revisited_state_rate": 0.052058,
+  "examples": [
+    {
+      "mission": "go to the green box",
+      "direction": 0,
+      "n_labels": 2,
+      "labels": [
+        0,
+        1
+      ],
+      "count": 18
+    }
+  ]
+}

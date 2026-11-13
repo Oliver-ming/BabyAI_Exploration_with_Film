@@ -1,0 +1,48 @@
+{
+  "hypothesis": "DAgger 提供了专家数据里缺失的「面向错误属性物体」的负样本",
+  "results": [
+    {
+      "name": "expert_train(first8)",
+      "n_episodes": 4500,
+      "n_states": 16500,
+      "n_states_facing_object": 452,
+      "pct_facing_partial_match": 0.3053,
+      "pct_facing_exact_target": 0.3119,
+      "pct_facing_irrelevant": 0.3827,
+      "label_dist_when_partial": {
+        "same_type:forward": 81,
+        "same_color:forward": 45,
+        "same_type:right": 9,
+        "same_color:right": 3
+      }
+    },
+    {
+      "name": "dagger(first8)",
+      "n_episodes": 1500,
+      "n_states": 6547,
+      "n_states_facing_object": 147,
+      "pct_facing_partial_match": 0.2313,
+      "pct_facing_exact_target": 0.3946,
+      "pct_facing_irrelevant": 0.3741,
+      "label_dist_when_partial": {
+        "same_type:forward": 16,
+        "same_color:forward": 14,
+        "same_type:right": 4
+      }
+    }
+  ],
+  "verdict": {
+    "H1_partial_match_ratio_lift": -0.074,
+    "H1_supported": false,
+    "expert_counts": {
+      "pct_facing_partial_match": 0.3053,
+      "pct_facing_exact_target": 0.3119,
+      "pct_facing_irrelevant": 0.3827
+    },
+    "dagger_counts": {
+      "pct_facing_partial_match": 0.2313,
+      "pct_facing_exact_target": 0.3946,
+      "pct_facing_irrelevant": 0.3741
+    }
+  }
+}

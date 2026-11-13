@@ -1,0 +1,319 @@
+{
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seeds": "4500:4800",
+  "mechanism_map": {
+    "orientation_lock": "state_coverage",
+    "turn_oscillation": "state_coverage",
+    "approach_then_lost": "state_coverage",
+    "forward_stall": "state_coverage",
+    "wander_timeout": "state_coverage",
+    "attribute_confusion": "representation",
+    "distractor_priority": "representation"
+  },
+  "runs": [
+    {
+      "run": "runs/b3_bc30_seed0",
+      "variant": "concat",
+      "train_seed": 0,
+      "val_action_acc": 0.889913,
+      "n_episodes": 300,
+      "n_success": 263,
+      "closed_loop_success": 0.876667,
+      "failure_types": {
+        "distractor_priority": 12,
+        "attribute_confusion": 19,
+        "turn_oscillation": 4,
+        "approach_then_lost": 1,
+        "orientation_lock": 1
+      },
+      "failure_groups": {
+        "representation": 31,
+        "state_coverage": 6
+      },
+      "n_failure": 37
+    },
+    {
+      "run": "runs/b3_bc30_seed1",
+      "variant": "concat",
+      "train_seed": 1,
+      "val_action_acc": 0.872017,
+      "n_episodes": 300,
+      "n_success": 239,
+      "closed_loop_success": 0.796667,
+      "failure_types": {
+        "distractor_priority": 21,
+        "turn_oscillation": 14,
+        "attribute_confusion": 22,
+        "approach_then_lost": 3,
+        "orientation_lock": 1
+      },
+      "failure_groups": {
+        "representation": 43,
+        "state_coverage": 18
+      },
+      "n_failure": 61
+    },
+    {
+      "run": "runs/b3_bc30_seed2",
+      "variant": "concat",
+      "train_seed": 2,
+      "val_action_acc": 0.857918,
+      "n_episodes": 300,
+      "n_success": 231,
+      "closed_loop_success": 0.77,
+      "failure_types": {
+        "turn_oscillation": 20,
+        "distractor_priority": 24,
+        "attribute_confusion": 17,
+        "approach_then_lost": 4,
+        "wander_timeout": 2,
+        "orientation_lock": 2
+      },
+      "failure_groups": {
+        "state_coverage": 28,
+        "representation": 41
+      },
+      "n_failure": 69
+    },
+    {
+      "run": "runs/b2_film_seed0",
+      "variant": "film",
+      "train_seed": 0,
+      "val_action_acc": 0.970174,
+      "n_episodes": 300,
+      "n_success": 285,
+      "closed_loop_success": 0.95,
+      "failure_types": {
+        "forward_stall": 2,
+        "attribute_confusion": 5,
+        "turn_oscillation": 6,
+        "distractor_priority": 2
+      },
+      "failure_groups": {
+        "state_coverage": 8,
+        "representation": 7
+      },
+      "n_failure": 15
+    },
+    {
+      "run": "runs/b2_film_seed1",
+      "variant": "film",
+      "train_seed": 1,
+      "val_action_acc": 0.964751,
+      "n_episodes": 300,
+      "n_success": 280,
+      "closed_loop_success": 0.933333,
+      "failure_types": {
+        "forward_stall": 4,
+        "attribute_confusion": 7,
+        "distractor_priority": 5,
+        "turn_oscillation": 4
+      },
+      "failure_groups": {
+        "state_coverage": 8,
+        "representation": 12
+      },
+      "n_failure": 20
+    },
+    {
+      "run": "runs/b2_film_seed2",
+      "variant": "film",
+      "train_seed": 2,
+      "val_action_acc": 0.977223,
+      "n_episodes": 300,
+      "n_success": 286,
+      "closed_loop_success": 0.953333,
+      "failure_types": {
+        "attribute_confusion": 5,
+        "turn_oscillation": 8,
+        "distractor_priority": 1
+      },
+      "failure_groups": {
+        "representation": 6,
+        "state_coverage": 8
+      },
+      "n_failure": 14
+    },
+    {
+      "run": "runs/b2_film_only_seed0",
+      "variant": "film_only",
+      "train_seed": 0,
+      "val_action_acc": 0.969089,
+      "n_episodes": 300,
+      "n_success": 287,
+      "closed_loop_success": 0.956667,
+      "failure_types": {
+        "attribute_confusion": 4,
+        "distractor_priority": 3,
+        "turn_oscillation": 6
+      },
+      "failure_groups": {
+        "representation": 7,
+        "state_coverage": 6
+      },
+      "n_failure": 13
+    },
+    {
+      "run": "runs/b2_film_only_seed1",
+      "variant": "film_only",
+      "train_seed": 1,
+      "val_action_acc": 0.962581,
+      "n_episodes": 300,
+      "n_success": 282,
+      "closed_loop_success": 0.94,
+      "failure_types": {
+        "forward_stall": 2,
+        "attribute_confusion": 5,
+        "turn_oscillation": 8,
+        "distractor_priority": 3
+      },
+      "failure_groups": {
+        "state_coverage": 10,
+        "representation": 8
+      },
+      "n_failure": 18
+    },
+    {
+      "run": "runs/b2_film_only_seed2",
+      "variant": "film_only",
+      "train_seed": 2,
+      "val_action_acc": 0.957701,
+      "n_episodes": 300,
+      "n_success": 283,
+      "closed_loop_success": 0.943333,
+      "failure_types": {
+        "attribute_confusion": 8,
+        "turn_oscillation": 7,
+        "distractor_priority": 2
+      },
+      "failure_groups": {
+        "representation": 10,
+        "state_coverage": 7
+      },
+      "n_failure": 17
+    },
+    {
+      "run": "runs/b2_film_res_seed0",
+      "variant": "film_res",
+      "train_seed": 0,
+      "val_action_acc": 0.957701,
+      "n_episodes": 300,
+      "n_success": 286,
+      "closed_loop_success": 0.953333,
+      "failure_types": {
+        "attribute_confusion": 6,
+        "turn_oscillation": 7,
+        "forward_stall": 1
+      },
+      "failure_groups": {
+        "representation": 6,
+        "state_coverage": 8
+      },
+      "n_failure": 14
+    },
+    {
+      "run": "runs/b2_film_res_seed1",
+      "variant": "film_res",
+      "train_seed": 1,
+      "val_action_acc": 0.941974,
+      "n_episodes": 300,
+      "n_success": 276,
+      "closed_loop_success": 0.92,
+      "failure_types": {
+        "forward_stall": 2,
+        "attribute_confusion": 11,
+        "turn_oscillation": 4,
+        "distractor_priority": 7
+      },
+      "failure_groups": {
+        "state_coverage": 6,
+        "representation": 18
+      },
+      "n_failure": 24
+    },
+    {
+      "run": "runs/b2_film_res_seed2",
+      "variant": "film_res",
+      "train_seed": 2,
+      "val_action_acc": 0.949566,
+      "n_episodes": 300,
+      "n_success": 282,
+      "closed_loop_success": 0.94,
+      "failure_types": {
+        "distractor_priority": 5,
+        "forward_stall": 1,
+        "attribute_confusion": 7,
+        "turn_oscillation": 5
+      },
+      "failure_groups": {
+        "representation": 12,
+        "state_coverage": 6
+      },
+      "n_failure": 18
+    }
+  ],
+  "aggregate": {
+    "bc30": {
+      "n_runs": 3,
+      "closed_loop_success_mean": 0.814445,
+      "n_failure_mean": 55.67,
+      "failure_types_mean": {
+        "approach_then_lost": 2.67,
+        "attribute_confusion": 19.33,
+        "distractor_priority": 19.0,
+        "orientation_lock": 1.33,
+        "turn_oscillation": 12.67,
+        "wander_timeout": 0.67
+      },
+      "failure_groups_mean": {
+        "representation": 38.33,
+        "state_coverage": 17.33
+      }
+    },
+    "film": {
+      "n_runs": 3,
+      "closed_loop_success_mean": 0.945555,
+      "n_failure_mean": 16.33,
+      "failure_types_mean": {
+        "attribute_confusion": 5.67,
+        "distractor_priority": 2.67,
+        "forward_stall": 2.0,
+        "turn_oscillation": 6.0
+      },
+      "failure_groups_mean": {
+        "representation": 8.33,
+        "state_coverage": 8.0
+      }
+    },
+    "film_only": {
+      "n_runs": 3,
+      "closed_loop_success_mean": 0.946667,
+      "n_failure_mean": 16.0,
+      "failure_types_mean": {
+        "attribute_confusion": 5.67,
+        "distractor_priority": 2.67,
+        "forward_stall": 0.67,
+        "turn_oscillation": 7.0
+      },
+      "failure_groups_mean": {
+        "representation": 8.33,
+        "state_coverage": 7.67
+      }
+    },
+    "film_res": {
+      "n_runs": 3,
+      "closed_loop_success_mean": 0.937778,
+      "n_failure_mean": 18.67,
+      "failure_types_mean": {
+        "attribute_confusion": 8.0,
+        "distractor_priority": 4.0,
+        "forward_stall": 1.33,
+        "turn_oscillation": 5.33
+      },
+      "failure_groups_mean": {
+        "representation": 12.0,
+        "state_coverage": 6.67
+      }
+    }
+  }
+}

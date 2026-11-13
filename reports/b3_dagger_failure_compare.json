@@ -1,0 +1,3246 @@
+{
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seeds": "4500:4800",
+  "runs": [
+    {
+      "run": "runs/baseline_seed0",
+      "train_seed": 0,
+      "val_action_acc": 0.889913,
+      "n_episodes": 300,
+      "n_success": 263,
+      "closed_loop_success": 0.876667,
+      "failure_types": {
+        "distractor_priority": 12,
+        "attribute_confusion": 19,
+        "turn_oscillation": 4,
+        "approach_then_lost": 1,
+        "orientation_lock": 1
+      },
+      "failure_groups": {
+        "representation": 31,
+        "state_coverage": 6
+      },
+      "n_failure": 37,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.5714
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.9286
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.8696
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.8421
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.9375
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8889
+        }
+      }
+    },
+    {
+      "run": "runs/baseline_seed1",
+      "train_seed": 1,
+      "val_action_acc": 0.816703,
+      "n_episodes": 300,
+      "n_success": 199,
+      "closed_loop_success": 0.663333,
+      "failure_types": {
+        "distractor_priority": 27,
+        "turn_oscillation": 25,
+        "attribute_confusion": 28,
+        "approach_then_lost": 10,
+        "orientation_lock": 8,
+        "wander_timeout": 3
+      },
+      "failure_groups": {
+        "representation": 55,
+        "state_coverage": 46
+      },
+      "n_failure": 101,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 0.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.5714
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.7222
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.5
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.6429
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.7692
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.6667
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.5
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.6111
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.6522
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.3846
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.6364
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.5263
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.625
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.6667
+        }
+      }
+    },
+    {
+      "run": "runs/baseline_seed2",
+      "train_seed": 2,
+      "val_action_acc": 0.822668,
+      "n_episodes": 300,
+      "n_success": 210,
+      "closed_loop_success": 0.7,
+      "failure_types": {
+        "turn_oscillation": 13,
+        "distractor_priority": 20,
+        "orientation_lock": 12,
+        "attribute_confusion": 29,
+        "forward_stall": 2,
+        "approach_then_lost": 11,
+        "wander_timeout": 3
+      },
+      "failure_groups": {
+        "state_coverage": 41,
+        "representation": 49
+      },
+      "n_failure": 90,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 0.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.6875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.4286
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.7222
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.6429
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.7222
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.6429
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.7778
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.5455
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.6957
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.3846
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.6316
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.6875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.5556
+        }
+      }
+    },
+    {
+      "run": "runs/b3_bc30_seed0",
+      "train_seed": 0,
+      "val_action_acc": 0.889913,
+      "n_episodes": 300,
+      "n_success": 263,
+      "closed_loop_success": 0.876667,
+      "failure_types": {
+        "distractor_priority": 12,
+        "attribute_confusion": 19,
+        "turn_oscillation": 4,
+        "approach_then_lost": 1,
+        "orientation_lock": 1
+      },
+      "failure_groups": {
+        "representation": 31,
+        "state_coverage": 6
+      },
+      "n_failure": 37,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.5714
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.9286
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.8696
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.8421
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.9375
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8889
+        }
+      }
+    },
+    {
+      "run": "runs/b3_bc30_seed1",
+      "train_seed": 1,
+      "val_action_acc": 0.872017,
+      "n_episodes": 300,
+      "n_success": 239,
+      "closed_loop_success": 0.796667,
+      "failure_types": {
+        "distractor_priority": 21,
+        "turn_oscillation": 14,
+        "attribute_confusion": 22,
+        "approach_then_lost": 3,
+        "orientation_lock": 1
+      },
+      "failure_groups": {
+        "representation": 43,
+        "state_coverage": 18
+      },
+      "n_failure": 61,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.5714
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.7778
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.6429
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.5714
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.8333
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.6364
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.8696
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.6364
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.8947
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.6875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.7222
+        }
+      }
+    },
+    {
+      "run": "runs/b3_bc30_seed2",
+      "train_seed": 2,
+      "val_action_acc": 0.857918,
+      "n_episodes": 300,
+      "n_success": 231,
+      "closed_loop_success": 0.77,
+      "failure_types": {
+        "turn_oscillation": 20,
+        "distractor_priority": 24,
+        "attribute_confusion": 17,
+        "approach_then_lost": 4,
+        "wander_timeout": 2,
+        "orientation_lock": 2
+      },
+      "failure_groups": {
+        "state_coverage": 28,
+        "representation": 41
+      },
+      "n_failure": 69,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.5714
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.7222
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.5714
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.8333
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.6087
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.6364
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.8421
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.7222
+        }
+      }
+    },
+    {
+      "run": "runs/b3_bcextra_seed0",
+      "train_seed": 0,
+      "val_action_acc": 0.885033,
+      "n_episodes": 300,
+      "n_success": 258,
+      "closed_loop_success": 0.86,
+      "failure_types": {
+        "distractor_priority": 12,
+        "attribute_confusion": 16,
+        "approach_then_lost": 2,
+        "turn_oscillation": 8,
+        "orientation_lock": 2,
+        "forward_stall": 2
+      },
+      "failure_groups": {
+        "representation": 28,
+        "state_coverage": 14
+      },
+      "n_failure": 42,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 1.0
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.7143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.7692
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.6429
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.913
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.8947
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8333
+        }
+      }
+    },
+    {
+      "run": "runs/b3_bcextra_seed1",
+      "train_seed": 1,
+      "val_action_acc": 0.900217,
+      "n_episodes": 300,
+      "n_success": 250,
+      "closed_loop_success": 0.833333,
+      "failure_types": {
+        "distractor_priority": 14,
+        "attribute_confusion": 23,
+        "turn_oscillation": 10,
+        "approach_then_lost": 2,
+        "orientation_lock": 1
+      },
+      "failure_groups": {
+        "representation": 37,
+        "state_coverage": 13
+      },
+      "n_failure": 50,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.6875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.8571
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 1.0
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.8333
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.6429
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.6667
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.913
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.9231
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 1.0
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.6364
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.7895
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.9375
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8889
+        }
+      }
+    },
+    {
+      "run": "runs/b3_bcextra_seed2",
+      "train_seed": 2,
+      "val_action_acc": 0.880152,
+      "n_episodes": 300,
+      "n_success": 252,
+      "closed_loop_success": 0.84,
+      "failure_types": {
+        "attribute_confusion": 17,
+        "turn_oscillation": 14,
+        "distractor_priority": 13,
+        "approach_then_lost": 1,
+        "orientation_lock": 3
+      },
+      "failure_groups": {
+        "representation": 30,
+        "state_coverage": 18
+      },
+      "n_failure": 48,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.5714
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.8333
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.8261
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.9231
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.8947
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.5625
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8333
+        }
+      }
+    },
+    {
+      "run": "runs/b3_dagger_seed0",
+      "train_seed": 0,
+      "val_action_acc": 0.886659,
+      "n_episodes": 300,
+      "n_success": 266,
+      "closed_loop_success": 0.886667,
+      "failure_types": {
+        "distractor_priority": 12,
+        "attribute_confusion": 13,
+        "turn_oscillation": 7,
+        "approach_then_lost": 1,
+        "orientation_lock": 1
+      },
+      "failure_groups": {
+        "representation": 25,
+        "state_coverage": 9
+      },
+      "n_failure": 34,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 1.0
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.8571
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 1.0
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.9286
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.9286
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.6923
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 1.0
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.7826
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.9231
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 1.0
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.7895
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.7778
+        }
+      }
+    },
+    {
+      "run": "runs/b3_dagger_seed1",
+      "train_seed": 1,
+      "val_action_acc": 0.901302,
+      "n_episodes": 300,
+      "n_success": 254,
+      "closed_loop_success": 0.846667,
+      "failure_types": {
+        "distractor_priority": 14,
+        "attribute_confusion": 15,
+        "turn_oscillation": 16,
+        "approach_then_lost": 1
+      },
+      "failure_groups": {
+        "representation": 29,
+        "state_coverage": 17
+      },
+      "n_failure": 46,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.4286
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.7692
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.8333
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.9286
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.5714
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.913
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.9474
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.9375
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8333
+        }
+      }
+    },
+    {
+      "run": "runs/b3_dagger_seed2",
+      "train_seed": 2,
+      "val_action_acc": 0.892082,
+      "n_episodes": 300,
+      "n_success": 260,
+      "closed_loop_success": 0.866667,
+      "failure_types": {
+        "distractor_priority": 17,
+        "turn_oscillation": 13,
+        "attribute_confusion": 8,
+        "approach_then_lost": 2
+      },
+      "failure_groups": {
+        "representation": 25,
+        "state_coverage": 15
+      },
+      "n_failure": 40,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.7143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.8333
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.9286
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.6154
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.9286
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.9286
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.7826
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.8421
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8333
+        }
+      }
+    },
+    {
+      "run": "runs/b3_nodedup_seed0",
+      "train_seed": 0,
+      "val_action_acc": 0.881236,
+      "n_episodes": 300,
+      "n_success": 252,
+      "closed_loop_success": 0.84,
+      "failure_types": {
+        "distractor_priority": 14,
+        "attribute_confusion": 19,
+        "turn_oscillation": 11,
+        "approach_then_lost": 3,
+        "orientation_lock": 1
+      },
+      "failure_groups": {
+        "representation": 33,
+        "state_coverage": 15
+      },
+      "n_failure": 48,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.7143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.8333
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.9286
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.5556
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.7826
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.8947
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8333
+        }
+      }
+    },
+    {
+      "run": "runs/b3_nodedup_seed1",
+      "train_seed": 1,
+      "val_action_acc": 0.896421,
+      "n_episodes": 300,
+      "n_success": 258,
+      "closed_loop_success": 0.86,
+      "failure_types": {
+        "turn_oscillation": 15,
+        "attribute_confusion": 13,
+        "distractor_priority": 11,
+        "orientation_lock": 3
+      },
+      "failure_groups": {
+        "state_coverage": 18,
+        "representation": 24
+      },
+      "n_failure": 42,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 1.0
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.8333
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.7778
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.913
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.6842
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 1.0
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8889
+        }
+      }
+    },
+    {
+      "run": "runs/b3_nodedup_seed2",
+      "train_seed": 2,
+      "val_action_acc": 0.883948,
+      "n_episodes": 300,
+      "n_success": 258,
+      "closed_loop_success": 0.86,
+      "failure_types": {
+        "distractor_priority": 14,
+        "attribute_confusion": 12,
+        "turn_oscillation": 14,
+        "orientation_lock": 1,
+        "approach_then_lost": 1
+      },
+      "failure_groups": {
+        "representation": 26,
+        "state_coverage": 16
+      },
+      "n_failure": 42,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.5714
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.8462
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.7778
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.9565
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.9231
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.8947
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.6875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8333
+        }
+      }
+    },
+    {
+      "run": "runs/b3_novel_seed0",
+      "train_seed": 0,
+      "val_action_acc": 0.892625,
+      "n_episodes": 300,
+      "n_success": 260,
+      "closed_loop_success": 0.866667,
+      "failure_types": {
+        "distractor_priority": 12,
+        "attribute_confusion": 18,
+        "turn_oscillation": 6,
+        "orientation_lock": 3,
+        "approach_then_lost": 1
+      },
+      "failure_groups": {
+        "representation": 30,
+        "state_coverage": 10
+      },
+      "n_failure": 40,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.4286
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.7692
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.913
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.6923
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.6842
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.9375
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.7778
+        }
+      }
+    },
+    {
+      "run": "runs/b3_novel_seed1",
+      "train_seed": 1,
+      "val_action_acc": 0.885575,
+      "n_episodes": 300,
+      "n_success": 261,
+      "closed_loop_success": 0.87,
+      "failure_types": {
+        "distractor_priority": 16,
+        "orientation_lock": 4,
+        "attribute_confusion": 13,
+        "turn_oscillation": 6
+      },
+      "failure_groups": {
+        "representation": 29,
+        "state_coverage": 10
+      },
+      "n_failure": 39,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 1.0
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.5714
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.7222
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.7692
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 1.0
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.9565
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.9231
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.7895
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8333
+        }
+      }
+    },
+    {
+      "run": "runs/b3_novel_seed2",
+      "train_seed": 2,
+      "val_action_acc": 0.875813,
+      "n_episodes": 300,
+      "n_success": 255,
+      "closed_loop_success": 0.85,
+      "failure_types": {
+        "turn_oscillation": 15,
+        "orientation_lock": 6,
+        "attribute_confusion": 11,
+        "distractor_priority": 12,
+        "wander_timeout": 1
+      },
+      "failure_groups": {
+        "state_coverage": 22,
+        "representation": 23
+      },
+      "n_failure": 45,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.5714
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.7222
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 1.0
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.9231
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.9286
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.8261
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.7273
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.9474
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.7778
+        }
+      }
+    },
+    {
+      "run": "runs/b3_r2_seed0",
+      "train_seed": 0,
+      "val_action_acc": 0.887202,
+      "n_episodes": 300,
+      "n_success": 267,
+      "closed_loop_success": 0.89,
+      "failure_types": {
+        "distractor_priority": 10,
+        "attribute_confusion": 14,
+        "turn_oscillation": 8,
+        "approach_then_lost": 1
+      },
+      "failure_groups": {
+        "representation": 24,
+        "state_coverage": 9
+      },
+      "n_failure": 33,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 1.0
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.7143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.8333
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.7692
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.8333
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 1.0
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.9444
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.9565
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.9231
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.7895
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 1.0
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.7778
+        }
+      }
+    },
+    {
+      "run": "runs/b3_r2_seed1",
+      "train_seed": 1,
+      "val_action_acc": 0.892082,
+      "n_episodes": 300,
+      "n_success": 257,
+      "closed_loop_success": 0.856667,
+      "failure_types": {
+        "distractor_priority": 16,
+        "turn_oscillation": 12,
+        "attribute_confusion": 10,
+        "orientation_lock": 2,
+        "approach_then_lost": 3
+      },
+      "failure_groups": {
+        "representation": 26,
+        "state_coverage": 17
+      },
+      "n_failure": 43,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.7143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.7143
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.7692
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 1.0
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.9286
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.7222
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.6364
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.8696
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.9231
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 1.0
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.9474
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.9375
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.8333
+        }
+      }
+    },
+    {
+      "run": "runs/b3_r2_seed2",
+      "train_seed": 2,
+      "val_action_acc": 0.896421,
+      "n_episodes": 300,
+      "n_success": 267,
+      "closed_loop_success": 0.89,
+      "failure_types": {
+        "orientation_lock": 3,
+        "attribute_confusion": 9,
+        "distractor_priority": 8,
+        "turn_oscillation": 12,
+        "approach_then_lost": 1
+      },
+      "failure_groups": {
+        "state_coverage": 16,
+        "representation": 17
+      },
+      "n_failure": 33,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.8571
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.7857
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.6923
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.8333
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.8571
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.8889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 1.0
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.9091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.8182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.9474
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.9444
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "baseline": {
+      "n_runs": 3,
+      "closed_loop_success_mean": 0.746667,
+      "failure_types_mean": {
+        "approach_then_lost": 7.33,
+        "attribute_confusion": 25.33,
+        "distractor_priority": 19.67,
+        "forward_stall": 0.67,
+        "orientation_lock": 7.0,
+        "turn_oscillation": 14.0,
+        "wander_timeout": 2.0
+      },
+      "failure_groups_mean": {
+        "representation": 45.0,
+        "state_coverage": 31.0
+      }
+    },
+    "dagger": {
+      "n_runs": 3,
+      "closed_loop_success_mean": 0.866667,
+      "failure_types_mean": {
+        "approach_then_lost": 1.33,
+        "attribute_confusion": 12.0,
+        "distractor_priority": 14.33,
+        "orientation_lock": 0.33,
+        "turn_oscillation": 12.0
+      },
+      "failure_groups_mean": {
+        "representation": 26.33,
+        "state_coverage": 13.67
+      }
+    },
+    "bc_extra": {
+      "n_runs": 3,
+      "closed_loop_success_mean": 0.844444,
+      "failure_types_mean": {
+        "approach_then_lost": 1.67,
+        "attribute_confusion": 18.67,
+        "distractor_priority": 13.0,
+        "forward_stall": 0.67,
+        "orientation_lock": 2.0,
+        "turn_oscillation": 10.67
+      },
+      "failure_groups_mean": {
+        "representation": 31.67,
+        "state_coverage": 15.0
+      }
+    },
+    "dagger_r2": {
+      "n_runs": 3,
+      "closed_loop_success_mean": 0.878889,
+      "failure_types_mean": {
+        "approach_then_lost": 1.67,
+        "attribute_confusion": 11.0,
+        "distractor_priority": 11.33,
+        "orientation_lock": 1.67,
+        "turn_oscillation": 10.67
+      },
+      "failure_groups_mean": {
+        "representation": 22.33,
+        "state_coverage": 14.0
+      }
+    },
+    "novel_only": {
+      "n_runs": 3,
+      "closed_loop_success_mean": 0.862222,
+      "failure_types_mean": {
+        "approach_then_lost": 0.33,
+        "attribute_confusion": 14.0,
+        "distractor_priority": 13.33,
+        "orientation_lock": 4.33,
+        "turn_oscillation": 9.0,
+        "wander_timeout": 0.33
+      },
+      "failure_groups_mean": {
+        "representation": 27.33,
+        "state_coverage": 14.0
+      }
+    }
+  },
+  "mechanism_map": {
+    "orientation_lock": "state_coverage",
+    "turn_oscillation": "state_coverage",
+    "approach_then_lost": "state_coverage",
+    "forward_stall": "state_coverage",
+    "wander_timeout": "state_coverage",
+    "attribute_confusion": "representation",
+    "distractor_priority": "representation"
+  }
+}

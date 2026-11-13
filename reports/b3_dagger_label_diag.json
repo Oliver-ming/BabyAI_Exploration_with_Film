@@ -1,0 +1,78 @@
+{
+  "run": "runs/baseline_seed0",
+  "n_episodes": 100,
+  "n_steps": 838,
+  "policy_success_rate": 0.87,
+  "disagreement": {
+    "cons_vs_aggr": 0.0,
+    "cons_vs_reference": 0.0,
+    "aggr_vs_reference": 0.0
+  },
+  "label_flip_rate": {
+    "cons": 0.0962,
+    "aggr": 0.0962
+  },
+  "label_distribution": {
+    "cons": {
+      "forward": 262,
+      "left": 332,
+      "right": 244
+    },
+    "aggr": {
+      "forward": 262,
+      "left": 332,
+      "right": 244
+    },
+    "ref": {
+      "forward": 262,
+      "left": 332,
+      "right": 244
+    }
+  },
+  "samples": [
+    {
+      "t": 0,
+      "policy": 2,
+      "label_cons": 2,
+      "label_aggr": 2,
+      "label_ref": 2,
+      "agent_pos": [
+        3,
+        1
+      ]
+    },
+    {
+      "t": 1,
+      "policy": 0,
+      "label_cons": 0,
+      "label_aggr": 0,
+      "label_ref": 0,
+      "agent_pos": [
+        3,
+        2
+      ]
+    },
+    {
+      "t": 2,
+      "policy": 2,
+      "label_cons": 2,
+      "label_aggr": 2,
+      "label_ref": 2,
+      "agent_pos": [
+        3,
+        2
+      ]
+    },
+    {
+      "t": 3,
+      "policy": 1,
+      "label_cons": 1,
+      "label_aggr": 1,
+      "label_ref": 1,
+      "agent_pos": [
+        4,
+        2
+      ]
+    }
+  ]
+}
