@@ -1,8 +1,8 @@
-# BabyAI Grounded Language Imitation: From Channel FiLM to Spatial & Relational Attention
+# BabyAI Grounded Language Imitation: Spatial & Relational Attention
 
 [![AIAA 4220](https://img.shields.io/badge/Course-AIAA%204220%20Embodied%20AI-112B5C)](#)
 [![Track 2](https://img.shields.io/badge/Track%202-BabyAI%20GoToLocal-0F766E)](#)
-[![Branch](https://img.shields.io/badge/Branch-attention--mainline-2563EB)](#)
+[![Branch](https://img.shields.io/badge/Mainline-main%20%7C%20attention--mainline-2563EB)](#)
 [![FiLM Archive](https://img.shields.io/badge/Archive-archive%2Ffilm--mainline%20(v1.0--film--archive)-0E9664)](#repository-branches--archival-structure)
 
 A controlled, mechanistic investigation of **cross-modal fusion inductive biases** for grounded language imitation learning in MiniGrid / BabyAI (`BabyAI-GoToLocalS6N3-v0`), following the AIAA 4220 Project 3 Track 2 protocol (`≤ 5,000` expert episodes, `≤ 30` epochs, `n = 3` initialization seeds, checkpoint strictly selected by `val_action_acc`, closed-loop evaluation on `300` unseen seeds per benchmark, population SD `ddof=0`).
@@ -13,9 +13,8 @@ A controlled, mechanistic investigation of **cross-modal fusion inductive biases
 
 | Branch / Tag | Status | Contents |
 |---|---|---|
-| **`attention-mainline`** *(this branch)* | **Active Mainline** | 3-stage cross-modal mechanistic study (`Late Concat → Channel FiLM → Competitive Spatial & Relational Attention`), 14 controlled models (`223k–231k` params), feature-space SNR & background-drift probe (`probe_feature_mechanics.py`), full literature & open-source survey (`branches/b2_attn/LITERATURE_AND_ANALYSIS.md`), and upgraded 29-slide (15 core + 13 backup) presentation deck (`presentation/`). |
-| **`archive/film-mainline`** & tag **`v1.0-film-archive`** | **Sealed Archive** | Preserved snapshot (`30bcb35`) of the earlier B2 FiLM mainline + v1 Attention ablations + FiLM presentation deck. |
-| **`main`** | **Original Release** | Unmodified initial release pointer (`30bcb35`), identical to `v1.0-film-archive`. |
+| **`main`** & **`attention-mainline`** | **Active Mainline** | Spatial & Relational Attention mainline: 14 controlled models (`223k–231k` params), 10%–100% step-matched scaling (`reports/b2_attn_v2_scaling.json`), hidden-layer SNR & background-drift probe (`probe_feature_mechanics.py`), verified literature & open-source survey (`branches/b2_attn/LITERATURE_AND_ANALYSIS.md`), and 29-slide SVG-illustrated presentation deck (`presentation/`). |
+| **`archive/film-mainline`** & tag **`v1.0-film-archive`** | **Sealed Archive** | Preserved snapshot (`30bcb35`) of the earlier Channel FiLM mainline + FiLM presentation deck. |
 
 ---
 
