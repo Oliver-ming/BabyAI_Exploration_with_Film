@@ -8,124 +8,169 @@
 
 | 页 | 标题 | 讲者 | 起止 | 时长 | 逐字稿字数* |
 |---|---|---|---|---|---|
-| 1 | Title: Spatial & Relational Attention for Grounded Imitation in BabyAI | A | 0:00–0:15 | 15 s | 100 |
-| 2 | Task and testable mechanistic hypothesis | A | 0:15–0:45 | 30 s | 178 |
-| 3 | Exact baseline: behavior cloning with late-concat BCNet | A | 0:45–1:45 | 60 s | 165 |
-| 4 | Baseline reproduction evidence | A | 1:45–2:45 | 60 s | 165 |
-| 5 | Our method: spatial & relational attention (vs channel FiLM) | B | 2:45–3:45 | 60 s | 333 |
-| 6 | Controlled experimental protocol & causal probes | B | 3:45–4:45 | 60 s | 188 |
-| 7 | Quantitative & mechanistic proof: why Attention wins | B | 4:45–6:15 | 90 s | 310 |
-| 8 | Attention failure laws & hard limits (40 s rollout clip) | C | 6:15–7:45 | 90 s | 320 |
-| 9 | Three Attention design laws, tradeoffs & questions | C | 7:45–8:00 | 15 s | 97 |
+| 1 | Title: Spatial & Relational Attention for Grounded Imitation in BabyAI | A | 0:00–0:15 | 15 s | 92 |
+| 2 | Task & motivating grounding challenge: BabyAI-GoToLocal | A | 0:15–0:50 | 35 s | 210 |
+| 3 | Prescribed baseline (BCNet) & why late concatenation fails | A | 0:50–1:25 | 35 s | 153 |
+| 4 | Baseline reproduction, early-stopping audit & sanity checks | A | 1:25–2:00 | 35 s | 135 |
+| 5 | Controlled experimental protocol & three-layer causal probes | A | 2:00–2:30 | 30 s | 145 |
+| 6 | Method I · Cross-cell spatial competition vs channel broadcast | B | 2:30–3:05 | 35 s | 248 |
+| 7 | Method II · Fixing naive Attention pitfalls (Design Laws 1 & 2) | B | 3:05–3:40 | 35 s | 282 |
+| 8 | Method III · Egocentric relational & token co-attention (Law 3) | B | 3:40–4:10 | 30 s | 234 |
+| 9 | Results I · Cross-scale generalization (S6N3 → S7N4 → S8N6) | B | 4:10–4:45 | 35 s | 205 |
+| 10 | Results II · Sample efficiency across 10%–100% expert demos | B | 4:45–5:15 | 30 s | 160 |
+| 11 | Results III · Hidden-layer SNR, selectivity & drift proof | B | 5:15–5:45 | 30 s | 244 |
+| 12 | Diagnostics · Obstacle preservation & emergent CoAttn heads | C | 5:45–6:20 | 35 s | 229 |
+| 13 | Closed-loop rollout demonstration across 4 diagnostic seeds | C | 6:20–6:50 | 30 s | 175 |
+| 14 | 300-episode failure taxonomy & the single-frame POMDP limit | C | 6:50–7:25 | 35 s | 244 |
+| 15 | Conclusions: three Attention design laws & honest tradeoffs | C | 7:25–8:00 | 35 s | 238 |
 | | **合计** | | | **480 s = 8 min 00 s** | |
 
-\* 中文正常语速约 4–4.5 字/秒（含英文术语、数字略慢）。第 8 页的 40.8 秒三栏 rollout 视频在讲者解说的同时播放（解说按 4 个片段精确对齐），故不额外占时。
+\* 中文正常语速约 4–4.5 字/秒（含英文术语、数字略慢）。正片共展开为 15 页高可读度核心页（每页约 30–35 秒，信息丰富的方法原理、机制实证与诊断案例均拆分为多页舒展讲解）；第 13 页的闭环演示视频槽位采用模块化独立布局，解说时同步播放且方便后续随时替换新录制的视频版本。
 
 ## 1. 逐页讲稿（与 PPT 备注一致）
 
 ### 第 1 页 · Title: Spatial & Relational Attention for Grounded Imitation in BabyAI
 **A｜0:00–0:15｜15 秒**
 
-大家好，我们是赛道 2 BabyAI 小组。我们的核心主线是早期空间与关系注意力机制：我们将通过严格的数学机理与隐藏层实测证明，为什么跨网格竞争与关系自注意力能在同等参数预算下全面超越晚期拼接和通道调制 FiLM。下面先介绍任务与基线。
+大家好，我们是赛道 2 BabyAI 小组。我们的核心主线是早期空间与关系注意力机制：我们将从算子机理与隐藏层实测出发，论证为什么跨网格竞争与自我中心关系自注意力能在同等参数预算下全面超越晚期拼接和通道调制 FiLM。
 
-### 第 2 页 · Task and testable mechanistic hypothesis
-**A｜0:15–0:45｜30 秒**
+### 第 2 页 · Task & motivating grounding challenge: BabyAI-GoToLocal
+**A｜0:15–0:50｜35 秒**
 
-环境是 BabyAI-GoToLocalS6N3：智能体看到 7×7×3 的局部符号视野、5 词指令和朝向，在 36 步内站到目标前并面朝它算成功。
-请看左图经典难例 seed 4502：目标是角落的紫色钥匙，但面前挡着两把同类异色的黄色钥匙——无论晚期拼接基线还是全局通道调制 FiLM，在这一局都是 0/3 全军覆没！
-因此我们的可证伪假说是：引入跨 49 格竞争的空间与关系注意力，不仅在 S6N3 上 3/3 超过受控基线 0.045，还能在零样本大地图 S7N4、S8N6 和 20% 低数据下显著击败等参数的通道调制 FiLM。
+任务环境是 BabyAI-GoToLocalS6N3：在 6×6 房间内随机生成 3 个带颜色和类型的物体，智能体仅能看到面前 7×7×3 的局部符号视野、5 词指令和朝向，需在 36 步内走到目标正前方并面朝它。
+请看左图经典拥挤难例 seed 4502：指令要求去找角落的紫色钥匙，但面前紧挨着两把同类异色的黄色钥匙——无论晚期拼接基线还是全局通道调制 FiLM，在这一局都是 0/3 全军覆没！
+因此我们的可证伪假说是：引入跨 49 格竞争的空间与关系注意力，不仅在 S6N3 上 3/3 超过受控基线 0.045，更能在零样本大地图 S7N4、S8N6 和低数据下显著击败等参数的通道调制 FiLM。
 
-### 第 3 页 · Exact baseline: behavior cloning with late-concat BCNet
-**A｜0:45–1:45｜60 秒**
+### 第 3 页 · Prescribed baseline (BCNet) & why late concatenation fails
+**A｜0:50–1:25｜35 秒**
 
-冻结基线是行为克隆网络 BCNet，223,071 个参数：三通道符号图像经嵌入和两层 3×3 卷积展平为 1,568 维；指令掩码平均为 32 维；朝向 4 维 one-hot，最后在橙色框才做晚期拼接。
-根本症结在于：两层视觉卷积对指令完全盲视，换色词时特征变化 Δh2 恒为 0；展平后的单层加性线性投影无法直接计算“颜色 ∧ 类型”的乘性合取，导致换色词动作翻转率仅 5.1%，每 300 局出现 38.3 次表征绑定失败。
-环境采用 PyTorch 2.15 单线程确定性执行，MiniGrid 3.2.0。
+冻结基线是行为克隆网络 BCNet，共 223,071 个参数：三通道符号图像经过两层 3×3 卷积直接展平为 1,568 维，直到橙色框才与 32 维指令均值向量做晚期拼接。
+它的根本数学缺陷在于：两层视觉卷积对语言完全盲视，更换颜色词时特征变化 Δh2 恒等于 0；展平后的单层加性投影无法直接表达“颜色 ∧ 类型”的乘性合取绑定，导致反事实换色翻转率仅 5.1%，每 300 局出现多达 38.3 次表征接地失败。
 
-### 第 4 页 · Baseline reproduction evidence
-**A｜1:45–2:45｜60 秒**
+### 第 4 页 · Baseline reproduction, early-stopping audit & sanity checks
+**A｜1:25–2:00｜35 秒**
 
 这是 3 个初始化种子、每种子 300 个未见测试种子的基线复现。
-左图红虚线是手册原样的 patience=5 早停：种子 1 和 2 在验证平台期的第 13、14 个 epoch 过早停止，成功率只有 0.747 ± 0.093。保持“最大验证动作准确率选模”不变，跑满 30 个 epoch 得到更严格的受控基线 BC30：S6N3 0.814 ± 0.045，零样本 S7N4 0.697，而到 8×8 六物体 S8N6 崩盘至 0.490。
-中间合理性检查说明离线准确率不等于闭环成功率。下面由 B 介绍我们的空间与关系注意力方法及原理。
+左图红虚线揭示了一个关键细节：手册默认的 patience=5 会让种子 1 和 2 在第 13、14 轮过早停止，成功率仅 0.747 ± 0.093。为建立更严格的对照，我们保持“最大验证动作准确率选模”不变，跑满 30 轮得到受控基线 BC30：S6N3 提升至 0.814 ± 0.045，但在零样本 S7N4 跌至 0.697，到 8×8 六物体 S8N6 直接崩盘至 0.490。
 
-### 第 5 页 · Our method: spatial & relational attention (vs channel FiLM)
-**B｜2:45–3:45｜60 秒**
+### 第 5 页 · Controlled experimental protocol & three-layer causal probes
+**A｜2:00–2:30｜30 秒**
 
-谢谢。上方流程图展示了我们的受控插入位置：在第一层卷积 ReLU(Conv1) 与第二层卷积 Conv2 之间插入早期注意力模块，其余一切结构与超参完全冻结。
-为什么我们的空间与关系注意力能全面击败等参数的通道调制对照 FiLM？看下方三行算子对比：
-第一行灰框是等参数对照 Channel FiLM（225,183 参数）：它把同一组 Δγ、Δβ 无差别广播到全部 49 个格子，网格之间零竞争，实测融合层输出目标/最强干扰物信噪比仅 1.005（S8N6 跌至 0.939），且 Δβ 造成 0.787 背景漂移，4502 拥挤局 0/3 溃败。
-第二行蓝框是我们的 Spatial-Softmax，参数量与 FiLM 逐位相等（225,183），但分母的 49 格配分函数让同时匹配颜色和类型的目标以指数比值胜出，融合层信噪比瞬间拉高到 7.669 倍！S8N6 领先 FiLM 14.9 个点，但纯乘性掩码会把挡路箱子压暗到 0.60 倍。
-第三行青绿框是我们的 v2 几何改进：Map-Inject 保持原始特征 H 1.0 倍无损并拼接 4 张热图；MH-Relational 叠加无位置过拟合的 49×49 自我中心关系自注意力，让目标与障碍直接协同推理！
+实验协议做到 100% 受控：全部 14 个模型共用同一份无泄漏冻结数据、优化器与验证选模准则，在同分布 S6N3、零样本 S7N4 / S8N6 及 10%–100% 步数对齐缩放曲线上评估。
+为了不仅看成功率涨了多少、更彻底搞懂“为什么能赢”，我们设计了行为换词、隐藏层特征信噪比与背景漂移、以及 300 局闭环失败分类三层因果探针。下面由 B 分三页深入讲解我们的注意力设计与数学原理。
 
-### 第 6 页 · Controlled experimental protocol & causal probes
-**B｜3:45–4:45｜60 秒**
+### 第 6 页 · Method I · Cross-cell spatial competition vs channel broadcast
+**B｜2:30–3:05｜35 秒**
 
-实验协议严格受控。全部 14 个模型共用同一份冻结数据（4,500 训练 + 500 验证），在 300 个未见种子上评估同分布 S6N3、零样本 7×7 四物体 S7N4、高拥挤 8×8 六物体 S8N6，以及步数对齐的 10%、20%、50%、100% 数据效率曲线。
-选模只看验证动作准确率。除了闭环成功率，我们还设计了三套因果探针直接解剖网络内部表征：183 态反事实换词探针、150 场景隐藏层信噪比与背景漂移探针、以及 300 局全量失败分类。不确定性按 3 个独立初始化种子报告均值 ± 总体标准差 ddof=0 及同种子配对差。
+谢谢。我们先看第一页方法：同样在 Conv1 与 Conv2 之间插入早期融合，且参数量精确相等同为 225,183，为什么我们的 Spatial-Softmax 能全面击败 Channel FiLM？
+看上方灰框：Channel FiLM 把同一组通道缩放 Δγ 和偏置 Δβ 无差别广播到全部 49 个网格，格子与格子之间零竞争，实测融合层目标与最强干扰物范数比只有 1.005，且 Δβ 在空白背景注入 0.787 的全局漂移，物体一多干扰就按 O(N-1) 累加。
+再看下方蓝框我们的 Spatial-Softmax：49 格全局配分函数引入跨位置赢家通吃竞争，同时满足颜色和类型的目标得分高出 Δs，经指数放大后直接把半匹配干扰物压下去！如右图真实热力图所示，在 seed 4502 中紫钥匙获得 6.26 倍增益，两把黄钥匙被压制在 1.7 左右，融合层信噪比瞬间拉升至 7.669 倍！
 
-### 第 7 页 · Quantitative & mechanistic proof: why Attention wins
-**B｜4:45–6:15｜90 秒**
+### 第 7 页 · Method II · Fixing naive Attention pitfalls (Design Laws 1 & 2)
+**B｜3:05–3:40｜35 秒**
 
-看定量与机制双重实证。左图虚线左侧是两个基线对照（橙色 BC30 与灰蓝色等参数 Channel FiLM），右侧是我们的蓝色 Spatial-Softmax 与青绿色 MH-Relational。
-在精确相等的 225,183 参数下：从 S6N3 到 S8N6，FiLM 从 0.959 暴跌到 0.738；而我们的 Spatial-Softmax 稳在 0.971、0.964 和 0.887，在 S7N4 领先 FiLM 6.4 个点、在 S8N6 领先整整 14.9 个点！在低数据效率上优势同样惊人：20% 数据达 0.898（领先 FiLM 8.4 个点、反超全量 BC30），50% 数据即达 0.958 追平全量 FiLM！
-右图散点直接揭示物理原因：横轴是换色词的空间选择性，纵轴是 S8N6 成功率。通道调制 FiLM 和 Chaplot 被困在左下角（选择性仅 1.90 倍）；而我们的空间注意力将选择性翻倍至 3.59 倍，跃升至右上角！紫色虚线箭头验证定律一：仅删去 Cross-MHA 的绝对位置编码（NoPE），背景漂移从 0.823 降到 0.749，S8N6 直接回升 6.2 个点！而叠加关系自注意力的 MH-Rel 创下全场最高 S6N3 0.972（相对 BC30 配对 +0.158，3/3 全胜）和最高部分匹配信噪比 2.43。下面请 C 演示真实闭环视频与失败定律。
+然而我们并没有停留在基础注意力，而是进一步诊断出直接套用标准注意力时的两大几何陷阱，并提出两条改进定律：
+左列是陷阱一：标准 Cross-MHA 会加上可学习的 49 格绝对位置编码 pos_emb，它在 6×6 小房间里过拟合了墙壁分布，导致 8×8 大地图背景漂移高达 0.823，成功率跌至 0.747。定律一（NoPE）：删去绝对位置编码、保留卷积天然的平移等变性，单这一项改动就让 S8N6 直接暴涨 6.2 个点至 0.809！
+右列是陷阱二：纯乘性 Spatial-Softmax 在放大目标的同时，会把不匹配指令的挡路障碍物乘向 0——在 seed 4501 中挡路黄箱子被压暗到 0.60 倍，导致绕障成功率跌到 1/3。定律二（Attn-Map-Inject）：完全不破坏原始特征 H（保持 1.0 倍无损），而是把 4 头注意力热图作为显式空间指针通道拼接进 Conv2(36→32)，不仅取得全场最低背景漂移 0.569，更把 4501 绕障拉回 3/3 满分！
 
-### 第 8 页 · Attention failure laws & hard limits (40 s rollout clip)
-**C｜6:15–7:45｜90 秒，含 40.8 秒三栏对比视频（进入本页自动播放）**
+### 第 8 页 · Method III · Egocentric relational & token co-attention (Law 3)
+**B｜3:40–4:10｜30 秒**
 
-谢谢。左边 40 秒视频是我们录制的未见测试种子三栏同步 rollout，每一段直接印证一条注意力机理：
-【第 1 段 seed 4502 拥挤紫钥匙】BC30 和中间灰框的 Channel FiLM 双双被黄钥匙干扰超时（0/3），而右侧我们的 MH-Rel 7 步精准锁定紫钥匙（3/3），直观证明空间竞争击败通道广播！
-【第 2 段 seed 4501 绕障定律】左侧 v1 Spatial-Softmax 因把挡路黄箱压暗到 0.60 倍卡死超时（1/3）；而中间零失真拼接热图的 Map-Inject 与右侧关系自注意力 MH-Rel 双双 8 步丝滑绕障（3/3）！
-【第 3 段 seed 4516 同色紫箱 vs 紫钥】BC30 属性混淆超时（0/3），我们的 Spatial-SS 8 步直达目标（3/3）。
-【第 4 段 seed 4568 盲区边界】目标在身后视野外，BC30、FiLM 和 MH-Rel 全部陷入左右转循环（0/3）。
-看右图 300 局失败拆解：总失败从 BC30 的 55.7、FiLM 对照的 12.3，一路压到 Spatial-SS 的 8.7 和 MH-Rel 的全场最低 8.3，其中表征失败压至仅 2.3 次（属性混淆仅 1.0 例）！剩下的 6.0 次覆盖循环属于无记忆单帧策略的物理边界，下一步应结合时序记忆或解卡 DAgger。
+第三页方法介绍我们的集大成架构——定律三：自我中心关系自注意力（MH-Spatial-Relational，229,572 参数）。
+仅有目标定位还不够，当目标和挡路障碍相隔超过两格时，单靠 3×3 局部卷积容易短视卡死。因此我们在多头残差空间 Softmax 之上，注入平滑归一化自我中心坐标 [-1,1]²，并叠加一层 49×49 多头关系自注意力，让被点亮的目标格与挡路障碍格在进入决策前直接交互相对方位！严格消融证明：相比无关系层的父模型 MH-Res，S6N3 从 0.959 跃升至全场第一的 0.972，4501 绕障从 0/3 跃升至 3/3！右侧我们还设计了词级双线性协同注意力 Token-CoAttn，自动涌现出属性头与走廊导航头的分工。下面用三页展示定量与隐藏层铁证。
 
-### 第 9 页 · Three Attention design laws, tradeoffs & questions
-**C｜7:45–8:00｜15 秒**
+### 第 9 页 · Results I · Cross-scale generalization (S6N3 → S7N4 → S8N6)
+**B｜4:10–4:45｜35 秒**
 
-总结：假设成立——同等参数下空间竞争注意力借 49 格归一化全面超越通道 FiLM；我们进一步验证了无位置过拟合 NoPE、无损热图注入和关系自注意力三条设计定律，并诚实界定了单头 OOD 优势与多头绕障优势的权衡及盲区边界。谢谢，欢迎提问！
+先看第一组核心实证：从训练分布 6×6 三物体 S6N3，零样本外推到 7×7 四物体 S7N4 与高拥挤 8×8 六物体 S8N6。
+虚线左侧是两个冻结对照，右侧是我们的注意力家族。随着干扰物从 3 个增加到 6 个，橙色 BC30 崩盘至 0.490，灰蓝色等参数对照 Channel FiLM 也从 0.959 暴跌 22 个点至 0.738！
+反观我们的蓝色 Spatial-Softmax（同样精确 225,183 参数）：三尺度稳居 0.971、0.964 和 0.887，在 S7N4 领先 FiLM 6.4 个点，在 S8N6 领先整整 14.9 个点（残差版 Res-SS 更达 0.888，领先 15.0 个点）！而青绿色 MH-Relational 创下全部 14 个模型的最高同分布成功率 0.972 ± 0.004，相对 BC30 同种子配对提升 +0.158，3 个种子全部大比分胜出。
 
-### 备份 · 第 10 页 · Backup slides (B1–B13)
+### 第 10 页 · Results II · Sample efficiency across 10%–100% expert demos
+**B｜4:45–5:15｜30 秒**
+
+第二组实证把全套步数对齐的数据效率曲线搬上正片，涵盖 10%、20%、50% 到 100% 专家轨迹：
+看左图同分布 S6N3：我们的单头 Spatial-Softmax 在全区间领跑——仅用 10% 数据（450 局）就达到 0.802，逼近全量 BC30；20% 数据达 0.898，领先同预算 FiLM 8.4 个点；50% 数据（2,250 局）即达 0.958，仅用一半数据就追平了 100% 全量数据的 FiLM（0.959）！
+看右图零样本 S7N4 外推优势更加悬殊：20% 数据下领先 FiLM 10.4 个点（0.854 vs 0.750）；50% 数据下 Spatial-SS（0.911）与 MH-Rel（0.914）双双超越了 100% 全量训练的 FiLM（0.900）！
+
+### 第 11 页 · Results III · Hidden-layer SNR, selectivity & drift proof
+**B｜5:15–5:45｜30 秒**
+
+为什么会有如此显著的跨尺度与样本效率差距？第三组实证直接打开网络黑箱，在 150 个未见场景上测量隐藏层特征几何：
+看左图融合层输出的目标/最强干扰物范数比：BC30、Channel FiLM 和 Chaplot 全部被钉死在红色 1.0 倍无分离基线上（FiLM 在 S8N6 甚至跌破 1 至 0.939 倍）；而我们的 Spatial-Softmax 直接将分离比拉高到 7.67 倍（S8N6 仍保持 5.19 倍）！
+看右图：横轴是换色词空间选择性，纵轴是 S8N6 成功率。通道调制被困在左下角（选择性仅 1.90 倍），而空间注意力将选择性翻倍至 3.59 倍跃居右上角；紫色虚线箭头直观印证定律一 NoPE 削减背景漂移并推高 6.2 个点，MH-Rel 则取得全场最高后层部分匹配信噪比 2.43。下面交由 C 剖析个案机理、闭环演示与失败边界。
+
+### 第 12 页 · Diagnostics · Obstacle preservation & emergent CoAttn heads
+**C｜5:45–6:20｜35 秒**
+
+谢谢。我们无需依赖动画就能在静态特征层精准看到改进机理：
+看左图 seed 4501 绕障诊断：目标蓝钥匙正前方挡着一个黄箱子。第一代 v1 Spatial-Softmax 虽然把目标放大 6.6 倍，却把挡路黄箱压暗到 0.6 倍，导致网络“看不见障碍”只有 1/3 种子成功；而我们的 Map-Inject 保持原始特征 1.0 倍完全无损，MH-Rel 在放大目标 4.9 倍的同时保留黄箱 2.3 倍与墙壁 2.4 倍并传递方位关系，两者均实现 3/3 种子 8 步最优绕障！
+看右图词级协同注意力 Token-CoAttn 在 300 局未见测试上的词槽权重：完全无监督下，Head 1 和 Head 2 自动把 70%–73% 的注意力集中到颜色和类型词上负责锁目标，而 Head 3 关注冠词与动词去照亮绕行走廊！
+
+### 第 13 页 · Closed-loop rollout demonstration across 4 diagnostic seeds
+**C｜6:20–6:50｜30 秒**
+
+这一页汇总了四类代表性未见测试种子的真实闭环表现（左侧同步播放确定性三栏轨迹对比，右侧列出 3 种子统计结果）：
+第一类拥挤同类干扰（4502）：BC30 和 Channel FiLM 均 0/3 超时，我们的 Spatial-SS 与 MH-Rel 3/3 七步直达；
+第二类正前方障碍阻挡（4501）：Map-Inject 与 MH-Rel 修复了 v1 的障碍擦除，3/3 八步绕障；
+第三类同色异类混淆（4516）：3/3 精准区分紫钥匙与紫箱子；
+第四类目标在身后的视野盲区（4568）：所有单帧模型均 0/3 陷入左右转循环，引出下一页的失败边界分析。
+
+### 第 14 页 · 300-episode failure taxonomy & the single-frame POMDP limit
+**C｜6:50–7:25｜35 秒**
+
+我们进一步对全部 300 局未见测试的失败轨迹做严格归因拆解（左图）：
+红色代表表征接地失败，蓝色代表视野盲区导致的状态覆盖循环。可以看到，总失败数从 BC30 的 55.7 次、Channel FiLM 对照的 12.3 次，进一步压低到 Spatial-Softmax 的 8.7 次与 MH-Relational 的全场最低 8.3 次！其中表征绑定失败从 38.3 次锐减 94% 至仅 2.3 次（属性混淆每 300 局仅剩 1.0 例，比 FiLM 再砍掉近三分之二）！
+而右上角 seed 4568 解释了为什么蓝色覆盖失败稳定在 5 到 6 次：当目标出生在智能体正后方、完全处于 7×7 视野盲区时，任何无记忆单帧确定性策略都会遭遇观测混叠而左右摆头。这科学界定了单帧跨模态融合的物理上限——最后 2% 必须靠时序记忆（如 ConvGRU）或在线解卡 DAgger 解决。
+
+### 第 15 页 · Conclusions: three Attention design laws & honest tradeoffs
+**C｜7:25–8:00｜35 秒**
+
+最后总结我们的三点核心结论：
+第一，假说全面成立：在逐位相等的 225,183 参数下，跨 49 格竞争的空间注意力将融合层信噪比从通道 FiLM 的 1.005 倍拉升至 7.67 倍，在 S8N6 大地图领先 14.9 个点，且仅用 50% 数据即追平全量 FiLM；
+第二，我们诊断并验证了三条具身注意力设计定律：无位置过拟合 NoPE、零失真热图拼接 Map-Inject、以及自我中心关系自注意力 MH-Relational（创下 0.972 最高成功率与 2.3/300 最低表征错误）；
+第三，我们诚实揭示了偏差-方差权衡与单帧盲区物理边界：单头空间 Softmax 最适合零样本跨尺度与小样本，多头关系注意力最擅长复杂遮挡绕障，下一步将结合时序记忆攻克最后 6/300 的盲区循环。谢谢大家，欢迎提问！
+
+### 备份 · 第 16 页 · Backup slides (B1–B13)
 【备份页，不计入 8 分钟】仅用于 Q&A 深度追问。
 
-### 备份 · 第 11 页 · B1 · Configuration, seed split and documented deviation
+### 备份 · 第 17 页 · B1 · Configuration, seed split and documented deviation
 【备份 B1｜A 负责回答】全部 14 个受控模型的共享超参、步数对齐低数据协议与种子无泄漏验证。
 
-### 备份 · 第 12 页 · B2 · Complete 14-model benchmark (3 seeds × 300 eps, ddof=0)
+### 备份 · 第 18 页 · B2 · Complete 14-model benchmark (3 seeds × 300 eps, ddof=0)
 【备份 B2｜B 负责回答】全部 14 个受控模型在同分布、双跨尺度零样本、20% 低数据、失败拆分与 4501/4502 个案上的完整汇总表。
 
-### 备份 · 第 13 页 · B3 · Parameter-count & wd controls (Concat vs FiLM vs Attention)
-【备份 B3｜B 负责回答】同屏对比证明：提升绝非来自参数增加（Concat-Wide 仅 0.718），而是先来自早期乘性绑定、再来自跨网格竞争与关系归纳偏置（Spatial-SS 0.971、MH-Rel 0.972）。
+### 备份 · 第 19 页 · B3 · Parameter-count & wd controls (Concat vs FiLM vs Attention)
+【备份 B3｜B 负责回答】同屏对比证明：提升绝非来自参数增加（Concat-Wide 仅 0.718），而是来自早期跨网格竞争与关系归纳偏置。
 
-### 备份 · 第 14 页 · B4 · Full v1 + v2 Attention benchmark (3 scales, 20%, failures)
+### 备份 · 第 20 页 · B4 · Full v1 + v2 Attention benchmark (3 scales, 20%, failures)
 【备份 B4｜B 负责回答】全部 12 个代表架构在三尺度闭环、20% 低数据及失败分类上的总览图。
 
-### 备份 · 第 15 页 · B5 · Feature-space proof: hidden SNR, spatial selectivity & drift
-【备份 B5｜B 负责回答】隐藏层特征几何铁证：直接量化空间竞争如何把融合层信噪比拉高 7 倍以上并抑制背景漂移。
+### 备份 · 第 21 页 · B5 · Full 3-panel feature probe (incl. post-Conv2 partial-match SNR)
+【备份 B5｜B 负责回答】完整三联特征探针图（补充正片第 11 页未展开的中间面板 h2 同色/同类半匹配干扰物信噪比）。
 
-### 备份 · 第 16 页 · B6 · Attention mechanisms: 4501 obstacle, NoPE & CoAttn heads
-【备份 B6｜B 负责回答】(a) 对比 v1 压暗障碍至 0.6× 与 Map-Inject (1.0×) / MH-Rel (2.3×) 保留障碍；(b) NoPE 跨尺度曲线；(c) Token-CoAttn 无监督涌现句法-空间分工。
+### 备份 · 第 22 页 · B6 · Token-CoAttn 4-head spatial maps & NoPE OOD curve
+【备份 B6｜C 负责回答】补充正片第 12 页底部未展开的四头 7×7 空间热力图：Head 2 精准聚焦目标蓝钥匙（5.19 vs 黄箱 0.02），Head 3 照亮黄箱右侧通行走廊（15.46）。
 
-### 备份 · 第 17 页 · B7 · Counterfactual language probe (183 test states)
+### 备份 · 第 23 页 · B7 · Counterfactual language probe (183 test states)
 【备份 B7｜B 负责回答】183 态反事实换词探针：Spatial-Softmax 在颜色交换（0.295）、类型交换（0.367）和综合敏感度上全面领先 Channel FiLM 与 Chaplot GA。
 
-### 备份 · 第 18 页 · B8 · Mission-type breakdown (pooled 900 test episodes)
+### 备份 · 第 24 页 · B8 · Mission-type breakdown (pooled 900 test episodes)
 【备份 B8｜A 负责回答】900 局分词元汇总：在占比最大的唯一目标 'the'（804 局）及最难颜色词上，Spatial-SS（0.968）与 MH-Rel（0.970）均稳定超越 Channel FiLM（0.954）。
 
-### 备份 · 第 19 页 · B9 · Step-matched scaling curves: 10 / 20 / 50 / 100% demos
-【备份 B9｜C 负责回答】完整的 10/20/50/100% 缩放曲线展示了极经典的偏差-方差规律：单头 Spatial-Softmax 在 10%（0.802）、20%（0.898）、50%（0.958，追平全量 FiLM）全程领跑；多头关系注意力 MH-Rel 在 10%（0.717）略低，20% 起反超 FiLM（0.841），100% 登顶全场第一（0.972）。
+### 备份 · 第 25 页 · B9 · Bias–variance crossover on S6N3 scaling (10–100% demos)
+【备份 B9｜B 负责回答】放大展示单头 Spatial-Softmax 与多头关系注意力 MH-Rel 在 10%–100% 样本量下的经典偏差-方差交叉规律。
 
-### 备份 · 第 20 页 · B10 · Diagnostic grounding & detour cases (3 seeds per model)
-【备份 B10｜C 负责回答】六个代表性诊断种子，每一格均同时列出 BC30、Channel FiLM、Spatial-SS 与 MH-Rel 的 3 种子通过率，直观展示 Attention 对 4502、4501、4565 的决定性优势及 4568 的共同盲区。
+### 备份 · 第 26 页 · B10 · Six diagnostic grounding & detour cases (3 seeds / model)
+【备份 B10｜C 负责回答】六个代表性诊断种子，每一格均同时列出 BC30、Channel FiLM、Spatial-SS 与 MH-Rel 的 3 种子通过率。
 
-### 备份 · 第 21 页 · B11 · Training CE & validation accuracy curves (3 seeds)
-【备份 B11｜A 负责回答】四模型训练交叉熵与验证准确率曲线对比：我们的 Spatial-Softmax 与 MH-Rel 不仅收敛上限更高（0.981–0.982），收敛速度也显著快于 Channel FiLM 与 BC30。
+### 备份 · 第 27 页 · B11 · Training CE & validation accuracy curves (3 seeds)
+【备份 B11｜A 负责回答】四模型训练交叉熵与验证准确率曲线对比：Spatial-Softmax 与 MH-Rel 收敛速度与验证上限均显著优于 Channel FiLM 与 BC30。
 
-### 备份 · 第 22 页 · B12 · Auxiliary branches (isolated non-fusion controls)
+### 备份 · 第 28 页 · B12 · Auxiliary branches (isolated non-fusion controls)
 【备份 B12｜C 负责回答】横向对照证明：我们的空间与关系注意力在不增加任何专家查询的冻结预算下达到 0.971–0.972，已经超越了额外消耗 6,005 个在线标签的 FiLM+DAgger（0.970）！
 
-### 备份 · 第 23 页 · B13 · References and AI-use disclosure
+### 备份 · 第 29 页 · B13 · References and AI-use disclosure
 【备份 B13｜C 负责回答】全部文献引用（编号 [1]–[8] 与正片完全对齐）与生成式 AI 使用披露。
 
 

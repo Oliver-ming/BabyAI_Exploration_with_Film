@@ -336,5 +336,187 @@ for ax, key, ttl, ylab, ylim in [
 axs[1].legend(frameon=False, fontsize=10.5, loc="lower right")
 fig.tight_layout(); fig.savefig(A / "p_loss_backup.png"); plt.close(fig)
 
+
+# ==============================================================================
+# EXPANDED CORE SLIDE FIGURES (Spacious, Single-Focus, High-Readability Layouts)
+# ==============================================================================
+from PIL import Image as PILImage
+diag_v2 = load("b2_attn_v2_diagnostics.json")
+sc_s7 = load("b5_data_eff_s7n4.json")["scaling_curves"]
+
+# ---------- 10. Slide 6 Right: Seed 4502 Spatial-Softmax 49*alpha Heatmap Crop ----------
+hm_full = PILImage.open(A / "p_attn_heatmap.png")
+W_hm, H_hm = hm_full.size  # (1761, 2470)
+hdr_strip = hm_full.crop((0, 0, int(W_hm * 0.505), int(H_hm * 0.028)))
+row3_left = hm_full.crop((0, int(H_hm * 0.672), int(W_hm * 0.505), H_hm))
+card_4502 = PILImage.new("RGB", (row3_left.width, hdr_strip.height + row3_left.height + 8), (255, 255, 255))
+card_4502.paste(hdr_strip, (0, 0))
+card_4502.paste(row3_left, (0, hdr_strip.height + 8))
+card_4502.save(A / "p_map_4502.png")
+
+
+# ---------- 11. Slide 9: Full-Width Cross-Scale Generalization (S6N3 -> S7N4 -> S8N6) ----------
+scale6 = [
+    ("bc30", "BC30\n(Concat ctrl)", C_BC),
+    ("film_nwd", "Channel FiLM\n(ctrl · 225.2k)", C_FILM),
+    ("spatial_softmax_attn", "Ours: Spatial-SS\n(225.2k · equal p)", C_SS),
+    ("res_spatial_softmax", "Ours: Res-SS\n(225.2k)", C_RES),
+    ("attn_map_inject", "Ours: Map-Inject\n(226.3k)", C_MAP),
+    ("mh_spatial_relational", "Ours: MH-Rel\n(229.6k)", C_REL),
+]
+fig, ax = plt.subplots(figsize=(9.3, 2.88))
+xs6 = np.arange(len(scale6)); ws6 = 0.25
+for idx, (etag, hatch, lbl) in enumerate([("S6N3", None, "S6N3 (6×6 in-dist, N=3)"), ("S7N4", "//", "Zero-shot S7N4 (7×7, N=4)"), ("S8N6", "..", "Zero-shot S8N6 (8×8, N=6)")]):
+    for i, (k, _, col) in enumerate(scale6):
+        m_, s_, vals = _v2_vals(k, etag)
+        ax.bar(i + (idx - 1) * ws6, m_, ws6, yerr=s_, capsize=3.0,
+               color=col if hatch is None else "white", edgecolor=col, hatch=hatch,
+               lw=1.7, error_kw=dict(lw=1.2, ecolor="#222"))
+        for sv_i, sv in enumerate(vals):
+            ax.plot(i + (idx - 1) * ws6 + (sv_i - 1) * 0.055, sv, MK[sv_i], ms=4.5, mfc="white", mec="#222", mew=0.9, zorder=5)
+        ax.text(i + (idx - 1) * ws6, max(max(vals), m_ + s_) + 0.015, f"{m_:.3f}", ha="center", va="bottom",
+                fontsize=8.4, fontweight="bold" if etag in ("S6N3", "S8N6") else "normal",
+                color="#111" if etag == "S6N3" else col)
+ax.axvline(1.5, color="#475569", ls="--", lw=1.4)
+ax.text(0.5, 1.045, "Frozen Controls", ha="center", fontsize=10.5, color="#475569", fontweight="bold")
+ax.text(3.5, 1.045, "Ours: Early Spatial & Relational Attention Family", ha="center", fontsize=10.8, color=C_SS, fontweight="bold")
+ax.set_xticks(xs6); ax.set_xticklabels([x[1] for x in scale6], fontsize=10.0, fontweight="bold")
+for t_, (_, _, col) in zip(ax.get_xticklabels(), scale6):
+    t_.set_color(col)
+ax.set_ylim(0.42, 1.095); ax.set_ylabel("Closed-loop Success\n(300 unseen eps × 3 seeds)", fontsize=11.2)
+ax.grid(axis="y", ls="--", alpha=0.4)
+ax.legend(handles=[
+    Patch(facecolor="#475569", edgecolor="#222", label="S6N3 (6×6, N=3)"),
+    Patch(facecolor="white", edgecolor="#222", hatch="//", label="Zero-shot S7N4 (7×7, N=4)"),
+    Patch(facecolor="white", edgecolor="#222", hatch="..", label="Zero-shot S8N6 (8×8, N=6)"),
+    Line2D([], [], marker="o", ls="", mfc="white", mec="#222", ms=5, label="init seeds ○□△"),
+], loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=4, frameon=False, fontsize=9.8, columnspacing=1.0)
+fig.tight_layout(); fig.savefig(A / "p_scale_core.png", dpi=250); plt.close(fig)
+
+
+# ---------- 12. Slide 10: Full-Width 2-Panel Step-Matched Scaling (S6N3 & Zero-Shot S7N4) ----------
+fig, axs = plt.subplots(1, 2, figsize=(9.3, 2.88))
+for ax_i, (etag, ttl, ref_sc) in enumerate([
+    ("S6N3", "(a) In-Distribution S6N3 Sample Efficiency", sc),
+    ("S7N4", "(b) Zero-Shot S7N4 Sample Efficiency (7×7, N=4)", sc_s7),
+]):
+    ax = axs[ax_i]
+    ssm = [sc_attn["spatial_softmax_step"][f][etag]["closed_loop_success"]["mean"] for f in fr]
+    sss = [sc_attn["spatial_softmax_step"][f][etag]["closed_loop_success"]["sd"] for f in fr]
+    rlm = [sc_attn["mh_spatial_relational_step"][f][etag]["closed_loop_success"]["mean"] for f in fr]
+    rls = [sc_attn["mh_spatial_relational_step"][f][etag]["closed_loop_success"]["sd"] for f in fr]
+    flm = [ref_sc["film_step"][f]["success_mean"] for f in fr]
+    fls = [ref_sc["film_step"][f]["success_sd"] for f in fr]
+    bcm = [ref_sc["bc_step"][f]["success_mean"] for f in fr]
+    bcs = [ref_sc["bc_step"][f]["success_sd"] for f in fr]
+
+    ax.errorbar(xs, ssm, yerr=sss, color=C_SS, ls="-", marker="D", ms=6.2, lw=2.5, capsize=3.5, label="Ours: Spatial-Softmax (225.2k)", zorder=5)
+    ax.errorbar(xs, rlm, yerr=rls, color=C_REL, ls="-", marker="^", ms=6.5, lw=2.2, capsize=3.5, label="Ours: MH-Spatial-Rel (229.6k)", zorder=4)
+    ax.errorbar(xs, flm, yerr=fls, color=C_FILM, ls="--", marker="o", ms=5.2, lw=1.8, capsize=3.0, label="Channel FiLM ctrl (225.2k)", zorder=3)
+    ax.errorbar(xs, bcm, yerr=bcs, color=C_BC, ls="-.", marker="s", ms=5.0, lw=1.7, capsize=3.0, label="BC30 Concat ctrl (223.1k)", zorder=2)
+
+    ax.axhline(flm[-1], color=C_FILM, ls=":", lw=1.2)
+    for x_pt, y_pt, s_pt in zip(xs, ssm, sss):
+        ax.text(x_pt, y_pt + max(s_pt, 0.012) + 0.012, f"{y_pt:.3f}", ha="center", fontsize=8.8, fontweight="bold", color=C_SS)
+    ax.set_xscale("log"); ax.set_xticks(xs); ax.set_xticklabels(["10%\n(450)", "20%\n(900)", "50%\n(2,250)", "100%\n(4,500)"], fontsize=9.8)
+    ax.set_title(ttl, fontsize=11.8, fontweight="bold", color="#112B5C")
+    ax.set_xlabel("Expert demonstrations (step-matched 16.5k updates/ep)", fontsize=10.0)
+    ax.set_ylim(0.46 if ax_i == 0 else 0.50, 1.06)
+    ax.grid(ls="--", alpha=0.4)
+axs[0].set_ylabel("Closed-loop Success (mean ± SD)", fontsize=10.8)
+axs[0].text(10.5, 0.968, "100% FiLM = 0.959 (matched @ 50%!)", fontsize=8.4, color=C_FILM, fontweight="bold")
+axs[1].text(10.5, 0.909, "100% FiLM = 0.900 (beaten @ 50%!)", fontsize=8.4, color=C_FILM, fontweight="bold")
+axs[0].legend(frameon=False, loc="lower right", fontsize=8.4)
+fig.tight_layout(w_pad=1.3); fig.savefig(A / "p_scaling_core.png", dpi=250); plt.close(fig)
+
+
+# ---------- 13. Slide 11: Full-Width 2-Panel Hidden-Layer Feature Mechanics ----------
+fig, axs = plt.subplots(1, 2, figsize=(9.3, 2.90), gridspec_kw=dict(width_ratios=[1.12, 1.0]))
+ax = axs[0]
+snr_models = [
+    ("bc30", "BC30\nConcat", C_BC),
+    ("film_nwd", "FiLM\nctrl", C_FILM),
+    ("gated_attn_chaplot", "Chaplot\nctrl", "#94A3B8"),
+    ("spatial_softmax_attn", "Ours:\nSpatial-SS", C_SS),
+    ("res_spatial_softmax", "Ours:\nRes-SS", C_RES),
+    ("token_coattn_spatial", "Ours:\nCoAttn", "#7C3AED"),
+    ("mh_spatial_relational", "Ours:\nMH-Rel", C_REL),
+]
+xm_p = np.arange(len(snr_models)); wp_m = 0.34
+for idx, (etag, hatch, lbl) in enumerate([("S6N3", None, "S6N3 (6×6)"), ("S8N6", "//", "S8N6 (8×8)")]):
+    for i, (k, _, col) in enumerate(snr_models):
+        d_m = fm["by_env"][etag][k]["h_mod_T_over_maxD"]
+        m_, s_ = d_m["mean"], d_m["sd"]
+        ax.bar(i + (idx - 0.5) * wp_m, m_, wp_m, yerr=s_, capsize=2.6,
+               color=col if hatch is None else "white", edgecolor=col, hatch=hatch, lw=1.5)
+        if etag == "S6N3":
+            ax.text(i - 0.5 * wp_m, m_ + s_ + 0.25, f"{m_:.2f}×", ha="center", fontsize=8.3, fontweight="bold", color=col if i >= 3 else "#333")
+ax.axhline(1.0, color="#DC2626", ls="--", lw=1.3)
+ax.axvline(2.5, color="#475569", ls=":", lw=1.2)
+ax.set_xticks(xm_p); ax.set_xticklabels([x[1] for x in snr_models], fontsize=8.6, fontweight="bold")
+ax.set_ylim(0, 13.8); ax.set_ylabel("Pre-Conv2 Target / Max-Distractor\nL2 Norm Ratio (h_mod)", fontsize=10.2)
+ax.set_title("(a) Fusion-Layer Competition (150 scenes × 3 seeds)", fontsize=11.4, fontweight="bold", color="#112B5C")
+ax.legend(handles=[
+    Patch(facecolor="#475569", edgecolor="#222", label="S6N3 (N=3)"),
+    Patch(facecolor="white", edgecolor="#222", hatch="//", label="S8N6 (N=6)"),
+    Line2D([], [], color="#DC2626", ls="--", lw=1.3, label="1.0× no sep."),
+], frameon=False, fontsize=8.2, loc="upper right")
+ax.grid(axis="y", ls="--", alpha=0.4)
+
+ax = axs[1]
+for k, lbl, col, (dx, dy), bold in pts:
+    sx = fm["by_env"]["S8N6"][k]["spatial_selectivity_T_over_bg"]["mean"]
+    sy = _v2_vals(k, "S8N6")[0]
+    ax.scatter([sx], [sy], s=105 if bold else 70, color=col, edgecolors="#111", linewidths=1.0, zorder=5)
+    ax.annotate(lbl, (sx, sy), xytext=(dx, dy), textcoords="offset points", fontsize=8.2, fontweight="bold" if bold else "normal", color="#111")
+ax.annotate("", xy=(x2, y2), xytext=(x1, y1), arrowprops=dict(arrowstyle="->", color="#6D28D9", lw=2.0, ls="--"))
+ax.set_xlim(1.70, 3.92); ax.set_ylim(0.715, 0.928)
+ax.set_xlabel("S8N6 Spatial Selectivity  Δh2(T) / Δh2(bg)", fontsize=10.2)
+ax.set_ylabel("Zero-Shot S8N6 Success", fontsize=10.5)
+ax.set_title("(b) Selectivity Drives Scale Transfer (+ NoPE Law)", fontsize=11.4, fontweight="bold", color="#112B5C")
+ax.grid(True, ls="--", alpha=0.4)
+fig.tight_layout(w_pad=1.2); fig.savefig(A / "p_probe_core.png", dpi=250); plt.close(fig)
+
+
+# ---------- 14. Slide 12: Full-Width 2-Panel Case Diagnostics (Seed 4501 Obstacle + Token-CoAttn Heads) ----------
+fig, axs = plt.subplots(1, 2, figsize=(9.3, 2.88), gridspec_kw=dict(width_ratios=[1.08, 1.0]))
+ax = axs[0]
+mod_d = diag_v2["seed4501_t2_effective_modulation"]
+obs_models = [
+    ("v1:SS\n(4501: 1/3)", mod_d["v1_spatial_softmax"]["target"]["mean"], mod_d["v1_spatial_softmax"]["blocking_yellow_box"]["mean"], mod_d["v1_spatial_softmax"]["walls"]["mean"]),
+    ("Map-Inject\n(h1 raw · 3/3)", 1.0, 1.0, 1.0),
+    ("CoAttn\n(4501: 2/3)", mod_d["v2_token_coattn_spatial"]["target"]["mean"], mod_d["v2_token_coattn_spatial"]["blocking_yellow_box"]["mean"], mod_d["v2_token_coattn_spatial"]["walls"]["mean"]),
+    ("MH-Rel\n(4501: 3/3)", mod_d["v2_mh_spatial_relational"]["target"]["mean"], mod_d["v2_mh_spatial_relational"]["blocking_yellow_box"]["mean"], mod_d["v2_mh_spatial_relational"]["walls"]["mean"]),
+]
+xo = np.arange(len(obs_models)); wo = 0.25
+for i, (lbl, t_m, b_m, w_m) in enumerate(obs_models):
+    ax.bar(i - wo, t_m, wo, color=C_SS, edgecolor="#222", label="Target (blue_key)" if i == 0 else None)
+    ax.bar(i, b_m, wo, color="#F59E0B", edgecolor="#222", label="Blocking yellow_box" if i == 0 else None)
+    ax.bar(i + wo, w_m, wo, color="#94A3B8", edgecolor="#222", label="Walls" if i == 0 else None)
+    ax.text(i - wo, t_m + 0.22, f"{t_m:.1f}×", ha="center", fontsize=8.3, fontweight="bold", color=C_SS)
+    ax.text(i, b_m + 0.26, f"{b_m:.1f}×", ha="center", fontsize=8.5, fontweight="bold", color="#DC2626" if b_m < 1.0 else "#B45309")
+ax.axhline(1.0, color="#DC2626", ls="--", lw=1.2, label="Raw h1 floor (1.0×)")
+ax.set_xticks(xo); ax.set_xticklabels([x[0] for x in obs_models], fontsize=9.2, fontweight="bold")
+ax.set_ylim(0, 8.2); ax.set_ylabel("Effective Multiplier on h1\n(Seed 4501, t=2)", fontsize=10.2)
+ax.set_title("(a) Obstacle Erasure (0.6×) vs Geometry Preservation", fontsize=11.2, fontweight="bold", color="#112B5C")
+ax.legend(frameon=False, fontsize=8.3, loc="upper right", ncol=2)
+ax.grid(axis="y", ls="--", alpha=0.4)
+
+ax = axs[1]
+cw = np.array(diag_v2["token_coattn_word_weights"]["heads_mean_4x5"])
+slots = diag_v2["token_coattn_word_weights"]["slots"]
+im_c = ax.imshow(cw, cmap="Blues", vmin=0.0, vmax=0.52, aspect="auto")
+for r_i in range(4):
+    for c_i in range(5):
+        val = cw[r_i, c_i]
+        ax.text(c_i, r_i, f"{val:.2f}", ha="center", va="center", fontsize=9.8, fontweight="bold",
+                color="white" if val >= 0.30 else "#1E293B")
+ax.set_xticks(range(5)); ax.set_xticklabels(slots, fontsize=10.2, fontweight="bold")
+ax.set_yticks(range(4)); ax.set_yticklabels(["Head 0 (prep)", "Head 1 (attr)", "Head 2 (attr)", "Head 3 (nav)"], fontsize=9.5, fontweight="bold")
+ax.set_title("(b) Token-CoAttn Emergent Word Weights (300 eps)", fontsize=11.2, fontweight="bold", color="#112B5C")
+ax.set_xlabel("Unsupervised split: Heads 1–2 lock <color>+<type> (0.70 / 0.73)", fontsize=9.4, color=C_REL, fontweight="bold")
+plt.colorbar(im_c, ax=ax, fraction=0.042, pad=0.03)
+fig.tight_layout(w_pad=1.2); fig.savefig(A / "p_diag_core.png", dpi=250); plt.close(fig)
+
 json.dump(NUM, open(A / "numbers.json", "w"), indent=1, default=str)
 print("ALL ATTENTION-PROTAGONIST PLOTS GENERATED CLEANLY:", sorted(NUM.keys())[:6])

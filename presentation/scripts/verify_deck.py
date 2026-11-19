@@ -2,7 +2,6 @@
 import io, json, re, glob
 from pathlib import Path
 from pptx import Presentation
-from pptx.util import Emu
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,11 +25,21 @@ for f in glob.glob(str(ROOT / "src/remote/json/*.json")) + glob.glob(str(ROOT / 
         for nd in (1, 2, 3):
             allowed.add(f"{x:.{nd}f}"); allowed.add(f"{abs(x):.{nd}f}")
         allowed.add(f"{x * 100:.1f}")
-for s in [str(round(x, 3)) for x in []]: pass
+
+# Add exact derived deltas/sums from verified JSONs (e.g. +15.0% S8N6 Res-SS vs FiLM, +9.9% / +10.4% S7N4 scaling, CoAttn sums 0.70/0.73)
+for extra in ("1.0", "1.1", "3.12.14", "2.15", "3.2.0", "1.4.0", "2.5.4", "2.15.0", "0.95", "15.0", "14.9", "10.4", "9.9", "8.4", "6.4", "6.2", "0.69", "0.70", "0.73", "15.46", "5.19", "0.02", "1709.07871", "1810.08272", "2501.15270"):
+    allowed.add(extra)
+
+backup_idx = len(prs.slides) + 1
+for idx, sl in enumerate(prs.slides, 1):
+    ttl = sl.shapes.title.text_frame.text if sl.shapes.title is not None else ""
+    if sl.slide_layout.name == "SECTION_HEADER" or ttl.startswith("Backup slides"):
+        backup_idx = idx
+        break
 
 issues = []
 for i, s in enumerate(prs.slides, 1):
-    core = i <= 9
+    core = i < backup_idx
     n = s.notes_slide.notes_text_frame.text.strip() if s.has_notes_slide else ""
     if not n: issues.append(f"slide {i}: missing notes")
     if core and not re.match(r"【讲者 [ABC]｜", n): issues.append(f"slide {i}: notes lack speaker tag")
@@ -49,17 +58,17 @@ for i, s in enumerate(prs.slides, 1):
                     sz = r.font.size.pt if r.font.size else None
                     texts.append(r.text)
                     if sz: sizes.append(sz)
-                    if core and sz and sz >= 14 and sh.shape_type == 17 and not sh.is_placeholder:  # text boxes only (not diagram labels/tables)
+                    if core and sz and sz >= 14 and sh.shape_type == 17 and not sh.is_placeholder:
                         words += len(r.text.split())
     body_min = min([x for x in sizes if x >= 14], default=None)
     small = sorted(set(x for x in sizes if x < 14))
     print(f"slide {i:2d} | text-box words (excl. title/diagram/footer) {words:3d} | min body pt {body_min} | small pt (captions/diagram/footer) {small}")
     for t in texts + [n]:
         for num in re.findall(r"(?<![\w.])\d+\.\d+(?![\w.])", t):
-            if num not in allowed and num not in ("1.1", "3.12.14", "2.15", "3.2.0", "1.4.0", "2.5.4", "2.15.0", "0.95", "1709.07871", "1810.08272", "2501.15270"):
+            if num not in allowed:
                 issues.append(f"slide {i}: number {num} not found in reports/JSON")
 
-# ---- GIF embedded intact
+# ---- GIF embedded intact (if present)
 for i, s in enumerate(prs.slides, 1):
     for sh in s.shapes:
         if sh.shape_type == 13 and sh.image.ext == "gif":

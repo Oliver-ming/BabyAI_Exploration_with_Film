@@ -13,7 +13,7 @@ A controlled, mechanistic investigation of **cross-modal fusion inductive biases
 
 | Branch / Tag | Status | Contents |
 |---|---|---|
-| **`attention-mainline`** *(this branch)* | **Active Mainline** | 3-stage cross-modal mechanistic study (`Late Concat → Channel FiLM → Competitive Spatial & Relational Attention`), 14 controlled models (`223k–231k` params), feature-space SNR & background-drift probe (`probe_feature_mechanics.py`), full literature & open-source survey (`branches/b2_attn/LITERATURE_AND_ANALYSIS.md`), and upgraded 23-slide presentation deck (`presentation/`). |
+| **`attention-mainline`** *(this branch)* | **Active Mainline** | 3-stage cross-modal mechanistic study (`Late Concat → Channel FiLM → Competitive Spatial & Relational Attention`), 14 controlled models (`223k–231k` params), feature-space SNR & background-drift probe (`probe_feature_mechanics.py`), full literature & open-source survey (`branches/b2_attn/LITERATURE_AND_ANALYSIS.md`), and upgraded 29-slide (15 core + 13 backup) presentation deck (`presentation/`). |
 | **`archive/film-mainline`** & tag **`v1.0-film-archive`** | **Sealed Archive** | Preserved snapshot (`30bcb35`) of the earlier B2 FiLM mainline + v1 Attention ablations + FiLM presentation deck. |
 | **`main`** | **Original Release** | Unmodified initial release pointer (`30bcb35`), identical to `v1.0-film-archive`. |
 
@@ -94,7 +94,7 @@ p3-babyai/
 │   ├── b3_dagger/                      # Auxiliary: loop-unsticking DAgger (+6k–8.5k oracle labels)
 │   ├── b4_curriculum/                  # Auxiliary: curriculum pacing controls
 │   └── b5_data_eff/                    # Auxiliary: step-matched 10/20/50/100% scaling curves
-├── presentation/                       # 23-slide Attention-centered presentation deck (.pptx, .pdf, script, renders)
+├── presentation/                       # 29-slide (15 core + 13 backup) Attention-centered presentation deck (.pptx, .pdf, script, renders)
 ├── reports/                            # Machine-readable JSONs & 300-DPI figures (b2_attn_v2_*.json / *.png)
 └── runs/                               # Traceable config.json, history.json, vocab.json for every run
 ```

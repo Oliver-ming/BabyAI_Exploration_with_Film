@@ -7,6 +7,14 @@ ROOT = Path(__file__).resolve().parents[1]
 prs = Presentation(ROOT / "AIAA4220_Project3_Presentation.pptx")
 tpl = (ROOT / "scripts/讲稿与QA准备_template.md").read_text()
 
+# Dynamically locate the Backup section divider so core slide count is flexible
+backup_idx = len(prs.slides) + 1
+for idx, sl in enumerate(prs.slides, 1):
+    ttl = sl.shapes.title.text_frame.text if sl.shapes.title is not None else ""
+    if sl.slide_layout.name == "SECTION_HEADER" or ttl.startswith("Backup slides"):
+        backup_idx = idx
+        break
+
 rows, script, total = [], [], 0
 for i, s in enumerate(prs.slides, 1):
     title = s.shapes.title.text_frame.text if s.shapes.title is not None else "(title)"
@@ -16,7 +24,7 @@ for i, s in enumerate(prs.slides, 1):
     m = re.match(r"【(?:讲者 )?([^｜]+)｜([^｜]+)｜([^】]+)】", n)
     body = n[m.end():].strip() if m else n
     chars = len(re.findall(r"[\u4e00-\u9fff]", body)) + len(re.findall(r"[A-Za-z0-9.+\-±→]+", body))
-    if i <= 9:
+    if i < backup_idx:
         sec = int(re.search(r"(\d+)\s*秒", m.group(3)).group(1))
         total += sec
         rows.append(f"| {i} | {title} | {m.group(1)} | {m.group(2)} | {sec} s | {chars} |")
@@ -26,4 +34,4 @@ for i, s in enumerate(prs.slides, 1):
 rows.append(f"| | **合计** | | | **{total} s = {total // 60} min {total % 60:02d} s** | |")
 out = tpl.replace("__TIMELINE__", "\n".join(rows)).replace("__SCRIPT__", "\n".join(script))
 (ROOT / "讲稿与QA准备.md").write_text(out)
-print("total talk seconds:", total)
+print(f"core slides: {backup_idx - 1} | total slides: {len(prs.slides)} | total talk seconds: {total}")
