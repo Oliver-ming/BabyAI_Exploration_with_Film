@@ -7,6 +7,25 @@
 
 A controlled, mechanistic investigation of **cross-modal fusion inductive biases** for grounded language imitation learning in MiniGrid / BabyAI (`BabyAI-GoToLocalS6N3-v0`), following the AIAA 4220 Project 3 Track 2 protocol (`≤ 5,000` expert episodes, `≤ 30` epochs, `n = 3` initialization seeds, checkpoint strictly selected by `val_action_acc`, closed-loop evaluation on `300` unseen seeds per benchmark, population SD `ddof=0`).
 
+<p align="center">
+  <img src="presentation/assets/demo_attention_laws.gif" alt="3-column closed-loop rollout demo: BC30 vs Channel FiLM vs Spatial & Relational Attention (40.8 s)" width="760"/>
+</p>
+<p align="center">
+  <em>Deterministic unseen-seed rollouts (40.8 s): <b>Clip 1 (seed 4502)</b> crowded distractors where both BC30 &amp; Channel FiLM fail (0/3) while MH-Relational solves 3/3 in 7 steps · <b>Clip 2 (seed 4501)</b> v1 Spatial-Softmax obstacle erasure (1/3) fixed by Map-Inject &amp; MH-Relational (3/3 in 8 steps) · <b>Clip 3 (seed 4516)</b> same-color grounding · <b>Clip 4 (seed 4568)</b> single-frame POMDP blind-spot limit.</em>
+</p>
+
+---
+
+## Quick Navigation (Deliverables & Documentation)
+
+| Deliverable | Path | Description |
+|---|---|---|
+| **Presentation Deck (PPTX / PDF)** | [`presentation/AIAA4220_Project3_Presentation.pptx`](presentation/AIAA4220_Project3_Presentation.pptx) · [`.pdf`](presentation/AIAA4220_Project3_Presentation.pdf) | 29-slide Attention-protagonist presentation (`15` spacious core slides = `480 s` + `13` backup slides `B1–B13`, illustrated with custom vector SVGs) |
+| **Editable Vector SVG Diagrams** | [`presentation/assets/svg/`](presentation/assets/svg/) | 8 standalone W3C vector `.svg` architecture diagrams, flowcharts & POMDP schematics |
+| **Speaker Script & Q1–Q18 Defense Bank** | [`presentation/讲稿与QA准备.md`](presentation/讲稿与QA准备.md) | Word-for-word 3-speaker timeline (`480 s`) + `18` technical Q&A items traced to raw JSONs |
+| **Literature Survey & Mechanistic Synthesis** | [`branches/b2_attn/LITERATURE_AND_ANALYSIS.md`](branches/b2_attn/LITERATURE_AND_ANALYSIS.md) | Verified papers, MiniGrid/BabyAI open-source survey, and full mathematical/empirical analysis |
+| **Attention v2 Summary & Raw JSONs** | [`reports/b2_attn_v2_summary.md`](reports/b2_attn_v2_summary.md) · [`reports/`](reports/) | 14-model benchmark, `10%–100%` scaling (`b2_attn_v2_scaling.json`), feature-space SNR/drift (`b2_attn_v2_feature_mechanics.json`), probe & failure logs |
+
 ---
 
 ## Repository Branches & Archival Structure
@@ -58,6 +77,17 @@ Rather than treating cross-modal fusion as a black-box accuracy race, this study
 | **`attn_map_inject` (v2)** | **Uncorrupted Map Concat `[h1; M]`** | **226,335** | **0.969 ± 0.008** | 0.919 ± 0.006 | 0.782 ± 0.026 | 0.854 / 0.792 | 9.3 (`3.0+6.3`) | **3/3** · 2/3 |
 | `token_coattn_spatial` (v2) | Word-Grid Spatial Co-Attention | 227,435 | 0.962 ± 0.013 | 0.940 ± 0.019 | 0.802 ± 0.034 | 0.846 / 0.778 | 11.3 (`5.7+5.7`) | 2/3 · **3/3** |
 | **`mh_spatial_relational` (v2)** | **MH-Res + Ego Relational Attn** | **229,572** | **0.972 ± 0.004** | 0.919 ± 0.040 | 0.827 ± 0.024 | 0.841 / 0.802 | **8.3 (`2.3+6.0`)** | **3/3** · **3/3** |
+
+---
+
+## Architecture & Operator Schematics (Vector SVG)
+
+<p align="center">
+  <img src="presentation/assets/svg_slide06_competition.png" alt="Spatial-Softmax vs Channel FiLM at identical 225,183 parameters" width="840"/>
+</p>
+<p align="center">
+  <img src="presentation/assets/svg_slide08_relational.png" alt="MH-Spatial-Relational & Token-CoAttn architecture" width="840"/>
+</p>
 
 ---
 
