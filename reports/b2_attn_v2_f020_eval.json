@@ -1,0 +1,6883 @@
+{
+  "frac": 0.2,
+  "n_episodes": 900,
+  "step_matched_to": 16534,
+  "references": {
+    "bc_step_f020": {
+      "S6N3": {
+        "n": 3,
+        "frac": 0.2,
+        "frac_tag": "f020",
+        "n_episodes": 900,
+        "success_mean": 0.7422,
+        "success_sd": 0.0264,
+        "val_acc_mean": 0.8068,
+        "val_acc_sd": 0.0052,
+        "train_acc_mean": 0.9081,
+        "gen_gap_mean": 0.1013,
+        "mean_return": 0.6441,
+        "median_len_success": 4.67,
+        "timeouts_mean": 77.33,
+        "n_params": 223071
+      },
+      "S7N4": {
+        "n": 3,
+        "frac": 0.2,
+        "frac_tag": "f020",
+        "n_episodes": 900,
+        "success_mean": 0.6267,
+        "success_sd": 0.0205,
+        "val_acc_mean": 0.8068,
+        "val_acc_sd": 0.0052,
+        "train_acc_mean": 0.9081,
+        "gen_gap_mean": 0.1013,
+        "mean_return": 0.5547,
+        "median_len_success": 5.0,
+        "timeouts_mean": 112.0,
+        "n_params": 223071
+      }
+    },
+    "film_step_f020": {
+      "S6N3": {
+        "n": 3,
+        "frac": 0.2,
+        "frac_tag": "f020",
+        "n_episodes": 900,
+        "success_mean": 0.8144,
+        "success_sd": 0.0228,
+        "val_acc_mean": 0.8744,
+        "val_acc_sd": 0.0095,
+        "train_acc_mean": 0.9992,
+        "gen_gap_mean": 0.1248,
+        "mean_return": 0.7226,
+        "median_len_success": 4.0,
+        "timeouts_mean": 55.67,
+        "n_params": 225183
+      },
+      "S7N4": {
+        "n": 3,
+        "frac": 0.2,
+        "frac_tag": "f020",
+        "n_episodes": 900,
+        "success_mean": 0.75,
+        "success_sd": 0.0521,
+        "val_acc_mean": 0.8744,
+        "val_acc_sd": 0.0095,
+        "train_acc_mean": 0.9992,
+        "gen_gap_mean": 0.1248,
+        "mean_return": 0.6724,
+        "median_len_success": 5.0,
+        "timeouts_mean": 75.0,
+        "n_params": 225183
+      }
+    },
+    "v1_spatial_attn_gate": {
+      "S6N3": {
+        "n_params": 225184,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.85,
+          "sd": 0.010886,
+          "values": [
+            0.863333,
+            0.836667,
+            0.85
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.895336,
+          "sd": 0.01261,
+          "values": [
+            0.912148,
+            0.881779,
+            0.892082
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.761694,
+          "sd": 0.012591,
+          "values": [
+            0.777333,
+            0.7465,
+            0.76125
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 3.333333,
+          "sd": 0.471405,
+          "values": [
+            3.0,
+            4.0,
+            3.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 45.0,
+          "sd": 3.265986,
+          "values": [
+            41.0,
+            49.0,
+            45.0
+          ]
+        }
+      },
+      "S7N4": {
+        "n_params": 225184,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.817778,
+          "sd": 0.024696,
+          "values": [
+            0.84,
+            0.83,
+            0.783333
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.895336,
+          "sd": 0.01261,
+          "values": [
+            0.912148,
+            0.881779,
+            0.892082
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.737431,
+          "sd": 0.020186,
+          "values": [
+            0.760224,
+            0.740918,
+            0.71115
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 4.5,
+          "sd": 0.408248,
+          "values": [
+            4.5,
+            5.0,
+            4.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 54.666667,
+          "sd": 7.408704,
+          "values": [
+            48.0,
+            51.0,
+            65.0
+          ]
+        }
+      }
+    },
+    "v1_cross_attn_mha": {
+      "S6N3": {
+        "n_params": 228928,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.866667,
+          "sd": 0.025963,
+          "values": [
+            0.886667,
+            0.83,
+            0.883333
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.906363,
+          "sd": 0.004368,
+          "values": [
+            0.908894,
+            0.909978,
+            0.900217
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.782722,
+          "sd": 0.023316,
+          "values": [
+            0.7995,
+            0.74975,
+            0.798917
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 3.0,
+          "sd": 0.0,
+          "values": [
+            3.0,
+            3.0,
+            3.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 40.0,
+          "sd": 7.788881,
+          "values": [
+            34.0,
+            51.0,
+            35.0
+          ]
+        }
+      },
+      "S7N4": {
+        "n_params": 228928,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.814445,
+          "sd": 0.028846,
+          "values": [
+            0.846667,
+            0.776667,
+            0.82
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.906363,
+          "sd": 0.004368,
+          "values": [
+            0.908894,
+            0.909978,
+            0.900217
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.739853,
+          "sd": 0.025039,
+          "values": [
+            0.76781,
+            0.707054,
+            0.744694
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 4.0,
+          "sd": 0.0,
+          "values": [
+            4.0,
+            4.0,
+            4.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 55.666667,
+          "sd": 8.653837,
+          "values": [
+            46.0,
+            67.0,
+            54.0
+          ]
+        }
+      }
+    },
+    "v1_film_spatial_attn": {
+      "S6N3": {
+        "n_params": 227296,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.847778,
+          "sd": 0.038233,
+          "values": [
+            0.896667,
+            0.803333,
+            0.843333
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.89154,
+          "sd": 0.017257,
+          "values": [
+            0.914317,
+            0.87256,
+            0.887744
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.758361,
+          "sd": 0.038449,
+          "values": [
+            0.805917,
+            0.71175,
+            0.757417
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 3.333333,
+          "sd": 0.471405,
+          "values": [
+            3.0,
+            4.0,
+            3.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 45.666667,
+          "sd": 11.469767,
+          "values": [
+            31.0,
+            59.0,
+            47.0
+          ]
+        }
+      },
+      "S7N4": {
+        "n_params": 227296,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.755556,
+          "sd": 0.046375,
+          "values": [
+            0.81,
+            0.696667,
+            0.76
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.89154,
+          "sd": 0.017257,
+          "values": [
+            0.914317,
+            0.87256,
+            0.887744
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.685943,
+          "sd": 0.043312,
+          "values": [
+            0.737571,
+            0.631585,
+            0.688673
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 4.333333,
+          "sd": 0.471405,
+          "values": [
+            4.0,
+            5.0,
+            4.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 73.333333,
+          "sd": 13.912425,
+          "values": [
+            57.0,
+            91.0,
+            72.0
+          ]
+        }
+      }
+    }
+  },
+  "variants": {
+    "v1_spatial_softmax_attn": {
+      "S6N3": {
+        "n_params": 225183,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.897778,
+          "sd": 0.008749,
+          "values": [
+            0.91,
+            0.89,
+            0.893333
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.93167,
+          "sd": 0.010299,
+          "values": [
+            0.943059,
+            0.933839,
+            0.918113
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.815417,
+          "sd": 0.009933,
+          "values": [
+            0.829417,
+            0.807417,
+            0.809417
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 3.0,
+          "sd": 0.0,
+          "values": [
+            3.0,
+            3.0,
+            3.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 30.666667,
+          "sd": 2.624669,
+          "values": [
+            27.0,
+            33.0,
+            32.0
+          ]
+        }
+      },
+      "S7N4": {
+        "n_params": 225183,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.854445,
+          "sd": 0.020787,
+          "values": [
+            0.876667,
+            0.86,
+            0.826667
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.93167,
+          "sd": 0.010299,
+          "values": [
+            0.943059,
+            0.933839,
+            0.918113
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.781485,
+          "sd": 0.019766,
+          "values": [
+            0.803442,
+            0.78549,
+            0.755524
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 4.0,
+          "sd": 0.0,
+          "values": [
+            4.0,
+            4.0,
+            4.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 43.666667,
+          "sd": 6.236096,
+          "values": [
+            37.0,
+            42.0,
+            52.0
+          ]
+        }
+      }
+    },
+    "res_spatial_softmax": {
+      "S6N3": {
+        "n_params": 225184,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.885556,
+          "sd": 0.014989,
+          "values": [
+            0.903333,
+            0.866667,
+            0.886667
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.924259,
+          "sd": 0.010722,
+          "values": [
+            0.939262,
+            0.914859,
+            0.918655
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.801806,
+          "sd": 0.01646,
+          "values": [
+            0.82125,
+            0.781,
+            0.803167
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 3.0,
+          "sd": 0.0,
+          "values": [
+            3.0,
+            3.0,
+            3.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 34.333333,
+          "sd": 4.496913,
+          "values": [
+            29.0,
+            40.0,
+            34.0
+          ]
+        }
+      },
+      "S7N4": {
+        "n_params": 225184,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.836667,
+          "sd": 0.043801,
+          "values": [
+            0.886667,
+            0.78,
+            0.843333
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.924259,
+          "sd": 0.010722,
+          "values": [
+            0.939262,
+            0.914859,
+            0.918655
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.763136,
+          "sd": 0.042201,
+          "values": [
+            0.811054,
+            0.708367,
+            0.769986
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 4.0,
+          "sd": 0.0,
+          "values": [
+            4.0,
+            4.0,
+            4.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 49.0,
+          "sd": 13.140269,
+          "values": [
+            34.0,
+            66.0,
+            47.0
+          ]
+        }
+      }
+    },
+    "mh_res_spatial_softmax": {
+      "S6N3": {
+        "n_params": 225187,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.817778,
+          "sd": 0.010304,
+          "values": [
+            0.826667,
+            0.803333,
+            0.823333
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.890094,
+          "sd": 0.005711,
+          "values": [
+            0.895879,
+            0.882321,
+            0.892082
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.73475,
+          "sd": 0.011368,
+          "values": [
+            0.744667,
+            0.718833,
+            0.74075
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 3.333333,
+          "sd": 0.471405,
+          "values": [
+            3.0,
+            4.0,
+            3.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 54.666667,
+          "sd": 3.091206,
+          "values": [
+            52.0,
+            59.0,
+            53.0
+          ]
+        }
+      },
+      "S7N4": {
+        "n_params": 225187,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.758889,
+          "sd": 0.01499,
+          "values": [
+            0.76,
+            0.74,
+            0.776667
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.890094,
+          "sd": 0.005711,
+          "values": [
+            0.895879,
+            0.882321,
+            0.892082
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.688032,
+          "sd": 0.015664,
+          "values": [
+            0.689714,
+            0.668061,
+            0.70632
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 4.333333,
+          "sd": 0.471405,
+          "values": [
+            4.0,
+            5.0,
+            4.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 72.333333,
+          "sd": 4.496913,
+          "values": [
+            72.0,
+            78.0,
+            67.0
+          ]
+        }
+      }
+    },
+    "attn_map_inject": {
+      "S6N3": {
+        "n_params": 226335,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.854444,
+          "sd": 0.031895,
+          "values": [
+            0.87,
+            0.81,
+            0.883333
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.894794,
+          "sd": 0.01001,
+          "values": [
+            0.898048,
+            0.881236,
+            0.905098
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.767333,
+          "sd": 0.028702,
+          "values": [
+            0.782917,
+            0.727083,
+            0.792
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 3.0,
+          "sd": 0.0,
+          "values": [
+            3.0,
+            3.0,
+            3.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 43.666667,
+          "sd": 9.568467,
+          "values": [
+            39.0,
+            57.0,
+            35.0
+          ]
+        }
+      },
+      "S7N4": {
+        "n_params": 226335,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.792222,
+          "sd": 0.010304,
+          "values": [
+            0.806667,
+            0.783333,
+            0.786667
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.894794,
+          "sd": 0.01001,
+          "values": [
+            0.898048,
+            0.881236,
+            0.905098
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.717487,
+          "sd": 0.010427,
+          "values": [
+            0.730748,
+            0.705272,
+            0.716442
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 4.666667,
+          "sd": 0.471405,
+          "values": [
+            5.0,
+            5.0,
+            4.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 62.333333,
+          "sd": 3.091206,
+          "values": [
+            58.0,
+            65.0,
+            64.0
+          ]
+        }
+      }
+    },
+    "token_coattn_spatial": {
+      "S6N3": {
+        "n_params": 227435,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.845556,
+          "sd": 0.027398,
+          "values": [
+            0.85,
+            0.81,
+            0.876667
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.895698,
+          "sd": 0.005846,
+          "values": [
+            0.889371,
+            0.894252,
+            0.903471
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.758889,
+          "sd": 0.027251,
+          "values": [
+            0.758583,
+            0.725667,
+            0.792417
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 3.0,
+          "sd": 0.0,
+          "values": [
+            3.0,
+            3.0,
+            3.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 46.333333,
+          "sd": 8.219219,
+          "values": [
+            45.0,
+            57.0,
+            37.0
+          ]
+        }
+      },
+      "S7N4": {
+        "n_params": 227435,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.777778,
+          "sd": 0.021999,
+          "values": [
+            0.806667,
+            0.773333,
+            0.753333
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.895698,
+          "sd": 0.005846,
+          "values": [
+            0.889371,
+            0.894252,
+            0.903471
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.705145,
+          "sd": 0.016868,
+          "values": [
+            0.728422,
+            0.698027,
+            0.688986
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 4.666667,
+          "sd": 0.471405,
+          "values": [
+            5.0,
+            5.0,
+            4.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 66.666667,
+          "sd": 6.599663,
+          "values": [
+            58.0,
+            68.0,
+            74.0
+          ]
+        }
+      }
+    },
+    "mh_spatial_relational": {
+      "S6N3": {
+        "n_params": 229572,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.841111,
+          "sd": 0.013966,
+          "values": [
+            0.826667,
+            0.86,
+            0.836667
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.894252,
+          "sd": 0.013158,
+          "values": [
+            0.901302,
+            0.90564,
+            0.875813
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.756889,
+          "sd": 0.011519,
+          "values": [
+            0.74675,
+            0.773,
+            0.750917
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 3.0,
+          "sd": 0.0,
+          "values": [
+            3.0,
+            3.0,
+            3.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 47.666667,
+          "sd": 4.189935,
+          "values": [
+            52.0,
+            42.0,
+            49.0
+          ]
+        }
+      },
+      "S7N4": {
+        "n_params": 229572,
+        "closed_loop_success": {
+          "n": 3,
+          "mean": 0.802222,
+          "sd": 0.021999,
+          "values": [
+            0.786667,
+            0.833333,
+            0.786667
+          ]
+        },
+        "val_action_acc": {
+          "n": 3,
+          "mean": 0.894252,
+          "sd": 0.013158,
+          "values": [
+            0.901302,
+            0.90564,
+            0.875813
+          ]
+        },
+        "mean_return": {
+          "n": 3,
+          "mean": 0.728875,
+          "sd": 0.019538,
+          "values": [
+            0.71681,
+            0.756435,
+            0.713381
+          ]
+        },
+        "median_len_success": {
+          "n": 3,
+          "mean": 4.333333,
+          "sd": 0.471405,
+          "values": [
+            4.0,
+            4.0,
+            5.0
+          ]
+        },
+        "n_timeout": {
+          "n": 3,
+          "mean": 59.333333,
+          "sd": 6.599663,
+          "values": [
+            64.0,
+            50.0,
+            64.0
+          ]
+        }
+      }
+    }
+  },
+  "runs": [
+    {
+      "run": "runs/b2_attn_spatial_softmax_attn_f020_seed0",
+      "variant": "spatial_softmax_attn",
+      "branch": "b2_attn",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.943059,
+      "best_epoch": 18,
+      "n_params": 225183,
+      "train_seconds": 70.38,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.24,
+      "n_episodes": 300,
+      "closed_loop_success": 0.91,
+      "mean_return": 0.829417,
+      "median_len_success": 3.0,
+      "mean_len_success": 3.542,
+      "mean_len_all": 6.463,
+      "n_timeout": 27,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 1.0
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.913043
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 1.0
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.894737
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.833333
+        }
+      },
+      "action_histogram": {
+        "left": 0.221248,
+        "right": 0.220732,
+        "forward": 0.55802
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_spatial_softmax_attn_f020_seed0",
+      "variant": "spatial_softmax_attn",
+      "branch": "b2_attn",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.943059,
+      "best_epoch": 18,
+      "n_params": 225183,
+      "train_seconds": 70.38,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 1.88,
+      "n_episodes": 300,
+      "closed_loop_success": 0.876667,
+      "mean_return": 0.803442,
+      "median_len_success": 4.0,
+      "mean_len_success": 4.548,
+      "mean_len_all": 10.03,
+      "n_timeout": 37,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.875
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.75
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.727273
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.722222
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.75
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.8
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 1.0
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.866667
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 1.0
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.933333
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.777778
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.933333
+        }
+      },
+      "action_histogram": {
+        "left": 0.23762,
+        "right": 0.256231,
+        "forward": 0.506148
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_spatial_softmax_attn_f020_seed1",
+      "variant": "spatial_softmax_attn",
+      "branch": "b2_attn",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.933839,
+      "best_epoch": 18,
+      "n_params": 225183,
+      "train_seconds": 74.85,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.38,
+      "n_episodes": 300,
+      "closed_loop_success": 0.89,
+      "mean_return": 0.807417,
+      "median_len_success": 3.0,
+      "mean_len_success": 3.712,
+      "mean_len_all": 7.263,
+      "n_timeout": 33,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 1.0
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 1.0
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.869565
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.736842
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.9375
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.888889
+        }
+      },
+      "action_histogram": {
+        "left": 0.253786,
+        "right": 0.249197,
+        "forward": 0.497017
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_spatial_softmax_attn_f020_seed1",
+      "variant": "spatial_softmax_attn",
+      "branch": "b2_attn",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.933839,
+      "best_epoch": 18,
+      "n_params": 225183,
+      "train_seconds": 74.85,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 2.05,
+      "n_episodes": 300,
+      "closed_loop_success": 0.86,
+      "mean_return": 0.78549,
+      "median_len_success": 4.0,
+      "mean_len_success": 4.717,
+      "mean_len_all": 10.917,
+      "n_timeout": 42,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 0.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.875
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.666667
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.727273
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.777778
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.9
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.7
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.933333
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 1.0
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.777778
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.933333
+        }
+      },
+      "action_histogram": {
+        "left": 0.250076,
+        "right": 0.270229,
+        "forward": 0.479695
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_spatial_softmax_attn_f020_seed2",
+      "variant": "spatial_softmax_attn",
+      "branch": "b2_attn",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.918113,
+      "best_epoch": 14,
+      "n_params": 225183,
+      "train_seconds": 74.57,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.37,
+      "n_episodes": 300,
+      "closed_loop_success": 0.893333,
+      "mean_return": 0.809417,
+      "median_len_success": 3.0,
+      "mean_len_success": 3.757,
+      "mean_len_all": 7.197,
+      "n_timeout": 32,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.714286
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 1.0
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 1.0
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.956522
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 1.0
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.736842
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.888889
+        }
+      },
+      "action_histogram": {
+        "left": 0.263085,
+        "right": 0.263548,
+        "forward": 0.473367
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_spatial_softmax_attn_f020_seed2",
+      "variant": "spatial_softmax_attn",
+      "branch": "b2_attn",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.918113,
+      "best_epoch": 14,
+      "n_params": 225183,
+      "train_seconds": 74.57,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 2.27,
+      "n_episodes": 300,
+      "closed_loop_success": 0.826667,
+      "mean_return": 0.755524,
+      "median_len_success": 4.0,
+      "mean_len_success": 4.685,
+      "mean_len_all": 12.367,
+      "n_timeout": 52,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.75
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.666667
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.545455
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.8
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.8
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.571429
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.933333
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 0.7
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.933333
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 1.0
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.866667
+        }
+      },
+      "action_histogram": {
+        "left": 0.260916,
+        "right": 0.239892,
+        "forward": 0.499191
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_f020_seed0",
+      "variant": "res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.939262,
+      "best_epoch": 12,
+      "n_params": 225184,
+      "train_seconds": 74.18,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.36,
+      "n_episodes": 300,
+      "closed_loop_success": 0.903333,
+      "mean_return": 0.82125,
+      "median_len_success": 3.0,
+      "mean_len_success": 3.635,
+      "mean_len_all": 6.763,
+      "n_timeout": 29,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 1.0
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.869565
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 1.0
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.894737
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.888889
+        }
+      },
+      "action_histogram": {
+        "left": 0.19517,
+        "right": 0.19862,
+        "forward": 0.60621
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_f020_seed0",
+      "variant": "res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.939262,
+      "best_epoch": 12,
+      "n_params": 225184,
+      "train_seconds": 74.18,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 1.93,
+      "n_episodes": 300,
+      "closed_loop_success": 0.886667,
+      "mean_return": 0.811054,
+      "median_len_success": 4.0,
+      "mean_len_success": 4.643,
+      "mean_len_all": 9.67,
+      "n_timeout": 34,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 0.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.875
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.916667
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.866667
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.727273
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.777778
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.8
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.8
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.866667
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 1.0
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.933333
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 1.0
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.933333
+        }
+      },
+      "action_histogram": {
+        "left": 0.184764,
+        "right": 0.176836,
+        "forward": 0.638401
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_f020_seed1",
+      "variant": "res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.914859,
+      "best_epoch": 12,
+      "n_params": 225184,
+      "train_seconds": 69.12,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.59,
+      "n_episodes": 300,
+      "closed_loop_success": 0.866667,
+      "mean_return": 0.781,
+      "median_len_success": 3.0,
+      "mean_len_success": 3.954,
+      "mean_len_all": 8.227,
+      "n_timeout": 40,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.857143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 1.0
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 1.0
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 1.0
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.777778
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.869565
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.727273
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.736842
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.666667
+        }
+      },
+      "action_histogram": {
+        "left": 0.268639,
+        "right": 0.27107,
+        "forward": 0.460292
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_f020_seed1",
+      "variant": "res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.914859,
+      "best_epoch": 12,
+      "n_params": 225184,
+      "train_seconds": 69.12,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 2.81,
+      "n_episodes": 300,
+      "closed_loop_success": 0.78,
+      "mean_return": 0.708367,
+      "median_len_success": 4.0,
+      "mean_len_success": 5.0,
+      "mean_len_all": 14.68,
+      "n_timeout": 66,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 0.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 0.75
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.875
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.75
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.666667
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.636364
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.666667
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.7
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.8
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.733333
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 1.0
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.666667
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.777778
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.866667
+        }
+      },
+      "action_histogram": {
+        "left": 0.270663,
+        "right": 0.272252,
+        "forward": 0.457084
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_f020_seed2",
+      "variant": "res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.918655,
+      "best_epoch": 14,
+      "n_params": 225184,
+      "train_seconds": 75.99,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.44,
+      "n_episodes": 300,
+      "closed_loop_success": 0.886667,
+      "mean_return": 0.803167,
+      "median_len_success": 3.0,
+      "mean_len_success": 3.767,
+      "mean_len_all": 7.42,
+      "n_timeout": 34,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.857143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 1.0
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 1.0
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.913043
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.789474
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.6875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.888889
+        }
+      },
+      "action_histogram": {
+        "left": 0.231806,
+        "right": 0.234501,
+        "forward": 0.533693
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_f020_seed2",
+      "variant": "res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.918655,
+      "best_epoch": 14,
+      "n_params": 225184,
+      "train_seconds": 75.99,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 2.29,
+      "n_episodes": 300,
+      "closed_loop_success": 0.843333,
+      "mean_return": 0.769986,
+      "median_len_success": 4.0,
+      "mean_len_success": 4.735,
+      "mean_len_all": 11.67,
+      "n_timeout": 47,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 1.0
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.666667
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.733333
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.636364
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.8
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.8
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 0.9
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 1.0
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.866667
+        }
+      },
+      "action_histogram": {
+        "left": 0.231362,
+        "right": 0.230506,
+        "forward": 0.538132
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_f020_seed0",
+      "variant": "mh_res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.895879,
+      "best_epoch": 12,
+      "n_params": 225187,
+      "train_seconds": 77.29,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.84,
+      "n_episodes": 300,
+      "closed_loop_success": 0.826667,
+      "mean_return": 0.744667,
+      "median_len_success": 3.0,
+      "mean_len_success": 3.968,
+      "mean_len_all": 9.52,
+      "n_timeout": 52,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.857143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.722222
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.869565
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 1.0
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.736842
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.777778
+        }
+      },
+      "action_histogram": {
+        "left": 0.273109,
+        "right": 0.281863,
+        "forward": 0.445028
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_f020_seed0",
+      "variant": "mh_res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.895879,
+      "best_epoch": 12,
+      "n_params": 225187,
+      "train_seconds": 77.29,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 2.95,
+      "n_episodes": 300,
+      "closed_loop_success": 0.76,
+      "mean_return": 0.689714,
+      "median_len_success": 4.0,
+      "mean_len_success": 5.035,
+      "mean_len_all": 15.587,
+      "n_timeout": 72,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 0.666667
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 0.75
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.625
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.692308
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.416667
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.727273
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.666667
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.6
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.7
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.866667
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 0.8
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.733333
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.888889
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.8
+        }
+      },
+      "action_histogram": {
+        "left": 0.249786,
+        "right": 0.236955,
+        "forward": 0.513259
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_f020_seed1",
+      "variant": "mh_res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.882321,
+      "best_epoch": 30,
+      "n_params": 225187,
+      "train_seconds": 78.36,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 2.01,
+      "n_episodes": 300,
+      "closed_loop_success": 0.803333,
+      "mean_return": 0.718833,
+      "median_len_success": 4.0,
+      "mean_len_success": 4.207,
+      "mean_len_all": 10.46,
+      "n_timeout": 59,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 0.6
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 0.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 1.0
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.722222
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.782609
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.727273
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.578947
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.777778
+        }
+      },
+      "action_histogram": {
+        "left": 0.347992,
+        "right": 0.348948,
+        "forward": 0.303059
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_f020_seed1",
+      "variant": "mh_res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.882321,
+      "best_epoch": 30,
+      "n_params": 225187,
+      "train_seconds": 78.36,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 3.18,
+      "n_episodes": 300,
+      "closed_loop_success": 0.74,
+      "mean_return": 0.668061,
+      "median_len_success": 5.0,
+      "mean_len_success": 5.293,
+      "mean_len_all": 16.657,
+      "n_timeout": 78,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 0.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 0.75
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 0.75
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.5
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.583333
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.666667
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.666667
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.6
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.6
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.571429
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.466667
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 0.9
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.666667
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.777778
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.8
+        }
+      },
+      "action_histogram": {
+        "left": 0.290975,
+        "right": 0.286372,
+        "forward": 0.422654
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_f020_seed2",
+      "variant": "mh_res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.892082,
+      "best_epoch": 15,
+      "n_params": 225187,
+      "train_seconds": 74.61,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.84,
+      "n_episodes": 300,
+      "closed_loop_success": 0.823333,
+      "mean_return": 0.74075,
+      "median_len_success": 3.0,
+      "mean_len_success": 4.012,
+      "mean_len_all": 9.663,
+      "n_timeout": 53,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.857143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.777778
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.826087
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.727273
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.736842
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.6875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.777778
+        }
+      },
+      "action_histogram": {
+        "left": 0.323215,
+        "right": 0.32011,
+        "forward": 0.356675
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_f020_seed2",
+      "variant": "mh_res_spatial_softmax",
+      "branch": "b2_attn_v2",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.892082,
+      "best_epoch": 15,
+      "n_params": 225187,
+      "train_seconds": 74.61,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 2.8,
+      "n_episodes": 300,
+      "closed_loop_success": 0.776667,
+      "mean_return": 0.70632,
+      "median_len_success": 4.0,
+      "mean_len_success": 4.931,
+      "mean_len_all": 14.773,
+      "n_timeout": 67,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.625
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.583333
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.545455
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.666667
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.75
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.7
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.733333
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 0.7
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.6
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.666667
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.866667
+        }
+      },
+      "action_histogram": {
+        "left": 0.231724,
+        "right": 0.22157,
+        "forward": 0.546706
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_f020_seed0",
+      "variant": "attn_map_inject",
+      "branch": "b2_attn_v2",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.898048,
+      "best_epoch": 18,
+      "n_params": 226335,
+      "train_seconds": 75.84,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.56,
+      "n_episodes": 300,
+      "closed_loop_success": 0.87,
+      "mean_return": 0.782917,
+      "median_len_success": 3.0,
+      "mean_len_success": 4.004,
+      "mean_len_all": 8.163,
+      "n_timeout": 39,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 1.0
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.826087
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.736842
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.888889
+        }
+      },
+      "action_histogram": {
+        "left": 0.293998,
+        "right": 0.322172,
+        "forward": 0.38383
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_f020_seed0",
+      "variant": "attn_map_inject",
+      "branch": "b2_attn_v2",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.898048,
+      "best_epoch": 18,
+      "n_params": 226335,
+      "train_seconds": 75.84,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 2.53,
+      "n_episodes": 300,
+      "closed_loop_success": 0.806667,
+      "mean_return": 0.730748,
+      "median_len_success": 5.0,
+      "mean_len_success": 5.124,
+      "mean_len_all": 13.607,
+      "n_timeout": 58,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 0.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.75
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.583333
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.636364
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.722222
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.8
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.6
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.571429
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 0.9
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.866667
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.777778
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.866667
+        }
+      },
+      "action_histogram": {
+        "left": 0.300343,
+        "right": 0.281235,
+        "forward": 0.418422
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_f020_seed1",
+      "variant": "attn_map_inject",
+      "branch": "b2_attn_v2",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.881236,
+      "best_epoch": 28,
+      "n_params": 226335,
+      "train_seconds": 80.72,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.89,
+      "n_episodes": 300,
+      "closed_loop_success": 0.81,
+      "mean_return": 0.727083,
+      "median_len_success": 3.0,
+      "mean_len_success": 4.095,
+      "mean_len_all": 10.157,
+      "n_timeout": 57,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 0.6
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 0.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.857143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 1.0
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.571429
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.777778
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.869565
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.545455
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.789474
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.722222
+        }
+      },
+      "action_histogram": {
+        "left": 0.318018,
+        "right": 0.312767,
+        "forward": 0.369216
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_f020_seed1",
+      "variant": "attn_map_inject",
+      "branch": "b2_attn_v2",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.881236,
+      "best_epoch": 28,
+      "n_params": 226335,
+      "train_seconds": 80.72,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 2.73,
+      "n_episodes": 300,
+      "closed_loop_success": 0.783333,
+      "mean_return": 0.705272,
+      "median_len_success": 5.0,
+      "mean_len_success": 5.426,
+      "mean_len_all": 14.867,
+      "n_timeout": 65,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 0.5
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.875
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.416667
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.733333
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.727273
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.7
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.7
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.4
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 1.0
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.866667
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.777778
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.933333
+        }
+      },
+      "action_histogram": {
+        "left": 0.335874,
+        "right": 0.326906,
+        "forward": 0.33722
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_f020_seed2",
+      "variant": "attn_map_inject",
+      "branch": "b2_attn_v2",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.905098,
+      "best_epoch": 13,
+      "n_params": 226335,
+      "train_seconds": 77.67,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.47,
+      "n_episodes": 300,
+      "closed_loop_success": 0.883333,
+      "mean_return": 0.792,
+      "median_len_success": 3.0,
+      "mean_len_success": 4.136,
+      "mean_len_all": 7.853,
+      "n_timeout": 35,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.857143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.777778
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 1.0
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.913043
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 1.0
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.947368
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.888889
+        }
+      },
+      "action_histogram": {
+        "left": 0.286927,
+        "right": 0.292869,
+        "forward": 0.420204
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_f020_seed2",
+      "variant": "attn_map_inject",
+      "branch": "b2_attn_v2",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.905098,
+      "best_epoch": 13,
+      "n_params": 226335,
+      "train_seconds": 77.67,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 2.65,
+      "n_episodes": 300,
+      "closed_loop_success": 0.786667,
+      "mean_return": 0.716442,
+      "median_len_success": 4.0,
+      "mean_len_success": 4.86,
+      "mean_len_all": 14.277,
+      "n_timeout": 64,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 0.75
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.428571
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.625
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.615385
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.5
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.733333
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.636364
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.8
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.7
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 0.8
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.933333
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.777778
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.933333
+        }
+      },
+      "action_histogram": {
+        "left": 0.293252,
+        "right": 0.294653,
+        "forward": 0.412094
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_f020_seed0",
+      "variant": "token_coattn_spatial",
+      "branch": "b2_attn_v2",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.889371,
+      "best_epoch": 7,
+      "n_params": 227435,
+      "train_seconds": 84.13,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 2.18,
+      "n_episodes": 300,
+      "closed_loop_success": 0.85,
+      "mean_return": 0.758583,
+      "median_len_success": 3.0,
+      "mean_len_success": 4.302,
+      "mean_len_all": 9.057,
+      "n_timeout": 45,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.857143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 1.0
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.782609
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.631579
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.833333
+        }
+      },
+      "action_histogram": {
+        "left": 0.281929,
+        "right": 0.288185,
+        "forward": 0.429886
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_f020_seed0",
+      "variant": "token_coattn_spatial",
+      "branch": "b2_attn_v2",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.889371,
+      "best_epoch": 7,
+      "n_params": 227435,
+      "train_seconds": 84.13,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 3.28,
+      "n_episodes": 300,
+      "closed_loop_success": 0.806667,
+      "mean_return": 0.728422,
+      "median_len_success": 5.0,
+      "mean_len_success": 5.281,
+      "mean_len_all": 13.733,
+      "n_timeout": 58,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 0.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 0.5
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.75
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.692308
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.75
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.666667
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.666667
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.65
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.8
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.866667
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 1.0
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 1.0
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.8
+        }
+      },
+      "action_histogram": {
+        "left": 0.199757,
+        "right": 0.233252,
+        "forward": 0.56699
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_f020_seed1",
+      "variant": "token_coattn_spatial",
+      "branch": "b2_attn_v2",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.894252,
+      "best_epoch": 11,
+      "n_params": 227435,
+      "train_seconds": 87.52,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 2.42,
+      "n_episodes": 300,
+      "closed_loop_success": 0.81,
+      "mean_return": 0.725667,
+      "median_len_success": 3.0,
+      "mean_len_success": 4.165,
+      "mean_len_all": 10.213,
+      "n_timeout": 57,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.857143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.692308
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.666667
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.782609
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.727273
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.631579
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.833333
+        }
+      },
+      "action_histogram": {
+        "left": 0.303851,
+        "right": 0.307441,
+        "forward": 0.388708
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_f020_seed1",
+      "variant": "token_coattn_spatial",
+      "branch": "b2_attn_v2",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.894252,
+      "best_epoch": 11,
+      "n_params": 227435,
+      "train_seconds": 87.52,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 3.55,
+      "n_episodes": 300,
+      "closed_loop_success": 0.773333,
+      "mean_return": 0.698027,
+      "median_len_success": 5.0,
+      "mean_len_success": 5.302,
+      "mean_len_all": 15.207,
+      "n_timeout": 68,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 0.75
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 0.75
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.75
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.615385
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.583333
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.777778
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.85
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.6
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.533333
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 0.9
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.866667
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.888889
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.8
+        }
+      },
+      "action_histogram": {
+        "left": 0.289128,
+        "right": 0.275975,
+        "forward": 0.434897
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_f020_seed2",
+      "variant": "token_coattn_spatial",
+      "branch": "b2_attn_v2",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.903471,
+      "best_epoch": 13,
+      "n_params": 227435,
+      "train_seconds": 87.32,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 1.86,
+      "n_episodes": 300,
+      "closed_loop_success": 0.876667,
+      "mean_return": 0.792417,
+      "median_len_success": 3.0,
+      "mean_len_success": 3.844,
+      "mean_len_all": 7.81,
+      "n_timeout": 37,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 1.0
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.782609
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.736842
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.75
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.888889
+        }
+      },
+      "action_histogram": {
+        "left": 0.274008,
+        "right": 0.253094,
+        "forward": 0.472898
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_f020_seed2",
+      "variant": "token_coattn_spatial",
+      "branch": "b2_attn_v2",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.903471,
+      "best_epoch": 13,
+      "n_params": 227435,
+      "train_seconds": 87.32,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 3.69,
+      "n_episodes": 300,
+      "closed_loop_success": 0.753333,
+      "mean_return": 0.688986,
+      "median_len_success": 4.0,
+      "mean_len_success": 4.65,
+      "mean_len_all": 15.59,
+      "n_timeout": 74,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 0.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 0.833333
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 0.75
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 0.75
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.75
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.769231
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.615385
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.25
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.6
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.611111
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.8
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.6
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.428571
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.666667
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 1.0
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.933333
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.777778
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.933333
+        }
+      },
+      "action_histogram": {
+        "left": 0.257858,
+        "right": 0.247595,
+        "forward": 0.494548
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_f020_seed0",
+      "variant": "mh_spatial_relational",
+      "branch": "b2_attn_v2",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.901302,
+      "best_epoch": 30,
+      "n_params": 229572,
+      "train_seconds": 181.02,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 2.46,
+      "n_episodes": 300,
+      "closed_loop_success": 0.826667,
+      "mean_return": 0.74675,
+      "median_len_success": 3.0,
+      "mean_len_success": 3.867,
+      "mean_len_all": 9.437,
+      "n_timeout": 52,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.571429
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.777778
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.777778
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.722222
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.826087
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 1.0
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 1.0
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.736842
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.8125
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.833333
+        }
+      },
+      "action_histogram": {
+        "left": 0.278347,
+        "right": 0.280466,
+        "forward": 0.441187
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_f020_seed0",
+      "variant": "mh_spatial_relational",
+      "branch": "b2_attn_v2",
+      "train_seed": 0,
+      "frac": 0.2,
+      "val_action_acc": 0.901302,
+      "best_epoch": 30,
+      "n_params": 229572,
+      "train_seconds": 181.02,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 3.63,
+      "n_episodes": 300,
+      "closed_loop_success": 0.786667,
+      "mean_return": 0.71681,
+      "median_len_success": 4.0,
+      "mean_len_success": 4.835,
+      "mean_len_all": 14.257,
+      "n_timeout": 64,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 0.5
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.625
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.666667
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.727273
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.611111
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.65
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.6
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.642857
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.733333
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 0.7
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.666667
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 1.0
+        }
+      },
+      "action_histogram": {
+        "left": 0.258592,
+        "right": 0.264671,
+        "forward": 0.476736
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_f020_seed1",
+      "variant": "mh_spatial_relational",
+      "branch": "b2_attn_v2",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.90564,
+      "best_epoch": 15,
+      "n_params": 229572,
+      "train_seconds": 178.47,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 2.2,
+      "n_episodes": 300,
+      "closed_loop_success": 0.86,
+      "mean_return": 0.773,
+      "median_len_success": 3.0,
+      "mean_len_success": 4.047,
+      "mean_len_all": 8.52,
+      "n_timeout": 42,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.6875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 0.857143
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.944444
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 1.0
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.722222
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.913043
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.684211
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.9375
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.833333
+        }
+      },
+      "action_histogram": {
+        "left": 0.286385,
+        "right": 0.288341,
+        "forward": 0.425274
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_f020_seed1",
+      "variant": "mh_spatial_relational",
+      "branch": "b2_attn_v2",
+      "train_seed": 1,
+      "frac": 0.2,
+      "val_action_acc": 0.90564,
+      "best_epoch": 15,
+      "n_params": 229572,
+      "train_seconds": 178.47,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 3.11,
+      "n_episodes": 300,
+      "closed_loop_success": 0.833333,
+      "mean_return": 0.756435,
+      "median_len_success": 4.0,
+      "mean_len_success": 5.024,
+      "mean_len_all": 12.353,
+      "n_timeout": 50,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 0.75
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 0.75
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 0.75
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.416667
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.866667
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.8
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.8
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.733333
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 0.9
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.866667
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.777778
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 1.0
+        }
+      },
+      "action_histogram": {
+        "left": 0.309228,
+        "right": 0.287911,
+        "forward": 0.40286
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_f020_seed2",
+      "variant": "mh_spatial_relational",
+      "branch": "b2_attn_v2",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.875813,
+      "best_epoch": 16,
+      "n_params": 229572,
+      "train_seconds": 179.3,
+      "env_id": "BabyAI-GoToLocalS6N3-v0",
+      "eval_seconds": 2.38,
+      "n_episodes": 300,
+      "closed_loop_success": 0.836667,
+      "mean_return": 0.750917,
+      "median_len_success": 3.0,
+      "mean_len_success": 4.1,
+      "mean_len_all": 9.31,
+      "n_timeout": 49,
+      "per_mission": {
+        "go to a blue key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 5,
+          "success": 0.8
+        },
+        "go to a red box": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 16,
+          "success": 0.6875
+        },
+        "go to the blue box": {
+          "n": 7,
+          "success": 1.0
+        },
+        "go to the blue key": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the green ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the green box": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the green key": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the grey ball": {
+          "n": 18,
+          "success": 0.888889
+        },
+        "go to the grey box": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the grey key": {
+          "n": 14,
+          "success": 0.928571
+        },
+        "go to the purple ball": {
+          "n": 18,
+          "success": 0.833333
+        },
+        "go to the purple box": {
+          "n": 11,
+          "success": 0.636364
+        },
+        "go to the purple key": {
+          "n": 23,
+          "success": 0.782609
+        },
+        "go to the red ball": {
+          "n": 13,
+          "success": 0.923077
+        },
+        "go to the red box": {
+          "n": 11,
+          "success": 0.909091
+        },
+        "go to the red key": {
+          "n": 11,
+          "success": 0.818182
+        },
+        "go to the yellow ball": {
+          "n": 19,
+          "success": 0.684211
+        },
+        "go to the yellow box": {
+          "n": 16,
+          "success": 0.875
+        },
+        "go to the yellow key": {
+          "n": 18,
+          "success": 0.833333
+        }
+      },
+      "action_histogram": {
+        "left": 0.301468,
+        "right": 0.288937,
+        "forward": 0.409595
+      },
+      "invalid_action_rate": 0.0
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_f020_seed2",
+      "variant": "mh_spatial_relational",
+      "branch": "b2_attn_v2",
+      "train_seed": 2,
+      "frac": 0.2,
+      "val_action_acc": 0.875813,
+      "best_epoch": 16,
+      "n_params": 229572,
+      "train_seconds": 179.3,
+      "env_id": "BabyAI-GoToLocalS7N4-v0",
+      "eval_seconds": 3.61,
+      "n_episodes": 300,
+      "closed_loop_success": 0.786667,
+      "mean_return": 0.713381,
+      "median_len_success": 5.0,
+      "mean_len_success": 5.072,
+      "mean_len_all": 14.443,
+      "n_timeout": 64,
+      "per_mission": {
+        "go to a blue ball": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a blue box": {
+          "n": 1,
+          "success": 1.0
+        },
+        "go to a blue key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to a green ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a green box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a green key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a grey box": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a grey key": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a purple ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a purple box": {
+          "n": 3,
+          "success": 0.666667
+        },
+        "go to a purple key": {
+          "n": 2,
+          "success": 1.0
+        },
+        "go to a red ball": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a red box": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a red key": {
+          "n": 5,
+          "success": 1.0
+        },
+        "go to a yellow ball": {
+          "n": 3,
+          "success": 1.0
+        },
+        "go to a yellow box": {
+          "n": 4,
+          "success": 1.0
+        },
+        "go to a yellow key": {
+          "n": 6,
+          "success": 1.0
+        },
+        "go to the blue ball": {
+          "n": 14,
+          "success": 0.857143
+        },
+        "go to the blue box": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the blue key": {
+          "n": 8,
+          "success": 1.0
+        },
+        "go to the green ball": {
+          "n": 13,
+          "success": 0.846154
+        },
+        "go to the green box": {
+          "n": 13,
+          "success": 0.692308
+        },
+        "go to the green key": {
+          "n": 12,
+          "success": 0.666667
+        },
+        "go to the grey ball": {
+          "n": 15,
+          "success": 0.6
+        },
+        "go to the grey box": {
+          "n": 11,
+          "success": 0.636364
+        },
+        "go to the grey key": {
+          "n": 18,
+          "success": 0.777778
+        },
+        "go to the purple ball": {
+          "n": 20,
+          "success": 0.7
+        },
+        "go to the purple box": {
+          "n": 10,
+          "success": 0.5
+        },
+        "go to the purple key": {
+          "n": 14,
+          "success": 0.714286
+        },
+        "go to the red ball": {
+          "n": 14,
+          "success": 0.785714
+        },
+        "go to the red box": {
+          "n": 15,
+          "success": 0.8
+        },
+        "go to the red key": {
+          "n": 10,
+          "success": 0.8
+        },
+        "go to the yellow ball": {
+          "n": 15,
+          "success": 0.733333
+        },
+        "go to the yellow box": {
+          "n": 9,
+          "success": 0.777778
+        },
+        "go to the yellow key": {
+          "n": 15,
+          "success": 0.8
+        }
+      },
+      "action_histogram": {
+        "left": 0.261943,
+        "right": 0.228018,
+        "forward": 0.510039
+      },
+      "invalid_action_rate": 0.0
+    }
+  ]
+}

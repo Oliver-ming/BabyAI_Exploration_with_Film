@@ -6,7 +6,7 @@ from pptx.util import Emu
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-prs = Presentation(ROOT / "AIAA4220_Project3_Presentation.pptx")
+prs = Presentation(ROOT / "AIAA4220_Project3_Presentation_Attention.pptx")
 SW, SH = prs.slide_width, prs.slide_height
 
 # ---- allowed numbers: every decimal in approved reports / case analysis / raw JSON (rounded 1-3 dp)
@@ -56,7 +56,7 @@ for i, s in enumerate(prs.slides, 1):
     print(f"slide {i:2d} | text-box words (excl. title/diagram/footer) {words:3d} | min body pt {body_min} | small pt (captions/diagram/footer) {small}")
     for t in texts + [n]:
         for num in re.findall(r"(?<![\w.])\d+\.\d+(?![\w.])", t):
-            if num not in allowed and num not in ("1.1", "3.12.14", "2.15", "3.2.0", "1.4.0", "2.5.4", "2.15.0", "0.95"):
+            if num not in allowed and num not in ("1.1", "3.12.14", "2.15", "3.2.0", "1.4.0", "2.5.4", "2.15.0", "0.95", "1709.07871", "1810.08272", "2501.15270"):
                 issues.append(f"slide {i}: number {num} not found in reports/JSON")
 
 # ---- GIF embedded intact

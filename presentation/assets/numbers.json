@@ -109,40 +109,21 @@
   "trivial:always_left": 0.0,
   "trivial:random": 0.543333
  },
- "failures BC (pat=5)": [
-  45,
-  31,
-  {
-   "approach_then_lost": 7.33,
-   "attribute_confusion": 25.33,
-   "distractor_priority": 19.67,
-   "forward_stall": 0.67,
-   "orientation_lock": 7,
-   "turn_oscillation": 14,
-   "wander_timeout": 2
-  }
- ],
- "failures BC30": [
+ "failures_4stage BC30 (Concat)": [
   38.33,
-  17.33,
-  {
-   "approach_then_lost": 2.67,
-   "attribute_confusion": 19.33,
-   "distractor_priority": 19,
-   "orientation_lock": 1.33,
-   "turn_oscillation": 12.67,
-   "wander_timeout": 0.67
-  }
+  17.33
  ],
- "failures FiLM-nwd": [
+ "failures_4stage FiLM (Channel)": [
   6.33,
-  6,
-  {
-   "attribute_confusion": 4.67,
-   "distractor_priority": 1.67,
-   "forward_stall": 0.67,
-   "turn_oscillation": 5.33
-  }
+  6
+ ],
+ "failures_4stage Spatial Softmax": [
+  3.67,
+  5.0
+ ],
+ "failures_4stage MH-Res +Rel": [
+  2.33,
+  6.0
  ],
  "abl concat_wd": "0.707 \u00b1 0.027",
  "abl concat_wide_wd": "0.718 \u00b1 0.023",

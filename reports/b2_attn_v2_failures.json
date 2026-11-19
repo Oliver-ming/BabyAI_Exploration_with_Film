@@ -1,0 +1,4069 @@
+{
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seeds": "4500:4800",
+  "case_seeds": [
+    4501,
+    4516,
+    4560,
+    4568,
+    4502
+  ],
+  "references": {
+    "aggregate": {
+      "bc30": {
+        "n_failure": {
+          "n": 3,
+          "mean": 55.666667,
+          "sd": 13.597385,
+          "values": [
+            37.0,
+            61.0,
+            69.0
+          ]
+        },
+        "representation": {
+          "n": 3,
+          "mean": 38.333333,
+          "sd": 5.249339,
+          "values": [
+            31.0,
+            43.0,
+            41.0
+          ]
+        },
+        "state_coverage": {
+          "n": 3,
+          "mean": 17.333333,
+          "sd": 8.993825,
+          "values": [
+            6.0,
+            18.0,
+            28.0
+          ]
+        },
+        "failure_types_mean": {
+          "approach_then_lost": 2.67,
+          "attribute_confusion": 19.33,
+          "distractor_priority": 19.0,
+          "orientation_lock": 1.33,
+          "turn_oscillation": 12.67,
+          "wander_timeout": 0.67
+        }
+      },
+      "film_nwd": {
+        "n_failure": {
+          "n": 3,
+          "mean": 12.333333,
+          "sd": 1.885618,
+          "values": [
+            11.0,
+            15.0,
+            11.0
+          ]
+        },
+        "representation": {
+          "n": 3,
+          "mean": 6.333333,
+          "sd": 1.247219,
+          "values": [
+            5.0,
+            8.0,
+            6.0
+          ]
+        },
+        "state_coverage": {
+          "n": 3,
+          "mean": 6.0,
+          "sd": 0.816497,
+          "values": [
+            6.0,
+            7.0,
+            5.0
+          ]
+        },
+        "failure_types_mean": {
+          "attribute_confusion": 4.67,
+          "distractor_priority": 1.67,
+          "forward_stall": 0.67,
+          "turn_oscillation": 5.33
+        }
+      },
+      "spatial_attn_gate": {
+        "n_failure": {
+          "n": 3,
+          "mean": 11.0,
+          "sd": 3.741657,
+          "values": [
+            7.0,
+            10.0,
+            16.0
+          ]
+        },
+        "representation": {
+          "n": 3,
+          "mean": 4.666667,
+          "sd": 1.699673,
+          "values": [
+            3.0,
+            4.0,
+            7.0
+          ]
+        },
+        "state_coverage": {
+          "n": 3,
+          "mean": 6.333333,
+          "sd": 2.054805,
+          "values": [
+            4.0,
+            6.0,
+            9.0
+          ]
+        },
+        "failure_types_mean": {
+          "attribute_confusion": 3.67,
+          "distractor_priority": 1.0,
+          "forward_stall": 1.0,
+          "turn_oscillation": 5.33
+        }
+      },
+      "spatial_softmax_attn": {
+        "n_failure": {
+          "n": 3,
+          "mean": 8.666667,
+          "sd": 0.942809,
+          "values": [
+            8.0,
+            8.0,
+            10.0
+          ]
+        },
+        "representation": {
+          "n": 3,
+          "mean": 3.666667,
+          "sd": 0.471405,
+          "values": [
+            3.0,
+            4.0,
+            4.0
+          ]
+        },
+        "state_coverage": {
+          "n": 3,
+          "mean": 5.0,
+          "sd": 0.816497,
+          "values": [
+            5.0,
+            4.0,
+            6.0
+          ]
+        },
+        "failure_types_mean": {
+          "attribute_confusion": 2.33,
+          "distractor_priority": 1.33,
+          "forward_stall": 0.67,
+          "turn_oscillation": 4.33
+        }
+      },
+      "cross_attn_mha": {
+        "n_failure": {
+          "n": 3,
+          "mean": 10.333333,
+          "sd": 1.247219,
+          "values": [
+            12.0,
+            10.0,
+            9.0
+          ]
+        },
+        "representation": {
+          "n": 3,
+          "mean": 5.333333,
+          "sd": 0.942809,
+          "values": [
+            6.0,
+            6.0,
+            4.0
+          ]
+        },
+        "state_coverage": {
+          "n": 3,
+          "mean": 5.0,
+          "sd": 0.816497,
+          "values": [
+            6.0,
+            4.0,
+            5.0
+          ]
+        },
+        "failure_types_mean": {
+          "attribute_confusion": 4.33,
+          "distractor_priority": 1.0,
+          "forward_stall": 0.33,
+          "turn_oscillation": 4.67
+        }
+      },
+      "film_spatial_attn": {
+        "n_failure": {
+          "n": 3,
+          "mean": 12.333333,
+          "sd": 1.885618,
+          "values": [
+            11.0,
+            15.0,
+            11.0
+          ]
+        },
+        "representation": {
+          "n": 3,
+          "mean": 6.0,
+          "sd": 2.160247,
+          "values": [
+            4.0,
+            9.0,
+            5.0
+          ]
+        },
+        "state_coverage": {
+          "n": 3,
+          "mean": 6.333333,
+          "sd": 0.471405,
+          "values": [
+            7.0,
+            6.0,
+            6.0
+          ]
+        },
+        "failure_types_mean": {
+          "attribute_confusion": 4.67,
+          "distractor_priority": 1.33,
+          "forward_stall": 0.33,
+          "orientation_lock": 0.33,
+          "turn_oscillation": 5.67
+        }
+      },
+      "film_cross_mha": {
+        "n_failure": {
+          "n": 3,
+          "mean": 11.0,
+          "sd": 0.816497,
+          "values": [
+            10.0,
+            11.0,
+            12.0
+          ]
+        },
+        "representation": {
+          "n": 3,
+          "mean": 4.333333,
+          "sd": 0.471405,
+          "values": [
+            4.0,
+            5.0,
+            4.0
+          ]
+        },
+        "state_coverage": {
+          "n": 3,
+          "mean": 6.666667,
+          "sd": 0.942809,
+          "values": [
+            6.0,
+            6.0,
+            8.0
+          ]
+        },
+        "failure_types_mean": {
+          "attribute_confusion": 3.67,
+          "distractor_priority": 0.67,
+          "forward_stall": 1.0,
+          "turn_oscillation": 5.67
+        }
+      }
+    },
+    "cases": {
+      "bc30": {
+        "4501": {
+          "n_solved": 1,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the blue key",
+              "final_pos": [
+                2,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "blue"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the blue key",
+              "final_pos": [
+                3,
+                3
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "yellow"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the blue key",
+              "final_pos": [
+                3,
+                3
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "yellow"
+              }
+            }
+          ]
+        },
+        "4516": {
+          "n_solved": 0,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple box",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple box",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple box",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            }
+          ]
+        },
+        "4560": {
+          "n_solved": 0,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "distractor_priority",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "distractor_priority",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "distractor_priority",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            }
+          ]
+        },
+        "4568": {
+          "n_solved": 1,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                1,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": true,
+              "episode_len": 3,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                1
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "approach_then_lost",
+              "mission": "go to the green ball",
+              "final_pos": [
+                2,
+                2
+              ],
+              "final_front_cell": null
+            }
+          ]
+        },
+        "4502": {
+          "n_solved": 0,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple key",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "yellow"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple key",
+              "final_pos": [
+                3,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "yellow"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "distractor_priority",
+              "mission": "go to the purple key",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": null
+            }
+          ]
+        }
+      },
+      "film_nwd": {
+        "4501": {
+          "n_solved": 2,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the blue key",
+              "final_pos": [
+                2,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "blue"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "forward_stall",
+              "mission": "go to the blue key",
+              "final_pos": [
+                3,
+                3
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "yellow"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 10,
+              "failure_type": null,
+              "mission": "go to the blue key",
+              "final_pos": [
+                2,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "blue"
+              }
+            }
+          ]
+        },
+        "4516": {
+          "n_solved": 3,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the purple box",
+              "final_pos": [
+                1,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "purple"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the purple box",
+              "final_pos": [
+                1,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "purple"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the purple box",
+              "final_pos": [
+                1,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "purple"
+              }
+            }
+          ]
+        },
+        "4560": {
+          "n_solved": 3,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            }
+          ]
+        },
+        "4568": {
+          "n_solved": 0,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            }
+          ]
+        },
+        "4502": {
+          "n_solved": 0,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple key",
+              "final_pos": [
+                3,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "yellow"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple key",
+              "final_pos": [
+                3,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "yellow"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple key",
+              "final_pos": [
+                3,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "yellow"
+              }
+            }
+          ]
+        }
+      },
+      "spatial_attn_gate": {
+        "4501": {
+          "n_solved": 1,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the blue key",
+              "final_pos": [
+                2,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "blue"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "forward_stall",
+              "mission": "go to the blue key",
+              "final_pos": [
+                4,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "green"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "forward_stall",
+              "mission": "go to the blue key",
+              "final_pos": [
+                4,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "green"
+              }
+            }
+          ]
+        },
+        "4516": {
+          "n_solved": 1,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the purple box",
+              "final_pos": [
+                1,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "purple"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple box",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple box",
+              "final_pos": [
+                4,
+                3
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            }
+          ]
+        },
+        "4560": {
+          "n_solved": 3,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            }
+          ]
+        },
+        "4568": {
+          "n_solved": 1,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 4,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            }
+          ]
+        },
+        "4502": {
+          "n_solved": 3,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 7,
+              "failure_type": null,
+              "mission": "go to the purple key",
+              "final_pos": [
+                1,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 7,
+              "failure_type": null,
+              "mission": "go to the purple key",
+              "final_pos": [
+                1,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 13,
+              "failure_type": null,
+              "mission": "go to the purple key",
+              "final_pos": [
+                1,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            }
+          ]
+        }
+      },
+      "spatial_softmax_attn": {
+        "4501": {
+          "n_solved": 1,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "forward_stall",
+              "mission": "go to the blue key",
+              "final_pos": [
+                4,
+                4
+              ],
+              "final_front_cell": {
+                "type": "wall",
+                "color": "grey"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 10,
+              "failure_type": null,
+              "mission": "go to the blue key",
+              "final_pos": [
+                2,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "blue"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the blue key",
+              "final_pos": [
+                3,
+                3
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "yellow"
+              }
+            }
+          ]
+        },
+        "4516": {
+          "n_solved": 3,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the purple box",
+              "final_pos": [
+                1,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "purple"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the purple box",
+              "final_pos": [
+                1,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "purple"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the purple box",
+              "final_pos": [
+                1,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "purple"
+              }
+            }
+          ]
+        },
+        "4560": {
+          "n_solved": 3,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            }
+          ]
+        },
+        "4568": {
+          "n_solved": 0,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            }
+          ]
+        },
+        "4502": {
+          "n_solved": 3,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 7,
+              "failure_type": null,
+              "mission": "go to the purple key",
+              "final_pos": [
+                1,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 17,
+              "failure_type": null,
+              "mission": "go to the purple key",
+              "final_pos": [
+                1,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 7,
+              "failure_type": null,
+              "mission": "go to the purple key",
+              "final_pos": [
+                1,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            }
+          ]
+        }
+      },
+      "cross_attn_mha": {
+        "4501": {
+          "n_solved": 3,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the blue key",
+              "final_pos": [
+                2,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "blue"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the blue key",
+              "final_pos": [
+                2,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "blue"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the blue key",
+              "final_pos": [
+                2,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "blue"
+              }
+            }
+          ]
+        },
+        "4516": {
+          "n_solved": 1,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple box",
+              "final_pos": [
+                4,
+                3
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple box",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the purple box",
+              "final_pos": [
+                1,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "purple"
+              }
+            }
+          ]
+        },
+        "4560": {
+          "n_solved": 3,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            }
+          ]
+        },
+        "4568": {
+          "n_solved": 0,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            }
+          ]
+        },
+        "4502": {
+          "n_solved": 2,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 7,
+              "failure_type": null,
+              "mission": "go to the purple key",
+              "final_pos": [
+                1,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple key",
+              "final_pos": [
+                3,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "yellow"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 7,
+              "failure_type": null,
+              "mission": "go to the purple key",
+              "final_pos": [
+                1,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            }
+          ]
+        }
+      },
+      "film_spatial_attn": {
+        "4501": {
+          "n_solved": 1,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "forward_stall",
+              "mission": "go to the blue key",
+              "final_pos": [
+                4,
+                4
+              ],
+              "final_front_cell": {
+                "type": "wall",
+                "color": "grey"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 10,
+              "failure_type": null,
+              "mission": "go to the blue key",
+              "final_pos": [
+                2,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "blue"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the blue key",
+              "final_pos": [
+                3,
+                3
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "yellow"
+              }
+            }
+          ]
+        },
+        "4516": {
+          "n_solved": 0,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "distractor_priority",
+              "mission": "go to the purple box",
+              "final_pos": [
+                4,
+                3
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "distractor_priority",
+              "mission": "go to the purple box",
+              "final_pos": [
+                4,
+                3
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple box",
+              "final_pos": [
+                4,
+                3
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            }
+          ]
+        },
+        "4560": {
+          "n_solved": 3,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            }
+          ]
+        },
+        "4568": {
+          "n_solved": 0,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            }
+          ]
+        },
+        "4502": {
+          "n_solved": 1,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 7,
+              "failure_type": null,
+              "mission": "go to the purple key",
+              "final_pos": [
+                1,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple key",
+              "final_pos": [
+                3,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "yellow"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple key",
+              "final_pos": [
+                3,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "yellow"
+              }
+            }
+          ]
+        }
+      },
+      "film_cross_mha": {
+        "4501": {
+          "n_solved": 1,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "forward_stall",
+              "mission": "go to the blue key",
+              "final_pos": [
+                4,
+                4
+              ],
+              "final_front_cell": {
+                "type": "wall",
+                "color": "grey"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "forward_stall",
+              "mission": "go to the blue key",
+              "final_pos": [
+                4,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the blue key",
+              "final_pos": [
+                2,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "blue"
+              }
+            }
+          ]
+        },
+        "4516": {
+          "n_solved": 2,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the purple box",
+              "final_pos": [
+                1,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "purple"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 8,
+              "failure_type": null,
+              "mission": "go to the purple box",
+              "final_pos": [
+                1,
+                4
+              ],
+              "final_front_cell": {
+                "type": "box",
+                "color": "purple"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple box",
+              "final_pos": [
+                4,
+                3
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            }
+          ]
+        },
+        "4560": {
+          "n_solved": 3,
+          "per_seed": [
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 2,
+              "failure_type": null,
+              "mission": "go to the green ball",
+              "final_pos": [
+                4,
+                2
+              ],
+              "final_front_cell": {
+                "type": "ball",
+                "color": "green"
+              }
+            }
+          ]
+        },
+        "4568": {
+          "n_solved": 0,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "turn_oscillation",
+              "mission": "go to the green ball",
+              "final_pos": [
+                3,
+                2
+              ],
+              "final_front_cell": null
+            }
+          ]
+        },
+        "4502": {
+          "n_solved": 1,
+          "per_seed": [
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple key",
+              "final_pos": [
+                3,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "yellow"
+              }
+            },
+            {
+              "success": false,
+              "episode_len": 36,
+              "failure_type": "attribute_confusion",
+              "mission": "go to the purple key",
+              "final_pos": [
+                3,
+                1
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "yellow"
+              }
+            },
+            {
+              "success": true,
+              "episode_len": 7,
+              "failure_type": null,
+              "mission": "go to the purple key",
+              "final_pos": [
+                1,
+                2
+              ],
+              "final_front_cell": {
+                "type": "key",
+                "color": "purple"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "aggregate": {
+    "gated_attn_chaplot": {
+      "n_failure": {
+        "n": 3,
+        "mean": 14.0,
+        "sd": 2.160247,
+        "values": [
+          11.0,
+          16.0,
+          15.0
+        ]
+      },
+      "representation": {
+        "n": 3,
+        "mean": 9.0,
+        "sd": 2.160247,
+        "values": [
+          6.0,
+          11.0,
+          10.0
+        ]
+      },
+      "state_coverage": {
+        "n": 3,
+        "mean": 5.0,
+        "sd": 0.0,
+        "values": [
+          5.0,
+          5.0,
+          5.0
+        ]
+      },
+      "failure_types_mean": {
+        "attribute_confusion": 5.33,
+        "distractor_priority": 3.67,
+        "forward_stall": 1.0,
+        "turn_oscillation": 4.0
+      }
+    },
+    "cross_mha_nopos": {
+      "n_failure": {
+        "n": 3,
+        "mean": 11.0,
+        "sd": 1.632993,
+        "values": [
+          9.0,
+          11.0,
+          13.0
+        ]
+      },
+      "representation": {
+        "n": 3,
+        "mean": 5.0,
+        "sd": 1.632993,
+        "values": [
+          3.0,
+          5.0,
+          7.0
+        ]
+      },
+      "state_coverage": {
+        "n": 3,
+        "mean": 6.0,
+        "sd": 0.0,
+        "values": [
+          6.0,
+          6.0,
+          6.0
+        ]
+      },
+      "failure_types_mean": {
+        "attribute_confusion": 3.33,
+        "distractor_priority": 1.67,
+        "forward_stall": 0.67,
+        "turn_oscillation": 5.33
+      }
+    },
+    "res_spatial_softmax": {
+      "n_failure": {
+        "n": 3,
+        "mean": 9.666667,
+        "sd": 0.471405,
+        "values": [
+          10.0,
+          10.0,
+          9.0
+        ]
+      },
+      "representation": {
+        "n": 3,
+        "mean": 3.666667,
+        "sd": 0.942809,
+        "values": [
+          3.0,
+          5.0,
+          3.0
+        ]
+      },
+      "state_coverage": {
+        "n": 3,
+        "mean": 6.0,
+        "sd": 0.816497,
+        "values": [
+          7.0,
+          5.0,
+          6.0
+        ]
+      },
+      "failure_types_mean": {
+        "attribute_confusion": 2.67,
+        "distractor_priority": 1.0,
+        "forward_stall": 1.67,
+        "turn_oscillation": 4.33
+      }
+    },
+    "mh_res_spatial_softmax": {
+      "n_failure": {
+        "n": 3,
+        "mean": 12.333333,
+        "sd": 1.699673,
+        "values": [
+          10.0,
+          14.0,
+          13.0
+        ]
+      },
+      "representation": {
+        "n": 3,
+        "mean": 5.666667,
+        "sd": 1.699673,
+        "values": [
+          4.0,
+          8.0,
+          5.0
+        ]
+      },
+      "state_coverage": {
+        "n": 3,
+        "mean": 6.666667,
+        "sd": 0.942809,
+        "values": [
+          6.0,
+          6.0,
+          8.0
+        ]
+      },
+      "failure_types_mean": {
+        "attribute_confusion": 4.33,
+        "distractor_priority": 1.33,
+        "forward_stall": 1.67,
+        "turn_oscillation": 5.0
+      }
+    },
+    "attn_map_inject": {
+      "n_failure": {
+        "n": 3,
+        "mean": 9.333333,
+        "sd": 2.494438,
+        "values": [
+          6.0,
+          10.0,
+          12.0
+        ]
+      },
+      "representation": {
+        "n": 3,
+        "mean": 3.0,
+        "sd": 1.632993,
+        "values": [
+          1.0,
+          5.0,
+          3.0
+        ]
+      },
+      "state_coverage": {
+        "n": 3,
+        "mean": 6.333333,
+        "sd": 1.885618,
+        "values": [
+          5.0,
+          5.0,
+          9.0
+        ]
+      },
+      "failure_types_mean": {
+        "attribute_confusion": 2.67,
+        "distractor_priority": 0.33,
+        "forward_stall": 0.33,
+        "turn_oscillation": 6.0
+      }
+    },
+    "token_coattn_spatial": {
+      "n_failure": {
+        "n": 3,
+        "mean": 11.333333,
+        "sd": 4.027682,
+        "values": [
+          9.0,
+          8.0,
+          17.0
+        ]
+      },
+      "representation": {
+        "n": 3,
+        "mean": 5.666667,
+        "sd": 3.091206,
+        "values": [
+          3.0,
+          4.0,
+          10.0
+        ]
+      },
+      "state_coverage": {
+        "n": 3,
+        "mean": 5.666667,
+        "sd": 1.247219,
+        "values": [
+          6.0,
+          4.0,
+          7.0
+        ]
+      },
+      "failure_types_mean": {
+        "attribute_confusion": 4.0,
+        "distractor_priority": 1.67,
+        "forward_stall": 0.67,
+        "turn_oscillation": 5.0
+      }
+    },
+    "mh_spatial_relational": {
+      "n_failure": {
+        "n": 3,
+        "mean": 8.333333,
+        "sd": 1.247219,
+        "values": [
+          7.0,
+          8.0,
+          10.0
+        ]
+      },
+      "representation": {
+        "n": 3,
+        "mean": 2.333333,
+        "sd": 1.247219,
+        "values": [
+          1.0,
+          2.0,
+          4.0
+        ]
+      },
+      "state_coverage": {
+        "n": 3,
+        "mean": 6.0,
+        "sd": 0.0,
+        "values": [
+          6.0,
+          6.0,
+          6.0
+        ]
+      },
+      "failure_types_mean": {
+        "attribute_confusion": 1.0,
+        "distractor_priority": 1.33,
+        "forward_stall": 0.33,
+        "turn_oscillation": 5.67
+      }
+    }
+  },
+  "cases": {
+    "gated_attn_chaplot": {
+      "4501": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 10,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          }
+        ]
+      },
+      "4516": {
+        "n_solved": 1,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "distractor_priority",
+            "mission": "go to the purple box",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "attribute_confusion",
+            "mission": "go to the purple box",
+            "final_pos": [
+              4,
+              3
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          }
+        ]
+      },
+      "4560": {
+        "n_solved": 2,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "distractor_priority",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          }
+        ]
+      },
+      "4568": {
+        "n_solved": 0,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          }
+        ]
+      },
+      "4502": {
+        "n_solved": 0,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "attribute_confusion",
+            "mission": "go to the purple key",
+            "final_pos": [
+              3,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "yellow"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "attribute_confusion",
+            "mission": "go to the purple key",
+            "final_pos": [
+              3,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "yellow"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "attribute_confusion",
+            "mission": "go to the purple key",
+            "final_pos": [
+              3,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "yellow"
+            }
+          }
+        ]
+      }
+    },
+    "cross_mha_nopos": {
+      "4501": {
+        "n_solved": 1,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "forward_stall",
+            "mission": "go to the blue key",
+            "final_pos": [
+              4,
+              4
+            ],
+            "final_front_cell": {
+              "type": "wall",
+              "color": "grey"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the blue key",
+            "final_pos": [
+              3,
+              3
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "yellow"
+            }
+          }
+        ]
+      },
+      "4516": {
+        "n_solved": 2,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "distractor_priority",
+            "mission": "go to the purple box",
+            "final_pos": [
+              4,
+              3
+            ],
+            "final_front_cell": null
+          }
+        ]
+      },
+      "4560": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          }
+        ]
+      },
+      "4568": {
+        "n_solved": 0,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          }
+        ]
+      },
+      "4502": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          }
+        ]
+      }
+    },
+    "res_spatial_softmax": {
+      "4501": {
+        "n_solved": 0,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "forward_stall",
+            "mission": "go to the blue key",
+            "final_pos": [
+              4,
+              4
+            ],
+            "final_front_cell": {
+              "type": "wall",
+              "color": "grey"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "forward_stall",
+            "mission": "go to the blue key",
+            "final_pos": [
+              4,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "green"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "forward_stall",
+            "mission": "go to the blue key",
+            "final_pos": [
+              4,
+              4
+            ],
+            "final_front_cell": {
+              "type": "wall",
+              "color": "grey"
+            }
+          }
+        ]
+      },
+      "4516": {
+        "n_solved": 2,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "attribute_confusion",
+            "mission": "go to the purple box",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          }
+        ]
+      },
+      "4560": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          }
+        ]
+      },
+      "4568": {
+        "n_solved": 1,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": true,
+            "episode_len": 3,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              1
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          }
+        ]
+      },
+      "4502": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          }
+        ]
+      }
+    },
+    "mh_res_spatial_softmax": {
+      "4501": {
+        "n_solved": 0,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "forward_stall",
+            "mission": "go to the blue key",
+            "final_pos": [
+              4,
+              4
+            ],
+            "final_front_cell": {
+              "type": "wall",
+              "color": "grey"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "forward_stall",
+            "mission": "go to the blue key",
+            "final_pos": [
+              4,
+              4
+            ],
+            "final_front_cell": {
+              "type": "wall",
+              "color": "grey"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "forward_stall",
+            "mission": "go to the blue key",
+            "final_pos": [
+              4,
+              4
+            ],
+            "final_front_cell": {
+              "type": "wall",
+              "color": "grey"
+            }
+          }
+        ]
+      },
+      "4516": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          }
+        ]
+      },
+      "4560": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          }
+        ]
+      },
+      "4568": {
+        "n_solved": 0,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          }
+        ]
+      },
+      "4502": {
+        "n_solved": 2,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "distractor_priority",
+            "mission": "go to the purple key",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          }
+        ]
+      }
+    },
+    "attn_map_inject": {
+      "4501": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          }
+        ]
+      },
+      "4516": {
+        "n_solved": 2,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "attribute_confusion",
+            "mission": "go to the purple box",
+            "final_pos": [
+              4,
+              3
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          }
+        ]
+      },
+      "4560": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          }
+        ]
+      },
+      "4568": {
+        "n_solved": 0,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          }
+        ]
+      },
+      "4502": {
+        "n_solved": 2,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "distractor_priority",
+            "mission": "go to the purple key",
+            "final_pos": [
+              3,
+              1
+            ],
+            "final_front_cell": {
+              "type": "wall",
+              "color": "grey"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          }
+        ]
+      }
+    },
+    "token_coattn_spatial": {
+      "4501": {
+        "n_solved": 2,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the blue key",
+            "final_pos": [
+              4,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          }
+        ]
+      },
+      "4516": {
+        "n_solved": 2,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "attribute_confusion",
+            "mission": "go to the purple box",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          }
+        ]
+      },
+      "4560": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 6,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          }
+        ]
+      },
+      "4568": {
+        "n_solved": 0,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          }
+        ]
+      },
+      "4502": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          }
+        ]
+      }
+    },
+    "mh_spatial_relational": {
+      "4501": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 10,
+            "failure_type": null,
+            "mission": "go to the blue key",
+            "final_pos": [
+              2,
+              1
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "blue"
+            }
+          }
+        ]
+      },
+      "4516": {
+        "n_solved": 2,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 8,
+            "failure_type": null,
+            "mission": "go to the purple box",
+            "final_pos": [
+              1,
+              4
+            ],
+            "final_front_cell": {
+              "type": "box",
+              "color": "purple"
+            }
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "distractor_priority",
+            "mission": "go to the purple box",
+            "final_pos": [
+              4,
+              3
+            ],
+            "final_front_cell": null
+          }
+        ]
+      },
+      "4560": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 2,
+            "failure_type": null,
+            "mission": "go to the green ball",
+            "final_pos": [
+              4,
+              2
+            ],
+            "final_front_cell": {
+              "type": "ball",
+              "color": "green"
+            }
+          }
+        ]
+      },
+      "4568": {
+        "n_solved": 0,
+        "per_seed": [
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          },
+          {
+            "success": false,
+            "episode_len": 36,
+            "failure_type": "turn_oscillation",
+            "mission": "go to the green ball",
+            "final_pos": [
+              3,
+              2
+            ],
+            "final_front_cell": null
+          }
+        ]
+      },
+      "4502": {
+        "n_solved": 3,
+        "per_seed": [
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          },
+          {
+            "success": true,
+            "episode_len": 7,
+            "failure_type": null,
+            "mission": "go to the purple key",
+            "final_pos": [
+              1,
+              2
+            ],
+            "final_front_cell": {
+              "type": "key",
+              "color": "purple"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "runs": [
+    {
+      "run": "runs/b2_attn_v2_gated_attn_chaplot_seed0",
+      "variant": "gated_attn_chaplot",
+      "train_seed": 0,
+      "n_success": 289,
+      "n_failure": 11,
+      "failure_types": {
+        "attribute_confusion": 4,
+        "turn_oscillation": 4,
+        "forward_stall": 1,
+        "distractor_priority": 2
+      },
+      "failure_groups": {
+        "representation": 6,
+        "state_coverage": 5
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_gated_attn_chaplot_seed1",
+      "variant": "gated_attn_chaplot",
+      "train_seed": 1,
+      "n_success": 284,
+      "n_failure": 16,
+      "failure_types": {
+        "attribute_confusion": 4,
+        "distractor_priority": 7,
+        "turn_oscillation": 4,
+        "forward_stall": 1
+      },
+      "failure_groups": {
+        "representation": 11,
+        "state_coverage": 5
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_gated_attn_chaplot_seed2",
+      "variant": "gated_attn_chaplot",
+      "train_seed": 2,
+      "n_success": 285,
+      "n_failure": 15,
+      "failure_types": {
+        "attribute_confusion": 8,
+        "distractor_priority": 2,
+        "turn_oscillation": 4,
+        "forward_stall": 1
+      },
+      "failure_groups": {
+        "representation": 10,
+        "state_coverage": 5
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_cross_mha_nopos_seed0",
+      "variant": "cross_mha_nopos",
+      "train_seed": 0,
+      "n_success": 291,
+      "n_failure": 9,
+      "failure_types": {
+        "forward_stall": 2,
+        "attribute_confusion": 3,
+        "turn_oscillation": 4
+      },
+      "failure_groups": {
+        "state_coverage": 6,
+        "representation": 3
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_cross_mha_nopos_seed1",
+      "variant": "cross_mha_nopos",
+      "train_seed": 1,
+      "n_success": 289,
+      "n_failure": 11,
+      "failure_types": {
+        "attribute_confusion": 3,
+        "distractor_priority": 2,
+        "turn_oscillation": 6
+      },
+      "failure_groups": {
+        "representation": 5,
+        "state_coverage": 6
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_cross_mha_nopos_seed2",
+      "variant": "cross_mha_nopos",
+      "train_seed": 2,
+      "n_success": 287,
+      "n_failure": 13,
+      "failure_types": {
+        "turn_oscillation": 6,
+        "attribute_confusion": 4,
+        "distractor_priority": 3
+      },
+      "failure_groups": {
+        "state_coverage": 6,
+        "representation": 7
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_seed0",
+      "variant": "res_spatial_softmax",
+      "train_seed": 0,
+      "n_success": 290,
+      "n_failure": 10,
+      "failure_types": {
+        "forward_stall": 2,
+        "attribute_confusion": 2,
+        "turn_oscillation": 5,
+        "distractor_priority": 1
+      },
+      "failure_groups": {
+        "state_coverage": 7,
+        "representation": 3
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_seed1",
+      "variant": "res_spatial_softmax",
+      "train_seed": 1,
+      "n_success": 290,
+      "n_failure": 10,
+      "failure_types": {
+        "forward_stall": 1,
+        "attribute_confusion": 4,
+        "turn_oscillation": 4,
+        "distractor_priority": 1
+      },
+      "failure_groups": {
+        "state_coverage": 5,
+        "representation": 5
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_seed2",
+      "variant": "res_spatial_softmax",
+      "train_seed": 2,
+      "n_success": 291,
+      "n_failure": 9,
+      "failure_types": {
+        "forward_stall": 2,
+        "attribute_confusion": 2,
+        "turn_oscillation": 4,
+        "distractor_priority": 1
+      },
+      "failure_groups": {
+        "state_coverage": 6,
+        "representation": 3
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_seed0",
+      "variant": "mh_res_spatial_softmax",
+      "train_seed": 0,
+      "n_success": 290,
+      "n_failure": 10,
+      "failure_types": {
+        "forward_stall": 1,
+        "attribute_confusion": 4,
+        "turn_oscillation": 5
+      },
+      "failure_groups": {
+        "state_coverage": 6,
+        "representation": 4
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_seed1",
+      "variant": "mh_res_spatial_softmax",
+      "train_seed": 1,
+      "n_success": 286,
+      "n_failure": 14,
+      "failure_types": {
+        "forward_stall": 1,
+        "distractor_priority": 3,
+        "attribute_confusion": 5,
+        "turn_oscillation": 5
+      },
+      "failure_groups": {
+        "state_coverage": 6,
+        "representation": 8
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_seed2",
+      "variant": "mh_res_spatial_softmax",
+      "train_seed": 2,
+      "n_success": 287,
+      "n_failure": 13,
+      "failure_types": {
+        "attribute_confusion": 4,
+        "forward_stall": 3,
+        "turn_oscillation": 5,
+        "distractor_priority": 1
+      },
+      "failure_groups": {
+        "representation": 5,
+        "state_coverage": 8
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_seed0",
+      "variant": "attn_map_inject",
+      "train_seed": 0,
+      "n_success": 294,
+      "n_failure": 6,
+      "failure_types": {
+        "distractor_priority": 1,
+        "turn_oscillation": 5
+      },
+      "failure_groups": {
+        "representation": 1,
+        "state_coverage": 5
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_seed1",
+      "variant": "attn_map_inject",
+      "train_seed": 1,
+      "n_success": 290,
+      "n_failure": 10,
+      "failure_types": {
+        "attribute_confusion": 5,
+        "turn_oscillation": 5
+      },
+      "failure_groups": {
+        "representation": 5,
+        "state_coverage": 5
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_seed2",
+      "variant": "attn_map_inject",
+      "train_seed": 2,
+      "n_success": 288,
+      "n_failure": 12,
+      "failure_types": {
+        "turn_oscillation": 8,
+        "attribute_confusion": 3,
+        "forward_stall": 1
+      },
+      "failure_groups": {
+        "state_coverage": 9,
+        "representation": 3
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_seed0",
+      "variant": "token_coattn_spatial",
+      "train_seed": 0,
+      "n_success": 291,
+      "n_failure": 9,
+      "failure_types": {
+        "turn_oscillation": 6,
+        "attribute_confusion": 2,
+        "distractor_priority": 1
+      },
+      "failure_groups": {
+        "state_coverage": 6,
+        "representation": 3
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_seed1",
+      "variant": "token_coattn_spatial",
+      "train_seed": 1,
+      "n_success": 292,
+      "n_failure": 8,
+      "failure_types": {
+        "attribute_confusion": 1,
+        "distractor_priority": 3,
+        "turn_oscillation": 4
+      },
+      "failure_groups": {
+        "representation": 4,
+        "state_coverage": 4
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_seed2",
+      "variant": "token_coattn_spatial",
+      "train_seed": 2,
+      "n_success": 283,
+      "n_failure": 17,
+      "failure_types": {
+        "attribute_confusion": 9,
+        "turn_oscillation": 5,
+        "forward_stall": 2,
+        "distractor_priority": 1
+      },
+      "failure_groups": {
+        "representation": 10,
+        "state_coverage": 7
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_seed0",
+      "variant": "mh_spatial_relational",
+      "train_seed": 0,
+      "n_success": 293,
+      "n_failure": 7,
+      "failure_types": {
+        "attribute_confusion": 1,
+        "turn_oscillation": 5,
+        "forward_stall": 1
+      },
+      "failure_groups": {
+        "representation": 1,
+        "state_coverage": 6
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_seed1",
+      "variant": "mh_spatial_relational",
+      "train_seed": 1,
+      "n_success": 292,
+      "n_failure": 8,
+      "failure_types": {
+        "attribute_confusion": 1,
+        "turn_oscillation": 6,
+        "distractor_priority": 1
+      },
+      "failure_groups": {
+        "representation": 2,
+        "state_coverage": 6
+      }
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_seed2",
+      "variant": "mh_spatial_relational",
+      "train_seed": 2,
+      "n_success": 290,
+      "n_failure": 10,
+      "failure_types": {
+        "attribute_confusion": 1,
+        "distractor_priority": 3,
+        "turn_oscillation": 6
+      },
+      "failure_groups": {
+        "representation": 4,
+        "state_coverage": 6
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "branch": "b2_attn_v2",
+  "variant": "mh_spatial_relational",
+  "run": "runs/b2_attn_v2_mh_spatial_relational_seed2",
+  "git_commit": "30bcb35d8352bfa6f20ef466d83243d005df53f7",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seed": 2,
+  "frac": 1.0,
+  "match_steps": false,
+  "arch": {
+    "variant": "mh_spatial_relational",
+    "obj_emb_dim": 8,
+    "lang_dim": 32,
+    "hidden": 128,
+    "dropout": 0.0,
+    "n_params": 229572
+  },
+  "optim": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "batch_size": 128,
+    "epochs": 30,
+    "early_stop": "none（跑满 30 epoch 后事后选 val_acc 最优）"
+  },
+  "data": {
+    "path": "data/expert_5000.pkl",
+    "n_train_episodes": 4500,
+    "n_train_transitions": 16534,
+    "n_val_episodes": 500
+  },
+  "result": {
+    "best_val_acc": 0.977766,
+    "best_epoch": 28,
+    "train_seconds": 203.67,
+    "mod_stats_at_best": {
+      "lambda": [
+        1.09317,
+        1.05138,
+        1.10298,
+        1.12166
+      ],
+      "rel_scale": -0.26325
+    }
+  }
+}

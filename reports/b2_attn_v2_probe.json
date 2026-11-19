@@ -1,0 +1,709 @@
+{
+  "n_states": 183,
+  "references": {
+    "bc30": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.050725,
+        "sd": 0.027113,
+        "values": [
+          0.014493,
+          0.07971,
+          0.057971
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.225989,
+        "sd": 0.048601,
+        "values": [
+          0.288136,
+          0.220339,
+          0.169492
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.103215,
+        "sd": 0.013323,
+        "values": [
+          0.096447,
+          0.121827,
+          0.091371
+        ]
+      }
+    },
+    "film_nwd": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.268116,
+        "sd": 0.021332,
+        "values": [
+          0.26087,
+          0.297101,
+          0.246377
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.299435,
+        "sd": 0.028808,
+        "values": [
+          0.338983,
+          0.271186,
+          0.288136
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.277496,
+        "sd": 0.013323,
+        "values": [
+          0.284264,
+          0.28934,
+          0.258883
+        ]
+      }
+    },
+    "spatial_attn_gate": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.270532,
+        "sd": 0.013664,
+        "values": [
+          0.26087,
+          0.289855,
+          0.26087
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.327684,
+        "sd": 0.028808,
+        "values": [
+          0.355932,
+          0.338983,
+          0.288136
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.287648,
+        "sd": 0.014556,
+        "values": [
+          0.28934,
+          0.304569,
+          0.269036
+        ]
+      }
+    },
+    "spatial_softmax_attn": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.294686,
+        "sd": 0.006832,
+        "values": [
+          0.289855,
+          0.304348,
+          0.289855
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.367232,
+        "sd": 0.01598,
+        "values": [
+          0.355932,
+          0.355932,
+          0.389831
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.316413,
+        "sd": 0.004786,
+        "values": [
+          0.309645,
+          0.319797,
+          0.319797
+        ]
+      }
+    },
+    "cross_attn_mha": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.285024,
+        "sd": 0.01489,
+        "values": [
+          0.282609,
+          0.268116,
+          0.304348
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.372882,
+        "sd": 0.02397,
+        "values": [
+          0.389831,
+          0.338983,
+          0.389831
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.311337,
+        "sd": 0.01675,
+        "values": [
+          0.314721,
+          0.28934,
+          0.329949
+        ]
+      }
+    },
+    "film_spatial_attn": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.263285,
+        "sd": 0.0224,
+        "values": [
+          0.275362,
+          0.231884,
+          0.282609
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.338983,
+        "sd": 0.047939,
+        "values": [
+          0.372881,
+          0.271186,
+          0.372881
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.285956,
+        "sd": 0.029983,
+        "values": [
+          0.304569,
+          0.243655,
+          0.309645
+        ]
+      }
+    },
+    "film_cross_mha": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.294686,
+        "sd": 0.009038,
+        "values": [
+          0.282609,
+          0.304348,
+          0.297101
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.355932,
+        "sd": 0.041517,
+        "values": [
+          0.40678,
+          0.305085,
+          0.355932
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.313029,
+        "sd": 0.006331,
+        "values": [
+          0.319797,
+          0.304569,
+          0.314721
+        ]
+      }
+    }
+  },
+  "by_variant": {
+    "gated_attn_chaplot": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.224638,
+        "sd": 0.029583,
+        "values": [
+          0.26087,
+          0.224638,
+          0.188406
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.288135,
+        "sd": 0.02397,
+        "values": [
+          0.322034,
+          0.271186,
+          0.271186
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.243655,
+        "sd": 0.027178,
+        "values": [
+          0.279188,
+          0.238579,
+          0.213198
+        ]
+      }
+    },
+    "cross_mha_nopos": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.277778,
+        "sd": 0.019019,
+        "values": [
+          0.304348,
+          0.26087,
+          0.268116
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.344633,
+        "sd": 0.01598,
+        "values": [
+          0.355932,
+          0.355932,
+          0.322034
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.2978,
+        "sd": 0.015691,
+        "values": [
+          0.319797,
+          0.28934,
+          0.284264
+        ]
+      }
+    },
+    "res_spatial_softmax": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.287439,
+        "sd": 0.013664,
+        "values": [
+          0.297101,
+          0.268116,
+          0.297101
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.338983,
+        "sd": 0.047939,
+        "values": [
+          0.372881,
+          0.271186,
+          0.372881
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.302877,
+        "sd": 0.023929,
+        "values": [
+          0.319797,
+          0.269036,
+          0.319797
+        ]
+      }
+    },
+    "mh_res_spatial_softmax": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.28744,
+        "sd": 0.006832,
+        "values": [
+          0.297101,
+          0.282609,
+          0.282609
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.316384,
+        "sd": 0.057616,
+        "values": [
+          0.372881,
+          0.237288,
+          0.338983
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.296108,
+        "sd": 0.020861,
+        "values": [
+          0.319797,
+          0.269036,
+          0.299492
+        ]
+      }
+    },
+    "attn_map_inject": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.277778,
+        "sd": 0.012316,
+        "values": [
+          0.282609,
+          0.289855,
+          0.26087
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.333333,
+        "sd": 0.031959,
+        "values": [
+          0.355932,
+          0.355932,
+          0.288136
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.294417,
+        "sd": 0.018066,
+        "values": [
+          0.304569,
+          0.309645,
+          0.269036
+        ]
+      }
+    },
+    "token_coattn_spatial": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.275362,
+        "sd": 0.041416,
+        "values": [
+          0.311594,
+          0.297101,
+          0.217391
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.333333,
+        "sd": 0.021139,
+        "values": [
+          0.338983,
+          0.355932,
+          0.305085
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.292724,
+        "sd": 0.034759,
+        "values": [
+          0.319797,
+          0.314721,
+          0.243655
+        ]
+      }
+    },
+    "mh_spatial_relational": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.275362,
+        "sd": 0.027114,
+        "values": [
+          0.282609,
+          0.304348,
+          0.23913
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.299435,
+        "sd": 0.03196,
+        "values": [
+          0.322034,
+          0.322034,
+          0.254237
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.282572,
+        "sd": 0.028212,
+        "values": [
+          0.294416,
+          0.309645,
+          0.243655
+        ]
+      }
+    }
+  },
+  "runs": [
+    {
+      "run": "runs/b2_attn_v2_gated_attn_chaplot_seed0",
+      "variant": "gated_attn_chaplot",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 36,
+      "color_swap_sensitivity": 0.26087,
+      "type_total": 59,
+      "type_changed": 19,
+      "type_swap_sensitivity": 0.322034,
+      "combined_sensitivity": 0.279188
+    },
+    {
+      "run": "runs/b2_attn_v2_gated_attn_chaplot_seed1",
+      "variant": "gated_attn_chaplot",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 31,
+      "color_swap_sensitivity": 0.224638,
+      "type_total": 59,
+      "type_changed": 16,
+      "type_swap_sensitivity": 0.271186,
+      "combined_sensitivity": 0.238579
+    },
+    {
+      "run": "runs/b2_attn_v2_gated_attn_chaplot_seed2",
+      "variant": "gated_attn_chaplot",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 26,
+      "color_swap_sensitivity": 0.188406,
+      "type_total": 59,
+      "type_changed": 16,
+      "type_swap_sensitivity": 0.271186,
+      "combined_sensitivity": 0.213198
+    },
+    {
+      "run": "runs/b2_attn_v2_cross_mha_nopos_seed0",
+      "variant": "cross_mha_nopos",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 42,
+      "color_swap_sensitivity": 0.304348,
+      "type_total": 59,
+      "type_changed": 21,
+      "type_swap_sensitivity": 0.355932,
+      "combined_sensitivity": 0.319797
+    },
+    {
+      "run": "runs/b2_attn_v2_cross_mha_nopos_seed1",
+      "variant": "cross_mha_nopos",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 36,
+      "color_swap_sensitivity": 0.26087,
+      "type_total": 59,
+      "type_changed": 21,
+      "type_swap_sensitivity": 0.355932,
+      "combined_sensitivity": 0.28934
+    },
+    {
+      "run": "runs/b2_attn_v2_cross_mha_nopos_seed2",
+      "variant": "cross_mha_nopos",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 37,
+      "color_swap_sensitivity": 0.268116,
+      "type_total": 59,
+      "type_changed": 19,
+      "type_swap_sensitivity": 0.322034,
+      "combined_sensitivity": 0.284264
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_seed0",
+      "variant": "res_spatial_softmax",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 41,
+      "color_swap_sensitivity": 0.297101,
+      "type_total": 59,
+      "type_changed": 22,
+      "type_swap_sensitivity": 0.372881,
+      "combined_sensitivity": 0.319797
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_seed1",
+      "variant": "res_spatial_softmax",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 37,
+      "color_swap_sensitivity": 0.268116,
+      "type_total": 59,
+      "type_changed": 16,
+      "type_swap_sensitivity": 0.271186,
+      "combined_sensitivity": 0.269036
+    },
+    {
+      "run": "runs/b2_attn_v2_res_spatial_softmax_seed2",
+      "variant": "res_spatial_softmax",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 41,
+      "color_swap_sensitivity": 0.297101,
+      "type_total": 59,
+      "type_changed": 22,
+      "type_swap_sensitivity": 0.372881,
+      "combined_sensitivity": 0.319797
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_seed0",
+      "variant": "mh_res_spatial_softmax",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 41,
+      "color_swap_sensitivity": 0.297101,
+      "type_total": 59,
+      "type_changed": 22,
+      "type_swap_sensitivity": 0.372881,
+      "combined_sensitivity": 0.319797
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_seed1",
+      "variant": "mh_res_spatial_softmax",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 39,
+      "color_swap_sensitivity": 0.282609,
+      "type_total": 59,
+      "type_changed": 14,
+      "type_swap_sensitivity": 0.237288,
+      "combined_sensitivity": 0.269036
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_res_spatial_softmax_seed2",
+      "variant": "mh_res_spatial_softmax",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 39,
+      "color_swap_sensitivity": 0.282609,
+      "type_total": 59,
+      "type_changed": 20,
+      "type_swap_sensitivity": 0.338983,
+      "combined_sensitivity": 0.299492
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_seed0",
+      "variant": "attn_map_inject",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 39,
+      "color_swap_sensitivity": 0.282609,
+      "type_total": 59,
+      "type_changed": 21,
+      "type_swap_sensitivity": 0.355932,
+      "combined_sensitivity": 0.304569
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_seed1",
+      "variant": "attn_map_inject",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 40,
+      "color_swap_sensitivity": 0.289855,
+      "type_total": 59,
+      "type_changed": 21,
+      "type_swap_sensitivity": 0.355932,
+      "combined_sensitivity": 0.309645
+    },
+    {
+      "run": "runs/b2_attn_v2_attn_map_inject_seed2",
+      "variant": "attn_map_inject",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 36,
+      "color_swap_sensitivity": 0.26087,
+      "type_total": 59,
+      "type_changed": 17,
+      "type_swap_sensitivity": 0.288136,
+      "combined_sensitivity": 0.269036
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_seed0",
+      "variant": "token_coattn_spatial",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 43,
+      "color_swap_sensitivity": 0.311594,
+      "type_total": 59,
+      "type_changed": 20,
+      "type_swap_sensitivity": 0.338983,
+      "combined_sensitivity": 0.319797
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_seed1",
+      "variant": "token_coattn_spatial",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 41,
+      "color_swap_sensitivity": 0.297101,
+      "type_total": 59,
+      "type_changed": 21,
+      "type_swap_sensitivity": 0.355932,
+      "combined_sensitivity": 0.314721
+    },
+    {
+      "run": "runs/b2_attn_v2_token_coattn_spatial_seed2",
+      "variant": "token_coattn_spatial",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 30,
+      "color_swap_sensitivity": 0.217391,
+      "type_total": 59,
+      "type_changed": 18,
+      "type_swap_sensitivity": 0.305085,
+      "combined_sensitivity": 0.243655
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_seed0",
+      "variant": "mh_spatial_relational",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 39,
+      "color_swap_sensitivity": 0.282609,
+      "type_total": 59,
+      "type_changed": 19,
+      "type_swap_sensitivity": 0.322034,
+      "combined_sensitivity": 0.294416
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_seed1",
+      "variant": "mh_spatial_relational",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 42,
+      "color_swap_sensitivity": 0.304348,
+      "type_total": 59,
+      "type_changed": 19,
+      "type_swap_sensitivity": 0.322034,
+      "combined_sensitivity": 0.309645
+    },
+    {
+      "run": "runs/b2_attn_v2_mh_spatial_relational_seed2",
+      "variant": "mh_spatial_relational",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 33,
+      "color_swap_sensitivity": 0.23913,
+      "type_total": 59,
+      "type_changed": 15,
+      "type_swap_sensitivity": 0.254237,
+      "combined_sensitivity": 0.243655
+    }
+  ]
+}
