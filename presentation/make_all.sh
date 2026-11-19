@@ -7,6 +7,7 @@ rm -f '~$AIAA4220_Project3_Presentation'*.pptx(N)
 python3 scripts/make_case_figs.py > /dev/null
 [[ -f assets/demo_attention_laws.gif ]] || python3 scripts/make_demo_gif.py
 python3 scripts/make_plots.py > /dev/null
+python3 scripts/make_svg_diagrams.py > /dev/null
 python3 build_ppt.py
 scripts/export_pdf.sh AIAA4220_Project3_Presentation_Attention.pptx AIAA4220_Project3_Presentation_Attention.pdf
 osascript -e 'tell application "Microsoft PowerPoint" to if it is running then quit saving no' >/dev/null 2>&1 || true

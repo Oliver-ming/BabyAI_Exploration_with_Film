@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1860" height="650" viewBox="0 0 1860 650">
+
+  <defs>
+    <filter id="sh" x="-4%" y="-6%" width="108%" height="118%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shSm" x="-4%" y="-6%" width="108%" height="118%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3.5" flood-color="#0F172A" flood-opacity="0.07"/>
+    </filter>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="gBlueHdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F0FDFA"/>
+      <stop offset="100%" stop-color="#CCFBF1"/>
+    </linearGradient>
+    <linearGradient id="gTealHdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0F766E"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="gSlate" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="gAmber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="100%" stop-color="#FDE68A"/>
+    </linearGradient>
+    <linearGradient id="gOrange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF7ED"/>
+      <stop offset="100%" stop-color="#FFEDD5"/>
+    </linearGradient>
+    <linearGradient id="gRose" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FEF2F2"/>
+      <stop offset="100%" stop-color="#FECACA"/>
+    </linearGradient>
+    <linearGradient id="gPurple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAF5FF"/>
+      <stop offset="100%" stop-color="#E9D5FF"/>
+    </linearGradient>
+    <marker id="arrSlate" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#475569"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrTeal" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#0F766E"/>
+    </marker>
+    <marker id="arrOrange" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#D97706"/>
+    </marker>
+    <marker id="arrPurple" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#6D28D9"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#DC2626"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: Menlo, Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1860" height="650" fill="#FFFFFF"/>
+
+    <!-- LEFT COLUMN: LAW 1 (NoPE vs Absolute pos_emb) -->
+    <rect x="24" y="16" width="886" height="258" rx="18" fill="url(#gRose)" stroke="#DC2626" stroke-width="2.4" filter="url(#shSm)"/>
+    <rect x="48" y="36" width="520" height="42" rx="9" fill="#DC2626"/>
+    <text x="308" y="64" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">Pitfall 1 · Learned 2D Absolute pos_emb</text>
+    <!-- Mini 6x6 vs 8x8 mismatch icon -->
+    <rect x="705" y="38" width="76" height="76" rx="6" fill="#FFFFFF" stroke="#DC2626" stroke-width="2"/>
+    <text x="743" y="83" font-size="20" font-weight="700" fill="#DC2626" text-anchor="middle">6×6 P</text>
+    <text x="797" y="84" font-size="24" font-weight="700" fill="#DC2626" text-anchor="middle">≠</text>
+    <rect x="814" y="28" width="76" height="88" rx="6" fill="#FEE2E2" stroke="#991B1B" stroke-width="2" stroke-dasharray="5,4"/>
+    <text x="852" y="80" font-size="20" font-weight="700" fill="#991B1B" text-anchor="middle">8×8</text>
+    <text x="50" y="118" font-size="21" font-weight="700" fill="#7F1D1D">Standard Cross-MHA adds P ∈ ℝ¹ˣ⁴⁹ˣ³² trained only on 6×6 rooms:</text>
+    <text x="50" y="160" font-size="21" fill="#1E293B">• Memorizes 6×6 wall / corner priors inside the egocentric grid</text>
+    <text x="50" y="198" font-size="21" fill="#1E293B">• Causes <tspan font-weight="700" fill="#DC2626">worst OOD background drift (0.823)</tspan> when room scales to 8×8</text>
+    <text x="50" y="240" font-size="21" font-weight="700" fill="#B91C1C">→ Zero-shot S8N6 drops to 0.747 ± 0.054 (high variance across seeds)</text>
+
+    <!-- Transformation Arrow Left -->
+    <line x1="467" y1="276" x2="467" y2="348" stroke="#6D28D9" stroke-width="4" marker-end="url(#arrPurple)"/>
+    <rect x="217" y="290" width="500" height="42" rx="21" fill="#6D28D9" filter="url(#shSm)"/>
+    <text x="467" y="318" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">Remove Absolute P  (Keep Conv1 Equivariance)</text>
+
+    <!-- Law 1 Solution Box -->
+    <rect x="24" y="358" width="886" height="274" rx="18" fill="url(#gPurple)" stroke="#6D28D9" stroke-width="3.0" filter="url(#sh)"/>
+    <rect x="48" y="380" width="600" height="42" rx="9" fill="#6D28D9"/>
+    <text x="348" y="408" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">Design Law 1 · Translation-Equivariant NoPE</text>
+    <rect x="666" y="380" width="218" height="42" rx="9" fill="#FFFFFF" stroke="#6D28D9" stroke-width="1.8"/>
+    <text x="775" y="408" font-size="20" font-weight="700" fill="#6D28D9" text-anchor="middle">227,360 params</text>
+    <text x="50" y="462" font-size="22" font-weight="700" fill="#4C1D95">cross_mha_nopos:  Grid Q = W_q H  attends to  K, V = W_{k,v} E_tokens</text>
+    <text x="50" y="506" font-size="21" fill="#1E293B">• 3×3 Conv1 already encodes local spatial neighborhoods equivariantly</text>
+    <text x="50" y="546" font-size="21" fill="#1E293B">• Cuts S8N6 background drift <tspan font-weight="700" fill="#6D28D9">0.823 → 0.749</tspan> &amp; solves seed 4502 (<tspan font-weight="700">3/3</tspan>)</text>
+    <text x="50" y="594" font-size="22" font-weight="700" fill="#5B21B6">→ Single-factor ablation lifts zero-shot S8N6 by +6.2% (0.747 → 0.809)!</text>
+
+
+    <!-- RIGHT COLUMN: LAW 2 (Attn-Map-Inject vs Obstacle Erasure) -->
+    <rect x="950" y="16" width="886" height="258" rx="18" fill="url(#gOrange)" stroke="#D97706" stroke-width="2.4" filter="url(#shSm)"/>
+    <rect x="974" y="36" width="530" height="42" rx="9" fill="#D97706"/>
+    <text x="1239" y="64" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">Pitfall 2 · Multiplicative Obstacle Erasure</text>
+    <!-- Mini 3-cell obstacle erasure icon -->
+    <rect x="1530" y="34" width="282" height="58" rx="10" fill="#FFFFFF" stroke="#D97706" stroke-width="1.8"/>
+    <text x="1671" y="70" font-size="19" font-weight="700" fill="#9A3412" text-anchor="middle">▲ → [Box 0.60×!] → Key 6.6×</text>
+    <text x="976" y="118" font-size="21" font-weight="700" fill="#7C2D12">Pure multiplicative gating  H' = (49·α) ⊙ H  scales non-targets → 0:</text>
+    <text x="976" y="160" font-size="21" fill="#1E293B">• On seed 4501, blocking <tspan font-weight="700">yellow_box</tspan> is dimmed to <tspan font-weight="700" fill="#DC2626">0.60×</tspan> (seed 2: <tspan font-weight="700" fill="#DC2626">0.16×</tspan>!)</text>
+    <text x="976" y="198" font-size="21" fill="#1E293B">• Conv2 loses physical obstacle boundaries right in front of the agent</text>
+    <text x="976" y="240" font-size="21" font-weight="700" fill="#B45309">→ Agent walks into the blocking box &amp; solves seed 4501 on only 1 / 3 seeds!</text>
+
+    <!-- Transformation Arrow Right -->
+    <line x1="1393" y1="276" x2="1393" y2="348" stroke="#0F766E" stroke-width="4" marker-end="url(#arrTeal)"/>
+    <rect x="1128" y="290" width="530" height="42" rx="21" fill="#0F766E" filter="url(#shSm)"/>
+    <text x="1393" y="318" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">Decouple Raw Features H  from  Pointer Maps 49α</text>
+
+    <!-- Law 2 Solution Box with Channel Concat Mini-Diagram -->
+    <rect x="950" y="358" width="886" height="274" rx="18" fill="url(#gTeal)" stroke="#0F766E" stroke-width="3.0" filter="url(#sh)"/>
+    <rect x="974" y="380" width="590" height="42" rx="9" fill="url(#gTealHdr)"/>
+    <text x="1269" y="408" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">Design Law 2 · Uncorrupted Map Injection</text>
+    <rect x="1584" y="380" width="226" height="42" rx="9" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.8"/>
+    <text x="1697" y="408" font-size="20" font-weight="700" fill="#0F766E" text-anchor="middle">226,335 params</text>
+
+    <!-- Channel Concat Schematic Strip -->
+    <rect x="976" y="438" width="250" height="54" rx="10" fill="#FFFFFF" stroke="#475569" stroke-width="2"/>
+    <text x="1101" y="472" font-size="20" font-weight="700" fill="#0F172A" text-anchor="middle">Raw H (32×7×7 · 1.0×)</text>
+    <text x="1244" y="473" font-size="26" font-weight="700" fill="#0F766E" text-anchor="middle">⊕</text>
+    <rect x="1264" y="438" width="240" height="54" rx="10" fill="#DBEAFE" stroke="#2563EB" stroke-width="2"/>
+    <text x="1384" y="472" font-size="20" font-weight="700" fill="#1D4ED8" text-anchor="middle">4 Maps 49α (4×7×7)</text>
+    <line x1="1508" y1="465" x2="1552" y2="465" stroke="#0F766E" stroke-width="3" marker-end="url(#arrTeal)"/>
+    <rect x="1560" y="438" width="250" height="54" rx="10" fill="#CCFBF1" stroke="#0F766E" stroke-width="2.2"/>
+    <text x="1685" y="472" font-size="20" font-weight="700" fill="#0F766E" text-anchor="middle">Conv2 (36 → 32)</text>
+
+    <text x="976" y="536" font-size="21" fill="#1E293B">• Obstacles &amp; walls stay <tspan font-weight="700" fill="#0F766E">100% unmodified (1.0× floor)</tspan> while maps point to target</text>
+    <text x="976" y="590" font-size="22" font-weight="700" fill="#0F766E">→ Lowest drift of all models (0.569) &amp; solves seed 4501 3/3 in 8/8/8 steps!</text>
+    
+</svg>

@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1860" height="650" viewBox="0 0 1860 650">
+
+  <defs>
+    <filter id="sh" x="-4%" y="-6%" width="108%" height="118%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shSm" x="-4%" y="-6%" width="108%" height="118%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3.5" flood-color="#0F172A" flood-opacity="0.07"/>
+    </filter>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="gBlueHdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F0FDFA"/>
+      <stop offset="100%" stop-color="#CCFBF1"/>
+    </linearGradient>
+    <linearGradient id="gTealHdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0F766E"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="gSlate" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="gAmber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="100%" stop-color="#FDE68A"/>
+    </linearGradient>
+    <linearGradient id="gOrange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF7ED"/>
+      <stop offset="100%" stop-color="#FFEDD5"/>
+    </linearGradient>
+    <linearGradient id="gRose" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FEF2F2"/>
+      <stop offset="100%" stop-color="#FECACA"/>
+    </linearGradient>
+    <linearGradient id="gPurple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAF5FF"/>
+      <stop offset="100%" stop-color="#E9D5FF"/>
+    </linearGradient>
+    <marker id="arrSlate" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#475569"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrTeal" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#0F766E"/>
+    </marker>
+    <marker id="arrOrange" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#D97706"/>
+    </marker>
+    <marker id="arrPurple" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#6D28D9"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#DC2626"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: Menlo, Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1860" height="650" fill="#FFFFFF"/>
+
+    <!-- TOP ARCHITECTURE FLOWCHART: MH-Spatial-Relational (229,572 params) -->
+    <rect x="24" y="12" width="1812" height="232" rx="18" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2" filter="url(#shSm)"/>
+    <text x="48" y="42" font-size="20" font-weight="700" fill="#0F766E">MH-Spatial-Relational Architecture  (229,572 params · Law 3 End-to-End Pipeline)</text>
+
+    <!-- Node 1: Conv1 H -->
+    <rect x="46" y="92" width="206" height="102" rx="14" fill="#FFFFFF" stroke="#64748B" stroke-width="2.2" filter="url(#shSm)"/>
+    <text x="149" y="135" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">Conv1 Features</text>
+    <text x="149" y="168" font-size="20" fill="#475569" text-anchor="middle">H ∈ ℝ³²ˣ⁷ˣ⁷</text>
+    <line x1="252" y1="143" x2="306" y2="143" stroke="#2563EB" stroke-width="3.2" marker-end="url(#arrBlue)"/>
+
+    <!-- Node 2: 4-Head Residual Spatial-Softmax -->
+    <rect x="316" y="82" width="376" height="122" rx="14" fill="url(#gBlue)" stroke="#2563EB" stroke-width="2.6" filter="url(#shSm)"/>
+    <text x="504" y="120" font-size="21.5" font-weight="700" fill="#1E3A8A" text-anchor="middle">4-Head Residual Softmax</text>
+    <text x="504" y="152" font-size="19.5" font-weight="700" fill="#1D4ED8" text-anchor="middle">H_res = H · (1 + w ⊙ (49α − 1))</text>
+    <text x="504" y="182" font-size="17.5" fill="#334155" text-anchor="middle">Mission ℓ grounds target salience</text>
+    <!-- Residual skip arc 1 (routed cleanly below header text!) -->
+    <path d="M 195 92 C 235 54, 625 54, 668 82" stroke="#2563EB" stroke-width="2.2" stroke-dasharray="7,5" fill="none" marker-end="url(#arrBlue)"/>
+
+    <!-- Coord injection node (+) -->
+    <line x1="692" y1="143" x2="768" y2="143" stroke="#0F766E" stroke-width="3.2" marker-end="url(#arrTeal)"/>
+    <circle cx="800" cy="143" r="23" fill="#CCFBF1" stroke="#0F766E" stroke-width="2.6"/>
+    <text x="800" y="152" font-size="27" font-weight="700" fill="#0F766E" text-anchor="middle">+</text>
+    <!-- Smooth 2D Ego Coords badge feeding (+) -->
+    <rect x="665" y="190" width="270" height="44" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="2"/>
+    <text x="800" y="218" font-size="17.2" font-weight="700" fill="#0F766E" text-anchor="middle">Coords [-1,1]² → Lin(2→32)</text>
+    <line x1="800" y1="190" x2="800" y2="169" stroke="#0F766E" stroke-width="2.6" marker-end="url(#arrTeal)"/>
+
+    <line x1="823" y1="143" x2="884" y2="143" stroke="#0F766E" stroke-width="3.2" marker-end="url(#arrTeal)"/>
+
+    <!-- Node 3: 49x49 Multi-Head Relational Self-Attention -->
+    <rect x="894" y="82" width="420" height="122" rx="14" fill="url(#gTeal)" stroke="#0F766E" stroke-width="2.8" filter="url(#shSm)"/>
+    <text x="1104" y="120" font-size="21.5" font-weight="700" fill="#0F766E" text-anchor="middle">49×49 Egocentric Self-Attention</text>
+    <text x="1104" y="152" font-size="19.5" font-weight="700" fill="#115E59" text-anchor="middle">MHA( Q=K=H_res+C,  V=H_res )</text>
+    <text x="1104" y="182" font-size="17.5" fill="#334155" text-anchor="middle">Target ↔ obstacle bearing exchange</text>
+    <!-- Residual skip arc 2 -->
+    <path d="M 742 143 C 760 48, 1340 48, 1420 86" stroke="#0F766E" stroke-width="2.2" stroke-dasharray="7,5" fill="none" marker-end="url(#arrTeal)"/>
+
+    <line x1="1314" y1="143" x2="1368" y2="143" stroke="#0F766E" stroke-width="3.2" marker-end="url(#arrTeal)"/>
+
+    <!-- Node 4: LayerNorm + Conv2 + Policy -->
+    <rect x="1378" y="84" width="434" height="118" rx="14" fill="#FFFFFF" stroke="#0F766E" stroke-width="2.4" filter="url(#shSm)"/>
+    <text x="1595" y="122" font-size="21" font-weight="700" fill="#0F172A" text-anchor="middle">LN( H_res + γ_rel · Attn )</text>
+    <text x="1595" y="155" font-size="19.5" font-weight="700" fill="#0F766E" text-anchor="middle">→ Conv2(32) + MLP → 7 Actions</text>
+    <text x="1595" y="184" font-size="17" fill="#475569" text-anchor="middle">(learned γ_rel = 1.07–1.20 across seeds)</text>
+
+    <!-- BOTTOM LEFT: Law 3 Relational Message Passing Schematic -->
+    <rect x="24" y="262" width="912" height="370" rx="18" fill="url(#gTeal)" stroke="#0F766E" stroke-width="2.6" filter="url(#sh)"/>
+    <rect x="48" y="284" width="620" height="42" rx="9" fill="url(#gTealHdr)"/>
+    <text x="358" y="312" font-size="21" font-weight="700" fill="#FFFFFF" text-anchor="middle">Design Law 3 · Non-Local Target ↔ Obstacle Reasoning</text>
+
+    <!-- Mini 5x5 relational message passing grid on left of card -->
+    <rect x="52" y="346" width="225" height="225" rx="12" fill="#FFFFFF" stroke="#0F766E" stroke-width="2"/>
+    <!-- Grid lines -->
+    <line x1="97" y1="346" x2="97" y2="571" stroke="#E2E8F0"/><line x1="142" y1="346" x2="142" y2="571" stroke="#E2E8F0"/>
+    <line x1="187" y1="346" x2="187" y2="571" stroke="#E2E8F0"/><line x1="232" y1="346" x2="232" y2="571" stroke="#E2E8F0"/>
+    <line x1="52" y1="391" x2="277" y2="391" stroke="#E2E8F0"/><line x1="52" y1="436" x2="277" y2="436" stroke="#E2E8F0"/>
+    <line x1="52" y1="481" x2="277" y2="481" stroke="#E2E8F0"/><line x1="52" y1="526" x2="277" y2="526" stroke="#E2E8F0"/>
+    <!-- Target blue key, blocking yellow box, corridor cell, agent -->
+    <rect x="144" y="393" width="41" height="41" rx="6" fill="#DBEAFE" stroke="#2563EB" stroke-width="2.2"/>
+    <text x="164" y="420" font-size="16" font-weight="700" fill="#1D4ED8" text-anchor="middle">Key</text>
+    <rect x="144" y="458" width="41" height="41" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="2.2"/>
+    <text x="164" y="485" font-size="16" font-weight="700" fill="#B45309" text-anchor="middle">Box</text>
+    <rect x="191" y="458" width="40" height="41" rx="6" fill="#CCFBF1" stroke="#0F766E" stroke-width="2" stroke-dasharray="4,3"/>
+    <polygon points="164,534 150,562 178,562" fill="#DC2626"/>
+    <!-- Relational attention curved arrows from Key to Box & Corridor -->
+    <path d="M 152 434 C 125 446, 125 462, 144 474" stroke="#0F766E" stroke-width="3" fill="none" marker-end="url(#arrTeal)"/>
+    <path d="M 184 422 C 215 426, 218 442, 212 456" stroke="#2563EB" stroke-width="3" fill="none" marker-end="url(#arrBlue)"/>
+
+    <text x="300" y="378" font-size="21" fill="#0F172A">• Local 3×3 Conv2 plans myopically when obstacle</text>
+    <text x="316" y="408" font-size="21" fill="#0F172A">sits between agent &amp; distant target</text>
+    <text x="300" y="452" font-size="21" fill="#0F172A">• <tspan font-weight="700" fill="#0F766E">49×49 self-attention</tspan> broadcasts target bearing</text>
+    <text x="316" y="482" font-size="21" fill="#0F172A">directly to blocking box &amp; flanking corridor</text>
+    <rect x="300" y="510" width="612" height="96" rx="12" fill="#FFFFFF" stroke="#0F766E" stroke-width="2"/>
+    <text x="606" y="546" font-size="20" font-weight="700" fill="#0F766E" text-anchor="middle">Strict Ablation vs Parent MH-Res-Softmax:</text>
+    <text x="606" y="582" font-size="20" font-weight="700" fill="#0F172A" text-anchor="middle">S6N3: 0.959 → 0.972 (#1)  ·  Repr: 5.7 → 2.3  ·  4501: 0/3 → 3/3!</text>
+
+    <!-- BOTTOM RIGHT: Token-CoAttn-Spatial Bilinear Schematic -->
+    <rect x="962" y="262" width="874" height="370" rx="18" fill="url(#gBlue)" stroke="#2563EB" stroke-width="2.4" filter="url(#sh)"/>
+    <rect x="986" y="284" width="635" height="42" rx="9" fill="url(#gBlueHdr)"/>
+    <text x="1303" y="312" font-size="21" font-weight="700" fill="#FFFFFF" text-anchor="middle">Complementary · Token-CoAttn-Spatial (227,435 p)</text>
+
+    <!-- Word-to-Head Bilinear Split Diagram -->
+    <rect x="988" y="350" width="215" height="50" rx="10" fill="#FFFFFF" stroke="#64748B" stroke-width="1.8"/>
+    <text x="1095" y="382" font-size="19" font-weight="700" fill="#475569" text-anchor="middle">"go" · "to" · "the"</text>
+    <rect x="988" y="420" width="215" height="54" rx="10" fill="#F3E8FF" stroke="#7C3AED" stroke-width="2.2"/>
+    <text x="1095" y="454" font-size="20" font-weight="700" fill="#6D28D9" text-anchor="middle">&lt;color&gt; + &lt;type&gt;</text>
+
+    <path d="M 1203 447 L 1288 386" stroke="#2563EB" stroke-width="3.2" marker-end="url(#arrBlue)"/>
+    <path d="M 1203 375 L 1288 450" stroke="#0F766E" stroke-width="3.0" stroke-dasharray="7,5" marker-end="url(#arrTeal)"/>
+
+    <rect x="1298" y="346" width="512" height="62" rx="10" fill="#FFFFFF" stroke="#2563EB" stroke-width="2"/>
+    <text x="1554" y="385" font-size="20" font-weight="700" fill="#1E3A8A" text-anchor="middle">Heads 1–2 (0.70 / 0.73 mass) → Lock Target</text>
+    <rect x="1298" y="422" width="512" height="62" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="2"/>
+    <text x="1554" y="461" font-size="20" font-weight="700" fill="#0F766E" text-anchor="middle">Head 3 (0.32 'the' / 0.17 'go') → Free Corridor</text>
+
+    <text x="988" y="534" font-size="21" fill="#1E293B">• Replaces pooled ℓ with full <tspan font-weight="700" fill="#1D4ED8">5-token × 49-cell</tspan> bilinear affinity</text>
+    <text x="988" y="576" font-size="21" fill="#1E293B">• <tspan font-weight="700" fill="#0F766E">Zero supervision:</tspan> syntactic-to-spatial role division emerges</text>
+    <text x="1004" y="608" font-size="21" fill="#1E293B">automatically during standard BC imitation (Lu/Kim [6])</text>
+    
+</svg>

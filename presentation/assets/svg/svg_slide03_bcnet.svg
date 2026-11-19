@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1860" height="520" viewBox="0 0 1860 520">
+
+  <defs>
+    <filter id="sh" x="-4%" y="-6%" width="108%" height="118%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shSm" x="-4%" y="-6%" width="108%" height="118%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3.5" flood-color="#0F172A" flood-opacity="0.07"/>
+    </filter>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="gBlueHdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F0FDFA"/>
+      <stop offset="100%" stop-color="#CCFBF1"/>
+    </linearGradient>
+    <linearGradient id="gTealHdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0F766E"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="gSlate" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="gAmber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="100%" stop-color="#FDE68A"/>
+    </linearGradient>
+    <linearGradient id="gOrange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF7ED"/>
+      <stop offset="100%" stop-color="#FFEDD5"/>
+    </linearGradient>
+    <linearGradient id="gRose" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FEF2F2"/>
+      <stop offset="100%" stop-color="#FECACA"/>
+    </linearGradient>
+    <linearGradient id="gPurple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAF5FF"/>
+      <stop offset="100%" stop-color="#E9D5FF"/>
+    </linearGradient>
+    <marker id="arrSlate" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#475569"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrTeal" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#0F766E"/>
+    </marker>
+    <marker id="arrOrange" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#D97706"/>
+    </marker>
+    <marker id="arrPurple" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#6D28D9"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1.2 L 9.5 5 L 0 8.8 z" fill="#DC2626"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: Menlo, Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1860" height="520" fill="#FFFFFF"/>
+
+    <!-- Mission-blind dashed container around Vision Trunk -->
+    <rect x="24" y="22" width="1215" height="212" rx="18" fill="#FFFBEB" fill-opacity="0.55" stroke="#D97706" stroke-width="2.4" stroke-dasharray="10,7"/>
+    <rect x="48" y="6" width="724" height="32" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>
+    <text x="410" y="28" font-size="20" font-weight="700" fill="#B45309" text-anchor="middle">100% Mission-Blind Vision Trunk  (Δh₂ ≡ 0 under color / type swap)</text>
+
+    <!-- Obs 7x7x3 -->
+    <rect x="42" y="68" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="59" y="68" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="76" y="68" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="93" y="68" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="110" y="68" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="127" y="68" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="144" y="68" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="42" y="85" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="59" y="85" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="76" y="85" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="93" y="85" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="110" y="85" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="127" y="85" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="144" y="85" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="42" y="102" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="59" y="102" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="76" y="102" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="93" y="102" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="110" y="102" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="127" y="102" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="144" y="102" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="42" y="119" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="59" y="119" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="76" y="119" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="93" y="119" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="110" y="119" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="127" y="119" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="144" y="119" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="42" y="136" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="59" y="136" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="76" y="136" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="93" y="136" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="110" y="136" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="127" y="136" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="144" y="136" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="42" y="153" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="59" y="153" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="76" y="153" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="93" y="153" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="110" y="153" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="127" y="153" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="144" y="153" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="42" y="170" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<rect x="59" y="170" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="76" y="170" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="93" y="170" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="110" y="170" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="127" y="170" width="17" height="17" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+<rect x="144" y="170" width="17" height="17" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1"/>
+<circle cx="135.5" cy="127.5" r="5.5" fill="#9333EA"/>
+<circle cx="118.5" cy="144.5" r="5.5" fill="#EAB308"/>
+<polygon points="101.5,156.4 95.55,167.45 107.45,167.45" fill="#DC2626"/>
+    <text x="101" y="212" font-size="22" font-weight="700" fill="#1E293B" text-anchor="middle">Obs 7×7×3</text>
+    <line x1="172" y1="128" x2="220" y2="128" stroke="#475569" stroke-width="3.2" marker-end="url(#arrSlate)"/>
+
+    <!-- Embed(11,8)x3 -->
+    <rect x="250" y="64" width="195" height="102" rx="10" fill="#F8FAFC" stroke="#475569" stroke-width="2.2" opacity="0.45"/>
+<rect x="241" y="71" width="195" height="102" rx="10" fill="#F8FAFC" stroke="#475569" stroke-width="2.2" opacity="0.72"/>
+<rect x="232" y="78" width="195" height="102" rx="10" fill="#F8FAFC" stroke="#475569" stroke-width="2.2" opacity="1.0"/>
+    <text x="329" y="122" font-size="23" font-weight="700" fill="#0F172A" text-anchor="middle">Embed(11,8)×3</text>
+    <text x="329" y="154" font-size="21" fill="#475569" text-anchor="middle">24 × 7 × 7</text>
+    <line x1="452" y1="128" x2="500" y2="128" stroke="#475569" stroke-width="3.2" marker-end="url(#arrSlate)"/>
+
+    <!-- Conv1 -->
+    <rect x="530" y="64" width="205" height="102" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="2.2" opacity="0.45"/>
+<rect x="521" y="71" width="205" height="102" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="2.2" opacity="0.72"/>
+<rect x="512" y="78" width="205" height="102" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="2.2" opacity="1.0"/>
+    <text x="614" y="122" font-size="23" font-weight="700" fill="#0F172A" text-anchor="middle">Conv1 3×3</text>
+    <text x="614" y="154" font-size="21" fill="#475569" text-anchor="middle">ReLU · 32×7×7</text>
+    <line x1="742" y1="128" x2="790" y2="128" stroke="#475569" stroke-width="3.2" marker-end="url(#arrSlate)"/>
+
+    <!-- Conv2 -->
+    <rect x="820" y="64" width="205" height="102" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="2.2" opacity="0.45"/>
+<rect x="811" y="71" width="205" height="102" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="2.2" opacity="0.72"/>
+<rect x="802" y="78" width="205" height="102" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="2.2" opacity="1.0"/>
+    <text x="904" y="122" font-size="23" font-weight="700" fill="#0F172A" text-anchor="middle">Conv2 3×3</text>
+    <text x="904" y="154" font-size="21" fill="#475569" text-anchor="middle">ReLU · 32×7×7</text>
+    <line x1="1032" y1="128" x2="1076" y2="128" stroke="#475569" stroke-width="3.2" marker-end="url(#arrSlate)"/>
+
+    <!-- Flatten 1568 -->
+    <rect x="1086" y="68" width="132" height="122" rx="14" fill="url(#gSlate)" stroke="#475569" stroke-width="2.4" filter="url(#shSm)"/>
+    <text x="1152" y="122" font-size="23" font-weight="700" fill="#0F172A" text-anchor="middle">Flatten</text>
+    <text x="1152" y="154" font-size="22" font-weight="700" fill="#334155" text-anchor="middle">h₂ (1,568)</text>
+
+    <!-- Stream 2: Mission Language -->
+    <text x="42" y="266" font-size="21" font-weight="700" fill="#1E3A8A">Mission Tokens (L ≤ 5)</text>
+    <rect x="42" y="278" width="68" height="42" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="1.8"/><text x="76.0" y="305" font-size="22" font-weight="700" fill="#475569" text-anchor="middle">go</text><rect x="118" y="278" width="68" height="42" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="1.8"/><text x="152.0" y="305" font-size="22" font-weight="700" fill="#475569" text-anchor="middle">to</text><rect x="194" y="278" width="68" height="42" rx="10" fill="#F1F5F9" stroke="#475569" stroke-width="1.8"/><text x="228.0" y="305" font-size="22" font-weight="700" fill="#475569" text-anchor="middle">the</text><rect x="270" y="278" width="92" height="42" rx="10" fill="#F3E8FF" stroke="#7E22CE" stroke-width="1.8"/><text x="316.0" y="305" font-size="22" font-weight="700" fill="#7E22CE" text-anchor="middle">purple</text><rect x="370" y="278" width="68" height="42" rx="10" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.8"/><text x="404.0" y="305" font-size="22" font-weight="700" fill="#1D4ED8" text-anchor="middle">key</text>
+    <line x1="454" y1="299" x2="508" y2="299" stroke="#2563EB" stroke-width="3.2" marker-end="url(#arrBlue)"/>
+    <rect x="518" y="258" width="440" height="82" rx="14" fill="url(#gBlue)" stroke="#2563EB" stroke-width="2.2" filter="url(#shSm)"/>
+    <text x="738" y="294" font-size="23" font-weight="700" fill="#1E3A8A" text-anchor="middle">Token Embed(14, 32) + Masked Mean</text>
+    <text x="738" y="324" font-size="21" fill="#1D4ED8" text-anchor="middle">Sentence Vector  ℓ ∈ ℝ³²  (bag-of-words)</text>
+
+    <!-- Stream 3: Egocentric Heading -->
+    <rect x="42" y="384" width="196" height="74" rx="14" fill="url(#gSlate)" stroke="#64748B" stroke-width="2" filter="url(#shSm)"/>
+    <text x="140" y="416" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">Heading Dir</text>
+    <text x="140" y="444" font-size="19" fill="#475569" text-anchor="middle">N / E / S / W (0..3)</text>
+    <line x1="238" y1="421" x2="300" y2="421" stroke="#475569" stroke-width="3.2" marker-end="url(#arrSlate)"/>
+    <rect x="310" y="384" width="230" height="74" rx="14" fill="url(#gSlate)" stroke="#64748B" stroke-width="2" filter="url(#shSm)"/>
+    <text x="425" y="416" font-size="22" font-weight="700" fill="#0F172A" text-anchor="middle">One-Hot Vector</text>
+    <text x="425" y="444" font-size="20" fill="#475569" text-anchor="middle">d ∈ ℝ⁴</text>
+
+    <!-- Merge curves into Late Concat Bottleneck -->
+    <path d="M 1218 128 C 1265 128, 1265 215, 1306 215" stroke="#D97706" stroke-width="3.4" fill="none" marker-end="url(#arrOrange)"/>
+    <path d="M 958 299 C 1140 299, 1220 260, 1306 260" stroke="#2563EB" stroke-width="3.2" stroke-dasharray="9,6" fill="none" marker-end="url(#arrBlue)"/>
+    <path d="M 540 421 C 920 421, 1210 305, 1306 305" stroke="#64748B" stroke-width="3.0" fill="none" marker-end="url(#arrSlate)"/>
+
+    <!-- Late Concat Bottleneck Box -->
+    <rect x="1316" y="110" width="196" height="295" rx="18" fill="url(#gOrange)" stroke="#D97706" stroke-width="3.2" filter="url(#sh)"/>
+    <rect x="1338" y="128" width="152" height="34" rx="8" fill="#D97706"/>
+    <text x="1414" y="152" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">BOTTLENECK</text>
+    <text x="1414" y="205" font-size="26" font-weight="700" fill="#9A3412" text-anchor="middle">Late Concat</text>
+    <text x="1414" y="242" font-size="24" font-weight="700" fill="#B45309" text-anchor="middle">1,604-d</text>
+    <text x="1414" y="284" font-size="19" fill="#7C2D12" text-anchor="middle">W_v h₂ + W_l ℓ</text>
+    <text x="1414" y="314" font-size="18" fill="#9A3412" text-anchor="middle">(additive only —</text>
+    <text x="1414" y="338" font-size="18" fill="#9A3412" text-anchor="middle">no × binding!)</text>
+    <text x="1414" y="382" font-size="19" font-weight="700" fill="#DC2626" text-anchor="middle">Swap flip: 0.051</text>
+
+    <!-- Policy MLP Head -->
+    <line x1="1512" y1="205" x2="1564" y2="205" stroke="#475569" stroke-width="3.2" marker-end="url(#arrSlate)"/>
+    <rect x="1574" y="142" width="256" height="118" rx="16" fill="url(#gSlate)" stroke="#475569" stroke-width="2.2" filter="url(#shSm)"/>
+    <text x="1702" y="194" font-size="24" font-weight="700" fill="#0F172A" text-anchor="middle">Linear(1604→128)</text>
+    <text x="1702" y="228" font-size="21" fill="#475569" text-anchor="middle">+ ReLU  (205k params!)</text>
+
+    <line x1="1702" y1="260" x2="1702" y2="308" stroke="#475569" stroke-width="3.2" marker-end="url(#arrSlate)"/>
+    <rect x="1574" y="318" width="256" height="118" rx="16" fill="url(#gBlue)" stroke="#1D4ED8" stroke-width="2.4" filter="url(#shSm)"/>
+    <text x="1702" y="368" font-size="24" font-weight="700" fill="#1E3A8A" text-anchor="middle">Linear(128 → 7)</text>
+    <text x="1702" y="402" font-size="21" font-weight="700" fill="#1D4ED8" text-anchor="middle">Greedy argmax a_t</text>
+
+    <!-- Bottom param badge -->
+    <rect x="650" y="458" width="1180" height="46" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.6"/>
+    <text x="1240" y="489" font-size="21" fill="#334155" text-anchor="middle">
+      <tspan font-weight="700" fill="#0F172A">Total: 223,071 params</tspan>  (92% concentrated in first FC layer)  ·  38.3 / 300 representation grounding failures
+    </text>
+    
+</svg>

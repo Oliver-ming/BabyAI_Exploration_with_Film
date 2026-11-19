@@ -251,31 +251,12 @@ notes(s, """
 
 # ------------------------------------------------------------------ SLIDE 3: Exact Baseline & Late-Concat Bottleneck (0:35, A)
 s = new_slide("Prescribed baseline (BCNet) & why late concatenation fails")
-r1, r2, r3, bh = 1.16, 1.92, 2.62, 0.56
-row1 = [(0.35, 0.9, "obs\n7×7×3"), (1.45, 1.5, "Embed(11,8)×3\n→ 24×7×7"), (3.15, 1.42, "Conv 3×3 (32)\n+ ReLU"),
-        (4.77, 1.42, "Conv 3×3 (32)\n+ ReLU"), (6.39, 0.8, "flatten\n1,568")]
-for i, (x, w, t_) in enumerate(row1):
-    box(s, x, r1, w, bh, t_, size=13.5)
-    if i:
-        px, pw, _ = row1[i - 1]; arrow(s, px + pw, r1 + bh / 2, x, r1 + bh / 2)
-box(s, 0.35, r2, 0.9, bh, "mission\n5 tokens", size=13)
-box(s, 1.45, r2, 3.82, bh, "Embed(14,32) · masked mean → ℓ (32)", size=13.5)
-arrow(s, 1.25, r2 + bh / 2, 1.45, r2 + bh / 2)
-box(s, 0.35, r3, 0.9, bh, "heading", size=13.5)
-box(s, 1.45, r3, 1.57, bh, "one-hot → 4", size=13.5)
-arrow(s, 1.25, r3 + bh / 2, 1.45, r3 + bh / 2)
-cx = 7.38
-box(s, cx, r1, 0.95, r3 + bh - r1, "late\nconcat\n1,604", fill=PALEO, line=ORANGE, size=14, color=ORANGE, lw=2)
-arrow(s, 7.19, r1 + bh / 2, cx, r1 + bh / 2); arrow(s, 5.27, r2 + bh / 2, cx, r2 + bh / 2); arrow(s, 3.02, r3 + bh / 2, cx, r3 + bh / 2)
-box(s, 8.52, r1, 1.13, 0.85, "Linear 128\n+ ReLU", size=13.5)
-box(s, 8.52, r1 + 1.16, 1.13, 0.85, "Linear 7\n→ argmax", size=13.5)
-arrow(s, cx + 0.95, r1 + 0.42, 8.52, r1 + 0.42); arrow(s, 9.085, r1 + 0.85, 9.085, r1 + 1.16)
-tb(s, 2.75, r3 + 0.04, 4.55, 0.45, [[("vision is 100% mission-blind (Δh2 = 0) until here →", {"color": ORANGE, "bold": True, "size": 14.2})]], align=PP_ALIGN.RIGHT)
-tb(s, 0.35, 3.38, 9.3, 1.58, [
+pic(s, A / "svg_slide03_bcnet.png", 0.35, 1.14, w=9.30)
+tb(s, 0.35, 3.82, 9.3, 1.18, [
     [("Root bottleneck  ", {"bold": True, "color": ORANGE}), ("additive Linear(1604→128) cannot directly compute multiplicative (color ∧ type) binding → color-swap flip rate 0.051, 38.3 repr. failures / 300", {})],
     [("Frozen setup  ", {"bold": True, "color": BLUE}), ("BabyAIBot 5,000 demos · CE loss · Adam 1e-3 · 223,071 params · greedy argmax · PyTorch 2.15 1-thread CPU", {})],
-], size=16.5, spacing=8)
-footer(s, "BabyAI [1], MiniGrid [8]. Disjoint seed range guarantees 5,000 unique leak-free episodes (details in B1).")
+], size=15.0, spacing=6)
+footer(s, "Vector SVG: assets/svg/svg_slide03_bcnet.svg · BabyAI [1], MiniGrid [8]. Disjoint seed split in B1.")
 notes(s, """
 【讲者 A｜0:50–1:25｜35 秒】
 冻结基线是行为克隆网络 BCNet，共 223,071 个参数：三通道符号图像经过两层 3×3 卷积直接展平为 1,568 维，直到橙色框才与 32 维指令均值向量做晚期拼接。
@@ -298,25 +279,12 @@ notes(s, """
 
 # ------------------------------------------------------------------ SLIDE 5: Controlled Protocol & 3-Layer Causal Probes (0:30, A)
 s = new_slide("Controlled experimental protocol & three-layer causal probes")
-yb, hb = 1.20, 0.48
-segs = [(0.35, 3.3, "train [0:4000]", BLUE), (3.65, 1.25, "val [4000:4500]", GOLD), (4.9, 1.3, "test [4500:4800]", GREEN),
-        (6.2, 1.3, "train [4800:5300]", BLUE)]
-for xx, ww, lab, col in segs:
-    box(s, xx, yb, ww, hb, lab, fill=col, line=WHITE, color=WHITE, size=12, shape=MSO_SHAPE.RECTANGLE)
-box(s, 7.7, yb, 1.95, hb, "Zero-shot S7N4 / S8N6\n[10000:10300]", fill=TEAL, line=WHITE, color=WHITE, size=11.2, shape=MSO_SHAPE.RECTANGLE)
-tb(s, 0.35, yb + hb + 0.04, 9.3, 0.30, [[("4,500 train + 500 val = 5,000 unique expert eps", {"size": 13, "color": GREY}), ("   ·   300 unseen test seeds per env + 10/20/50/100% step-matched scaling", {"size": 12.8, "color": TEAL, "bold": True})]])
-rows_p = [
-    ("Strict fairness", ["14 models (223k–231k params) share identical data, Conv/MLP, Adam 1e-3, wd=0, 30 epochs & val-acc selection"]),
-    ("Probe 1 · Behavioral", ["183-state counterfactual mission swap (greedy action-change rate under color / type replacement)"]),
-    ("Probe 2 · Feature-space", ["150 visible-target scenes × 3 seeds: pre-Conv2 Target/Distractor SNR, spatial selectivity & background drift"]),
-    ("Probe 3 · Closed-loop", ["300-episode trajectory failure taxonomy (representation binding vs POMDP state-coverage loops); n=3, ddof=0"]),
-]
-yy = 2.18
-for k, v in rows_p:
-    tb(s, 0.35, yy, 2.55, 0.56, [[(k, {"bold": True, "color": BLUE})]], size=16.0)
-    tb(s, 2.92, yy, 6.73, 0.56, v, size=16.0, spacing=0)
-    yy += 0.68
-footer(s, "Zero hyperparameter retuning across architectures; every claim is backed by raw JSON logs in reports/ (B1–B2).")
+pic(s, A / "svg_slide05_protocol.png", 0.35, 1.14, w=9.30)
+tb(s, 0.35, 4.64, 9.3, 0.42, [
+    [("Strict single-factor control  ", {"bold": True, "color": BLUE}),
+     ("all 14 models share the exact frozen expert_5000.pkl, optimizer & val-acc selection — isolating fusion architecture alone", {})],
+], size=13.8)
+footer(s, "Vector SVG: assets/svg/svg_slide05_protocol.svg · Full hyperparameters & seed-audit details in Backup B1–B2.")
 notes(s, """
 【讲者 A｜2:00–2:30｜30 秒】
 实验协议做到 100% 受控：全部 14 个模型共用同一份无泄漏冻结数据、优化器与验证选模准则，在同分布 S6N3、零样本 S7N4 / S8N6 及 10%–100% 步数对齐缩放曲线上评估。
@@ -326,49 +294,18 @@ notes(s, """
 
 # ==============================================================================
 # SPEAKER B · SLIDES 6–11 (2:30–5:45 = 195 s):
-#   - Slides 6–8 (3 slides): Method & Architectural Laws
+#   - Slides 6–8 (3 slides): Method & Architectural Laws (Vector SVG Schematics)
 #   - Slides 9–11 (3 slides): Cross-Scale, Sample-Efficiency & Feature-Space Proof
 # ==============================================================================
 
 # ------------------------------------------------------------------ SLIDE 6: Method I — Spatial Competition vs Channel Broadcast (0:35, B)
 s = new_slide("Method I · Cross-cell spatial competition vs channel broadcast", title_size=21.5)
-py, pbh = 1.14, 0.40
-p_nodes = [
-    (0.35, 1.15, "obs 7×7×3", LIGHT, GREY, DARK),
-    (1.66, 1.68, "Embed + Conv1\n→ H (32×7×7)", LIGHT, GREY, DARK),
-    (3.50, 2.58, "Early Fusion Site\n(ℓ ∈ ℝ³² × 7×7 grid)", PALEB, BLUE, BLUE),
-    (6.24, 1.48, "Conv2 (32)\n+ ReLU", LIGHT, GREY, DARK),
-    (7.88, 1.77, "flatten + MLP\n→ 7 actions", LIGHT, GREY, DARK),
-]
-for i, (xx, ww, tt, fl, ln, tc) in enumerate(p_nodes):
-    box(s, xx, py, ww, pbh, tt, fill=fl, line=ln, color=tc, size=10.5, lw=2.0 if i == 2 else 1.2)
-    if i:
-        px, pw = p_nodes[i - 1][0], p_nodes[i - 1][1]
-        arrow(s, px + pw, py + pbh / 2, xx, py + pbh / 2, color=BLUE if i in (2, 3) else GREY, w=1.8)
-
-# Left two spacious comparison cards (equal 225,183 params!)
-box(s, 0.35, 1.64, 6.45, 1.20,
-    ["Control · Channel FiLM  (225,183 params — uniform broadcast)",
-     "H'_{c,i,j} = (1 + Δγ_c(ℓ)) · H_{c,i,j} + Δβ_c(ℓ)     ∀ (i,j) ∈ 7×7",
-     "• Zero cross-cell competition: same channel weights on all 49 cells → h_mod T/maxD = 1.005",
-     "• Additive Δβ leaks 0.787 drift; distractor noise scales as O(N−1) (seed 4502: 0/3)"],
-    fill=PALESLATE, line=SLATE, color=DARK, size=10.8, bold=False, lw=1.4, align=PP_ALIGN.LEFT, bold_first=True)
-
-box(s, 0.35, 2.94, 6.45, 1.24,
-    ["Ours · Spatial-Softmax Attention  (225,183 params — exact parameter tie!)",
-     "α = softmax_{49}( ⟨W_q ℓ, W_k H_{i,j}⟩ / √C ),     H'_{:,i,j} = (49 · α_{i,j}) · H_{:,i,j}",
-     "• Global 49-cell competition: conjunctive (color ∧ type) suppresses distractors by exp(Δs)",
-     "• Lifts pre-Conv2 h_mod T/maxD to 7.669×!  Zero additive bias on empty cells (seed 4502: 3/3)"],
-    fill=PALEB, line=BLUE, color=DARK, size=10.8, bold=False, lw=2.2, align=PP_ALIGN.LEFT, bold_first=True)
-
-# Right: Real 7x7 heatmap on seed 4502
-pic(s, A / "p_map_4502.png", 7.02, 1.64, w=2.52)
-
-tb(s, 0.35, 4.30, 9.3, 0.68, [
+pic(s, A / "svg_slide06_competition.png", 0.35, 1.14, w=9.30)
+tb(s, 0.35, 4.44, 9.3, 0.58, [
     [("Why equal-param Attention wins  ", {"bold": True, "color": BLUE}),
-     ("in seed 4502 (right), 49·α locks 6.26 onto the purple key vs 1.79 / 1.70 on flanking yellow keys — turning O(N−1) clutter into sharp winner-take-all localization", {})],
-], size=13.8, spacing=2)
-footer(s, "Code: branches/b2_attn/attn_net.py · Literature: Perez et al. [2], Xu et al. [4], Mott et al. [5].", y=5.08)
+     ("in seed 4502 (right), 49·α locks 6.26× onto the purple key vs 1.79× / 1.70× on flanking yellow keys — turning O(N−1) clutter into winner-take-all localization", {})],
+], size=13.6)
+footer(s, "Vector SVG: assets/svg/svg_slide06_competition.svg · Code: attn_net.py · Perez et al. [2], Xu et al. [4], Mott et al. [5].", y=5.08)
 notes(s, """
 【讲者 B｜2:30–3:05｜35 秒】
 谢谢。我们先看第一页方法：同样在 Conv1 与 Conv2 之间插入早期融合，且参数量精确相等同为 225,183，为什么我们的 Spatial-Softmax 能全面击败 Channel FiLM？
@@ -378,45 +315,12 @@ notes(s, """
 
 # ------------------------------------------------------------------ SLIDE 7: Method II — Fixing Naive Attention Pitfalls (Laws 1 & 2) (0:35, B)
 s = new_slide("Method II · Fixing naive Attention pitfalls (Design Laws 1 & 2)", title_size=21.5)
-tb(s, 0.35, 1.13, 9.3, 0.34, [
-    [("Key insight  ", {"bold": True, "color": NAVY}), ("naive cross-attention & pure multiplicative masks suffer two geometric flaws in navigation:", {})],
-], size=14.2)
-
-# Left Card: Law 1 (NoPE vs pos_emb)
-box(s, 0.35, 1.54, 4.50, 1.28,
-    ["Pitfall 1 · Learned 2D Absolute pos_emb",
-     "Standard Cross-MHA adds P ∈ ℝ^{1×49×32} trained on 6×6 rooms:",
-     "• Memorizes 6×6 wall/corner priors inside ego-view",
-     "• Worst OOD background drift (0.823) → S8N6 drops to 0.747"],
-    fill=PALER, line=RED, color=DARK, size=10.8, bold=False, lw=1.5, align=PP_ALIGN.LEFT, bold_first=True)
-arrow(s, 2.60, 2.84, 2.60, 3.04, color=PURPLE, w=2.4)
-box(s, 0.35, 3.06, 4.50, 1.34,
-    ["Design Law 1 · Translation-Equivariant NoPE",
-     "Remove pos_emb completely (cross_mha_nopos, 227,360 p):",
-     "• Conv1 3×3 already encodes local structure equivariantly",
-     "• Cuts drift 0.823 → 0.749 & lifts S8N6 +6.2% (0.747 → 0.809)!"],
-    fill=PALEP, line=PURPLE, color=DARK, size=10.8, bold=False, lw=2.2, align=PP_ALIGN.LEFT, bold_first=True)
-
-# Right Card: Law 2 (Attn-Map-Inject vs Obstacle Erasure)
-box(s, 5.15, 1.54, 4.50, 1.28,
-    ["Pitfall 2 · Multiplicative Obstacle Erasure",
-     "Pure (49·α) ⊙ H multiplies non-target cells toward zero:",
-     "• On seed 4501, blocking yellow_box shrinks to 0.60× (seed 2: 0.16×)",
-     "• Conv2 loses obstacle geometry → detour solves only 1/3 seeds!"],
-    fill=PALEO, line=ORANGE, color=DARK, size=10.8, bold=False, lw=1.5, align=PP_ALIGN.LEFT, bold_first=True)
-arrow(s, 7.40, 2.84, 7.40, 3.04, color=TEAL, w=2.4)
-box(s, 5.15, 3.06, 4.50, 1.34,
-    ["Design Law 2 · Uncorrupted Map Injection",
-     "Attn-Map-Inject (226,335 p):  Conv2_{36→32}([ H ; 49·α^{(1..4)} ])",
-     "• Raw visual tensor H stays 100% intact (1.0× obstacle/wall floor)",
-     "• Lowest drift (0.569) & solves seed 4501 3/3 in optimal 8 steps!"],
-    fill=PALET, line=TEAL, color=DARK, size=10.8, bold=False, lw=2.2, align=PP_ALIGN.LEFT, bold_first=True)
-
-tb(s, 0.35, 4.48, 9.3, 0.52, [
-    [("Takeaway  ", {"bold": True, "color": TEAL}),
-     ("decoupling 'where the target is' (explicit spatial maps 49·α) from 'where obstacles sit' (unmodified H) eliminates destructive feature erasure", {})],
-], size=13.8)
-footer(s, "Code: branches/b2_attn/attn_v2_net.py · Motivated by Wang et al. Residual Attention [4] & Hashemi Dijujin et al. [7].", y=5.08)
+pic(s, A / "svg_slide07_laws12.png", 0.35, 1.14, w=9.30)
+tb(s, 0.35, 4.44, 9.3, 0.58, [
+    [("Core principle  ", {"bold": True, "color": TEAL}),
+     ("removing 6×6 pos_emb restores translation equivariance (Law 1), while decoupling raw H from spatial pointer maps 49·α prevents obstacle erasure (Law 2)", {})],
+], size=13.6)
+footer(s, "Vector SVG: assets/svg/svg_slide07_laws12.svg · Code: attn_v2_net.py · Wang et al. [4], Hashemi Dijujin et al. [7].", y=5.08)
 notes(s, """
 【讲者 B｜3:05–3:40｜35 秒】
 然而我们并没有停留在基础注意力，而是进一步诊断出直接套用标准注意力时的两大几何陷阱，并提出两条改进定律：
@@ -426,39 +330,11 @@ notes(s, """
 
 # ------------------------------------------------------------------ SLIDE 8: Method III — Egocentric Relational & Co-Attention (Law 3) (0:30, B)
 s = new_slide("Method III · Egocentric relational & token co-attention (Law 3)", title_size=21.5)
-# Clean visual pipeline for MH-Spatial-Relational
-ry, rbh = 1.20, 0.62
-r_boxes = [
-    (0.35, 1.55, "Conv1 features\nH (32×7×7)", LIGHT, GREY, DARK),
-    (2.12, 2.25, "4-Head Residual\nSpatial-Softmax\nH·(1 + w ⊙ (49α − 1))", PALEB, BLUE, BLUE),
-    (4.59, 2.35, "+ Smooth Ego Coords\nLinear(2→32) on [-1,1]²\n49×49 MH Self-Attn", PALET, TEAL, TEAL),
-    (7.16, 2.49, "LN(H_res + γ_rel·Attn)\n→ Conv2 + MLP\n(MH-Rel · 229,572 p)", PALET, TEAL, DARK),
-]
-for i, (xx, ww, tt, fl, ln, tc) in enumerate(r_boxes):
-    box(s, xx, ry, ww, rbh, tt, fill=fl, line=ln, color=tc, size=10.6, lw=2.0 if i in (1, 2) else 1.4)
-    if i:
-        px, pw = r_boxes[i - 1][0], r_boxes[i - 1][1]
-        arrow(s, px + pw, ry + rbh / 2, xx, ry + rbh / 2, color=TEAL if i >= 2 else BLUE, w=2.0)
-
-# Two clean explanation blocks below
-box(s, 0.35, 1.98, 4.52, 2.02,
-    ["Design Law 3 · Egocentric Relational Self-Attention",
-     "• Local Conv2 (3×3) plans myopically when target & obstacle sit >2 cells apart",
-     "• 49×49 self-attention broadcasts target bearing directly to blocking obstacle & corridor cells",
-     "• Smooth coords (u,v) ∈ [-1,1]² preserve ego geometry without 6×6 grid overfitting (Zambaldi et al. [5])"],
-    fill=PALET, line=TEAL, color=DARK, size=10.8, bold=False, lw=1.8, align=PP_ALIGN.LEFT, bold_first=True)
-
-box(s, 5.13, 1.98, 4.52, 2.02,
-    ["Complementary · Token-CoAttn-Spatial (227,435 p)",
-     "• Replaces pooled vector ℓ with word-level bilinear co-attention over 5 tokens × 49 grid cells (Lu/Kim [6])",
-     "• Per-head token softmax + spatial softmax_49",
-     "• Unsupervised role split: Heads 1–2 bind <color>+<type> (0.70–0.73), Head 3 tracks free corridors!"],
-    fill=PALEB, line=BLUE, color=DARK, size=10.8, bold=False, lw=1.6, align=PP_ALIGN.LEFT, bold_first=True)
-
-tb(s, 0.35, 4.12, 9.3, 0.84, [
-    [("Controlled ablation proof  ", {"bold": True, "color": TEAL}),
-     ("vs its non-relational parent MH-Res-Softmax, adding 49×49 relational self-attention lifts S6N3 0.959 → 0.972 (#1 of 14 models), cuts repr errors 5.7 → 2.3/300, and solves seed 4501 (0/3 → 3/3)!", {})],
-], size=13.8)
+pic(s, A / "svg_slide08_relational.png", 0.35, 1.14, w=9.30)
+tb(s, 0.35, 4.44, 9.3, 0.58, [
+    [("Why relational attention peaks  ", {"bold": True, "color": TEAL}),
+     ("combining 4-head residual spatial grounding with 49×49 coordinate-aware self-attention achieves #1 S6N3 = 0.972, lowest repr errors (2.3/300) & 3/3 on both 4501 & 4502", {})],
+], size=13.5)
 footer(s, "Code: branches/b2_attn/attn_v2_net.py · Literature: Zambaldi et al. ICLR 2019 [5], Liu et al. CoordConv [6], Lu et al. [6].", y=5.08)
 notes(s, """
 【讲者 B｜3:40–4:10｜30 秒】
@@ -547,19 +423,9 @@ notes(s, """
 
 # ------------------------------------------------------------------ SLIDE 13: Modular Closed-Loop Demo Overview (0:30, C)
 s = new_slide("Closed-loop rollout demonstration across 4 diagnostic seeds", title_size=21.5)
-pic(s, A / "demo_attention_laws.gif", 0.35, 1.18, w=4.85)
-# Clean 4-card static digest on the right so the slide works standalone or with any future video version
-demo_cards = [
-    ("Clip 1 · seed 4502 ('purple key')", "Crowded yellow-key distractors: BC30 0/3 & Channel FiLM 0/3 timeout → Ours (Spatial-SS & MH-Rel) solve 3/3 in 7 steps", PALEB, BLUE),
-    ("Clip 2 · seed 4501 ('blue key')", "Blocked direct path: v1 Spatial-SS 1/3 → Ours (Map-Inject & MH-Rel) detour cleanly 3/3 in 8 steps", PALET, TEAL),
-    ("Clip 3 · seed 4516 ('purple box')", "Same-color purple key vs purple box: BC30 0/3 attribute confusion → Ours solve 3/3 in 8 steps", PALEB, BLUE),
-    ("Clip 4 · seed 4568 ('blue box')", "Target behind agent (outside 7×7 view): BC30, FiLM & Attention all loop L/R (0/3) — POMDP memory boundary", PALER, RED),
-]
-cy_d = 1.18
-for ttl_c, desc_c, fl_c, ln_c in demo_cards:
-    box(s, 5.38, cy_d, 4.27, 0.86, [ttl_c, desc_c], fill=fl_c, line=ln_c, color=DARK, size=10.3, bold=False, lw=1.5, align=PP_ALIGN.LEFT, bold_first=True)
-    cy_d += 0.95
-footer(s, "Left: 3-column deterministic closed-loop rollouts on unseen test seeds [4500:4800]; Right: per-case 3-seed solve summary (B10).", y=5.08)
+pic(s, A / "demo_attention_laws.gif", 0.35, 1.22, w=4.82)
+pic(s, A / "svg_slide13_demo_cards.png", 5.32, 1.14, w=4.33)
+footer(s, "Left: 3-column deterministic rollouts on unseen seeds [4500:4800]; Right: vector SVG scorecard (svg_slide13_demo_cards.svg, B10).", y=5.08)
 notes(s, """
 【讲者 C｜6:20–6:50｜30 秒】
 这一页汇总了四类代表性未见测试种子的真实闭环表现（左侧同步播放确定性三栏轨迹对比，右侧列出 3 种子统计结果）：
@@ -571,23 +437,13 @@ notes(s, """
 
 # ------------------------------------------------------------------ SLIDE 14: 300-Episode Failure Decomposition & Hard POMDP Limit (0:35, C)
 s = new_slide("300-episode failure taxonomy & the single-frame POMDP limit", title_size=21.5)
-pic(s, A / "p_failshift.png", 0.35, 1.14, h=2.92)
-pic(s, A / "case_4568_t0.png", 4.78, 1.22, w=1.42)
-box(s, 6.32, 1.22, 3.33, 1.42,
-    ["Blind-Spot Aliasing (seed 4568)",
-     "• Target blue_box sits behind agent (outside 7×7 ego-cone)",
-     "• Deterministic argmax maps aliased views to L↔R loops (0/3 across all 14 single-frame models)"],
-    fill=PALER, line=RED, color=DARK, size=10.4, bold=False, lw=1.5, align=PP_ALIGN.LEFT, bold_first=True)
-box(s, 4.78, 2.76, 4.87, 1.28,
-    ["Quantitative Failure Breakdown (/300 unseen S6N3 episodes)",
-     "• Representation errors:  BC30 38.3 → FiLM 6.3 → Spatial-SS 3.7 → MH-Rel 2.3 (attribute_confusion = 1.0 / 300!)",
-     "• State-coverage loops:  ~5.0–6.0 / 300 physical floor — requires recurrent memory (ConvGRU) or DAgger (B12)"],
-    fill=LIGHT, line=NAVY, color=DARK, size=10.5, bold=False, lw=1.5, align=PP_ALIGN.LEFT, bold_first=True)
-tb(s, 0.35, 4.18, 9.3, 0.78, [
+pic(s, A / "p_failshift.png", 0.35, 1.14, h=2.96)
+pic(s, A / "svg_slide14_pomdp.png", 4.68, 1.14, w=4.97)
+tb(s, 0.35, 4.20, 9.3, 0.76, [
     [("Calibrated diagnosis  ", {"bold": True, "color": TEAL}),
      ("early spatial & relational attention virtually eliminates visual-language grounding errors (94% reduction vs BC30, 63% reduction vs FiLM), isolating partial observability as the sole remaining bottleneck", {})],
-], size=14.2)
-footer(s, "Source: reports/b2_attn_v2_failures.json, b3_v2_eval_s6n3.json (mean of 3 seeds × 300 unseen episodes).", y=5.08)
+], size=14.0)
+footer(s, "Vector SVG: assets/svg/svg_slide14_pomdp.svg · Raw: b2_attn_v2_failures.json, b3_v2_eval_s6n3.json.", y=5.08)
 notes(s, """
 【讲者 C｜6:50–7:25｜35 秒】
 我们进一步对全部 300 局未见测试的失败轨迹做严格归因拆解（左图）：
@@ -597,21 +453,8 @@ notes(s, """
 
 # ------------------------------------------------------------------ SLIDE 15: Conclusions, Design Laws & Honest Tradeoffs (0:35, C)
 s = new_slide("Conclusions: three Attention design laws & honest tradeoffs", title_size=21.5)
-box(s, 0.35, 1.15, 9.30, 0.86,
-    ["1 · Spatial Competition Beats Channel Broadcast at Identical Parameters (225,183 p)",
-     "49-cell softmax lifts pre-Conv2 T/maxD SNR 1.005× → 7.669× & selectivity 1.90× → 3.59×, beating FiLM by +14.9% on S8N6 (0.887 vs 0.738) and matching 100% FiLM with 50% data (0.958)"],
-    fill=PALEB, line=BLUE, color=DARK, size=11.0, bold=False, lw=1.8, align=PP_ALIGN.LEFT, bold_first=True)
-box(s, 0.35, 2.10, 9.30, 0.90,
-    ["2 · Three Verified v2 Geometric Laws Fix Naive Attention Failure Modes",
-     "(a) NoPE removes 6×6 pos_emb overfitting (+6.2% S8N6)   ·   (b) Map-Inject [H; 49α] preserves 1.0× obstacle geometry (min drift 0.569, 4501 3/3)   ·   (c) Ego MH-Relational reaches top S6N3 (0.972) & 2.3/300 repr errors"],
-    fill=PALET, line=TEAL, color=DARK, size=10.9, bold=False, lw=1.8, align=PP_ALIGN.LEFT, bold_first=True)
-box(s, 0.35, 3.09, 9.30, 0.84,
-    ["3 · Bias–Variance Tradeoff, Scope Limits & Next Step",
-     "1-head Spatial-SS wins OOD (0.888) & low data (0.802 @10%, 0.898 @20%); higher-capacity MH-Rel wins in-dist (0.972) & detours (3/3) · Next: pair MH-Rel with recurrent ConvGRU memory for blind-spot coverage"],
-    fill=LIGHT, line=SLATE, color=DARK, size=10.9, bold=False, lw=1.4, align=PP_ALIGN.LEFT, bold_first=True)
-
-box(s, 0.35, 4.04, 9.30, 0.38, "A: task, baseline & protocol (1–5)   ·   B: Attention laws & mechanistic proof (6–11)   ·   C: diagnostics & limits (12–15)", fill=WHITE, line=GREY, size=11.2, bold=False)
-tb(s, 0.35, 4.52, 9.30, 0.55, [[("Thank you — happy to take questions!", {"bold": True, "color": NAVY, "size": 23})]], align=PP_ALIGN.CENTER)
+pic(s, A / "svg_slide15_conclusions.png", 0.35, 1.15, w=9.30)
+tb(s, 0.35, 4.22, 9.30, 0.62, [[("Thank you — happy to take questions!", {"bold": True, "color": NAVY, "size": 24})]], align=PP_ALIGN.CENTER)
 notes(s, """
 【讲者 C｜7:25–8:00｜35 秒】
 最后总结我们的三点核心结论：
