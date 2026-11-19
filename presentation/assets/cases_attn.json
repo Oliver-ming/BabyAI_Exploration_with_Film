@@ -1,0 +1,586 @@
+{
+ "4502": {
+  "mission": "go to the purple key",
+  "bc30": [
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "film": [
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "ss": [
+   [
+    true,
+    7
+   ],
+   [
+    true,
+    17
+   ],
+   [
+    true,
+    7
+   ]
+  ],
+  "mapinj": [
+   [
+    false,
+    36
+   ],
+   [
+    true,
+    7
+   ],
+   [
+    true,
+    7
+   ]
+  ],
+  "mhrel": [
+   [
+    true,
+    7
+   ],
+   [
+    true,
+    7
+   ],
+   [
+    true,
+    7
+   ]
+  ]
+ },
+ "4501": {
+  "mission": "go to the blue key",
+  "bc30": [
+   [
+    true,
+    8
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "film": [
+   [
+    true,
+    8
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    true,
+    10
+   ]
+  ],
+  "ss": [
+   [
+    false,
+    36
+   ],
+   [
+    true,
+    10
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "mapinj": [
+   [
+    true,
+    8
+   ],
+   [
+    true,
+    8
+   ],
+   [
+    true,
+    8
+   ]
+  ],
+  "mhrel": [
+   [
+    true,
+    8
+   ],
+   [
+    true,
+    8
+   ],
+   [
+    true,
+    10
+   ]
+  ]
+ },
+ "4516": {
+  "mission": "go to the purple box",
+  "bc30": [
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "film": [
+   [
+    true,
+    8
+   ],
+   [
+    true,
+    8
+   ],
+   [
+    true,
+    8
+   ]
+  ],
+  "ss": [
+   [
+    true,
+    8
+   ],
+   [
+    true,
+    8
+   ],
+   [
+    true,
+    8
+   ]
+  ],
+  "mapinj": [
+   [
+    true,
+    8
+   ],
+   [
+    true,
+    8
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "mhrel": [
+   [
+    true,
+    8
+   ],
+   [
+    true,
+    8
+   ],
+   [
+    false,
+    36
+   ]
+  ]
+ },
+ "4565": {
+  "mission": "go to the yellow box",
+  "bc30": [
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    true,
+    7
+   ]
+  ],
+  "film": [
+   [
+    true,
+    4
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    true,
+    4
+   ]
+  ],
+  "ss": [
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    4
+   ]
+  ],
+  "mapinj": [
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    4
+   ]
+  ],
+  "mhrel": [
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    10
+   ]
+  ]
+ },
+ "4570": {
+  "mission": "go to the grey ball",
+  "bc30": [
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    true,
+    5
+   ]
+  ],
+  "film": [
+   [
+    true,
+    5
+   ],
+   [
+    true,
+    5
+   ],
+   [
+    true,
+    5
+   ]
+  ],
+  "ss": [
+   [
+    true,
+    5
+   ],
+   [
+    true,
+    5
+   ],
+   [
+    true,
+    5
+   ]
+  ],
+  "mapinj": [
+   [
+    true,
+    5
+   ],
+   [
+    true,
+    5
+   ],
+   [
+    true,
+    5
+   ]
+  ],
+  "mhrel": [
+   [
+    true,
+    5
+   ],
+   [
+    true,
+    5
+   ],
+   [
+    true,
+    5
+   ]
+  ]
+ },
+ "4582": {
+  "mission": "go to the blue box",
+  "bc30": [
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "film": [
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    12
+   ],
+   [
+    true,
+    4
+   ]
+  ],
+  "ss": [
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    4
+   ]
+  ],
+  "mapinj": [
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    4
+   ]
+  ],
+  "mhrel": [
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    4
+   ],
+   [
+    true,
+    4
+   ]
+  ]
+ },
+ "4560": {
+  "mission": "go to the green ball",
+  "bc30": [
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "film": [
+   [
+    true,
+    2
+   ],
+   [
+    true,
+    2
+   ],
+   [
+    true,
+    2
+   ]
+  ],
+  "ss": [
+   [
+    true,
+    2
+   ],
+   [
+    true,
+    2
+   ],
+   [
+    true,
+    2
+   ]
+  ],
+  "mapinj": [
+   [
+    true,
+    2
+   ],
+   [
+    true,
+    2
+   ],
+   [
+    true,
+    2
+   ]
+  ],
+  "mhrel": [
+   [
+    true,
+    2
+   ],
+   [
+    true,
+    2
+   ],
+   [
+    true,
+    2
+   ]
+  ]
+ },
+ "4568": {
+  "mission": "go to the green ball",
+  "bc30": [
+   [
+    false,
+    36
+   ],
+   [
+    true,
+    3
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "film": [
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "ss": [
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "mapinj": [
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ]
+  ],
+  "mhrel": [
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ],
+   [
+    false,
+    36
+   ]
+  ]
+ }
+}

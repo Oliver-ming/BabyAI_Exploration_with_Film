@@ -11,7 +11,7 @@ SW, SH = prs.slide_width, prs.slide_height
 
 # ---- allowed numbers: every decimal in approved reports / case analysis / raw JSON (rounded 1-3 dp)
 allowed = set()
-for f in ["src/remote/FINAL_REPORT_EN.md", "src/remote/FINAL_REPORT_CN.md", "src/remote/CASE_ANALYSIS.md", "assets/numbers.json", "assets/cases.json",
+for f in ["src/remote/FINAL_REPORT_EN.md", "src/remote/FINAL_REPORT_CN.md", "src/remote/CASE_ANALYSIS.md", "assets/numbers.json", "assets/cases.json", "assets/cases_attn.json",
           "src/remote/json/b5_data_eff_summary.md", "src/remote/json/data_efficiency.csv"]:
     allowed |= set(re.findall(r"\d+\.\d+", (ROOT / f).read_text()))
 def walk(o):

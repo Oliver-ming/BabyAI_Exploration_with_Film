@@ -230,7 +230,7 @@ def make_figure(out: dict, ev: dict) -> None:
     order = [m[0] for m in MODELS]
     colors = [
         "#D97706",  # bc30
-        "#059669",  # film_nwd
+        "#64748B",  # film_nwd
         "#94A3B8",  # chaplot
         "#2563EB",  # v1 spatial_softmax
         "#DC2626",  # v2 res_spatial_softmax
@@ -333,7 +333,17 @@ def make_figure(out: dict, ev: dict) -> None:
 
 
 def main() -> None:
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--plots-only", action="store_true")
+    args = ap.parse_args()
     t0 = time.time()
+    if args.plots_only:
+        out = json.loads((ROOT / "reports/b2_attn_v2_feature_mechanics.json").read_text())
+        ev = json.loads((ROOT / "reports/b2_attn_v2_eval.json").read_text())
+        make_figure(out, ev)
+        print(f"FEATURE MECHANICS FIGURE REBUILT IN {time.time() - t0:.1f}s.")
+        return
     by_env = {}
     for tag, env_id, seeds in [
         ("S6N3", ENV_ID, TEST_SEEDS),

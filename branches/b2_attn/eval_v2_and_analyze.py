@@ -72,7 +72,7 @@ F020_V2_VARIANTS = (
 
 SHORT_LABELS = {
     "bc30": "BC30\n(Concat)",
-    "film_nwd": "FiLM\n(Primary)",
+    "film_nwd": "FiLM\n(Channel)",
     "spatial_attn_gate": "v1:Spatial\nGate",
     "spatial_softmax_attn": "v1:Spatial\nSoftmax",
     "cross_attn_mha": "v1:Cross\nMHA",
@@ -613,7 +613,7 @@ def make_benchmark_figure(ev: dict, f20: dict, pr: dict, fl: dict) -> None:
     ]
     colors = [
         "#D97706",  # bc30
-        "#059669",  # film_nwd
+        "#64748B",  # film_nwd (channel control)
         "#60A5FA",  # v1 gate
         "#2563EB",  # v1 softmax
         "#818CF8",  # v1 mha
@@ -687,7 +687,7 @@ def make_benchmark_figure(ev: dict, f20: dict, pr: dict, fl: dict) -> None:
         ("token_coattn_spatial", "v2:CoAttn"),
         ("mh_spatial_relational", "v2:Rel"),
     ]
-    f20_cols = ["#D97706", "#059669", "#60A5FA", "#2563EB", "#818CF8", "#DC2626", "#B91C1C", "#EA580C", "#7C3AED", "#0F766E"]
+    f20_cols = ["#D97706", "#64748B", "#60A5FA", "#2563EB", "#818CF8", "#DC2626", "#B91C1C", "#EA580C", "#7C3AED", "#0F766E"]
 
     def get_f20_ms(k: str, env_tag: str) -> tuple[float, float]:
         if k == "bc30":
@@ -766,15 +766,16 @@ def make_mechanisms_figure(ev: dict, diag: dict) -> None:
     from eval_and_analyze import draw_egocentric_grid_with_map
 
     fig = plt.figure(figsize=(15.5, 8.6), dpi=300)
-    gs = GridSpec(2, 12, figure=fig, height_ratios=[1.05, 1.0], hspace=0.38, wspace=0.55)
+    gs = GridSpec(2, 12, figure=fig, height_ratios=[1.05, 1.0], hspace=0.40, wspace=0.78)
 
     # Panel (a): Seed 4501 t=2 effective modulation multiplier comparison
     ax_a = fig.add_subplot(gs[0, 0:4])
     models_a = [
-        ("v1_spatial_softmax", "v1:Spatial\nSoftmax"),
-        ("v2_res_spatial_softmax", "v2:Res\nSoftmax"),
-        ("v2_mh_res_spatial_softmax", "v2:MH-Res\nSoftmax"),
-        ("v2_token_coattn_spatial", "v2:Token\nCoAttn"),
+        ("v1_spatial_softmax", "v1:SS"),
+        ("v2_res_spatial_softmax", "v2:ResSS"),
+        ("v2_attn_map_inject_h1", "v2:MapInj\n(h1 raw)"),
+        ("v2_token_coattn_spatial", "v2:CoAttn"),
+        ("v2_mh_spatial_relational", "v2:MH-Rel"),
     ]
     cats = [
         ("target", "Target (blue key)", "#2563EB"),
@@ -783,7 +784,14 @@ def make_mechanisms_figure(ev: dict, diag: dict) -> None:
     ]
     xa = np.arange(len(models_a))
     wa = 0.25
-    mod_data = diag["seed4501_t2_effective_modulation"]
+    mod_data = {
+        **diag["seed4501_t2_effective_modulation"],
+        "v2_attn_map_inject_h1": {
+            "target": {"mean": 1.0, "sd": 0.0},
+            "blocking_yellow_box": {"mean": 1.0, "sd": 0.0},
+            "walls": {"mean": 1.0, "sd": 0.0},
+        },
+    }
     for idx, (ck, clbl, col) in enumerate(cats):
         vals = [mod_data[mk][ck]["mean"] for mk, _ in models_a]
         sds = [mod_data[mk][ck]["sd"] for mk, _ in models_a]
@@ -795,7 +803,7 @@ def make_mechanisms_figure(ev: dict, diag: dict) -> None:
     ax_a.set_xticklabels([lbl for _, lbl in models_a], fontsize=8.0)
     ax_a.set_ylabel("Effective Multiplier on h1 (Seed 4501, t=2)")
     ax_a.set_ylim(0, 18.2)
-    ax_a.set_title("(a) Seed 4501 Obstacle Preservation Check", fontweight="bold")
+    ax_a.set_title("(a) Seed 4501 Obstacle Preservation", fontsize=9.6, fontweight="bold")
     ax_a.grid(axis="y", linestyle="--", alpha=0.35)
     ax_a.legend(fontsize=7.0, frameon=False, loc="upper right")
 
@@ -804,7 +812,7 @@ def make_mechanisms_figure(ev: dict, diag: dict) -> None:
     curve_specs = [
         ("cross_attn_mha", True, "v1:Cross-MHA (abs pos_emb)", "#818CF8", "--", "s"),
         ("cross_mha_nopos", False, "v2:Cross-MHA (NoPE ablation)", "#6D28D9", "-", "D"),
-        ("film_nwd", True, "FiLM-nwd (Channel)", "#059669", ":", "o"),
+        ("film_nwd", True, "FiLM-nwd (Channel)", "#64748B", ":", "o"),
         ("spatial_softmax_attn", True, "v1:Spatial-Softmax", "#2563EB", "--", "^"),
         ("res_spatial_softmax", False, "v2:Res-Spatial-Softmax", "#DC2626", "-", "o"),
         ("mh_res_spatial_softmax", False, "v2:MH-Res-Spatial-Softmax", "#991B1B", "-", "*"),
@@ -819,7 +827,7 @@ def make_mechanisms_figure(ev: dict, diag: dict) -> None:
     ax_b.set_xticklabels(["S6N3\n(6×6 N=3)", "S7N4\n(7×7 N=4)", "S8N6\n(8×8 N=6)"], fontsize=8.2)
     ax_b.set_ylim(0.65, 1.00)
     ax_b.set_ylabel("Closed-loop Success")
-    ax_b.set_title("(b) Cross-Scale Transfer & NoPE Effect", fontweight="bold")
+    ax_b.set_title("(b) Cross-Scale Transfer & NoPE", fontsize=9.6, fontweight="bold")
     ax_b.grid(True, linestyle="--", alpha=0.35)
     ax_b.legend(fontsize=6.7, frameon=False, loc="lower left")
 
@@ -836,7 +844,7 @@ def make_mechanisms_figure(ev: dict, diag: dict) -> None:
     ax_c.set_xticklabels(slots, fontsize=8.2)
     ax_c.set_yticks(np.arange(4))
     ax_c.set_yticklabels([f"Head {i}" for i in range(4)], fontsize=8.2)
-    ax_c.set_title(f"(c) Token-CoAttn Word Weights (mean over {diag['token_coattn_word_weights']['n_episodes_len5']} eps)", fontweight="bold")
+    ax_c.set_title("(c) Token-CoAttn Word Weights (300 eps)", fontsize=9.6, fontweight="bold")
     fig.colorbar(im, ax=ax_c, fraction=0.046, pad=0.04)
 
     # Bottom row: 4 heads 7x7 spatial attention maps (mh_res_spatial_softmax vs token_coattn_spatial - choose best performer among multi-head softmax models!)

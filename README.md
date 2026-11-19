@@ -31,7 +31,7 @@ Rather than treating cross-modal fusion as a black-box accuracy race, this study
    - **Mathematical Contrast**: FiLM broadcasts the *exact same* `(Δγ, Δβ)` to all 49 grid cells with **zero inter-cell competition**, whereas Spatial-Softmax (`α = softmax_49(⟨W_q ℓ, W_k H⟩ / √C)`, `H' = (49·α) ⊙ H`) introduces a global 49-cell partition function where a conjunctive `(color ∧ type)` target suppresses partial-match distractors exponentially by `exp(Δs)`.
    - **Direct Feature-Space Proof (`150` visible-target scenes × `3` seeds, `probe_feature_mechanics.py`)**:
      - Immediately post-fusion (`h_mod`), FiLM's Target / Max-Distractor L2 norm ratio is only **`1.005` (`S6N3`)** and drops below parity to **`0.939` (`S8N6`)** (Chaplot GA: `1.029 / 0.957`), while additive `Δβ` leaks high background drift (**`0.787`** on `S8N6`, spatial selectivity only **`1.90×`**). As distractor count grows (`N = 3 → 4 → 6`), un-suppressed distractor energy accumulates as `O(N-1)`, dragging FiLM down from `0.959 → 0.900 → 0.738` and failing crowded `seed 4502` (`0/3`).
-     - At the **exact same `225,183` parameters**, `Spatial-Softmax` raises `h_mod T/max(D)` to **`7.669×` (`S6N3`) / `5.193×` (`S8N6`)** and spatial selectivity to **`3.59×`**, lifting zero-shot `S7N4` to **`0.964` (`+6.4%`)**, `S8N6` to **`0.887` (`+14.9%`)**, solving `seed 4502` (`3/3`), and hitting **`0.898`** on **20% step-matched data** (`900` episodes, beating `100%`-data `BC30` `0.814` by `+8.4%`!).
+     - At the **exact same `225,183` parameters**, `Spatial-Softmax` raises `h_mod T/max(D)` to **`7.669×` (`S6N3`) / `5.193×` (`S8N6`)** and spatial selectivity to **`3.59×`**, lifting zero-shot `S7N4` to **`0.964` (`+6.4%`)**, `S8N6` to **`0.887` (`+14.9%`)**, solving `seed 4502` (`3/3`), and hitting **`0.802` (`10%`)**, **`0.898` (`20%`**, beating `100%`-data `BC30` `0.814` by `+8.4%`), and **`0.958` (`50%`**, matching `100%`-data `FiLM` `0.959` at half the data!) on step-matched data.
 
 3. **Stage 2 → Stage 3 (`v2 Attention Improvements`) — Three Verified Attention Design Laws**
    - **Law 1 · Translation Equivariance (`NoPE` beats absolute `pos_emb`)**: Standard `Cross-MHA` uses learned `(1, 49, 32)` `pos_emb`, producing the worst `S8N6` background drift (`0.823`) and dropping to `0.747`. Removing `pos_emb` alone (`cross_mha_nopos`) cuts drift to `0.749` and lifts `S8N6` by **`+6.2%` (`0.747 → 0.809`)**.
@@ -119,6 +119,9 @@ OMP_NUM_THREADS=1 env_embodied/bin/python branches/b2_attn/eval_v2_and_analyze.p
 
 # 4. Run hidden-layer feature-space SNR, selectivity & background drift probe
 OMP_NUM_THREADS=1 env_embodied/bin/python branches/b2_attn/probe_feature_mechanics.py
+
+# 5. Train & evaluate step-matched 10% / 50% Attention scaling curves (12 runs)
+bash branches/b2_attn/run_scaling_attn.sh
 ```
 
 ---

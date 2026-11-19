@@ -1,396 +1,46 @@
 {
- "S6N3 BC (patience=5)": "0.747 \u00b1 0.093",
- "S7N4 BC (patience=5)": "0.674 \u00b1 0.082",
- "S6N3 BC30 (controlled)": "0.814 \u00b1 0.045",
- "S7N4 BC30 (controlled)": "0.697 \u00b1 0.056",
- "S6N3 FiLM-nwd (ours)": "0.959 \u00b1 0.006",
- "S7N4 FiLM-nwd (ours)": "0.900 \u00b1 0.021",
- "paired S6N3 FiLM-nwd - BC30": [
-  0.144444,
-  0.043998,
-  [
-   0.086666,
-   0.153333,
-   0.193333
-  ],
-  3
- ],
- "paired S7N4 FiLM-nwd - BC30": [
-  0.203333,
-  0.046508,
-  [
-   0.15,
-   0.196666,
-   0.263333
-  ],
-  3
- ],
- "mean_return bc30": [
-  0.723167,
-  0.03697,
-  [
-   0.7735,
-   0.71025,
-   0.68575
-  ]
- ],
- "mean_return film_nwd": [
-  0.870667,
-  0.005279,
-  [
-   0.87275,
-   0.863417,
-   0.875833
-  ]
- ],
- "val_action_acc bc30": [
-  0.873283,
-  0.013093,
-  [
-   0.889913,
-   0.872017,
-   0.857918
-  ]
- ],
- "val_action_acc film_nwd": [
-  0.97162,
-  0.003817,
-  [
-   0.967462,
-   0.970716,
-   0.976681
-  ]
- ],
- "n_timeout bc30": [
-  55.666667,
-  13.597385,
-  [
-   37,
-   61,
-   69
-  ]
- ],
- "n_timeout film_nwd": [
-  12.333333,
-  1.885618,
-  [
-   11,
-   15,
-   11
-  ]
- ],
- "median_len_success bc30": [
-  4.0,
-  0.0,
-  [
-   4.0,
-   4.0,
-   4.0
-  ]
- ],
- "median_len_success film_nwd": [
-  3.0,
-  0.0,
-  [
-   3.0,
-   3.0,
-   3.0
-  ]
- ],
- "pat5 val_acc": "0.843 \u00b1 0.033",
- "pat5 return": "0.656 \u00b1 0.084",
- "pat5 best_epoch": [
-  26,
-  8,
-  9
- ],
- "trivial": {
-  "trivial:always_forward": 0.06,
-  "trivial:always_left": 0.0,
-  "trivial:random": 0.543333
- },
- "failures_4stage BC30 (Concat)": [
-  38.33,
-  17.33
- ],
- "failures_4stage FiLM (Channel)": [
-  6.33,
-  6
- ],
- "failures_4stage Spatial Softmax": [
-  3.67,
-  5.0
- ],
- "failures_4stage MH-Res +Rel": [
-  2.33,
-  6.0
- ],
- "abl concat_wd": "0.707 \u00b1 0.027",
- "abl concat_wide_wd": "0.718 \u00b1 0.023",
- "abl bc30": "0.814 \u00b1 0.045",
- "abl concat_nwd": "0.836 \u00b1 0.015",
- "abl film_res_wd": "0.938 \u00b1 0.014",
- "abl film_wd": "0.946 \u00b1 0.009",
- "abl film_only_wd": "0.947 \u00b1 0.007",
- "abl film_nwd": "0.959 \u00b1 0.006",
- "probe color_swap_sensitivity BC30 (n=3)": "0.051 \u00b1 0.027",
- "probe color_swap_sensitivity All concat (n=6)": "0.065 \u00b1 0.043",
- "probe color_swap_sensitivity FiLM-nwd (n=3)": "0.268 \u00b1 0.021",
- "probe type_swap_sensitivity BC30 (n=3)": "0.226 \u00b1 0.049",
- "probe type_swap_sensitivity All concat (n=6)": "0.217 \u00b1 0.054",
- "probe type_swap_sensitivity FiLM-nwd (n=3)": "0.299 \u00b1 0.029",
- "probe combined_sensitivity BC30 (n=3)": "0.103 \u00b1 0.013",
- "probe combined_sensitivity All concat (n=6)": "0.111 \u00b1 0.018",
- "probe combined_sensitivity FiLM-nwd (n=3)": "0.278 \u00b1 0.013",
- "mission BC (pat=5)": {
-  "the": [
-   804,
-   0.724
-  ],
-  "a": [
-   96,
-   0.938
-  ],
-  "red": [
-   138,
-   0.746
-  ],
-  "green": [
-   135,
-   0.741
-  ],
-  "blue": [
-   126,
-   0.738
-  ],
-  "purple": [
-   174,
-   0.764
-  ],
-  "yellow": [
-   174,
-   0.73
-  ],
-  "grey": [
-   153,
-   0.758
-  ],
-  "ball": [
-   333,
-   0.733
-  ],
-  "box": [
-   249,
-   0.755
-  ],
-  "key": [
-   318,
-   0.755
-  ]
- },
- "mission BC30": {
-  "the": [
-   804,
-   0.797
-  ],
-  "a": [
-   96,
-   0.958
-  ],
-  "red": [
-   138,
-   0.855
-  ],
-  "green": [
-   135,
-   0.793
-  ],
-  "blue": [
-   126,
-   0.762
-  ],
-  "purple": [
-   174,
-   0.816
-  ],
-  "yellow": [
-   174,
-   0.828
-  ],
-  "grey": [
-   153,
-   0.824
-  ],
-  "ball": [
-   333,
-   0.85
-  ],
-  "box": [
-   249,
-   0.807
-  ],
-  "key": [
-   318,
-   0.783
-  ]
- },
- "mission FiLM-nwd": {
-  "the": [
-   804,
-   0.954
-  ],
-  "a": [
-   96,
-   1.0
-  ],
-  "red": [
-   138,
-   0.978
-  ],
-  "green": [
-   135,
-   0.933
-  ],
-  "blue": [
-   126,
-   0.944
-  ],
-  "purple": [
-   174,
-   0.948
-  ],
-  "yellow": [
-   174,
-   0.948
-  ],
-  "grey": [
-   153,
-   1.0
-  ],
-  "ball": [
-   333,
-   0.952
-  ],
-  "box": [
-   249,
-   0.984
-  ],
-  "key": [
-   318,
-   0.947
-  ]
- },
- "dataeff film_step": {
-  "f010": [
-   0.7333,
-   0.0223
-  ],
-  "f020": [
-   0.8144,
-   0.0228
-  ],
-  "f050": [
-   0.9289,
-   0.0177
-  ],
-  "f100": [
-   0.9589,
-   0.0063
-  ]
- },
- "dataeff bc_step": {
-  "f010": [
-   0.7222,
-   0.0267
-  ],
-  "f020": [
-   0.7422,
-   0.0264
-  ],
-  "f050": [
-   0.7511,
-   0.0227
-  ],
-  "f100": [
-   0.8144,
-   0.0453
-  ]
- },
- "dataeff bc_naive": {
-  "f010": [
-   0.6844,
-   0.0325
-  ],
-  "f020": [
-   0.7133,
-   0.0205
-  ],
-  "f050": [
-   0.7167,
-   0.0213
-  ],
-  "f100": [
-   0.8144,
-   0.0453
-  ]
- },
- "pat5 data eff csv": "frac,n_episodes,val_acc,closed_loop_success,success_sd\n0.2,900,0.8095,0.7322,0.0068\n0.5,2250,0.8171,0.7467,0.0119\n1.0,4500,0.8733,0.8144,0.0453\n",
- "curve best val_acc b3_bc30": [
-  0.889913,
-  0.872017,
-  0.857918
- ],
- "curve best val_acc b2_film_nwd": [
-  0.967462,
-  0.970716,
-  0.976681
- ],
- "pat5 history len seed0": 30,
- "pat5 history len seed1": 13,
- "pat5 history len seed2": 14,
- "b2_attn bc30 S6N3": "0.814 \u00b1 0.045",
- "b2_attn film_nwd S6N3": "0.959 \u00b1 0.006",
- "b2_attn spatial_attn_gate S6N3": "0.963 \u00b1 0.012",
- "b2_attn spatial_softmax_attn S6N3": "0.971 \u00b1 0.003",
- "b2_attn cross_attn_mha S6N3": "0.966 \u00b1 0.004",
- "b2_attn film_spatial_attn S6N3": "0.959 \u00b1 0.006",
- "b2_attn film_cross_mha S6N3": "0.963 \u00b1 0.003",
- "b2_attn bc30 S7N4": "0.697 \u00b1 0.056",
- "b2_attn film_nwd S7N4": "0.900 \u00b1 0.021",
- "b2_attn spatial_attn_gate S7N4": "0.929 \u00b1 0.037",
- "b2_attn spatial_softmax_attn S7N4": "0.964 \u00b1 0.010",
- "b2_attn cross_attn_mha S7N4": "0.890 \u00b1 0.039",
- "b2_attn film_spatial_attn S7N4": "0.939 \u00b1 0.023",
- "b2_attn film_cross_mha S7N4": "0.926 \u00b1 0.008",
- "b2_attn bc30 S8N6": "0.490 \u00b1 0.019",
- "b2_attn film_nwd S8N6": "0.738 \u00b1 0.031",
- "b2_attn spatial_attn_gate S8N6": "0.808 \u00b1 0.029",
- "b2_attn spatial_softmax_attn S8N6": "0.887 \u00b1 0.018",
- "b2_attn cross_attn_mha S8N6": "0.747 \u00b1 0.054",
- "b2_attn film_spatial_attn S8N6": "0.788 \u00b1 0.043",
- "b2_attn film_cross_mha S8N6": "0.794 \u00b1 0.021",
- "b2_attn_f020 spatial_attn_gate": "0.850 \u00b1 0.011",
- "b2_attn_f020 cross_attn_mha": "0.867 \u00b1 0.026",
- "b2_attn_f020 film_spatial_attn": "0.848 \u00b1 0.038",
- "b2_attn_probe bc30": 0.051,
- "b2_attn_4502 bc30": 0,
- "b2_attn_4501 bc30": 1,
- "b2_attn_probe film_nwd": 0.268,
- "b2_attn_4502 film_nwd": 0,
- "b2_attn_4501 film_nwd": 2,
- "b2_attn_probe spatial_attn_gate": 0.271,
- "b2_attn_4502 spatial_attn_gate": 3,
- "b2_attn_4501 spatial_attn_gate": 1,
- "b2_attn_probe spatial_softmax_attn": 0.295,
- "b2_attn_4502 spatial_softmax_attn": 3,
- "b2_attn_4501 spatial_softmax_attn": 1,
- "b2_attn_probe cross_attn_mha": 0.285,
- "b2_attn_4502 cross_attn_mha": 2,
- "b2_attn_4501 cross_attn_mha": 3,
- "b2_attn_probe film_spatial_attn": 0.263,
- "b2_attn_4502 film_spatial_attn": 1,
- "b2_attn_4501 film_spatial_attn": 1,
- "b2_attn_probe film_cross_mha": 0.295,
- "b2_attn_4502 film_cross_mha": 1,
- "b2_attn_4501 film_cross_mha": 1
+ "mission_v2 BC30 (Concat) the": 0.797,
+ "mission_v2 BC30 (Concat) a": 0.958,
+ "mission_v2 BC30 (Concat) red": 0.855,
+ "mission_v2 BC30 (Concat) green": 0.793,
+ "mission_v2 BC30 (Concat) blue": 0.762,
+ "mission_v2 BC30 (Concat) purple": 0.816,
+ "mission_v2 BC30 (Concat) yellow": 0.828,
+ "mission_v2 BC30 (Concat) grey": 0.824,
+ "mission_v2 BC30 (Concat) ball": 0.85,
+ "mission_v2 BC30 (Concat) box": 0.807,
+ "mission_v2 BC30 (Concat) key": 0.783,
+ "mission_v2 Channel FiLM (ctrl) the": 0.954,
+ "mission_v2 Channel FiLM (ctrl) a": 1.0,
+ "mission_v2 Channel FiLM (ctrl) red": 0.978,
+ "mission_v2 Channel FiLM (ctrl) green": 0.933,
+ "mission_v2 Channel FiLM (ctrl) blue": 0.944,
+ "mission_v2 Channel FiLM (ctrl) purple": 0.948,
+ "mission_v2 Channel FiLM (ctrl) yellow": 0.948,
+ "mission_v2 Channel FiLM (ctrl) grey": 1.0,
+ "mission_v2 Channel FiLM (ctrl) ball": 0.952,
+ "mission_v2 Channel FiLM (ctrl) box": 0.984,
+ "mission_v2 Channel FiLM (ctrl) key": 0.947,
+ "mission_v2 Ours: Spatial-SS the": 0.968,
+ "mission_v2 Ours: Spatial-SS a": 1.0,
+ "mission_v2 Ours: Spatial-SS red": 0.978,
+ "mission_v2 Ours: Spatial-SS green": 0.941,
+ "mission_v2 Ours: Spatial-SS blue": 0.96,
+ "mission_v2 Ours: Spatial-SS purple": 0.983,
+ "mission_v2 Ours: Spatial-SS yellow": 0.966,
+ "mission_v2 Ours: Spatial-SS grey": 0.993,
+ "mission_v2 Ours: Spatial-SS ball": 0.967,
+ "mission_v2 Ours: Spatial-SS box": 1.0,
+ "mission_v2 Ours: Spatial-SS key": 0.953,
+ "mission_v2 Ours: MH-Rel the": 0.97,
+ "mission_v2 Ours: MH-Rel a": 0.99,
+ "mission_v2 Ours: MH-Rel red": 0.978,
+ "mission_v2 Ours: MH-Rel green": 0.956,
+ "mission_v2 Ours: MH-Rel blue": 0.968,
+ "mission_v2 Ours: MH-Rel purple": 0.96,
+ "mission_v2 Ours: MH-Rel yellow": 0.977,
+ "mission_v2 Ours: MH-Rel grey": 0.993,
+ "mission_v2 Ours: MH-Rel ball": 0.961,
+ "mission_v2 Ours: MH-Rel box": 0.992,
+ "mission_v2 Ours: MH-Rel key": 0.969
 }

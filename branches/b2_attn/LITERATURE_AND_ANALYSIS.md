@@ -116,7 +116,7 @@ Each `v2` architecture (`branches/b2_attn/attn_v2_net.py`) isolates one literatu
 5. **Channel-Only Gating (`FiLM` & `Chaplot GA`) vs Spatial-Relational Attention (Unbiased Summary)**:
    - On nearly **every Track 2 metric**, well-structured Attention surpasses channel FiLM (`225k–230k` matched parameter budget):
      - Best **In-Distribution (`S6N3`) & Lowest Representation Error**: **`mh_spatial_relational`** (`0.972 ± 0.004`, `8.3` total / `2.3` repr failures, `4501 = 3/3`, `4502 = 3/3`) vs `FiLM-nwd` (`0.959`, `12.3` / `6.3` fails, `4502 = 0/3`).
-     - Best **Zero-Shot Cross-Scale Generalization (`S7N4` / `S8N6`) & Low-Data Efficiency (`20%` Data)**: **`spatial_softmax_attn`** (`S7N4 = 0.964`, `S8N6 = 0.887`, `20% S6 = 0.898`, `20% S7 = 0.854`) and **`res_spatial_softmax`** (`S7N4 = 0.960`, `S8N6 = 0.888`, `20% S6 = 0.886`) outperform `FiLM-nwd` (`S7N4 = 0.900`, `S8N6 = 0.738`, `20% S6 = 0.814`, `20% S7 = 0.750`) by **`+6.4%` (`S7N4`), `+15.0%` (`S8N6`), and `+8.4%` (`20% S6N3`)**. Notably, `spatial_softmax_attn` trained on **20% data (`900` episodes)** achieves **`0.898`**, exceeding 100%-data `BC30` (`0.814`) by `+8.4%`.
+     - Best **Zero-Shot Cross-Scale Generalization (`S7N4` / `S8N6`) & Low-Data Efficiency (`20%` Data)**: **`spatial_softmax_attn`** (`S7N4 = 0.964`, `S8N6 = 0.887`, `20% S6 = 0.898`, `20% S7 = 0.854`) and **`res_spatial_softmax`** (`S7N4 = 0.960`, `S8N6 = 0.888`, `20% S6 = 0.886`) outperform `FiLM-nwd` (`S7N4 = 0.900`, `S8N6 = 0.738`, `20% S6 = 0.814`, `20% S7 = 0.750`) by **`+6.4%` (`S7N4`), `+15.0%` (`S8N6`), and `+8.4%` (`20% S6N3`)**. Notably, `spatial_softmax_attn` trained on **20% data (`900` episodes)** achieves **`0.802 ± 0.007` at `10%` data (`450` eps)**, **`0.898 ± 0.009` at `20%` data (`900` eps**, exceeding 100%-data `BC30` `0.814` by `+8.4%`), and **`0.958 ± 0.006` at `50%` data (`2,250` eps**, matching 100%-data `FiLM` `0.959` with half the expert episodes; `reports/b2_attn_v2_scaling.json`).
 
 ---
 
@@ -147,6 +147,6 @@ To verify the underlying mathematical cause of **why Spatial/Relational Attentio
 - Architecture definitions: `branches/b2_attn/attn_v2_net.py`
 - Training script & batch runner: `branches/b2_attn/train_attn_v2.py`, `branches/b2_attn/run_train_v2_all.sh`
 - Evaluation, probes, taxonomy & diagnostics scripts: `branches/b2_attn/eval_v2_and_analyze.py`, `branches/b2_attn/probe_feature_mechanics.py`
-- Structured JSON outputs: `reports/b2_attn_v2_{eval,f020_eval,probe,failures,diagnostics,feature_mechanics}.json`
+- Structured JSON outputs: `reports/b2_attn_v2_{eval,f020_eval,scaling,probe,failures,diagnostics,feature_mechanics}.json`
 - Auto-generated tables: `reports/b2_attn_v2_summary.md`
 - 300-DPI figures: `reports/figures/b2_attn/b2_attn_v2_{benchmark,mechanisms,feature_mechanics}.png`
