@@ -1,0 +1,89 @@
+{
+  "branch": "b3_dagger",
+  "variant": "v2_film_dag_w1",
+  "run": "runs/b3_v2_film_dag_w1_seed1",
+  "git_commit": "84dfe11897d4f7bdbd8e05427d86e60ee07add86",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seed": 1,
+  "arch": {
+    "img_mode": "embed",
+    "obj_emb_dim": 8,
+    "lang_dim": 32,
+    "hidden": 128,
+    "dropout": 0.0,
+    "n_params": 225183,
+    "variant": "film"
+  },
+  "optim": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "film_l2": 0.001,
+    "intv_weight": 1.0,
+    "batch_size": 128,
+    "max_epochs": 30,
+    "early_stop_patience": 0,
+    "early_stop_metric": "val_action_accuracy"
+  },
+  "data": {
+    "official_data": "data/expert_5000.pkl",
+    "n_expert_train": 4500,
+    "n_expert_transitions": 16534,
+    "n_extra_episodes": 1499,
+    "n_extra_transitions_kept": 5700,
+    "n_disagree_transitions_kept": 231,
+    "n_extra_oracle_queries": 6015,
+    "total_oracle_labels": 22549,
+    "n_train_episodes": 5999,
+    "n_train_transitions": 22234,
+    "n_val_episodes": 500,
+    "n_val_transitions": 1844,
+    "dedup": "cross",
+    "dedup_key": "idm",
+    "extra_meta": {
+      "dedup": "cross",
+      "key_mode": "idm",
+      "n_raw_total": 6015,
+      "n_kept_total": 5700,
+      "n_disagree_kept_total": 231,
+      "n_oracle_queries_total": 6015,
+      "sources": [
+        {
+          "path": "data/b3_v2_film_r1_s1.pkl",
+          "n_raw": 6015,
+          "n_kept": 5700,
+          "n_disagree_kept": 231,
+          "n_oracle_queries": 6015,
+          "branch": "b3_dagger_v2",
+          "exec_mode": "unstick",
+          "query_gate": "all",
+          "beta": null,
+          "margin_thresh": null,
+          "policy_run": "runs/b2_film_nwd_seed1",
+          "ensemble_runs": [],
+          "policy_val_acc": 0.970716,
+          "env_id": "BabyAI-GoToLocalS6N3-v0",
+          "seed_pool": "fresh_r1",
+          "seed_range": "5300:6800",
+          "n_episodes_rolled": 1500,
+          "n_episodes_nonempty": 1500,
+          "n_env_steps": 6015,
+          "query_rate": 1.0,
+          "n_transitions_saved": 6015,
+          "n_disagree_saved": 319,
+          "n_unsticks": 113,
+          "rollout_terminated_rate": 1.0,
+          "elapsed_sec": 6.11
+        }
+      ]
+    }
+  },
+  "result": {
+    "best_val_acc": 0.97885,
+    "best_epoch": 30,
+    "epochs_run": 30,
+    "train_seconds": 81.74,
+    "onpolicy_action_acc": 0.9375,
+    "onpolicy_recovery_acc": 0.748582
+  }
+}

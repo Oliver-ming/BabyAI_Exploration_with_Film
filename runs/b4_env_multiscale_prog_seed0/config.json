@@ -1,0 +1,55 @@
+{
+  "branch": "b4_curriculum",
+  "variant": "env_multiscale_prog",
+  "run": "runs/b4_env_multiscale_prog_seed0",
+  "git_commit": "84dfe11897d4f7bdbd8e05427d86e60ee07add86",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seed": 0,
+  "arch": {
+    "model_type": "bcnet",
+    "variant": "env_multiscale_prog",
+    "img_mode": "embed",
+    "obj_emb_dim": 8,
+    "lang_dim": 32,
+    "hidden": 128,
+    "dropout": 0.0,
+    "n_params": 223071,
+    "use_film": false,
+    "use_concat": true
+  },
+  "curriculum": {
+    "block": "B_cross_env",
+    "curriculum_family": "multiscale_s5_s6_s8",
+    "stage_desc": "ep1-12: S5N2+S6N3 (3000); ep13-30: S5N2+S6N3+S6N4+S8N6 (4500)",
+    "pool_env_counts": {
+      "BabyAI-GoToLocalS5N2-v0": 750,
+      "BabyAI-GoToLocalS6N4-v0": 750,
+      "BabyAI-GoToLocalS8N6-v0": 750,
+      "BabyAI-GoToLocalS6N3-v0": 2250
+    },
+    "use_film": false
+  },
+  "optim": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "film_l2": 0.0,
+    "batch_size": 128,
+    "epochs": 30,
+    "step_matched_sampler": true,
+    "early_stop": "none（跑满 30 epoch，仅以 S6N3 val_acc 事后选优）"
+  },
+  "data": {
+    "data_dir": "data",
+    "n_train_episodes": 4500,
+    "n_train_transitions": 17156,
+    "n_val_episodes": 500,
+    "n_val_transitions": 1844,
+    "val_env_id": "BabyAI-GoToLocalS6N3-v0"
+  },
+  "result": {
+    "best_val_acc": 0.885575,
+    "best_epoch": 26,
+    "train_seconds": 68.76
+  }
+}

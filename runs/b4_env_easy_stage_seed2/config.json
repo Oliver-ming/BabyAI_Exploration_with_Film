@@ -1,0 +1,53 @@
+{
+  "branch": "b4_curriculum",
+  "variant": "env_easy_stage",
+  "run": "runs/b4_env_easy_stage_seed2",
+  "git_commit": "84dfe11897d4f7bdbd8e05427d86e60ee07add86",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seed": 2,
+  "arch": {
+    "model_type": "bcnet",
+    "variant": "env_easy_stage",
+    "img_mode": "embed",
+    "obj_emb_dim": 8,
+    "lang_dim": 32,
+    "hidden": 128,
+    "dropout": 0.0,
+    "n_params": 223071,
+    "use_film": false,
+    "use_concat": true
+  },
+  "curriculum": {
+    "block": "B_cross_env",
+    "curriculum_family": "s5n2_to_s6n3_sequential",
+    "stage_desc": "ep1-10: S5N2 only (1500); ep11-30: S6N3 only (3000) [non-cumulative]",
+    "pool_env_counts": {
+      "BabyAI-GoToLocalS5N2-v0": 1500,
+      "BabyAI-GoToLocalS6N3-v0": 3000
+    },
+    "use_film": false
+  },
+  "optim": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "film_l2": 0.0,
+    "batch_size": 128,
+    "epochs": 30,
+    "step_matched_sampler": true,
+    "early_stop": "none（跑满 30 epoch，仅以 S6N3 val_acc 事后选优）"
+  },
+  "data": {
+    "data_dir": "data",
+    "n_train_episodes": 4500,
+    "n_train_transitions": 15437,
+    "n_val_episodes": 500,
+    "n_val_transitions": 1844,
+    "val_env_id": "BabyAI-GoToLocalS6N3-v0"
+  },
+  "result": {
+    "best_val_acc": 0.866052,
+    "best_epoch": 28,
+    "train_seconds": 64.7
+  }
+}

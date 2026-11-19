@@ -1,0 +1,61 @@
+{
+  "branch": "b5_data_eff",
+  "method": "bc_c4",
+  "frac": 0.2,
+  "frac_tag": "f020",
+  "run": "runs/b5_bc_c4_f020_seed2",
+  "git_commit": "84dfe11897d4f7bdbd8e05427d86e60ee07add86",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seed": 2,
+  "arch": {
+    "arch_type": "bcnet",
+    "variant": "bcnet",
+    "obj_emb_dim": 8,
+    "lang_dim": 32,
+    "hidden": 128,
+    "dropout": 0.0,
+    "n_params": 223071,
+    "use_film": false
+  },
+  "method_cfg": {
+    "arch": "bcnet",
+    "step_match": true,
+    "aug": "c4",
+    "dropout": 0.0,
+    "label_smoothing": 0.0,
+    "cosine_lr": true,
+    "weight_decay": 0.0,
+    "act_balance": false,
+    "family": "ablation_f020",
+    "desc": "仅指南针方向 C4 (4x) 等变增广 + CosineLR"
+  },
+  "optim": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "cosine_lr": true,
+    "weight_decay": 0.0,
+    "label_smoothing": 0.0,
+    "act_balance": false,
+    "batch_size": 128,
+    "epochs": 30,
+    "step_match": true,
+    "total_grad_steps": 3900,
+    "early_stop": "none（跑满 30 epoch，仅按 val_acc 事后选优）"
+  },
+  "data": {
+    "path": "data/expert_5000.pkl",
+    "frac": 0.2,
+    "n_train_episodes": 900,
+    "n_raw_transitions": 3317,
+    "n_aug_transitions": 13268,
+    "n_val_episodes": 500,
+    "n_val_transitions": 1844
+  },
+  "result": {
+    "best_val_acc": 0.797722,
+    "train_acc_at_best": 0.845712,
+    "generalization_gap": 0.04799,
+    "best_epoch": 5,
+    "train_seconds": 68.89
+  }
+}

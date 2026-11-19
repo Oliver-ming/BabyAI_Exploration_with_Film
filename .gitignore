@@ -19,3 +19,16 @@ data/*.pkl
 # 系统
 .DS_Store
 *.log
+
+# Written report deliverables (excluded from GitHub push; kept locally on 4090)
+reports/AIAA4220_Project3_Report_*.docx
+reports/AIAA4220_Project3_Report_*.pdf
+reports/FINAL_REPORT_*.md
+
+# Auxiliary run binaries (already-tracked baseline/b2_film/b3_bc30 checkpoints stay tracked;
+# all config.json / history.json / vocab.json stay tracked for full traceability)
+runs/*/*.pt
+runs/*/*.npz
+logs/
+~$*.pptx
+~$*.docx

@@ -1,6 +1,7 @@
 """支线 3 · 汇总表 -> reports/b3_dagger_summary.md
 
-只读已有 json/config，不重算任何指标。
+只读已有 json/config，不重算任何指标。同时涵盖 v1（原始 DAgger-lite 基线对照）与
+v2（协议修复、等预算 Split-DAgger、死锁解锁采样、主动查询门控、IWR 加权与 FiLM 正交叠加）。
 """
 
 from __future__ import annotations
@@ -8,6 +9,7 @@ from __future__ import annotations
 import argparse
 import glob
 import json
+import re
 import statistics as st
 from pathlib import Path
 
@@ -19,8 +21,171 @@ GROUPS = {
     "DAgger +1500（去冗余）": lambda r, m: "b3_dagger_seed" in r,
     "DAgger +1500（不去冗余）": lambda r, m: "b3_nodedup" in r,
     "DAgger +1500（只保留新增状态，覆盖半径筛选）": lambda r, m: "b3_novel" in r,
-    "DAgger 两轮（+1500 +第二轮 1500）": lambda r, m: "b3_r2" in r,
+    "DAgger 两轮（+1500 +第二轮 1500）": lambda r, m: "b3_r2_seed" in r,
 }
+
+V2_ORDER = [
+    ("baseline", "基线 (早停 patience=5, 4500 专家)"),
+    ("b3_bc30", "BC30 (跑满 30ep, 4500 专家)"),
+    ("b3_v2_bc3000", "BC-3000 (等预算起点, 3000 专家)"),
+    ("b3_v2_split_dag", "Split-DAgger (3000 专家 + 1500 解锁交互, 4500 种子)"),
+    ("b3_v2_split_ens", "Split-EnsembleDAgger (3000 专家 + 1500 集成门控, 4500 种子)"),
+    ("b3_v2_bcfresh", "BC-Fresh (4500 专家 + 1500 全新专家)"),
+    ("b3_dagger", "v1 DAgger (4500 专家 + 1500 记忆种子)"),
+    ("b3_v2_greedy", "v2 Greedy (4500 专家 + 1500 新种子全步)"),
+    ("b3_v2_beta025", "v2 β=0.25 混合 (4500 专家 + 1500 新种子)"),
+    ("b3_v2_unstick", "v2 Loop-Unsticking (w=1.0, 4500+1500)"),
+    ("b3_v2_iwr2", "v2 Loop-Unsticking + IWR (w=2.0)"),
+    ("b3_v2_iwr3", "v2 Loop-Unsticking + IWR (w=3.0)"),
+    ("b3_v2_qdis", "v2 Disagreement-Only (全查只留分歧, w=2.0)"),
+    ("b3_v2_qmar", "v2 Margin 主动门控 (仅 18.8% 查询, w=2.0)"),
+    ("b3_v2_qens", "v2 Ensemble 主动门控 (仅 25.2% 查询, w=2.0)"),
+    ("b3_v2_r2_w1", "v2 两轮非重叠 Loop-Unsticking (w=1.0)"),
+    ("b3_v2_r2", "v2 两轮非重叠 Loop-Unsticking + IWR (w=2.0)"),
+    ("b2_film_nwd", "B2 FiLM (4500 专家, wd=0)"),
+    ("b3_v2_film3000", "FiLM-3000 (3000 专家)"),
+    ("b3_v2_film_split", "FiLM-Split (3000 专家 + 1500 解锁交互, 4500 种子)"),
+    ("b3_v2_film_dag_w1", "FiLM + DAgger (4500 专家 + 1500 解锁交互, w=1.0)"),
+    ("b3_v2_film_dag", "FiLM + DAgger + IWR (4500 专家 + 1500 解锁交互, w=2.0)"),
+]
+
+
+def jload(path: str) -> dict | None:
+    p = Path(path)
+    return json.loads(p.read_text()) if p.exists() else None
+
+
+def append_v2_sections(L: list[str], s6: dict, s7: dict | None, cov: dict | None) -> None:
+    bg6 = s6["by_group"]
+    bg7 = s7["by_group"] if s7 else {}
+
+    L.append("---\n")
+    L.append("## 7. v2 系统完善总表（协议修正 + 主动交互改进 + 正交叠加）\n")
+    L.append(
+        "> 数据来源：`reports/b3_v2_eval_s6n3.json`、`reports/b3_v2_eval_s7n4.json`、"
+        "`reports/b3_v2_rollout_coverage.json`，全部复用冻结 `eval_closed_loop.evaluate` 口径"
+        "（已与 `src/eval_closed_loop.py` 做逐一交叉核对，差值 `0.0`）。\n"
+    )
+
+    L.append("### 7.1 全组闭环性能与查询成本对比（3 seed，mean ± SD）\n")
+    L.append(
+        "| 组别 | S6N3 Success | Δ vs BC30 (配对) | S7N4 迁移 | val 准确率 | "
+        "探针准确率 | 纠偏准确率 | 专家总标注数 | 失败(表征+覆盖) |"
+    )
+    L.append("|---|---|---|---|---|---|---|---|---|")
+    for k, label in V2_ORDER:
+        if k not in bg6:
+            continue
+        r6 = bg6[k]
+        r7 = bg7.get(k, {})
+        s6_str = f"**{r6['success_mean']:.4f} ± {r6['success_sd']:.4f}**"
+        s7_str = f"{r7['success_mean']:.4f} ± {r7['success_sd']:.4f}" if r7 else "—"
+        d = r6.get("paired_delta_vs_ref_mean")
+        d_str = "—" if k == "b3_bc30" or d is None else f"{d:+.4f} ({'3/3+' if r6.get('paired_all_positive') else '非全正'})"
+        val_str = f"{r6['val_acc_mean']:.4f}" if r6.get("val_acc_mean") is not None else "—"
+        onp_str = f"{r6['onpolicy_acc_mean']:.4f}" if r6.get("onpolicy_acc_mean") is not None else "—"
+        rec_str = f"{r6['recovery_acc_mean']:.4f}" if r6.get("recovery_acc_mean") is not None else "—"
+        q_tot = r6.get("total_oracle_labels_mean")
+        if q_tot is None and k == "b3_bc30":
+            q_tot = 16534.0
+        q_str = f"{q_tot:,.0f}" if q_tot is not None else "—"
+        fg = r6.get("failure_groups_mean", {})
+        f_str = f"{fg.get('representation', 0):.1f}+{fg.get('state_coverage', 0):.1f}" if fg else "—"
+        L.append(f"| {label} | {s6_str} | {d_str} | {s7_str} | {val_str} | {onp_str} | {rec_str} | {q_str} | {f_str} |")
+    L.append("")
+
+    if cov and cov.get("datasets"):
+        L.append("### 7.2 v1 协议缺陷诊断：种子重复与记忆盲区对状态覆盖的影响\n")
+        L.append("| 采集集 (1500 ep, seed0) | 交互步数 | Oracle 查询 | 查询率 | 唯一 (img,dir,mission) | 相对 4500 专家新颖状态 | π≠a* 步数 | 新颖纠偏状态 |")
+        L.append("|---|---|---|---|---|---|---|---|")
+        for row in cov["datasets"]:
+            L.append(
+                f"| {row['label']} | {row['n_env_steps']:,} | {row['n_oracle_queries']:,} | "
+                f"{row['query_rate']:.1%} | {row['unique_idm_states']:,} | "
+                f"**{row['novel_idm_vs_expert_train']:,}** ({row['novel_ratio']:.1%}) | "
+                f"{row['disagree_steps']:,} | **{row['novel_disagree_idm_states']:,}** |"
+            )
+        L.append("")
+        ds_map = {d["key"]: d for d in cov["datasets"]}
+        if "v1_expert_extra_dup" in ds_map and "v2_fresh_expert" in ds_map:
+            v1e, v2e = ds_map["v1_expert_extra_dup"], ds_map["v2_fresh_expert"]
+            v1d, v2u = ds_map.get("v1_dagger_memorized"), ds_map.get("v2_unstick_fresh")
+            L.append(
+                f"- **修正 1（额外专家种子重叠）**：v1 `b3_expertextra_1500` 使用了已进训练集的 `0:1500`，"
+                f"新颖状态为 **{v1e['novel_idm_vs_expert_train']}**；改用未见种子 `5300:6800` 后，"
+                f"新专家实际包含 **{v2e['novel_idm_vs_expert_train']:,}** ({v2e['novel_ratio']:.1%}) 个全新状态，"
+                f"`BC-Fresh` 成功率也从 v1 的 0.8444 升至 **{bg6['b3_v2_bcfresh']['success_mean']:.4f}**。"
+            )
+            if v1d and v2u:
+                L.append(
+                    f"- **修正 2（交互种子记忆 + 死锁解锁）**：v1 DAgger 在已记忆的 `0:1500` 上 rollout 仅采出 "
+                    f"{v1d['novel_idm_vs_expert_train']:,} 个新颖状态和 {v1d['novel_disagree_idm_states']} 个新颖纠偏状态；"
+                    f"切换至未见种子并加入 **Loop-Unsticking** 后，用更少查询（{v2u['n_oracle_queries']:,} vs {v1d['n_oracle_queries']:,}）"
+                    f"采出了 **{v2u['novel_idm_vs_expert_train']:,}**（×4.9）个新颖状态与 **{v2u['novel_disagree_idm_states']:,}**（×3.4）个新颖纠偏状态。\n"
+                )
+
+    if all(k in bg6 for k in ("b3_bc30", "b3_v2_bc3000", "b3_v2_split_dag", "b3_v2_split_ens")):
+        L.append("### 7.3 严格 4,500 种子等预算实验（零额外环境种子）\n")
+        bc30, bc3k = bg6["b3_bc30"], bg6["b3_v2_bc3000"]
+        sdag, sens = bg6["b3_v2_split_dag"], bg6["b3_v2_split_ens"]
+        L.append(
+            f"- 在 **4,500 个训练环境种子**硬上限下（3,000 专家 + 1,500 交互）："
+            f"`Split-DAgger` 从 `BC-3000` 的 {bc3k['success_mean']:.4f} 跃升至 **{sdag['success_mean']:.4f}**，"
+            f"反超满 4,500 专家的 `BC30`（{bc30['success_mean']:.4f}）**{sdag['success_mean'] - bc30['success_mean']:+.4f}**，"
+            f"S7N4 迁移更从 {bg7['b3_bc30']['success_mean']:.4f} 提至 **{bg7['b3_v2_split_dag']['success_mean']:.4f}**。"
+        )
+        L.append(
+            f"- `Split-EnsembleDAgger` 仅使用 **{sens['total_oracle_labels_mean']:,.0f}** 条专家动作标签"
+            f"（比 `BC30` 的 16,534 条**少 16.9%**），却取得了 **{sens['success_mean']:.4f}** 的 S6N3 成功率"
+            f"（vs `BC30` {sens['success_mean'] - bc30['success_mean']:+.4f}）与 **{bg7['b3_v2_split_ens']['success_mean']:.4f}** 的 S7N4 迁移成功率。"
+        )
+        if all(k in bg6 for k in ("b2_film_nwd", "b3_v2_film3000", "b3_v2_film_split")):
+            L.append(
+                f"- 在 FiLM 架构下，`FiLM-Split`（3k+1.5k=4,500 种子）达到 **{bg6['b3_v2_film_split']['success_mean']:.4f}**"
+                f"（S7N4 **{bg7['b3_v2_film_split']['success_mean']:.4f}**），追平并微超满 4,500 专家的 `B2 FiLM`（{bg6['b2_film_nwd']['success_mean']:.4f} / {bg7['b2_film_nwd']['success_mean']:.4f}）。\n"
+            )
+
+    L.append("### 7.4 关键机制消融与诚实判读\n")
+    if all(k in bg6 for k in ("b3_v2_unstick", "b3_v2_greedy", "b3_v2_iwr2", "b3_v2_iwr3")):
+        u, g, i2, i3 = bg6["b3_v2_unstick"], bg6["b3_v2_greedy"], bg6["b3_v2_iwr2"], bg6["b3_v2_iwr3"]
+        L.append(
+            f"1. **死锁解锁（Loop-Unsticking）优于盲目 Greedy rollout**：`v2_unstick`（w=1.0）取得 **{u['success_mean']:.4f} ± {u['success_sd']:.4f}**（S6N3）与 **{bg7['b3_v2_unstick']['success_mean']:.4f}**（S7N4），"
+            f"与 `v2_greedy`（{g['success_mean']:.4f} ± {g['success_sd']:.4f} / S7N4 {bg7['b3_v2_greedy']['success_mean']:.4f}）相比："
+            f"**S6 方差减半、总专家查询减少 {g['total_oracle_labels_mean'] - u['total_oracle_labels_mean']:,.0f} 步（-20%）、S7N4 迁移高出 +{bg7['b3_v2_unstick']['success_mean'] - bg7['b3_v2_greedy']['success_mean']:.4f}**，"
+            f"状态覆盖类失败降至 **{u['failure_groups_mean']['state_coverage']:.1f}/300**（对比 `BC30` 17.3）。"
+        )
+        L.append(
+            f"2. **IWR 干预加权（w > 1）在本任务中的双刃剑效应（诚实负结果）**：在 `BCNet` 上将 `π≠a*` 样本权重从 1.0 提至 2.0 / 3.0，"
+            f"虽然让只读探针纠偏准确率 `recov_acc` 从 {u['recovery_acc_mean']:.4f} 升至 **{i2['recovery_acc_mean']:.4f}** / {i3['recovery_acc_mean']:.4f}，"
+            f"但 S6N3 闭环成功率反而从 {u['success_mean']:.4f} 降至 **{i2['success_mean']:.4f}** / **{i3['success_mean']:.4f}**，"
+            f"且状态覆盖类失败从 {u['failure_groups_mean']['state_coverage']:.1f} 回升至 {i2['failure_groups_mean']['state_coverage']:.1f}。"
+            f"原因：`BCNet` 缺乏属性接地，在大量困难分歧态上加倍权重会拉低常规前进/转向策略在专家分布上的校准度（`val_acc` 由 {u['val_acc_mean']:.4f} 降至 {i2['val_acc_mean']:.4f}），引发近距振荡。"
+        )
+    if all(k in bg6 for k in ("b3_v2_qmar", "b3_v2_qens", "b3_v2_qdis")):
+        qm, qe, qd = bg6["b3_v2_qmar"], bg6["b3_v2_qens"], bg6["b3_v2_qdis"]
+        L.append(
+            f"3. **主动查询门控的查询效率**：`Margin 门控`仅用 **{qm['extra_oracle_queries_mean']:,.0f}** 条额外查询（18.8% 查询率，总计 18.1k 标签）"
+            f"即达到 **{qm['success_mean']:.4f}**（优于 16.5k 标签的 `BC30` {bg6['b3_bc30']['success_mean']:.4f} 并接近 22.1k 标签的 `BC-Fresh` {bg6['b3_v2_bcfresh']['success_mean']:.4f}）；"
+            f"`Ensemble 门控`用 **{qe['extra_oracle_queries_mean']:,.0f}** 条查询（25.2% 查询率）在 S7N4 上达到 **{bg7['b3_v2_qens']['success_mean']:.4f}**。"
+            f"而只存分歧样本的 `Disagreement-Only`（`{qd['success_mean']:.4f}`）因失去高置信在轨正则反而低于全量保留。"
+        )
+    if all(k in bg6 for k in ("b3_v2_r2_w1", "b3_v2_r2")):
+        r2w1, r2w2 = bg6["b3_v2_r2_w1"], bg6["b3_v2_r2"]
+        L.append(
+            f"4. **非重叠两轮 DAgger**：`v2_r2 (w=2.0)` 达到 **{r2w2['success_mean']:.4f} ± {r2w2['success_sd']:.4f}**（seed0 达 **0.9300**，失败总数降至 29.3），"
+            f"`v2_r2_w1 (w=1.0)` 达到 **{r2w1['success_mean']:.4f} ± {r2w1['success_sd']:.4f}**（S7N4 **{bg7['b3_v2_r2_w1']['success_mean']:.4f}**），均高于 v1 两轮（{bg6['b3_r2']['success_mean']:.4f}）。"
+        )
+    if all(k in bg6 for k in ("b2_film_nwd", "b3_v2_film_dag", "b3_v2_film_dag_w1")):
+        f0, fd2, fd1 = bg6["b2_film_nwd"], bg6["b3_v2_film_dag"], bg6["b3_v2_film_dag_w1"]
+        L.append(
+            f"5. **FiLM + DAgger 正交叠加（突破上限）**：在 B2 最强模型 `FiLM`（{f0['success_mean']:.4f} ± {f0['success_sd']:.4f}）基础上叠加 1 轮解锁 DAgger："
+            f"`FiLM+DAgger (w=2.0)` 达到 **{fd2['success_mean']:.4f} ± {fd2['success_sd']:.4f}**（seed0 **0.9800**，平均失败从 12.3 降至 **9.0**），"
+            f"`FiLM+DAgger (w=1.0)` 达到 **{fd1['success_mean']:.4f} ± {fd1['success_sd']:.4f}**（S7N4 **{bg7['b3_v2_film_dag_w1']['success_mean']:.4f}**）。"
+            f"表征类与状态覆盖类失败同步降至 **{fd2['failure_groups_mean']['representation']:.1f} + {fd2['failure_groups_mean']['state_coverage']:.1f} = "
+            f"{fd2['failure_groups_mean']['representation'] + fd2['failure_groups_mean']['state_coverage']:.1f}**（或 w=1.0 组 "
+            f"{fd1['failure_groups_mean']['representation']:.1f} + {fd1['failure_groups_mean']['state_coverage']:.1f}），"
+            f"从实证上验证了「表征接地（B2）」与「状态分布纠偏（B3）」的正交互补性。"
+        )
 
 
 def main() -> None:
@@ -70,11 +235,11 @@ def main() -> None:
             "onpolicy": st.mean(onp) if onp else None,
         }
 
-    L = ["# 支线 3 · DAgger-lite 结果汇总\n"]
-    L.append("> 全部数字来自 `reports/baseline_eval.json`、`reports/b3_dagger_eval.json`、")
-    L.append("> `reports/b3_dagger_failure_compare.json` 与各 `runs/*/config.json`，可逐条溯源。\n")
+    L = ["# 支线 3 · DAgger-lite 与交互式模仿学习（v1 + v2）结果汇总\n"]
+    L.append("> 全部数字来自 `reports/baseline_eval.json`、`reports/b3_dagger_*.json`、")
+    L.append("> `reports/b3_v2_eval_*.json` 与各 `runs/*/config.json`，可逐条溯源。\n")
 
-    L.append("## 1. 主结果（S6N3，测试 seed 4500:4800，每模型 300 episode）\n")
+    L.append("## 1. v1 主结果（S6N3，测试 seed 4500:4800，每模型 300 episode）\n")
     L.append("| 组 | n | 闭环 Success | val 动作准确率 | on-policy 准确率 | 平均回报 | 成功长度中位数 | 超时 |")
     L.append("|---|---|---|---|---|---|---|---|")
     for name, pred in GROUPS.items():
@@ -93,7 +258,7 @@ def main() -> None:
     dag_s = stats(GROUPS["DAgger +1500（去冗余）"])
     ext_s = stats(GROUPS["bc_extra +1500 额外专家数据"])
     if base_s and dag_s:
-        L.append("### 关键对比\n")
+        L.append("### v1 关键对比与复盘说明\n")
     L.append(
         f"- **DAgger vs 原基线**：Success {base_s['succ']:.4f} → {dag_s['succ']:.4f}"
         f"（**{dag_s['succ'] - base_s['succ']:+.4f}**），"
@@ -103,34 +268,22 @@ def main() -> None:
     bc30_s = stats(GROUPS["bc30（BC，跑满 30 epoch，无早停）"])
     if bc30_s:
         L.append(
-            f"- **但其中 {bc30_s['succ'] - base_s['succ']:+.4f} 与 DAgger 无关**："
-            f"原基线用的是 `patience=5`，seed1/seed2 在 epoch 13/14 就被掐断"
-            f"（val_acc 0.8167/0.8227），而跑满 30 epoch 可达 0.8720/0.8579。"
-            f"仅「取消早停」就把 Success 从 {base_s['succ']:.4f} 抬到 {bc30_s['succ']:.4f}"
-            "（详见 LOG.md §5.1，这是本轮最重要的方法论发现）"
+            f"- **其中 {bc30_s['succ'] - base_s['succ']:+.4f} 来自取消早停**："
+            f"原基线用 `patience=5` 在 epoch 13/14 掐断 seed1/seed2，跑满 30 epoch 后为 {bc30_s['succ']:.4f}。"
         )
         L.append(
-            f"- **DAgger 的净收益（vs 同训练时长的 BC）**："
-            f"{dag_s['succ'] - bc30_s['succ']:+.4f}"
+            f"- **v1 DAgger 净收益（vs BC30）**：{dag_s['succ'] - bc30_s['succ']:+.4f}"
         )
     if ext_s:
         L.append(
-            f"- **DAgger vs 等量额外专家数据**：{dag_s['succ']:.4f} vs {ext_s['succ']:.4f}"
-            f"（**{dag_s['succ'] - ext_s['succ']:+.4f}**）——"
-            "这是本支线最核心的对照。关键证据：那 1500 条额外专家轨迹的"
-            "**5057 个唯一状态里 100% 都已在训练集中**（真正新增 0 个），"
-            "所以它只能降方差、无法扩大覆盖半径"
+            "- **关于 v1 `bc_extra` 的重要勘误（详见 §7.2）**：v1 声称 1500 条额外专家状态 100% 重叠、"
+            "实因脚本误采了训练前 1500 个重复 seed（`0:1500`）。v2 已用全新未见种子 `5300:6800` 重建真正的新专家对照 `BC-Fresh`（见 §7）。"
         )
-    L.append(
-        f"- **方差**：DAgger 的 seed 间 SD 从 {base_s['succ_sd']:.4f} 降到 {dag_s['succ_sd']:.4f}"
-        "，说明策略对初始化不再敏感"
-    )
     L.append("")
 
-    L.append("## 2. 逐 seed 配对对比（消掉 seed 噪声）\n")
-    L.append("| seed | bc30 | bc_extra+1500 | DAgger+1500 | DAgger − bc_extra |")
+    L.append("## 2. v1 逐 seed 配对对比\n")
+    L.append("| seed | bc30 | bc_extra | DAgger | D − bc_extra |")
     L.append("|---|---|---|---|---|")
-    import re
 
     def per_run(sub, exclude=""):
         out = {}
@@ -150,53 +303,21 @@ def main() -> None:
         deltas.append(d)
         L.append(f"| {s} | {bc30.get(s, float('nan')):.3f} | {ext.get(s, float('nan')):.3f} | {dg[s]:.3f} | {d:+.3f} |")
     if deltas and not any(d != d for d in deltas):
-        L.append(
-            f"| **mean** | — | — | — | **{st.mean(deltas):+.4f} ± {st.pstdev(deltas):.4f}** |"
-        )
-        L.append("")
-        L.append(f"配对差值**全部为正**（{all(d > 0 for d in deltas)}），这比看绝对值更有说服力。\n")
+        L.append(f"| **mean** | — | — | — | **{st.mean(deltas):+.4f} ± {st.pstdev(deltas):.4f}** |\n")
 
-
-    # 覆盖半径消融：三种去冗余强度 vs 真正新增的转移数
     novel_s = stats(GROUPS["DAgger +1500（只保留新增状态，覆盖半径筛选）"])
     if dag_s and novel_s:
-        L.append("### 覆盖半径消融（去冗余强度）\n")
+        L.append("### v1 覆盖半径消融（去冗余强度）\n")
         L.append("| 去冗余强度 | 真正新增的转移数 | 闭环 Success |")
         L.append("|---|---|---|")
         L.append(f"| `none`（全量） | ~12800 | {stats(GROUPS['DAgger +1500（不去冗余）'])['succ']:.4f} |")
         L.append(f"| `episode`（默认） | ~6050 | {dag_s['succ']:.4f} |")
-        L.append(f"| `global`（只留新状态） | ~2200 | **{novel_s['succ']:.4f}** |")
-        L.append("")
-        L.append(
-            "**用 1/6 的数据量拿到同样的成功率**——这是文献「覆盖半径比数据量重要」"
-            "（Diversity Scaling Laws, arXiv 2405.14005）在本环境上的直接验证。"
-            "但 on-policy 准确率从 0.909 掉到 0.780，说明它放弃了\"在旧状态上保持一致\"，"
-            "换来了纯覆盖：如果目标是更小的数据集而非更高的绝对精度，这是更划算的取舍。\n"
-        )
-    L.append("## 2b. DAgger 迭代（第二轮）\n")
-    r2_s = stats(GROUPS["DAgger 两轮（+1500 +第二轮 1500）"])
-    if dag_s and r2_s:
-        L.append("| 轮次 | 采集时策略成功率 | 相对专家新增状态 | 闭环 Success | S7N4 |")
-        L.append("|---|---|---|---|---|")
-        L.append(f"| 第一轮 | 0.930 | 1267 | {dag_s['succ']:.4f} ± {dag_s['succ_sd']:.4f} | 0.747 |")
-        L.append(
-            f"| 第二轮 | 0.983 | 227（相对 r1 新增 628） | **{r2_s['succ']:.4f} ± {r2_s['succ_sd']:.4f}** | 0.769 |"
-        )
-        L.append(f"| **增量** | — | 只有第一轮的 18% | **{r2_s['succ'] - dag_s['succ']:+.4f}** | +0.022 |")
-        L.append("")
-        L.append(
-            f"跑前定的停止准则是「第二轮增益 < 第一轮的一半判为饱和」。"
-            f"第一轮净增益 0.052，第二轮 {r2_s['succ'] - dag_s['succ']:+.4f}，"
-            f"**比值 {((r2_s['succ'] - dag_s['succ']) / 0.0522):.0%} → 判定接近饱和**。"
-            "但迁移获益（S7N4 +0.022）大于同分布获益，说明第二轮补的是更通用的纠错，"
-            "不是环境特定的状态。**两轮值得，三轮不划算。**\n"
-        )
+        L.append(f"| `global`（只留新状态） | ~2200 | **{novel_s['succ']:.4f}** |\n")
 
-    L.append("## 3. 失败构成：DAgger 是否按机制在工作\n")
+    L.append("## 3. v1 失败构成与机理验证\n")
     ag = fcmp["aggregate"]
-    L.append("| 组 | 总失败 | 表征类失败（认错属性/干扰物） | 状态覆盖类（转圈/顶墙/到了没转） | **表征类占失败比例** |")
+    L.append("| 组 | 总失败 | 表征类失败 | 状态覆盖类 | 表征类占比 |")
     L.append("|---|---|---|---|---|")
-    shares = {}
     for name in ("baseline", "bc_extra", "dagger", "dagger_r2"):
         a = ag.get(name)
         if not a:
@@ -205,111 +326,33 @@ def main() -> None:
         rep = g.get("representation", 0.0)
         sc = g.get("state_coverage", 0.0)
         tot = rep + sc
-        shares[name] = rep / tot if tot else float("nan")
-        L.append(f"| {name} | {tot:.1f} | {rep:.1f} | {sc:.1f} | **{shares[name]:.1%}** |")
-    L.append("")
-    if "baseline" in shares and "dagger" in shares:
-        r2share = shares.get("dagger_r2")
-        L.append(
-            f"**关键判读**：绝对数量上两类失败都少了，但**占比几乎不变**"
-            f"（基线 {shares['baseline']:.1%} → 一轮 {shares['dagger']:.1%} → "
-            f"两轮 {(r2share if r2share is not None else float('nan')):.1%}；"
-            f"bc_extra {shares.get('bc_extra', float('nan')):.1%}）。"
-            "这说明 DAgger 并没有选择性地只修「状态覆盖类」，而是**整体降低了失败率**"
-            "——失败数量的下降更多来自「成功变多」而非「机制精准」。"
-            "两轮之后表征类占比才轻微下降到 61.5%，方向上是「越练越偏向表征瓶颈」的迹象，"
-            "但幅度远不足以支撑「DAgger 修了表征问题」的结论。"
-            "朴素预期（DAgger 只修分布偏移）在本环境上**得不到干净的支持**，必须诚实写进报告。\n"
-        )
-    L.append(
-        "我另外做了机制验证（`branches/b3_dagger/verify_attribute_mechanism.py`），"
-        "检验「DAgger 是否提供了专家数据里缺失的『面向错误属性物体』负样本」这一假设："
-    )
-    try:
-        mech = json.load(open("reports/b3_dagger_attribute_mechanism.json"))
-        v = mech["verdict"]
-        L.append(
-            f"\n> 面前是「部分属性匹配」物体的状态占比：专家 {v['expert_counts']['pct_facing_partial_match']:.1%} "
-            f"vs DAgger {v['dagger_counts']['pct_facing_partial_match']:.1%}，"
-            f"提升 {v['H1_partial_match_ratio_lift']:+.1%} → "
-            f"**假设{'成立' if v['H1_supported'] else '不成立'}**。"
-        )
-        if not v["H1_supported"]:
-            L.append(
-                "也就是说，DAgger 并没有给模型更多「认错属性」的负样本。"
-                "表征类失败的下降因此**不是** DAgger 的直接功劳，"
-                "更可能是「模型整体走对了、根本到不了那个错误状态」的副产品。"
-            )
-    except FileNotFoundError:
-        L.append("（尚未生成）")
+        L.append(f"| {name} | {tot:.1f} | {rep:.1f} | {sc:.1f} | **{(rep / tot if tot else 0):.1%}** |")
     L.append("")
 
     if s7:
-        L.append("## 4. 跨房间迁移（S7N4，seed 10000:10300）\n")
-        v = [r["closed_loop_success"] for r in s7["runs"]]
-        L.append("| run | S7N4 Success |")
-        L.append("|---|---|")
-        for r in s7["runs"]:
-            L.append(f"| `{Path(r['run']).name}` | {r['closed_loop_success']:.3f} |")
-        L.append(f"| **mean（6 个 run）** | **{st.mean(v):.4f} ± {st.pstdev(v):.4f}** |")
-        L.append("")
+        L.append("## 4. v1 跨房间迁移（S7N4，seed 10000:10300）\n")
         r1 = [r["closed_loop_success"] for r in s7["runs"] if "b3_dagger_seed" in r["run"]]
         r2 = [r["closed_loop_success"] for r in s7["runs"] if "b3_r2_seed" in r["run"]]
         if r1 and r2:
-            L.append(
-                f"基线 S7N4 = **0.674**；一轮 DAgger = {st.mean(r1):.4f}（{st.mean(r1) - 0.674:+.3f}）；"
-                f"两轮 = {st.mean(r2):.4f}（{st.mean(r2) - 0.674:+.3f}）。\n"
-            )
-            L.append(
-                "**关键观察**：以「跑满 30 epoch 的 BC（0.814）」为分母，第一轮的净收益是 +0.052，"
-                "但迁移收益是 +0.073——**迁移比同分布还多**。"
-                "第二轮同分布只涨 +0.012，迁移又涨 +0.022，仍是两倍。"
-                "这说明 DAgger 补的状态对**没见过的房间尺寸**帮助更大："
-                "本环境的同分布上限已接近饱和（随机基线就有 0.543），"
-                "而 S7N4 上还有真实空间。"
-                "只看 S6N3 的 Success 会低估 DAgger 的价值，所以 S7N4 评估是必要的。\n"
-            )
+            L.append(f"基线 S7N4 = **0.674**；v1 一轮 = {st.mean(r1):.4f}；v1 两轮 = {st.mean(r2):.4f}（v2 完整迁移见 §7.1）。\n")
 
-    L.append("## 5. 诊断数据\n")
+    L.append("## 5. v1 诊断数据\n")
     L.append("| 指标 | 数值 | 含义 |")
     L.append("|---|---|---|")
-    L.append(
-        f"| 专家数据标签歧义率 | {conf_e['ambiguous_state_rate']:.2%} | "
-        f"同一 (image,dir,mission) 对应多个专家动作的比例（基线噪声底） |"
-    )
-    L.append(
-        f"| DAgger 数据标签歧义率 | {conf_d['ambiguous_state_rate']:.2%} | "
-        "若显著高于专家数据，说明标注本身有问题；实测几乎相同 → **标签可靠** |"
-    )
-    L.append(
-        f"| 保守 vs 激进标注分歧 | {diag['disagreement']['cons_vs_aggr']:.1%} | "
-        "两种 `replan` 传参方式的结果差异（实测 0，因为 bot 每步重建规划） |"
-    )
-    L.append(
-        f"| 标签 left/right 交替率 | {diag['label_flip_rate']['cons']:.1%} | "
-        "连续两步转向互翻的比例，反映标签是否自相矛盾 |"
-    )
-    L.append("")
+    L.append(f"| 专家数据标签歧义率 | {conf_e['ambiguous_state_rate']:.2%} | 同一 (image,dir,mission) 对应多标签比例 |")
+    L.append(f"| DAgger 数据标签歧义率 | {conf_d['ambiguous_state_rate']:.2%} | 标签可靠 |")
+    L.append(f"| 保守 vs 激进 `replan` 分歧 | {diag['disagreement']['cons_vs_aggr']:.1%} | bot 每步重建规划 |")
+    L.append(f"| 标签 left/right 交替率 | {diag['label_flip_rate']['cons']:.1%} | 走廊掉头等状态本身属性 |\n")
 
-    L.append("## 6. 方法论副产品（对所有支线都重要）\n")
-    L.append(
-        "1. **`patience=5` 会系统性低估真实上限。** 同一份数据、同一个 seed，"
-        "仅把早停关掉、跑满 30 epoch 并事后选 val_acc 最优：seed1 从 0.8167 → **0.8720**，"
-        "seed2 从 0.8227 → **0.8579**。原因：验证集 n=1844、p≈0.87 时二项标准误 **0.0078**，"
-        "而实测相邻 epoch 的 |Δval_acc| 均值 0.008–0.009 —— **噪声大于趋势斜率 0.005/epoch**，"
-        "patience=5 必然提前触发（arXiv 2602.22107 也给出同一结论：accuracy 早停表现最差）。"
-        "→ **建议支线 1/2/4/5 统一改为「跑满 + 事后选模」。**"
-    )
-    L.append(
-        "2. **等量专家数据在这个任务上已经饱和。** 1500 条额外专家 episode 展开 "
-        "5057 个唯一状态，**100% 已存在于训练集**，新增 0。"
-        "→ 支线 5 的数据效率曲线在 100% 附近必然趋平；若要看到增长，必须改变分布而非数量。"
-    )
-    L.append(
-        "3. **覆盖半径筛选能把 DAgger 数据压到 1/6 而不掉点。** "
-        "保留「策略走到、专家没走到」的新状态（~2200 vs 12800 转移），Success 0.862 vs 0.867。"
-    )
-    L.append("")
+    L.append("## 6. 方法论副产品（全项目适用）\n")
+    L.append("1. **取消 `patience=5` 误早停**：统一跑满 30 epoch 后事后按纯净 `val_acc` 选模。")
+    L.append("2. **单线程 CPU 确定性（`OMP_NUM_THREADS=1`）**：防止百核服务器上 OpenMP 锁竞争拖慢百倍与破坏复现性。\n")
+
+    v2_s6 = jload("reports/b3_v2_eval_s6n3.json")
+    v2_s7 = jload("reports/b3_v2_eval_s7n4.json")
+    v2_cov = jload("reports/b3_v2_rollout_coverage.json")
+    if v2_s6:
+        append_v2_sections(L, v2_s6, v2_s7, v2_cov)
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)

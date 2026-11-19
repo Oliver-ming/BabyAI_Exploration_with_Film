@@ -1,0 +1,483 @@
+{
+  "n_states": 183,
+  "by_variant": {
+    "bc30": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.050725,
+        "sd": 0.027113,
+        "values": [
+          0.014493,
+          0.07971,
+          0.057971
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.225989,
+        "sd": 0.048601,
+        "values": [
+          0.288136,
+          0.220339,
+          0.169492
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.103215,
+        "sd": 0.013323,
+        "values": [
+          0.096447,
+          0.121827,
+          0.091371
+        ]
+      }
+    },
+    "film_nwd": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.268116,
+        "sd": 0.021332,
+        "values": [
+          0.26087,
+          0.297101,
+          0.246377
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.299435,
+        "sd": 0.028808,
+        "values": [
+          0.338983,
+          0.271186,
+          0.288136
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.277496,
+        "sd": 0.013323,
+        "values": [
+          0.284264,
+          0.28934,
+          0.258883
+        ]
+      }
+    },
+    "spatial_attn_gate": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.270532,
+        "sd": 0.013664,
+        "values": [
+          0.26087,
+          0.289855,
+          0.26087
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.327684,
+        "sd": 0.028808,
+        "values": [
+          0.355932,
+          0.338983,
+          0.288136
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.287648,
+        "sd": 0.014556,
+        "values": [
+          0.28934,
+          0.304569,
+          0.269036
+        ]
+      }
+    },
+    "spatial_softmax_attn": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.294686,
+        "sd": 0.006832,
+        "values": [
+          0.289855,
+          0.304348,
+          0.289855
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.367232,
+        "sd": 0.01598,
+        "values": [
+          0.355932,
+          0.355932,
+          0.389831
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.316413,
+        "sd": 0.004786,
+        "values": [
+          0.309645,
+          0.319797,
+          0.319797
+        ]
+      }
+    },
+    "cross_attn_mha": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.285024,
+        "sd": 0.01489,
+        "values": [
+          0.282609,
+          0.268116,
+          0.304348
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.372882,
+        "sd": 0.02397,
+        "values": [
+          0.389831,
+          0.338983,
+          0.389831
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.311337,
+        "sd": 0.01675,
+        "values": [
+          0.314721,
+          0.28934,
+          0.329949
+        ]
+      }
+    },
+    "film_spatial_attn": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.263285,
+        "sd": 0.0224,
+        "values": [
+          0.275362,
+          0.231884,
+          0.282609
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.338983,
+        "sd": 0.047939,
+        "values": [
+          0.372881,
+          0.271186,
+          0.372881
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.285956,
+        "sd": 0.029983,
+        "values": [
+          0.304569,
+          0.243655,
+          0.309645
+        ]
+      }
+    },
+    "film_cross_mha": {
+      "color_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.294686,
+        "sd": 0.009038,
+        "values": [
+          0.282609,
+          0.304348,
+          0.297101
+        ]
+      },
+      "type_swap_sensitivity": {
+        "n": 3,
+        "mean": 0.355932,
+        "sd": 0.041517,
+        "values": [
+          0.40678,
+          0.305085,
+          0.355932
+        ]
+      },
+      "combined_sensitivity": {
+        "n": 3,
+        "mean": 0.313029,
+        "sd": 0.006331,
+        "values": [
+          0.319797,
+          0.304569,
+          0.314721
+        ]
+      }
+    }
+  },
+  "runs": [
+    {
+      "run": "runs/b3_bc30_seed0",
+      "variant": "concat",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 2,
+      "color_swap_sensitivity": 0.014493,
+      "type_total": 59,
+      "type_changed": 17,
+      "type_swap_sensitivity": 0.288136,
+      "combined_sensitivity": 0.096447
+    },
+    {
+      "run": "runs/b3_bc30_seed1",
+      "variant": "concat",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 11,
+      "color_swap_sensitivity": 0.07971,
+      "type_total": 59,
+      "type_changed": 13,
+      "type_swap_sensitivity": 0.220339,
+      "combined_sensitivity": 0.121827
+    },
+    {
+      "run": "runs/b3_bc30_seed2",
+      "variant": "concat",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 8,
+      "color_swap_sensitivity": 0.057971,
+      "type_total": 59,
+      "type_changed": 10,
+      "type_swap_sensitivity": 0.169492,
+      "combined_sensitivity": 0.091371
+    },
+    {
+      "run": "runs/b2_film_nwd_seed0",
+      "variant": "film",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 36,
+      "color_swap_sensitivity": 0.26087,
+      "type_total": 59,
+      "type_changed": 20,
+      "type_swap_sensitivity": 0.338983,
+      "combined_sensitivity": 0.284264
+    },
+    {
+      "run": "runs/b2_film_nwd_seed1",
+      "variant": "film",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 41,
+      "color_swap_sensitivity": 0.297101,
+      "type_total": 59,
+      "type_changed": 16,
+      "type_swap_sensitivity": 0.271186,
+      "combined_sensitivity": 0.28934
+    },
+    {
+      "run": "runs/b2_film_nwd_seed2",
+      "variant": "film",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 34,
+      "color_swap_sensitivity": 0.246377,
+      "type_total": 59,
+      "type_changed": 17,
+      "type_swap_sensitivity": 0.288136,
+      "combined_sensitivity": 0.258883
+    },
+    {
+      "run": "runs/b2_attn_spatial_attn_gate_seed0",
+      "variant": "spatial_attn_gate",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 36,
+      "color_swap_sensitivity": 0.26087,
+      "type_total": 59,
+      "type_changed": 21,
+      "type_swap_sensitivity": 0.355932,
+      "combined_sensitivity": 0.28934
+    },
+    {
+      "run": "runs/b2_attn_spatial_attn_gate_seed1",
+      "variant": "spatial_attn_gate",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 40,
+      "color_swap_sensitivity": 0.289855,
+      "type_total": 59,
+      "type_changed": 20,
+      "type_swap_sensitivity": 0.338983,
+      "combined_sensitivity": 0.304569
+    },
+    {
+      "run": "runs/b2_attn_spatial_attn_gate_seed2",
+      "variant": "spatial_attn_gate",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 36,
+      "color_swap_sensitivity": 0.26087,
+      "type_total": 59,
+      "type_changed": 17,
+      "type_swap_sensitivity": 0.288136,
+      "combined_sensitivity": 0.269036
+    },
+    {
+      "run": "runs/b2_attn_spatial_softmax_attn_seed0",
+      "variant": "spatial_softmax_attn",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 40,
+      "color_swap_sensitivity": 0.289855,
+      "type_total": 59,
+      "type_changed": 21,
+      "type_swap_sensitivity": 0.355932,
+      "combined_sensitivity": 0.309645
+    },
+    {
+      "run": "runs/b2_attn_spatial_softmax_attn_seed1",
+      "variant": "spatial_softmax_attn",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 42,
+      "color_swap_sensitivity": 0.304348,
+      "type_total": 59,
+      "type_changed": 21,
+      "type_swap_sensitivity": 0.355932,
+      "combined_sensitivity": 0.319797
+    },
+    {
+      "run": "runs/b2_attn_spatial_softmax_attn_seed2",
+      "variant": "spatial_softmax_attn",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 40,
+      "color_swap_sensitivity": 0.289855,
+      "type_total": 59,
+      "type_changed": 23,
+      "type_swap_sensitivity": 0.389831,
+      "combined_sensitivity": 0.319797
+    },
+    {
+      "run": "runs/b2_attn_cross_attn_mha_seed0",
+      "variant": "cross_attn_mha",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 39,
+      "color_swap_sensitivity": 0.282609,
+      "type_total": 59,
+      "type_changed": 23,
+      "type_swap_sensitivity": 0.389831,
+      "combined_sensitivity": 0.314721
+    },
+    {
+      "run": "runs/b2_attn_cross_attn_mha_seed1",
+      "variant": "cross_attn_mha",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 37,
+      "color_swap_sensitivity": 0.268116,
+      "type_total": 59,
+      "type_changed": 20,
+      "type_swap_sensitivity": 0.338983,
+      "combined_sensitivity": 0.28934
+    },
+    {
+      "run": "runs/b2_attn_cross_attn_mha_seed2",
+      "variant": "cross_attn_mha",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 42,
+      "color_swap_sensitivity": 0.304348,
+      "type_total": 59,
+      "type_changed": 23,
+      "type_swap_sensitivity": 0.389831,
+      "combined_sensitivity": 0.329949
+    },
+    {
+      "run": "runs/b2_attn_film_spatial_attn_seed0",
+      "variant": "film_spatial_attn",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 38,
+      "color_swap_sensitivity": 0.275362,
+      "type_total": 59,
+      "type_changed": 22,
+      "type_swap_sensitivity": 0.372881,
+      "combined_sensitivity": 0.304569
+    },
+    {
+      "run": "runs/b2_attn_film_spatial_attn_seed1",
+      "variant": "film_spatial_attn",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 32,
+      "color_swap_sensitivity": 0.231884,
+      "type_total": 59,
+      "type_changed": 16,
+      "type_swap_sensitivity": 0.271186,
+      "combined_sensitivity": 0.243655
+    },
+    {
+      "run": "runs/b2_attn_film_spatial_attn_seed2",
+      "variant": "film_spatial_attn",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 39,
+      "color_swap_sensitivity": 0.282609,
+      "type_total": 59,
+      "type_changed": 22,
+      "type_swap_sensitivity": 0.372881,
+      "combined_sensitivity": 0.309645
+    },
+    {
+      "run": "runs/b2_attn_film_cross_mha_seed0",
+      "variant": "film_cross_mha",
+      "train_seed": 0,
+      "color_total": 138,
+      "color_changed": 39,
+      "color_swap_sensitivity": 0.282609,
+      "type_total": 59,
+      "type_changed": 24,
+      "type_swap_sensitivity": 0.40678,
+      "combined_sensitivity": 0.319797
+    },
+    {
+      "run": "runs/b2_attn_film_cross_mha_seed1",
+      "variant": "film_cross_mha",
+      "train_seed": 1,
+      "color_total": 138,
+      "color_changed": 42,
+      "color_swap_sensitivity": 0.304348,
+      "type_total": 59,
+      "type_changed": 18,
+      "type_swap_sensitivity": 0.305085,
+      "combined_sensitivity": 0.304569
+    },
+    {
+      "run": "runs/b2_attn_film_cross_mha_seed2",
+      "variant": "film_cross_mha",
+      "train_seed": 2,
+      "color_total": 138,
+      "color_changed": 41,
+      "color_swap_sensitivity": 0.297101,
+      "type_total": 59,
+      "type_changed": 21,
+      "type_swap_sensitivity": 0.355932,
+      "combined_sensitivity": 0.314721
+    }
+  ]
+}

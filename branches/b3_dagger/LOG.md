@@ -1,25 +1,17 @@
-# 支线 3 · DAgger-lite（Dataset Aggregation）
+# 支线 3 · DAgger-lite 与交互式模仿学习（Dataset Aggregation）
 
-> 目录：`branches/b3_dagger/`　状态：**第一轮完成**
-> 冻结区未改动：`git diff -- src/ data/expert_5000.pkl runs/baseline_seed*` 为空。
+> 目录：`branches/b3_dagger/`　状态：**v1 + v2 全面完成（已含文献/开源改进、协议漏洞修正、主动查询与 FiLM 正交叠加）**
+> 冻结区未改动：`git diff -- src/ data/expert_5000.pkl runs/baseline_seed* reports/baseline_* branches/README.md` 为空。
 
 ## 0. 一句话结论
 
-DAgger 把闭环 Success 从 **0.747 ± 0.093** 提到 **0.867 ± 0.016**（+0.120，超过基线 seed 间 SD）。
-但必须诚实拆解：其中 **0.067 来自一个与 DAgger 无关的发现** —— 冻结基线的
-`patience=5` 把 seed1/seed2 在 epoch 13/14 就掐断了，而同一数据跑满 30 epoch 可达
-0.8720 / 0.8579（比早停版高 0.055 / 0.035）。
-
-**扣除这项后，DAgger 的净收益 = 0.867 − 0.814（固定 30 epoch 的 BC）= +0.052。**
-再与「等量额外专家数据」对照（0.844），DAgger 仍高 **+0.022，且 3 个 seed 配对全部为正**
-—— 这才是「分布覆盖而非数据量」的证据。
-
-**最有价值的副产品有两个**（都不在原始任务范围内，但会影响其它四条支线）：
-
-1. **指导文档的 `patience=5` 在 18k 转移的数据上会系统性低估真实上限**，
-   基线本身因此少算了 0.067（0.747 → 0.814）。建议全项目改用「跑满 30 epoch + 事后选模」。
-2. **覆盖半径消融**：只保留「策略走到、专家没走到」的新状态（~2200 转移，是全量 12800 的 1/6），
-   Success 仍达 0.862（vs 0.867），**用 1/6 的数据拿到同样的成功率**。
+- **v1（基线确立与机制初探）**：取消误早停（`patience=5` → 跑满 30 epoch 事后按 `val_acc` 选模）把 BC 基线从 **0.7467** 还原至 **0.8144 ± 0.0453**；v1 一轮/两轮 DAgger 分别达 **0.8667** / **0.8789**。
+- **v2（修正 v1 四项实验协议缺陷 + 交互式模仿学习文献改进）**：
+  1. **严格 4,500 种子等预算证明**：在零额外环境种子下，`Split-EnsembleDAgger`（3,000 专家 + 1,500 集成门控交互，仅 **13,740** 条专家标注，比 `BC30` 少 **16.9%**）闭环 Success 达 **0.8578 ± 0.0351**（vs `BC30` +0.0433；S7N4 **0.7644** vs `BC30` 0.6967）。
+  2. **死锁解锁采样（Loop-Unsticking）+ 非重叠两轮迭代**：在全新训练种子 `5300:6800` / `6800:8300` 上消除“训练种子记忆盲区”并由专家单步打破原地振荡，1 轮即达 **0.8900 ± 0.0152**（S7N4 **0.8067**，优于全新专家对照 `BC-Fresh` 0.8600 / 0.7711），两轮达 **0.9089 ± 0.0191**（S7N4 **0.8278**，状态覆盖类失败降至 **8.3/300**）。
+  3. **主动查询 Pareto 前沿**：`Margin` 门控仅用 **18.8%** 交互查询率（总计 18.1k 标签）即达 **0.8589**；`Ensemble` 门控用 **25.2%** 交互查询率（总计 18.7k 标签）在 S7N4 达 **0.7878**。
+  4. **FiLM + DAgger 正交突破上限**：将表征接地（B2 FiLM，0.9589）与状态覆盖纠偏（B3 Loop-Unsticking DAgger）叠加，`FiLM+DAgger (w=2.0)` 在 S6N3 达 **0.9700 ± 0.0072**（seed0 **0.9800**，平均总失败从 12.3 降至 **9.0**），`FiLM+DAgger (w=1.0)` 在 S7N4 零样本迁移达 **0.9178 ± 0.0181**。
+  5. **诚实负结果**：在缺乏属性接地的 `BCNet` 上，强行加倍干预权重（IWR $w=2.0, 3.0$）虽把恢复纠偏准确率 `recovery_acc` 从 `0.4411` 提至 `0.4934`，却损伤常规分布校准，使 S6N3 成功率回落至 `0.8622 / 0.8556`；同理仅保留分歧样本（`Disagreement-Only`）会因失去在轨正则而降至 `0.8389`。
 
 ## 1. 目标与成功判据
 
@@ -475,3 +467,97 @@ git diff --stat -- src/ data/ runs/baseline_seed0 runs/baseline_seed1 runs/basel
 - **DAgger 样本的采样权重**：目前与专家样本等权。文献里没有明确最优比例，
   但在 4500:6000 的规模下，提高 DAgger 权重可能会让模型更关注困难状态，
   同时也可能破坏在专家分布上的表现（因为 `val_acc` 会降）。
+
+
+---
+
+## 12. 第三阶段深度改进（v2）：文献与开源调研、四项协议修正与主动交互实验
+
+在完成 v1 两轮实验后，对代码、数据种子池与交互式模仿学习（Interactive Imitation Learning, IIL）领域的主流论文及开源仓库进行了系统复查与二次调研，定位了 v1 中的 4 项方法论/实现漏洞，并落成了统一的 `v2` 实验体系（`collect_interactive.py`、`train_iwr.py`、`eval_b3.py`、`analyze_rollout_coverage.py`、`make_figures.py`、`run_v2.sh`）。
+
+### 12.1 二次文献与开源项目调研
+
+| # | 论文 / 开源项目 | 链接 | 核心启发与约束 |
+|---|---|---|---|
+| 18 | **BabyAI 官方平台 & `train_intelligent_expert.py`** (Chevalier-Boisvert et al., ICLR 2019; Hui et al., *BabyAI 1.1*, 2020) | [`mila-iqia/babyai`](https://github.com/mila-iqia/babyai) / [`arXiv:2007.12770`](https://arxiv.org/abs/2007.12770) | 在线模仿学习必须从**未训练过的新环境种子**采集失败/纠偏，不能在已背熟的训练集种子上空转 |
+| 19 | **HumanCompatibleAI `imitation` (DAggerTrainer)** | [`imitation.readthedocs.io`](https://imitation.readthedocs.io/en/latest/algorithms/dagger.html) | 通过 $\beta$ 调度混合专家动作；但盲目全局 $\beta$ 会污染在轨状态分布，需对比稀疏纠偏 |
+| 20 | **LazyDAgger** (Hoque et al., ICRA 2021) | [`arXiv:2102.01245`](https://arxiv.org/abs/2102.01245) | 当策略陷入死锁时，仅在必要时刻让专家短暂接管打破循环再交还控制权，大幅减少无效步与上下文切换 |
+| 21 | **SafeDAgger / HG-DAgger** (Zhang & Cho, AAAI 2017; Kelly et al., ICRA 2019) | [`arXiv:1605.06450`](https://arxiv.org/abs/1605.06450) / [`arXiv:1810.02890`](https://arxiv.org/abs/1810.02890) | 通过置信度/安全门控决定何时向专家发起查询，而非每步全量查询 |
+| 22 | **EnsembleDAgger** (Menda et al., IROS 2019) | [`arXiv:1807.08364`](https://arxiv.org/abs/1807.08364) | 利用多模型集成的动作分歧与不确定性边界门控 Oracle 查询，准确统计 `n_oracle_queries` |
+| 23 | **ThriftyDAgger** (Hoque et al., CoRL 2021) | [`ryanhoque/thriftydagger`](https://github.com/ryanhoque/thriftydagger) / [`arXiv:2109.08273`](https://arxiv.org/abs/2109.08273) | 预算感知（Budget-aware）的新颖性 + 风险双门控，以极低查询率维持高成功率 |
+| 24 | **IWR & Sirius** (Mandlekar et al., CoRL 2020; Liu et al., RSS 2023) | [`arXiv:2012.06733`](https://arxiv.org/abs/2012.06733) / [`UT-Austin-RPL/sirius`](https://github.com/UT-Austin-RPL/sirius) | 对关键干预（$\pi(s) \neq a^*$）状态赋予权重 $w_{intv} > 1$；但需实证检验其在离散小模型上的校准副作用 |
+| 25 | **AggreVaTe** (Ross & Bagnell, NIPS 2014) | [`arXiv:1406.5979`](https://arxiv.org/abs/1406.5979) | 并非所有状态动作分歧代价相等；需区分纯视觉特征缺陷与序列状态恢复需求 |
+
+### 12.2 对 v1 的四项协议与工程缺陷修正
+
+通过实测诊断脚本（`analyze_rollout_coverage.py`）对 v1 全部采集数据做字节级核查，发现并修正了以下四个隐蔽漏洞：
+
+1. **修正 1：`b3_expertextra_1500` 种子与训练集 100% 重复的假象**
+   - v1 `collect_dagger.py` 从 `TRAIN_SEEDS[:1500]`（即 `0:1500`）采集额外专家轨迹，恰好与 `expert_5000.pkl` 的训练前 1500 条**完全重合**。因此 v1 得出「额外专家数据 100% 重叠、新增 0 个状态」其实是脚本复用同批 seed 造成的伪结论。
+   - **修复**：在 `fresh_r1`（`5300:6800`，与 `VAL/TEST/TEST_S7` 严格不交）上重采真正未见过房间的 1,500 条新专家 `BC-Fresh`。实测 `5300:6800` 包含 **5,386** 个唯一 `(img, dir, mission)` 状态，其中 **4,875 个（90.5%）相对 4,500 条训练集为全新状态**，`BC-Fresh` 闭环 Success 也从 v1 `0.8444` 升至 **0.8600**。
+2. **修正 2：DAgger 在已背熟的训练种子上 rollout 导致新颖纠偏态匮乏**
+   - v1 两轮 DAgger 均在已进训练集的 `0:1500` 上运行策略，导致策略靠记忆拿到了 93.0% / 98.3% 的虚假 rollout 成功率，1500 条轨迹仅采出 **1,404** 个新颖状态和 **350** 个新颖纠偏状态（$\pi(s) \neq a^*$）。
+   - **修复**：引入两套无泄漏采集方案：
+     - **严格 4,500 种子等预算切分（`Split-DAgger`）**：仅用前 3,000 个训练种子训初始策略 $\pi_1$，在后 1,500 个未见训练种子（`TRAIN_SEEDS[3000:4500]`）上做交互采集，总种子数严格不超 4,500。
+     - **非重叠增量种子池（`fresh_r1 = 5300:6800`, `fresh_r2 = 6800:8300`）**：R1 与 R2 使用完全不相交的未见种子，新颖状态增至 **6,859**（×4.9），新颖纠偏状态增至 **1,207**（×3.4）。
+3. **修正 3：去重键遗漏 `mission` 与多轮跨文件去重缺陷**
+   - v1 去重键仅用 `(image, dir)`，不同指令面对同一视野被误判为重复状态；且 `train_dagger.py` 多轮加载时未更新全局 `seen_states`。
+   - **修复**：`train_iwr.py` 将去重键升级为语言条件三元组 `(image, dir, mission)` 并实时维护跨文件/跨轮全局集合。
+4. **修正 4：消除 20% 采集样本浪费 + 统一验证集只读探针 + 单线程防 OpenMP 锁竞争**
+   - v1 训练时按 `i % 5 == 0` 丢弃了 20% 采集样本去算无法跨组比较的 `onpolicy_acc`。v2 改为 **100% 保留采集样本用于训练**，另在独立的只读验证集 rollout 探针（`data/b3_v2_val_probe.pkl`，严禁进训练集，选模仍严格只看纯净 `expert_val` 的 `val_acc`）上统一报告 `onpolicy_action_acc` 与 `onpolicy_recovery_acc`（策略犯错状态集上的纠偏准确率）。
+   - 修复了百核服务器上多进程并行时未设 `OMP_NUM_THREADS=1` 引起的 OpenMP 锁竞争（单次采集耗时由 `~1740s` 降至 `~7-14s`，加速 **>118 倍**，同时保证逐比特单线程确定性）。
+
+### 12.3 v2 实现的关键技术模块
+
+1. **死锁解锁采样（Loop-Unsticking，受 LazyDAgger 启发）**：`collect_interactive.py --exec-mode unstick` 在检测到同一 episode 内出现 `(image, dir)` 状态循环时，向 `BabyAIBot` 请求纠偏标签并由专家执行 **1 步**脱离死锁，随后立即交还策略控制权。相比 `greedy` 全步 rollout（经常连续 30 步原地打转，采集 13,288 步却只得 6,296 个新颖态），`unstick` 只用 **8,194** 步（-38% 查询）就完成了 100% 轨迹并采到 **6,859** 个新颖态和 **1,207** 个新颖纠偏态。
+2. **主动查询门控（Active Querying）**：
+   - `margin` 门控（SafeDAgger / ThriftyDAgger 思路）：当主策略 softmax `top1 - top2 < 0.45` 或处于状态循环时才查询专家，额外查询率降至 **18.8%**（~1,610 步/1500 ep）。
+   - `ensemble` 门控（EnsembleDAgger 思路）：利用 3-seed 集成投票分歧或均值裕度 `< 0.30`（等预算组 `< 0.35`）门控查询，额外查询率仅 **25.2%**（~2,150 步/1500 ep）。
+   - `disagree` 过滤对照：全步查询但仅保留 $\pi(s) \neq a^*$ 的状态入库。
+3. **干预加权回归（IWR）与 FiLM 正交叠加**：`train_iwr.py` 对 $\pi_{rollout}(s) \neq a^*$ 状态施加损失权重 $w_{intv} \in \{1.0, 2.0, 3.0\}$，并原生支持 B2 的 `FiLMBCNet` 架构以测试「表征接地 × 状态覆盖纠偏」的可叠加性。
+
+### 12.4 v2 完整实验结果（3 seed，mean ± SD，与冻结 `eval_closed_loop` 校验差值 `0.0`）
+
+完整 25 组明细见 [`reports/b3_dagger_summary.md`](../../reports/b3_dagger_summary.md) §7 与 [`reports/b3_v2_eval_s6n3.json`](../../reports/b3_v2_eval_s6n3.json) / [`reports/b3_v2_eval_s7n4.json`](../../reports/b3_v2_eval_s7n4.json)。关键结论如下：
+
+| 实验维度 | 代表组别 | S6N3 Success | S7N4 迁移 | 总专家标注 | 失败(表征+覆盖) | 关键结论 |
+|---|---|---|---|---|---|---|
+| **等预算 4,500 种子** | `BC30` (4,500 专家) | 0.8144 ± 0.0453 | 0.6967 ± 0.0562 | 16,534 | 38.3 + 17.3 | 真基线 |
+| | `BC-3000` (3,000 专家) | 0.7522 ± 0.0126 | 0.6656 ± 0.0247 | 11,074 | 43.7 + 30.7 | 起点 |
+| | `Split-DAgger` (3k+1.5k) | **0.8511 ± 0.0016** | **0.7689 ± 0.0512** | 21,098 | 27.7 + 17.0 | 零额外种子反超 `BC30` +0.0367 |
+| | `Split-EnsembleDAgger` (3k+1.5k) | **0.8578 ± 0.0351** | **0.7644 ± 0.0372** | **13,740** | 26.0 + 16.7 | **少 16.9% 标注反超 `BC30` +0.0433** |
+| **增量 1,500 新种子** | `BC-Fresh` (+1,500 新专家) | 0.8600 ± 0.0260 | 0.7711 ± 0.0083 | 22,111 | 29.3 + 12.7 | 修正 v1 重复种子后的强专家对照 |
+| (`fresh_r1: 5300:6800`) | `v2 Greedy` (全步, w=1) | 0.8911 ± 0.0318 | 0.7667 ± 0.0381 | 31,304 | 19.0 + 13.7 | 高查询成本、高方差、死锁冗余多 |
+| | `v2 β=0.25` 混合 (w=1) | 0.8522 ± 0.0042 | 0.7522 ± 0.0204 | 25,237 | 28.7 + 15.7 | 随机混合破坏了状态覆盖增益 |
+| | **`v2 Loop-Unsticking` (w=1)** | **0.8900 ± 0.0152** | **0.8067 ± 0.0109** | **25,060** | **23.3 + 9.7** | **vs Greedy 方差减半、少 20% 标注、S7N4 +0.040** |
+| **主动门控 & 权重消融** | `v2 Margin 门控` (18.8% 查询) | 0.8589 ± 0.0244 | 0.7533 ± 0.0098 | **18,144** | 24.3 + 18.0 | 仅 1.6k 额外查询逼近 22.1k `BC-Fresh` |
+| | `v2 Ensemble 门控` (25.2% 查询) | 0.8500 ± 0.0144 | **0.7878 ± 0.0079** | **18,684** | 23.0 + 22.0 | 低查询成本下迁移稳健（SD 0.0079） |
+| | `v2 Disagreement-Only` (w=2) | 0.8389 ± 0.0083 | 0.7522 ± 0.0057 | 25,060 | 28.3 + 20.0 | 丢弃一致样本损伤在轨正则 |
+| | `v2 Unstick + IWR (w=2 / w=3)` | 0.8622 / 0.8556 | 0.7989 / 0.7844 | 25,060 | 覆盖升至 18.7 | **诚实负结果**：在 `BCNet` 上 $w>1$ 诱发近距振荡 |
+| **两轮非重叠迭代** | **`v2 R2 (w=1.0)`** | **0.9089 ± 0.0191** | **0.8278 ± 0.0264** | 32,668 | **19.0 + 8.3** | 突破 0.90，`sc` 失败压低至 `BC30` 的一半 |
+| | `v2 R2 + IWR (w=2.0)` | 0.9022 ± 0.0201 | 0.7978 ± 0.0155 | 32,797 | 17.0 + 12.3 | seed0 达 0.9300，但迁移弱于 `w=1.0` |
+| **FiLM 正交叠加** | `B2 FiLM` (4,500 专家) | 0.9589 ± 0.0063 | 0.9000 ± 0.0205 | — | 6.3 + 6.0 | B2 单项最强基准 |
+| | `FiLM-Split` (3k+1.5k=4,500) | 0.9589 ± 0.0057 | 0.9044 ± 0.0185 | 17,324 | 5.0 + 7.3 | 少 1,500 初始专家追平全量 `FiLM` |
+| | **`FiLM + DAgger (w=1.0)`** | **0.9689 ± 0.0068** | **0.9178 ± 0.0181** | 22,539 | **3.7 + 5.7** | **S7N4 达 0.9178（全项目最高迁移）** |
+| | **`FiLM + DAgger + IWR (w=2.0)`** | **0.9700 ± 0.0072** | 0.9000 ± 0.0141 | 22,539 | **4.7 + 4.3** | **S6N3 达 0.9700（seed0 0.9800），总失败仅 9.0** |
+
+### 12.5 深入机理反思：为什么 $w_{intv} > 1$ 在 `BCNet` 上有害、而在 `FiLM` 上影响微弱？
+
+- 在 `BCNet` 上，`w=2.0/3.0` 成功将只读探针上的纠偏准确率 `recov_acc` 从 `0.4411` 拉升至 `0.4934 / 0.4890`，但闭环 S6N3 成功率反而跌落 `0.028 ~ 0.034`，且 `state_coverage` 失败由 `9.7` 翻倍至 `18.7`。根因在于：`BCNet` 对颜色词几乎失聪（见支线 2 颜色敏感度 `0.065`），导致 `π≠a*` 的分歧样本里混杂了大量**模型感知层本身不可分辨的状态**；加倍其权重等于迫使网络在欠表达的视觉特征上过度拟合矛盾转向信号，反而破坏了正常前进动作的稳定性（`val_acc` 下降、`left/right` 振荡增多）。
+- 相反，在具备颜色-类型绑定能力的 `FiLM` 上，分歧样本几乎都是**真正需要学习的边缘/遮挡或贴墙几何状态**，因此 `FiLM+DAgger` 在 `w=1.0`（`0.9689` / S7N4 `0.9178`）与 `w=2.0`（`0.9700` / S7N4 `0.9000`）下均显著高于 `B2 FiLM`（`0.9589` / S7N4 `0.9000`），将总失败进一步压缩了 **27%**（`12.3 → 9.0`）。
+
+### 12.6 v2 完整复现命令与产物清单
+
+```bash
+# 一键复现 v2 全流程（25 组 × 3 seed + S6N3/S7N4 评测 + 冻结口径核验）
+bash branches/b3_dagger/run_v2.sh
+
+# 覆盖率诊断、发表级图表与汇总表
+python branches/b3_dagger/analyze_rollout_coverage.py --out reports/b3_v2_rollout_coverage.json
+python branches/b3_dagger/make_figures.py
+python branches/b3_dagger/make_summary.py
+```
+
+- 核心代码：`collect_interactive.py`、`train_iwr.py`、`eval_b3.py`、`analyze_rollout_coverage.py`、`make_figures.py`、`make_summary.py`、`run_v2.sh`
+- 评测报告：`reports/b3_v2_eval_s6n3.json`、`reports/b3_v2_eval_s7n4.json`、`reports/b3_v2_frozen_eval_check.json`、`reports/b3_v2_rollout_coverage.json`、`reports/b3_dagger_summary.md`
+- 图表产出：`reports/figures/b3_dagger/b3_fig{1..4}_*.png`

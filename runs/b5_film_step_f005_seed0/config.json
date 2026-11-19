@@ -1,0 +1,61 @@
+{
+  "branch": "b5_data_eff",
+  "method": "film_step",
+  "frac": 0.05,
+  "frac_tag": "f005",
+  "run": "runs/b5_film_step_f005_seed0",
+  "git_commit": "84dfe11897d4f7bdbd8e05427d86e60ee07add86",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seed": 0,
+  "arch": {
+    "arch_type": "film",
+    "variant": "film",
+    "obj_emb_dim": 8,
+    "lang_dim": 32,
+    "hidden": 128,
+    "dropout": 0.0,
+    "n_params": 225183,
+    "use_film": true
+  },
+  "method_cfg": {
+    "arch": "film",
+    "step_match": true,
+    "aug": "none",
+    "dropout": 0.0,
+    "label_smoothing": 0.0,
+    "cosine_lr": false,
+    "weight_decay": 0.0,
+    "act_balance": false,
+    "family": "scaling",
+    "desc": "步数匹配 FiLMBCNet（wd=0, film_l2=0）"
+  },
+  "optim": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "cosine_lr": false,
+    "weight_decay": 0.0,
+    "label_smoothing": 0.0,
+    "act_balance": false,
+    "batch_size": 128,
+    "epochs": 30,
+    "step_match": true,
+    "total_grad_steps": 3900,
+    "early_stop": "none（跑满 30 epoch，仅按 val_acc 事后选优）"
+  },
+  "data": {
+    "path": "data/expert_5000.pkl",
+    "frac": 0.05,
+    "n_train_episodes": 225,
+    "n_raw_transitions": 800,
+    "n_aug_transitions": 800,
+    "n_val_episodes": 500,
+    "n_val_transitions": 1844
+  },
+  "result": {
+    "best_val_acc": 0.781453,
+    "train_acc_at_best": 0.999819,
+    "generalization_gap": 0.218365,
+    "best_epoch": 5,
+    "train_seconds": 74.43
+  }
+}

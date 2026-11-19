@@ -1,175 +1,104 @@
-# 支线隔离契约（五条支线并行开发的前置约定）
+# 支线隔离契约与多支线总览（五条候选改进并行开发与归档约定）
 
-本项目的主线（**基准复现**）已经完成并**冻结**。之后五个优化项各自是一条独立支线，
-分布在五个 fork 里并行推进。本文件是这五条支线都必须遵守的边界规则。
+本项目的**基线复现**已完成并严格**冻结**。围绕课程手册 §3.2（赛道 2：BabyAI 接地语言模仿学习）列出的全部五项候选改进方向，我们在 `branches/b1_*` .. `branches/b5_*` 下独立完成了系统性受控实验，并依据手册「**指定一项主要比较（One Primary Modification），其余作为消融/辅助实验**」的规则，确立 **`b2_film`（支线 2：FiLM 跨模态融合）** 为本项目的**唯一主修改（Primary Modification）**，其余四条支线（B1 语言编码器、B3 DAgger-lite、B4 课程学习、B5 数据效率）作为已完成的正交验证、辅助对照与次指标（数据效率）支撑研究。
+
+本文件定义了全部五条支线共同遵守的隔离边界、方法论规范与最终完成状态。
 
 ---
 
-## 1. 冻结区（任何支线都不得修改）
+## 1. 冻结区（任何支线与文档整理均不得修改）
 
 | 路径 | 内容 | 为什么冻结 |
 |---|---|---|
-| `src/common.py` | seed 分段、词表、`BCNet`、编码工具 | **实验协议的唯一出处**。任一支线改它，其它四条的数据划分与模型定义立刻失效，跨支线结果不可比 |
-| `src/train_bc.py` | BC 基线训练循环 | 基线数字 0.843 / 0.747 由它产出，改动会让历史结果无法复现 |
-| `src/eval_closed_loop.py` | 闭环评估 | 主指标口径。五个支线必须用同一套评估才算得出"有没有提升" |
-| `src/gen_expert.py` `src/audit_data.py` | 专家数据生成与审计 | 5000 条专家 episode 是固定预算，不许任何支线重新生成 |
-| `src/mission_breakdown.py` `src/analyze_failures.py` `src/render_episodes.py` `src/make_figures.py` `src/make_report.py` `src/check_env.py` | 分析/可视化/报告 | 只读复用 |
-| `data/expert_5000.pkl` | 5000 条专家数据 | 支线 4 需要额外数据时**新建文件**，不许改写它 |
-| `runs/baseline_seed{0,1,2}` `runs/ablation_*` | 基线 checkpoint | 支线的对照基准 |
-| `reports/baseline_*` `reports/data_audit.md` `reports/mission_breakdown.*` `reports/s7n4_transfer.json` `reports/failure_analysis.*` `reports/failures/` `reports/figures/**` `videos/**` | 基线产物 | 同上 |
+| `src/common.py` | seed 分段、14 词词表、`BCNet`、编码工具、`assert_no_leak` | **实验协议的唯一出处**。任一支线改它，数据划分与基线模型定义立刻漂移，跨支线结果不可比 |
+| `src/train_bc.py` | BC 基线训练循环（`patience=5`，上限 30 epoch） | 冻结基线数字（`val_acc 0.843` / S6N3 `0.747`）由它产出，改动会让历史结果无法复现 |
+| `src/eval_closed_loop.py` | 闭环评估函数 `evaluate()` | **主指标唯一口径**。全部五条支线均直接调用同一套 `evaluate()` |
+| `src/gen_expert.py`、`src/audit_data.py` | 专家数据生成与审计 | 5,000 条成功专家 episode（4,500 训练 + 500 验证）是固定预算，禁止重新生成覆盖 |
+| `src/mission_breakdown.py`、`src/analyze_failures.py`、`src/render_episodes.py`、`src/make_figures.py`、`src/make_report.py`、`src/check_env.py` | 分析 / 失败分类器 `classify_failure` / 可视化 / 基线报告 | 只读复用，确保失败归因口径跨支线完全一致 |
+| `data/expert_5000.pkl` | 5,000 条专家数据 | 支线如需额外或跨环境数据时**必须在 `data/bN_*` 下新建文件**，严禁改写它 |
+| `runs/baseline_seed{0,1,2}`、`runs/ablation_*` | 冻结基线与基线消融 checkpoint | 全项目历史对照锚点 |
+| `reports/baseline_*`、`reports/data_audit.md`、`reports/mission_breakdown.*`、`reports/s7n4_transfer.json`、`reports/failure_analysis.*`、`reports/failures/`、`reports/figures/*.png`、`videos/**` | 基线全部产物与演示视频 | 同上 |
 
-**允许的唯一"侵入"方式**：`import` 冻结模块并使用它（只读复用）。**不允许**编辑、monkey-patch、
-或通过环境变量改变冻结模块的行为。
+**允许的唯一复用方式**：`import` 冻结模块并只读调用（如 `from eval_closed_loop import evaluate`、`from render_episodes import classify_failure`）。**不允许**编辑、monkey-patch 或通过环境变量篡改冻结模块语义。
 
-`git diff` 对上述路径必须始终为空。支线提交前后的自检：
+自检命令（期望无任何输出）：
 
 ```bash
-git diff --stat -- src/ data/ runs/baseline_seed0 runs/baseline_seed1 runs/baseline_seed2 \
-  reports/baseline_eval.json reports/data_audit.md
-# 期望：无输出
+git diff --stat -- src/ data/expert_5000.pkl \
+  runs/baseline_seed0 runs/baseline_seed1 runs/baseline_seed2 \
+  reports/baseline_eval.json reports/baseline_report.md
 ```
 
 ---
 
-## 2. 支线的专属区（自由改动）
+## 2. 支线的专属区与命名规范
 
-```
+```text
 branches/
-├── README.md                 ← 本文件（契约，冻结）
-├── _template/                ← 新建支线的骨架
-│   ├── LOG.md
-│   └── run.sh
-├── b1_langenc/               ← 支线 1：语言编码器
-├── b2_film/                  ← 支线 2：FiLM 跨模态融合
-├── b3_dagger/                ← 支线 3：DAgger-lite
-├── b4_curriculum/            ← 支线 4：课程学习
-└── b5_data_eff/              ← 支线 5：数据效率
+├── README.md                 ← 本文件（隔离契约与五支线完成总览）
+├── _shared/                  ← 支线共用只读辅助工具 + 归档的语言接地失败案例
+├── _template/                ← 支线实验记录骨架（LOG.md / run.sh）
+├── b2_film/                  ← ★ 主修改（Primary Modification）：支线 2 · FiLM 跨模态融合
+├── b1_langenc/               ← 辅助支线 1：语言编码器消融（GRU / Transformer / DAN / PosMLP）
+├── b3_dagger/                ← 辅助支线 3：DAgger-lite 交互式模仿与正交叠加（FiLM+DAgger）
+├── b4_curriculum/            ← 辅助支线 4：课程学习与多尺度泛化谱（S5N2..S8N6）
+└── b5_data_eff/              ← 次指标与辅助支线 5：数据效率扩展规律与群等变增广
 ```
 
-每条支线**只写自己的目录**，产物命名一律带支线前缀：
+每条支线**只写带自身前缀的产物**，互不覆盖：
 
-| 类型 | 位置 | 命名 |
+| 类型 | 位置 | 命名规范 |
 |---|---|---|
-| 代码 | `branches/bN_xxx/*.py` | 自由 |
-| 训练产物 | `runs/bN_xxx/<variant>_seed<k>/` | **必须以 `bN_` 开头** |
-| 结果数据 | `reports/bN_xxx_<name>.json` | 同上 |
+| 代码与一键脚本 | `branches/bN_xxx/*.py`、`run.sh` | 支线子目录内独立维护 |
+| 训练产物 | `runs/bN_<variant>_seed<k>/` | **必须以 `bN_` 开头**（含 `config.json`、`history.json`、`best_model.pt`） |
+| 评估与诊断 JSON | `reports/bN_*.json` | 带 `bN_` 前缀，全部可溯源 |
+| 汇总文档 | `reports/bN_*_summary.md` | 由各支线 `make_summary.py` 从原始 JSON 自动生成 |
 | 图表 | `reports/figures/bN_xxx/*.png` | 子目录隔离 |
-| 新增数据 | `data/bN_xxx_*.pkl` | 同上 |
-| 过程记录 | `branches/bN_xxx/LOG.md` | 必需 |
-
-这样任何一条支线被单独 merge 或单独丢弃，都不会覆盖别人的文件。
+| 支线新增数据 | `data/bN_*.pkl` | 仅 B3（交互 rollout）与 B4（多环境课程）新建，B2/B1/B5 零新增环境采样 |
+| 研发过程日志 | `branches/bN_xxx/LOG.md` | 记录文献调研、设计约束、受控结果与跨支线关系 |
 
 ---
 
-## 3. 每条支线必须走的四步
+## 3. 每条支线统一执行的四步闭环与双基线口径
 
-用户明确要求：**先调研 → 再实现 → 跑一轮 → 再补文献 → 记录并给理由**。
+全部五条支线均严格走完：**步骤 A（前置文献调研与设计约束）→ 步骤 B（复用冻结评估与分类器实现）→ 步骤 C（3 seed 受控实验 + 机制探针）→ 步骤 D（基于实测现象补充文献与交叉归因）**。
 
-### 步骤 A：文献调研（实现之前）
+### 关键方法论约定：消除早停混淆的双基线锚点
 
-写进 `LOG.md` 的「调研」小节，至少包含：
+在支线 3 的早期诊断中发现：原冻结基线 `runs/baseline_seed{0,1,2}` 因采用 `patience=5` 早停，在 `seed1`（epoch 13 停，最佳 epoch 8）和 `seed2`（epoch 14 停，最佳 epoch 9）上过早终止，使其闭环成功率停留在 **`0.747 ± 0.093`**（`val_acc = 0.843 ± 0.033`）。在**不改任何模型参数、数据或超参**的前提下，仅取消 `patience=5` 跑满 30 epoch 并严格按 `val_action_acc` 事后选模（即受控基线 **`BC30`**，`runs/b3_bc30_seed{0,1,2}`），S6N3 成功率即升至 **`0.814 ± 0.045`**（`val_acc = 0.873 ± 0.013`），S7N4 零样本迁移为 **`0.697 ± 0.056`**。
 
-1. **3–5 篇可引用的文献/文档**（论文、官方文档、权威教程），每条给出：标题、链接、一句话它解决了什么
-2. **从文献里提炼的 3–6 条具体设计约束**（不是"要小心"，而是"因为 X，所以我要用 Y"）
-3. **已知陷阱清单**：文献里明确说"这样做会失败"的地方，以及本支线如何规避
-
-目的：防止一头扎进实现然后卡在某个点上，或者做出一个文献里早就证明无效的东西。
-
-### 步骤 B：实现
-
-- 所有新代码放在 `branches/bN_xxx/`
-- 优先**复用冻结模块**（例如直接调用 `src/eval_closed_loop.py` 的 `evaluate()`），
-  而不是复制一份改一改——复制会立刻产生口径漂移
-- 关键设计选择写注释，指明它对应调研里的哪条约束
-
-### 步骤 C：跑一轮 + 结果
-
-- 默认 **3 个 seed**（与基线同协议：seed 0/1/2，早停只看验证集动作准确率，测试 `4500:4800`）
-- 与基线对比必须报告：`val_action_acc`、`closed_loop_success`、`mean_return`、
-  `median_len_success`、`timeout 数`
-- 提升是否可信：与基线 seed 间 SD（acc 0.033 / success 0.093）比较，小于 SD 的一律标注"不显著"
-
-### 步骤 D：跑完之后补充文献
-
-基于**实测看到的具体现象**再检索一次。这一步不是形式主义，而是因为：
-
-- 第一轮跑出来的失败模式往往和预期不同（例如本项目实测发现随机策略就有 54% 成功率，
-  整个改进空间被压缩——这在动手前并不知道）
-- 只有在看到具体瓶颈之后，才知道该去查"如何解决 X"而不是泛泛地查领域综述
-
-补完文献后，写「改进方向」小节：下一轮具体改什么、预期收益多少、怎么判定成功/失败。
+因此，**全项目所有支线（B1–B5）统一以受控 30-epoch `BC30`（`0.814 ± 0.045`）作为公平比较分母**，同时在总表中并列展示原冻结基线（`0.747 ± 0.093`），彻底剥离训练时长/早停协议混淆。全部均值与标准差统一采用 3 个初始化种子（`seed 0/1/2`）的总体标准差（`ddof=0`，即 `statistics.pstdev`），与全部 `reports/*.json` 严格一致。
 
 ---
 
-## 4. LOG.md 的标准结构
+## 4. 共享的评估与机制诊断口径（零漂移）
 
-```markdown
-# 支线 N · <名字>
-
-## 0. 一句话结论
-## 1. 目标与成功判据（跑之前就写好）
-## 2. 调研（实现之前）
-### 2.1 文献
-### 2.2 提炼的设计约束
-### 2.3 已知陷阱
-## 3. 实现（含关键决策与理由）
-## 4. 结果（第一轮）
-## 5. 结果分析：哪里符合预期、哪里不符合
-## 6. 补充调研（基于实测现象）
-## 7. 改进方向与下一轮计划
-## 8. 复现命令
-## 9. 与其它支线的关系（谁的结论会影响谁）
-```
-
-第 9 节很重要：五条支线看似独立，但结论会互相影响。例如
-"DAgger 收益小" 与 "随机基线 0.54 已很高" 是同一件事的两面，
-如果不交叉说明，评审会认为两个结论互相矛盾。
+1. **主指标与迁移指标**：统一调用 `src/eval_closed_loop.py:evaluate()`，S6N3 未见测试集固定 `4500:4800`（300 局/模型），S7N4 零样本跨房间迁移固定 `10000:10300`（300 局/模型）。
+2. **选模硬约束**：所有支线 checkpoint **仅由验证集动作准确率 `val_action_acc`（`4000:4500`）选出**，绝不使用闭环成功率选模；训练入口由 `common.assert_no_leak` 硬断言零测试种子泄漏。
+3. **反事实语言敏感度探针**：在 183 个场景内确有替换候选物体的测试状态上（138 组同类异色、59 组同色异类），固定 `(image, direction)` 仅替换指令中的颜色或物体类型词，统计贪心动作改变比例。
+4. **失败机制分类**：统一调用 `src/render_episodes.py:classify_failure()`，将超时失败归并为**表征接地类**（`attribute_confusion` + `distractor_priority`）与**状态覆盖类**（`turn_oscillation` + `approach_then_lost` + `orientation_lock` + `forward_stall` + `wander_timeout`）。
 
 ---
 
-## 5. 共享的评估口径（不许另写一套）
+## 5. 五条支线的逻辑关系（为什么最终确立 B2 FiLM 为主修改）
 
-主指标一律来自 `src/eval_closed_loop.py`：
+五条支线共同拼出了一幅自洽的因果图景：
 
-```python
-import sys; sys.path.insert(0, "src")
-from eval_closed_loop import evaluate, parse_seeds
-from common import ENV_ID, TEST_SEEDS
-
-res = evaluate(policy_fn, ENV_ID, parse_seeds("test"))
-# policy_fn: obs -> int，必须是无状态的单步函数（内部可以包模型）
-```
-
-- 测试 seed 固定 `4500:4800`（300 个），S7N4 固定 `10000:10300`
-- 成功判定用 `terminated`，超时是 `truncated`
-- **绝不用闭环 Success 选 checkpoint**（手册硬规定）
-- **绝不让测试 seed 进任何训练集**（`common.assert_no_leak` 已在 `train_bc.py` 里硬断言）
+1. **瓶颈定位**：`BC30` 每 300 局平均失败 `55.7` 局，其中 **`38.3` 局（68.8%）是表征接地类失败**；反事实探针进一步揭示 Concat 基线的颜色敏感度仅 **`0.065`**（`BC30` 单独为 `0.051`），超过 93% 的情况下更换目标颜色词根本不改变动作（典型的视觉捷径 / Information Collapse）。
+2. **为什么选 B2（FiLM）为主修改而非 B1 或 B3**：
+   - **对比 B1（语言编码器）**：GoToLocal 指令是长度固定为 5 的无歧义语法模板（`go to the/a <color> <type>`），词序本身不携带额外语义。纯换编码器最强的 `gru_small` 仅将 S6N3 提至 `0.868`（颜色敏感度仍仅 `0.058`）；而保持 448 参数平均词嵌入不变、仅在 `conv1` 后引入单层线性恒等初始化 **FiLM 乘性调制（`b2_film`）**，在**零额外专家样本、仅增 2,112 参数（+0.95%）**下即将 S6N3 推至 **`0.959 ± 0.006`**（`+0.144`）、S7N4 推至 **`0.900 ± 0.021`**（`+0.203`），颜色敏感度跃升 **4.1×（`0.268`）**，表征失败砍掉 **83.5%（`38.3 → 6.3`）**。
+   - **对比 B3（DAgger-lite）**：DAgger 需要在线交互与专家重标注，主要修复状态覆盖类失败（`17.3 → 8.3`），对属性混淆无能为力；但当把 B3 叠加在 B2 之上时（`FiLM + DAgger`），S6N3 进一步升至 **`0.970 ± 0.007`**（失败降至 `9.0/300`），完美证明了「表征接地（B2）」与「状态分布纠偏（B3）」的正交性。
+   - **联动 B5（数据效率）与 B4（课程泛化）**：B5 证明步数匹配下 `film_step` 仅用 **20% 专家数据（900 ep）即达 `0.814`**，追平 100% 数据的 `BC30`（5× 样本压缩，配合 D4 等变增广更达 10× 压缩）；B4 证明在 FiLM 基础上引入多尺度房间训练可将未见 S7N4 进一步推至 **`0.924`**、S8N6 推至 **`0.844`**。
 
 ---
 
-## 6. 当前支线状态
+## 6. 当前支线状态（全部完成）
 
-| 支线 | 目录 | 状态 | 一句话结论 |
+| 支线 | 目录 | 角色定位与状态 | 核心定量结论（全部对比受控 `BC30`: S6N3 `0.814 ± 0.045`, S7N4 `0.697 ± 0.056`, 3 seeds） |
 |---|---|---|---|
-| 3 · DAgger-lite | `b3_dagger/` | **✅ 完成（两轮）** | Success 0.747 → **0.879**；净收益 +0.052；1/6 数据量可达同等效果；附带发现「patience=5 会低估真实上限」 |
-| 2 · FiLM 融合 | `b2_film/` | ✅ 完成 | Success 0.814（BC30 对照）→ **0.959**（+0.144，3/3 seed）；颜色敏感度 0.065→0.268（×4.1）；表征类失败 −78%；S7N4 迁移 +0.203 |
-| 1 · 语言编码器 | `b1_langenc/` | 未开始（建议先测语言敏感度，见 b2 §9） | — |
-| 4 · 课程学习 | `b4_curriculum/` | 未开始 | — |
-| 5 · 数据效率 | `b5_data_eff/` | 未开始 | — |
-
-### 已沉淀的跨支线方法论（后续支线直接继承，不必重新踩坑）
-
-1. **不要用 `patience=5` 早停**（b3 实测）：在 18k 转移的数据上，验证集噪声（≈0.008）
-   大于趋势斜率（≈0.005/epoch），早停会系统性低估真实上限达 0.067。
-   **统一改为「跑满 30 epoch + 事后选 val_acc 最优」**（选模依据仍是验证集动作准确率，不违反手册）。
-2. **必须设计一个能证伪自己假设的探针**（b3 §5.3 + b2 §4.2）：
-   b3 的机制验证推翻了「DAgger 精准修复状态覆盖」的叙事；
-   b2 用反事实探针（改 mission 看动作是否变化）证明 FiLM 的收益来自真实语言接地而非容量。
-   只看 Success 会被"参数变多""训练更久"这类混淆变量骗过。
-3. **参数量匹配对照是必需的**（b2）：`concat_wide` 参数量只比 `film` 少 500，
-   但 Success 低 0.241 —— 这是排除"只是多参数"的唯一硬证据。
-4. **正则要加在新增分支上，不要无差别压全网**（b2 §5.1）：
-   wd=1e-4 让基线 Success 掉 0.129（因为 90% 参数挤在视觉第一层），
-   而对 FiLM 组几乎无影响（它有自己的 `film_l2`）。
-5. **数据/标签的可靠性要先排除**（b3 §5.2）：在讨论"模型不行"之前，
-   先量化标签歧义率、重复率、状态重叠率。b3 用 `check_label_conflicts.py` 做过这件事。
+| **2 · FiLM 跨模态融合** | `b2_film/` | **✅ 完成（★ 唯一主修改 Primary Modification）** | **零额外样本**，`film_nwd` S6N3 **`0.959 ± 0.006`**（`+0.144`, 3/3 正）、S7N4 **`0.900 ± 0.021`**（`+0.203`, 3/3 正）；`film_wd` `0.946 ± 0.009`、`film_only_wd`（省 2k 参数）`0.947 ± 0.007`；等参数 `concat_wide` 仅 `0.718` 排除容量解释；颜色敏感度 `0.065 → 0.268`（4.1×），表征失败 `38.3 → 6.3`（`film_wd` 为 `8.3`） |
+| **5 · 数据效率** | `b5_data_eff/` | **✅ 完成（手册规定次指标 + 扩展消融）** | 基线协议 20%/50%/100% S6N3 为 `0.732 / 0.747 / 0.814`；步数对齐下 `bc_step` 为 `0.742 / 0.751 / 0.814`，而 **`film_step@20%`（900 ep）即达 `0.814 ± 0.023`**（5× 压缩追平 100% `BC30`，50% 达 `0.929`）；`film_d4_tta@10%`（450 ep）达 `0.828 ± 0.008`（10× 压缩） |
+| **1 · 语言编码器** | `b1_langenc/` | **✅ 完成（辅助/消融支线）** | 11 组受控对比：纯 Concat 下最强 `gru_small`（32d）S6N3 `0.868 ± 0.013`（`+0.053`, 3/3 正）、S7N4 `0.803 ± 0.026`（`+0.107`, 3/3 正），但颜色敏感度仍仅 `0.058`；`FiLM+GRU`（`0.949`/`0.944`）不优于 `FiLM+MeanPool`（`0.959`），且词序打乱时暴跌 `-0.151`～`-0.342`（MeanPool 严格 `0.000`） |
+| **3 · DAgger-lite** | `b3_dagger/` | **✅ 完成（辅助/正交支线，v1+v2）** | 发现并修正 `patience=5` 早停低估（`0.747 → 0.814`）；4,500 种子严苛等预算下 `Split-DAgger` 达 `0.851 ± 0.002`（`Split-EnsembleDAgger` 少用 16.9% 标签达 `0.858`）；两轮非重叠 `Loop-Unsticking` 达 `0.909 ± 0.019`（S7N4 `0.828`）；与主修改正交叠加 **`FiLM + DAgger` 达 `0.970 ± 0.007`**（S7N4 `0.918` @ w=1.0，总失败压至 `9.0/300`） |
+| **4 · 课程学习** | `b4_curriculum/` | **✅ 完成（辅助/泛化支线）** | 14 组 × 5 环境谱：同域排序 `pace_easy`（`0.857` S6 / `0.766` S7）优于随机阶梯与反课程 `pace_hard`（`0.818`），无干扰预热 `env_easy_cumul`（S7 `0.673`）反而损害接地；`FiLM` 结合多尺度训练（不含 7×7）将未见 **S7N4 推至 `0.924 ± 0.004`**、**S8N6 推至 `0.844`** |
+| **2b · Attention 与融合消融** | `b2_attn/` | **✅ 完成（FiLM vs Attention 对照消融）** | 同预算 3-seed：`Spatial-Softmax`（+2,112 参数）达 `0.971 ± 0.003`（S7N4 `0.964`, S8N6 `0.887`）并 3/3 修复拥挤竞争 `seed 4502`，但绕障 `seed 4501` 降至 `1/3`（FiLM `2/3`）；串联融合 `FiLM+Spatial`（`0.959`/S7N4 `0.939`）与 `FiLM+MHA`（`0.963`/S7N4 `0.926`）均可提升跨房间迁移但未超越独立 `Spatial-Softmax` |

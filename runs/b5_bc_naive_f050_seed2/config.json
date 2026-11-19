@@ -1,0 +1,61 @@
+{
+  "branch": "b5_data_eff",
+  "method": "bc_naive",
+  "frac": 0.5,
+  "frac_tag": "f050",
+  "run": "runs/b5_bc_naive_f050_seed2",
+  "git_commit": "84dfe11897d4f7bdbd8e05427d86e60ee07add86",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "seed": 2,
+  "arch": {
+    "arch_type": "bcnet",
+    "variant": "bcnet",
+    "obj_emb_dim": 8,
+    "lang_dim": 32,
+    "hidden": 128,
+    "dropout": 0.0,
+    "n_params": 223071,
+    "use_film": false
+  },
+  "method_cfg": {
+    "arch": "bcnet",
+    "step_match": false,
+    "aug": "none",
+    "dropout": 0.0,
+    "label_smoothing": 0.0,
+    "cosine_lr": false,
+    "weight_decay": 0.0,
+    "act_balance": false,
+    "family": "scaling",
+    "desc": "无步数匹配朴素 BC（忠实反映预算减少同时导致的梯度步萎缩）"
+  },
+  "optim": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "cosine_lr": false,
+    "weight_decay": 0.0,
+    "label_smoothing": 0.0,
+    "act_balance": false,
+    "batch_size": 128,
+    "epochs": 30,
+    "step_match": false,
+    "total_grad_steps": 1950,
+    "early_stop": "none（跑满 30 epoch，仅按 val_acc 事后选优）"
+  },
+  "data": {
+    "path": "data/expert_5000.pkl",
+    "frac": 0.5,
+    "n_train_episodes": 2250,
+    "n_raw_transitions": 8242,
+    "n_aug_transitions": 8242,
+    "n_val_episodes": 500,
+    "n_val_transitions": 1844
+  },
+  "result": {
+    "best_val_acc": 0.817787,
+    "train_acc_at_best": 0.843606,
+    "generalization_gap": 0.025819,
+    "best_epoch": 16,
+    "train_seconds": 32.39
+  }
+}
