@@ -1,20 +1,9 @@
-"""Branch 6 · Paradigm 1 Unified Composable Architecture (`GeoRel-BCNet` & `GeoRel-GRU`).
+"""ABC attention fusion: AB (Map-Inject) and ABC (+ relative-bias self-attention).
 
-Strict monotonic composable ladder sharing the exact frozen `BCNet` stem
-(`obj_emb`, `conv1`, `conv2`, `lang_emb`, `trunk`), strictly respecting AIAA 4220 Track 2 rules
-(<= 5,000 expert episodes, <= 30 epochs, val_action_acc checkpoint selection, zero test leak):
-
-Single-frame composable ladder (100% compatible with frozen `src/eval_closed_loop.py`):
-  - s2_map1h          : [+A+B]   1-Head Spatial-Softmax (NoPE) + Uncorrupted Map-Inject [h1; M] -> Conv2(33->32)
-  - s3_map1h_relbias  : [+A+B+C] s2_map1h + Zero-Init 2D Relative-Bias Relational Self-Attention (49x49)
-  - s3_res1h_relbias  : [+A+B'+C] 1-Head Residual Spatial-Softmax + Zero-Init 2D Relative-Bias Relational Self-Attn
-
-Stateful episode-level ladder (same 5,000 expert episodes trained as sequences, zero extra oracle data):
-  - bc30_gru          : [0+D]    Frozen BCNet + Residual Episode GRU(128) orthogonal control
-  - s4_georel_gru     : [+A+B+C+D] s3_map1h_relbias + Residual Episode GRU(128) (full unified model)
-  - s4_res1h_gru      : [+A+B'+C+D] s3_res1h_relbias + Residual Episode GRU(128)
+Primary comparison: BC30 vs s3_map1h_relbias. s2_map1h is the AB ablation.
+A and FiLM controls reuse their frozen implementations in branches/b2_attn and b2_film.
+The retained architectures and state-dict keys match paradigm1-georel-unified.
 """
-
 from __future__ import annotations
 
 import math
@@ -37,40 +26,22 @@ from common import (  # noqa: E402
     VOCAB,
 )
 
-SINGLE_FRAME_VARIANTS = (
-    "s2_map1h",
-    "s3_map1h_relbias",
-    "s3_res1h_relbias",
-)
-
-RECURRENT_VARIANTS = (
-    "bc30_gru",
-    "s4_georel_gru",
-    "s4_res1h_gru",
-)
-
-ALL_GEOREL_VARIANTS = SINGLE_FRAME_VARIANTS + RECURRENT_VARIANTS
-
-_SOFTPLUS_ONE_INIT = math.log(math.e - 1.0)
+ALL_GEOREL_VARIANTS = ("s2_map1h", "s3_map1h_relbias")
+SINGLE_FRAME_VARIANTS = ALL_GEOREL_VARIANTS
 
 
 class SpatialPointer1H(nn.Module):
-    """Component A: 1-Head Competitive Spatial-Softmax (NoPE, translation-equivariant).
+    """Components A/B: language-conditioned spatial map and raw-feature concatenation.
 
     Produces a single normalized 7x7 pointer map M = 49 * softmax_49(<W_q l, W_k h> / sqrt(C)).
     Matches GoToLocal's single-target retrieval structure with minimal degrees of freedom.
     """
 
-    def __init__(self, lang_dim: int, channels: int, mode: str = "concat_map"):
+    def __init__(self, lang_dim: int, channels: int):
         super().__init__()
-        if mode not in ("concat_map", "residual"):
-            raise ValueError(f"Unsupported mode: {mode}")
         self.channels = channels
-        self.mode = mode
         self.q_proj = nn.Linear(lang_dim, channels)
         self.k_proj = nn.Conv2d(channels, channels, kernel_size=1)
-        if mode == "residual":
-            self.raw_lambda = nn.Parameter(torch.full((1,), _SOFTPLUS_ONE_INIT))
 
     def compute_map(self, h: torch.Tensor, lang: torch.Tensor) -> torch.Tensor:
         """Returns (B, 1, H, W) competition map 49 * softmax."""
@@ -82,28 +53,20 @@ class SpatialPointer1H(nn.Module):
         return float(H * W) * alpha
 
     def forward(self, h: torch.Tensor, lang: torch.Tensor, return_map: bool = False):
-        M = self.compute_map(h, lang)  # (B, 1, H, W)
-        if self.mode == "concat_map":
-            out = torch.cat([h, M], dim=1)  # (B, C+1, H, W), h strictly 1.0x uncorrupted
-            if not return_map:
-                return out
+        M = self.compute_map(h, lang)
+        out = torch.cat([h, M], dim=1)
+        if return_map:
             return out, M, {"mode": "concat_map"}
-
-        lam = F.softplus(self.raw_lambda).view(1, 1, 1, 1)
-        eff_mult = 1.0 + lam * M
-        out = eff_mult * h
-        if not return_map:
-            return out
-        return out, eff_mult, {"mode": "residual", "lambda": [round(float(lam.item()), 5)]}
+        return out
 
 
 class RelBiasRelationalBlock(nn.Module):
-    """Component C: Strictly Translation-Equivariant 2D Relative-Bias Relational Self-Attention.
+    """Component C: 2D relative-bias relational self-attention.
 
     Unlike learned absolute 49-cell pos_emb or absolute (x, y) projections, attention logits
     add a learned 2D relative offset bias B[head, dy + (H-1), dx + (W-1)] initialized to 0,
-    preserving full 2D translation equivariance while enabling non-local target <-> obstacle
-    bearing exchange. Residual scale starts at 0.0 (identity init) for safe composition.
+    sharing offset biases across grid locations and enabling non-local information exchange.
+    This does not establish translation equivariance of the whole finite-view policy. Residual scale starts at 0.0 (identity init) for safe composition.
     """
 
     def __init__(self, channels: int = 32, num_heads: int = 4, view_size: int = VIEW_SIZE):
@@ -159,7 +122,7 @@ class RelBiasRelationalBlock(nn.Module):
 
 
 class GeoRelBCNet(nn.Module):
-    """Unified Single-Frame Paradigm 1 Composable Network (`s2_map1h`, `s3_map1h_relbias`, `s3_res1h_relbias`)."""
+    """Single-frame AB / ABC fusion network; all retained parameters remain trainable."""
 
     def __init__(
         self,
@@ -180,20 +143,16 @@ class GeoRelBCNet(nn.Module):
         self.hidden = hidden
         self.is_recurrent = False
 
-        # Frozen BCNet-aligned visual & language stem
+        # BCNet-aligned visual and language stem (same architecture, trainable weights)
         self.lang_emb = nn.Embedding(vocab_size, lang_dim, padding_idx=PAD_IDX)
         self.obj_emb = nn.Embedding(N_OBJECT_IDS, obj_emb_dim)
         self.conv1 = nn.Conv2d(3 * obj_emb_dim, channels, 3, padding=1)
         self.act = nn.ReLU(inplace=True)
 
-        self.use_map_inject = variant in ("s2_map1h", "s3_map1h_relbias")
-        self.use_relational = variant in ("s3_map1h_relbias", "s3_res1h_relbias")
-
-        ptr_mode = "concat_map" if self.use_map_inject else "residual"
-        self.pointer = SpatialPointer1H(lang_dim, channels, mode=ptr_mode)
-
-        conv2_in = channels + 1 if self.use_map_inject else channels
-        self.conv2 = nn.Conv2d(conv2_in, 32, 3, padding=1)
+        self.use_map_inject = True
+        self.use_relational = variant == "s3_map1h_relbias"
+        self.pointer = SpatialPointer1H(lang_dim, channels)
+        self.conv2 = nn.Conv2d(channels + 1, 32, 3, padding=1)
 
         if self.use_relational:
             self.rel_block = RelBiasRelationalBlock(channels=32, num_heads=4, view_size=VIEW_SIZE)
@@ -222,18 +181,10 @@ class GeoRelBCNet(nn.Module):
         """Returns (h1, h_mod, h2, lang) for unified hidden-layer feature probing."""
         lang = self.encode_language(tokens)
         h1 = self.encode_h1(image)
-        if self.use_map_inject:
-            # h_mod is [h1; M] (33x7x7), Conv2 fuses geometry + pointer, then optional RelBias
-            h_mod = self.pointer(h1, lang, return_map=False)
-            h2 = self.act(self.conv2(h_mod))
-            if self.use_relational:
-                h2 = self.rel_block(h2, return_map=False)
-        else:
-            # Residual 1H spatial softmax -> optional RelBias -> Conv2
-            h_mod = self.pointer(h1, lang, return_map=False)
-            if self.use_relational:
-                h_mod = self.rel_block(h_mod, return_map=False)
-            h2 = self.act(self.conv2(h_mod))
+        h_mod = self.pointer(h1, lang)
+        h2 = self.act(self.conv2(h_mod))
+        if self.use_relational:
+            h2 = self.rel_block(h2)
         return h1, h_mod, h2, lang
 
     def encode_trunk(self, image: torch.Tensor, tokens: torch.Tensor, direction: torch.Tensor) -> torch.Tensor:
@@ -260,211 +211,20 @@ class GeoRelBCNet(nn.Module):
             **extra,
         }
         if self.use_relational:
-            if self.use_map_inject:
-                h_geo = self.act(self.conv2(h_mod))
-                _, rel_norm, rex = self.rel_block(h_geo, return_map=True)
-            else:
-                _, rel_norm, rex = self.rel_block(h_mod, return_map=True)
+            h_geo = self.act(self.conv2(h_mod))
+            _, rel_norm, rex = self.rel_block(h_geo, return_map=True)
             out["rel_delta_norm"] = rel_norm[0, 0].detach().cpu().numpy()
             out.update(rex)
         return out
 
     def scalar_stats(self) -> dict:
-        stats = {}
-        if hasattr(self.pointer, "raw_lambda"):
-            stats["lambda"] = [round(float(F.softplus(self.pointer.raw_lambda).item()), 5)]
         if self.use_relational:
-            stats["rel_scale"] = round(float(self.rel_block.rel_scale.item()), 5)
-        return stats
-
-
-class GeoRelGRUBCNet(nn.Module):
-    """Component D: Episode-Level Stateful GRU Policy (`bc30_gru`, `s4_georel_gru`, `s4_res1h_gru`).
-
-    Uses the EXACT same 4,500 train + 500 val episodes (zero extra expert data), adding a
-    residual GRU(hidden, hidden) over the trunk representation so the policy remembers prior
-    orientations/views within an episode and breaks POMDP blind-spot oscillation loops.
-    """
-
-    def __init__(
-        self,
-        variant: str,
-        vocab_size: int = len(VOCAB),
-        n_actions: int = N_ACTIONS,
-        n_dirs: int = N_DIRS,
-        obj_emb_dim: int = 8,
-        lang_dim: int = 32,
-        hidden: int = 128,
-        dropout: float = 0.0,
-        channels: int = 32,
-    ):
-        super().__init__()
-        if variant not in RECURRENT_VARIANTS:
-            raise ValueError(f"variant must be in {RECURRENT_VARIANTS}, got {variant}")
-        self.variant = variant
-        self.hidden = hidden
-        self.is_recurrent = True
-
-        self.lang_emb = nn.Embedding(vocab_size, lang_dim, padding_idx=PAD_IDX)
-        self.obj_emb = nn.Embedding(N_OBJECT_IDS, obj_emb_dim)
-        self.conv1 = nn.Conv2d(3 * obj_emb_dim, channels, 3, padding=1)
-        self.act = nn.ReLU(inplace=True)
-
-        self.use_pointer = variant in ("s4_georel_gru", "s4_res1h_gru")
-        self.use_map_inject = variant == "s4_georel_gru"
-        self.use_relational = variant in ("s4_georel_gru", "s4_res1h_gru")
-
-        if self.use_pointer:
-            ptr_mode = "concat_map" if self.use_map_inject else "residual"
-            self.pointer = SpatialPointer1H(lang_dim, channels, mode=ptr_mode)
-
-        conv2_in = channels + 1 if self.use_map_inject else channels
-        self.conv2 = nn.Conv2d(conv2_in, 32, 3, padding=1)
-
-        if self.use_relational:
-            self.rel_block = RelBiasRelationalBlock(channels=32, num_heads=4, view_size=VIEW_SIZE)
-
-        v_dim = 32 * VIEW_SIZE * VIEW_SIZE
-        trunk_in = v_dim + lang_dim + n_dirs  # 1604
-        self.trunk_fc = nn.Sequential(
-            nn.Linear(trunk_in, hidden),
-            nn.ReLU(inplace=True),
-            nn.Dropout(dropout),
-        )
-        self.gru = nn.GRU(hidden, hidden, batch_first=True)
-        self.gru_norm = nn.LayerNorm(hidden)
-        self.head = nn.Linear(hidden, n_actions)
-
-    def encode_language(self, tokens: torch.Tensor) -> torch.Tensor:
-        mask = (tokens != PAD_IDX).unsqueeze(-1)
-        tok_emb = self.lang_emb(tokens)
-        counts = mask.sum(dim=1).clamp(min=1)
-        return (tok_emb * mask).sum(dim=1) / counts
-
-    def encode_h1(self, image: torch.Tensor) -> torch.Tensor:
-        x = image.permute(0, 3, 1, 2)
-        feats = [self.obj_emb(x[:, c].long()).permute(0, 3, 1, 2) for c in range(3)]
-        return self.act(self.conv1(torch.cat(feats, dim=1)))
-
-    def extract_layers(self, image: torch.Tensor, tokens: torch.Tensor):
-        lang = self.encode_language(tokens)
-        h1 = self.encode_h1(image)
-        if not self.use_pointer:
-            h_mod = h1
-            h2 = self.act(self.conv2(h_mod))
-        elif self.use_map_inject:
-            h_mod = self.pointer(h1, lang, return_map=False)
-            h2 = self.act(self.conv2(h_mod))
-            if self.use_relational:
-                h2 = self.rel_block(h2, return_map=False)
-        else:
-            h_mod = self.pointer(h1, lang, return_map=False)
-            if self.use_relational:
-                h_mod = self.rel_block(h_mod, return_map=False)
-            h2 = self.act(self.conv2(h_mod))
-        return h1, h_mod, h2, lang
-
-    def _frame_features(
-        self, image: torch.Tensor, tokens: torch.Tensor, direction: torch.Tensor
-    ) -> torch.Tensor:
-        _, _, h2, lang = self.extract_layers(image, tokens)
-        v = torch.flatten(h2, 1)
-        d = F.one_hot(direction.long(), num_classes=N_DIRS).float()
-        return self.trunk_fc(torch.cat([v, lang, d], dim=-1))
-
-    def forward_sequence(
-        self,
-        images: torch.Tensor,
-        tokens: torch.Tensor,
-        directions: torch.Tensor,
-        hx: torch.Tensor | None = None,
-    ) -> tuple[torch.Tensor, torch.Tensor]:
-        """Sequence forward for episode batches.
-
-        Args:
-            images:     (B, T, 7, 7, 3)
-            tokens:     (B, T, L)
-            directions: (B, T)
-            hx:         (1, B, hidden) or None
-        Returns:
-            logits: (B, T, n_actions), h_next: (1, B, hidden)
-        """
-        B, T = images.shape[:2]
-        flat_img = images.reshape(B * T, *images.shape[2:])
-        flat_tok = tokens.reshape(B * T, tokens.shape[-1])
-        flat_dir = directions.reshape(B * T)
-        feats = self._frame_features(flat_img, flat_tok, flat_dir).view(B, T, self.hidden)
-        gru_out, h_next = self.gru(feats, hx)
-        fused = feats + self.gru_norm(gru_out)
-        return self.head(fused), h_next
-
-    def forward(
-        self,
-        image: torch.Tensor,
-        tokens: torch.Tensor,
-        direction: torch.Tensor,
-        hx: torch.Tensor | None = None,
-    ):
-        """Single-step forward compatible with stateless probes (hx=None) or stateful rollouts."""
-        logits, h_next = self.forward_sequence(
-            image.unsqueeze(1), tokens.unsqueeze(1), direction.unsqueeze(1), hx=hx
-        )
-        if hx is None and not self.training:
-            return logits.squeeze(1)
-        return logits.squeeze(1), h_next
-
-    @torch.no_grad()
-    def step(
-        self,
-        image: torch.Tensor,
-        tokens: torch.Tensor,
-        direction: torch.Tensor,
-        hx: torch.Tensor | None = None,
-    ) -> tuple[torch.Tensor, torch.Tensor]:
-        logits, h_next = self.forward_sequence(
-            image.unsqueeze(1), tokens.unsqueeze(1), direction.unsqueeze(1), hx=hx
-        )
-        return logits.squeeze(1), h_next
-
-    @torch.no_grad()
-    def extract_diagnostics(
-        self, image: torch.Tensor, tokens: torch.Tensor, direction: torch.Tensor
-    ) -> dict:
-        if not self.use_pointer:
-            return {"variant": self.variant}
-        lang = self.encode_language(tokens)
-        h1 = self.encode_h1(image)
-        h_mod, smap, extra = self.pointer(h1, lang, return_map=True)
-        out: dict = {
-            "variant": self.variant,
-            "spatial_map": smap[0, 0].detach().cpu().numpy(),
-            **extra,
-        }
-        if self.use_relational:
-            if self.use_map_inject:
-                h_geo = self.act(self.conv2(h_mod))
-                _, rel_norm, rex = self.rel_block(h_geo, return_map=True)
-            else:
-                _, rel_norm, rex = self.rel_block(h_mod, return_map=True)
-            out["rel_delta_norm"] = rel_norm[0, 0].detach().cpu().numpy()
-            out.update(rex)
-        return out
-
-    def scalar_stats(self) -> dict:
-        stats = {}
-        if self.use_pointer and hasattr(self.pointer, "raw_lambda"):
-            stats["lambda"] = [round(float(F.softplus(self.pointer.raw_lambda).item()), 5)]
-        if self.use_relational:
-            stats["rel_scale"] = round(float(self.rel_block.rel_scale.item()), 5)
-        return stats
+            return {"rel_scale": round(float(self.rel_block.rel_scale.item()), 5)}
+        return {}
 
 
 def build(variant: str, **kw) -> nn.Module:
-    if variant in SINGLE_FRAME_VARIANTS:
-        return GeoRelBCNet(variant=variant, **kw)
-    if variant in RECURRENT_VARIANTS:
-        return GeoRelGRUBCNet(variant=variant, **kw)
-    raise ValueError(f"Unknown variant {variant!r}; expected one of {ALL_GEOREL_VARIANTS}")
+    return GeoRelBCNet(variant=variant, **kw)
 
 
 def n_params(model: nn.Module) -> int:

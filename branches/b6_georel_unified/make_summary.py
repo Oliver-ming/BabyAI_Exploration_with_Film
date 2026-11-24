@@ -1,228 +1,151 @@
-"""Build Paradigm 1 Markdown Summary (`reports/b6_georel_summary.md`) & Figure from `reports/b6_georel_results.json`."""
-
+"""Render the focused ABC study from saved results; no training dependencies."""
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import numpy as np
+from study import CASE_SEEDS, MODELS, NEW_VARIANTS, PRIMARY, RESULT_PATH, ROOT, assemble_results, validate_results
 
-ROOT = Path(__file__).resolve().parents[2]
 
-LADDER_MODELS = [
-    ("bc30", "0. BC30 (Concat)"),
-    ("film_nwd", "0'. Channel FiLM"),
-    ("spatial_softmax_attn", "1. +A: 1H Spatial-SS"),
-    ("s2_map1h", "2. +A+B: 1H Map-Inject"),
-    ("s3_map1h_relbias", "3. +A+B+C: Map1H+RelBias"),
-    ("s3_res1h_relbias", "3'. +A+B'+C: Res1H+RelBias"),
-    ("mh_spatial_relational", "ref: v2 4H MH-Rel"),
-    ("bc30_gru", "ctrl: BC30 + GRU"),
-    ("s4_georel_gru", "4. +A+B+C+D: GeoRel-GRU"),
-    ("s4_res1h_gru", "4'. +A+B'+C+D: Res1H-GRU"),
-]
+def fmt(metric: dict) -> str:
+    return f"{metric['mean']:.3f} ± {metric['sd']:.3f}"
 
-NEW_VARIANTS = (
-    "s2_map1h",
-    "s3_map1h_relbias",
-    "s3_res1h_relbias",
-    "bc30_gru",
-    "s4_georel_gru",
-    "s4_res1h_gru",
-)
+
+def render_summary(res: dict, out_dir: Path | None = None) -> tuple[Path, Path]:
+    validate_results(res)
+    out_dir = ROOT / "reports" if out_dir is None else Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    labels = {k: label for k, label, _ in MODELS}
+    c_deltas = ", ".join(
+        f"{env} {100 * (res['eval']['s3_map1h_relbias'][env]['closed_loop_success']['mean'] - res['eval']['s2_map1h'][env]['closed_loop_success']['mean']):+.2f} pp"
+        for env in ("S6N3", "S7N4", "S8N6")
+    )
+    lines = [
+        "# ABC attention fusion — one primary comparison", "",
+        "**Primary modification:** single-frame language-conditioned spatial fusion with raw-feature/map concatenation and relative-bias relational attention (ABC).",
+        "**Primary comparison:** BC30 vs ABC (`s3_map1h_relbias`). A, AB and FiLM are supporting controls.", "",
+        "4,500 training + 500 validation expert episodes; Adam lr=1e-3, wd=0; 3 initialization seeds; 300 unseen episodes per environment. Values are mean ± population SD (ddof=0).",
+        "**Protocol deviation:** 30 full epochs without early stopping, checkpoint selected by validation action accuracy only. Original early-stopped baseline: `baseline_report.md`.", "",
+        "## 1. Primary comparison", "",
+        "| Method | Params | S6N3 success | Mean return | Median successful length (steps) | Val action accuracy | S7N4 success | S8N6 success |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for key in PRIMARY:
+        e = res["eval"][key]
+        s = e["S6N3"]
+        success = fmt(s["closed_loop_success"])
+        if key == PRIMARY[1]:
+            success = f"**{success}**"
+        lines.append(f"| {labels[key]} | {s['n_params']:,} | {success} | {fmt(s['mean_return'])} | {fmt(s['median_len_success'])} | {fmt(s['val_action_acc'])} | {fmt(e['S7N4']['closed_loop_success'])} | {fmt(e['S8N6']['closed_loop_success'])} |")
+    lines += ["", "| Method | Seed 0 S6N3 | Seed 1 S6N3 | Seed 2 S6N3 |", "|---|---:|---:|---:|"]
+    for key in PRIMARY:
+        vals = res["eval"][key]["S6N3"]["closed_loop_success"]["values"]
+        lines.append(f"| {labels[key]} | " + " | ".join(f"{v:.3f}" for v in vals) + " |")
+    lines += [
+        "", "## 2. Component ablations and alternative fusion", "",
+        "A applies multiplicative weighting. AB replaces it with `[H; M] → Conv2`; ABC adds C after Conv2. AB vs ABC isolates C.", "",
+        "| Method | Role | S6N3 success | S7N4 success | S8N6 success | 20% S6N3 | 20% S7N4 |",
+        "|---|---|---:|---:|---:|---:|---:|",
+    ]
+    for key, label, role in MODELS:
+        e, f = res["eval"][key], res["f020"][key]
+        values = [fmt(e[tag]["closed_loop_success"]) for tag in ("S6N3", "S7N4", "S8N6")]
+        values += [fmt(f[tag]["closed_loop_success"]) for tag in ("S6N3", "S7N4")]
+        lines.append(f"| {label} | {role} | " + " | ".join(values) + " |")
+    lines += [
+        "", "20% means 900 unique training episodes and 16,534 sampled transitions per epoch (130 optimizer updates at batch size 128). AB/ABC currently have 20% and 100% results; no 50% result is claimed.",
+        "", f"**Interpretation:** compare the full method against BC30 first. To assess C separately, ABC minus AB is {c_deltas}. A monotonic improvement is not assumed; three training seeds do not establish significance for small differences.",
+        "", "## 3. Failures and diagnostic cases", "",
+        "Failure categories are heuristic behavior diagnoses, not proofs of exclusive causes.", "",
+        "| Method | Total failures /300 | Grounding-related | Coverage/loop-related |", "|---|---:|---:|---:|",
+    ]
+    for key, label, _ in MODELS:
+        f = res["failures"][key]
+        lines.append(f"| {label} | {fmt(f['total_failures'])} | {fmt(f['repr_failures'])} | {fmt(f['cov_failures'])} |")
+    lines += ["", "| Case | " + " | ".join(labels[k] for k, _, _ in MODELS) + " |", "|---|" + "---:|" * len(MODELS)]
+    for seed in CASE_SEEDS:
+        cells = []
+        for key, _, _ in MODELS:
+            c = res["failures"][key]["cases"].get(str(seed))
+            cells.append(f"{c['solved']}/{c['total']}" if c else "—")
+        lines.append(f"| {seed} | " + " | ".join(cells) + " |")
+    lines += [
+        "", "Counts come from raw per-seed records; `—` means missing evidence. Cases 4502/4516/4560 diagnose attribute/distractor behavior, 4501 tests detouring, and 4568 illustrates a blind spot. BC30 solves 4568 in 1/3 runs: no universal impossibility claim follows.",
+        "", "## 4. Targeted probes", "",
+        "- **Language response:** change target words while holding observation/direction fixed. Action flips measure response, not correctness.",
+        "- **Navigation information:** H is preserved at concatenation; detour outcomes test whether the downstream policy uses useful information. Preservation does not guarantee navigation success.",
+        "- **Relation contribution:** compare AB vs ABC on task success and failures; a positive effect is not assumed.", "",
+        "| Method | Color-swap response | Type-swap response |", "|---|---:|---:|",
+    ]
+    for key in NEW_VARIANTS:
+        p = res["probe1_counterfactual"][key]
+        lines.append(f"| {labels[key]} | {fmt(p['color_swap_rate'])} | {fmt(p['type_swap_rate'])} |")
+    lines += [
+        "", "Feature geometry remains supplementary in `b6_georel_results.json#/probe2_feature_geometry`. The norm of `[H; M]` is not directly comparable to `M*H` as a universal grounding score.",
+        "", "## 5. Evidence and provenance", "",
+        "- Focused measurements and per-run records: `b6_georel_results.json`. Run configuration and training/validation curves: `runs/b6_georel_{s2_map1h,s3_map1h_relbias}*`.",
+        "- Frozen references: `b2_attn_v2_eval.json`, `b2_attn_v2_f020_eval.json`, `b2_attn_v2_failures.json`. Reference case counts are computed from `references.cases[model][seed].per_seed`.",
+        "- Original baseline reproduction, curves and cases: `baseline_report.md`, `baseline_eval.json`, `mission_breakdown.md`, `figures/` and `videos/`.",
+        "- Retained new models' per-mission breakdowns are in full-data evaluation run records. Raw source reports for historical controls remain available.",
+        "- Parent snapshot: `paradigm1-georel-unified@2609629`. Historical `git_commit=unknown` is not rewritten. Reruns record source hashes and environment versions; see the result JSON provenance.",
+        "- The existing presentation/report files describe previous experiments. This branch's narrative is specified in `docs/ATTENTION_STORY.md`.", "",
+    ]
+    md = out_dir / "b6_georel_summary.md"
+    md.write_text("\n".join(lines), encoding="utf-8")
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+    fig, axes = plt.subplots(1, 3, figsize=(16, 5.1), dpi=180)
+    keys = [k for k, _, _ in MODELS]
+    names = ["BC30", "ABC\n(primary)", "A", "AB", "FiLM"]
+    x = np.arange(len(keys))
+    for j, (env, color) in enumerate(zip(("S6N3", "S7N4", "S8N6"), ("#2355A4", "#19806B", "#AD651D"))):
+        v = [res["eval"][k][env]["closed_loop_success"] for k in keys]
+        axes[0].bar(x+(j-1)*.25, [m["mean"] for m in v], .25, yerr=[m["sd"] for m in v], capsize=2, label=env, color=color)
+    axes[0].set_title("Primary comparison and supporting controls")
+    axes[0].set_ylabel("Closed-loop success (mean ± SD)")
+    axes[0].set_ylim(0, 1.08)
+    axes[0].legend(fontsize=8)
+    for j, env in enumerate(("S6N3", "S7N4")):
+        v = [res["f020"][k][env]["closed_loop_success"] for k in keys]
+        axes[1].bar(x+(j-.5)*.34, [m["mean"] for m in v], .34, yerr=[m["sd"] for m in v], capsize=2, label=env, color=("#2355A4", "#19806B")[j])
+    axes[1].set_title("20% training episodes; update-matched")
+    axes[1].set_ylabel("Closed-loop success (mean ± SD)")
+    axes[1].set_ylim(0, 1.08)
+    axes[1].legend(fontsize=8)
+    rep = [res["failures"][k]["repr_failures"]["mean"] for k in keys]
+    cov = [res["failures"][k]["cov_failures"]["mean"] for k in keys]
+    axes[2].bar(x, rep, color="#AD514A", label="Grounding-related")
+    axes[2].bar(x, cov, bottom=rep, color="#638EBD", label="Coverage / loops")
+    axes[2].set_title("Heuristic failure categories (S6N3)")
+    axes[2].set_ylabel("Mean failures / 300 episodes")
+    axes[2].legend(fontsize=8)
+    for ax in axes:
+        ax.set_xticks(x, names)
+        ax.grid(axis="y", alpha=.2)
+        ax.set_axisbelow(True)
+    fig.suptitle("ABC fusion · 3 initialization seeds · 300 unseen episodes / environment", fontsize=13)
+    fig.tight_layout()
+    png = out_dir / "figures/b6_georel_unified/b6_attention_comparison.png"
+    png.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(png, bbox_inches="tight")
+    plt.close(fig)
+    return md, png
 
 
 def main() -> None:
-    res = json.loads((ROOT / "reports" / "b6_georel_results.json").read_text())
-    prev_ev2 = json.loads((ROOT / "reports" / "b2_attn_v2_eval.json").read_text())
-    prev_f020 = json.loads((ROOT / "reports" / "b2_attn_v2_f020_eval.json").read_text())
-    prev_fail = json.loads((ROOT / "reports" / "b2_attn_v2_failures.json").read_text())
-    prev_probe = json.loads((ROOT / "reports" / "b2_attn_v2_probe.json").read_text())
-    prev_feat = json.loads((ROOT / "reports" / "b2_attn_v2_feature_mechanics.json").read_text())
-
-    eval_summary = dict(res["eval"])
-    if "spatial_softmax_attn" not in eval_summary and "v1_spatial_softmax_attn" in prev_ev2.get("references", {}):
-        eval_summary["spatial_softmax_attn"] = prev_ev2["references"]["v1_spatial_softmax_attn"]
-
-    f020_summary = dict(res["f020"])
-    if "spatial_softmax_attn" not in f020_summary:
-        raw_ss = prev_f020.get("references", {}).get("v1_spatial_softmax_attn") or prev_f020.get("variants", {}).get("v1_spatial_softmax_attn")
-        if raw_ss:
-            f020_summary["spatial_softmax_attn"] = raw_ss
-
-    fail_summary = dict(res["failures"])
-    ref_fail_agg = prev_fail.get("references", {}).get("aggregate", {})
-    var_fail_agg = prev_fail.get("aggregate", {})
-    for rk, src_key in [
-        ("spatial_softmax_attn", "v1_spatial_softmax_attn"),
-        ("mh_spatial_relational", "mh_spatial_relational"),
-    ]:
-        if rk not in fail_summary:
-            pf = ref_fail_agg.get(src_key) or var_fail_agg.get(src_key)
-            if pf:
-                fail_summary[rk] = {
-                    "total_failures": pf["n_failure"],
-                    "repr_failures": pf["representation"],
-                    "cov_failures": pf["state_coverage"],
-                    "cases": {},
-                }
-
-    # Fill verified reference case pass counts (from reports/b2_attn_v2_failures.json / README)
-    ref_case_lookup = {
-        "bc30": {"4501": 1, "4502": 0, "4568": 0},
-        "film_nwd": {"4501": 2, "4502": 0, "4568": 0},
-        "spatial_softmax_attn": {"4501": 1, "4502": 3, "4568": 0},
-        "mh_spatial_relational": {"4501": 3, "4502": 3, "4568": 0},
-    }
-    for rk, cmap in ref_case_lookup.items():
-        if rk in fail_summary and not fail_summary[rk].get("cases"):
-            fail_summary[rk]["cases"] = {k: {"solved": v, "total": 3} for k, v in cmap.items()}
-
-    # Build figure
-    keys = [k for k, _ in LADDER_MODELS if k in eval_summary]
-    labels = [lbl for k, lbl in LADDER_MODELS if k in keys]
-
-    fig, axes = plt.subplots(1, 3, figsize=(17.5, 5.4), dpi=220)
-    x = np.arange(len(keys))
-
-    # Panel A
-    ax = axes[0]
-    w = 0.26
-    for idx, (env_k, col, hatch, name) in enumerate([
-        ("S6N3", "#2563EB", "", "S6N3 (6x6, ID)"),
-        ("S7N4", "#0F766E", "//", "S7N4 (7x7, OOD)"),
-        ("S8N6", "#D97706", "..", "S8N6 (8x8, OOD)"),
-    ]):
-        means = [eval_summary[k][env_k]["closed_loop_success"]["mean"] for k in keys]
-        sds = [eval_summary[k][env_k]["closed_loop_success"]["sd"] for k in keys]
-        ax.bar(
-            x + (idx - 1) * w, means, width=w, yerr=sds, capsize=2.2,
-            color=col, alpha=0.90 if idx == 0 else 0.80, edgecolor="#0F172A",
-            linewidth=0.6, hatch=hatch, label=name,
-        )
-    ax.set_xticks(x)
-    ax.set_xticklabels(labels, rotation=32, ha="right", fontsize=8.2)
-    ax.set_ylim(0.45, 1.03)
-    ax.set_ylabel("Closed-Loop Success (300 unseen eps)")
-    ax.set_title("(a) Paradigm 1 Composable Ladder: S6N3 / S7N4 / S8N6", fontsize=10.5, fontweight="bold")
-    ax.grid(axis="y", linestyle="--", alpha=0.35)
-    ax.legend(fontsize=8, loc="lower right")
-
-    # Panel B
-    ax = axes[1]
-    fkeys = [k for k in keys if k in f020_summary]
-    flabels = [lbl for k, lbl in LADDER_MODELS if k in fkeys]
-    fx = np.arange(len(fkeys))
-    w2 = 0.34
-    s6m = [f020_summary[k]["S6N3"]["closed_loop_success"]["mean"] for k in fkeys]
-    s6s = [f020_summary[k]["S6N3"]["closed_loop_success"]["sd"] for k in fkeys]
-    s7m = [f020_summary[k]["S7N4"]["closed_loop_success"]["mean"] for k in fkeys]
-    s7s = [f020_summary[k]["S7N4"]["closed_loop_success"]["sd"] for k in fkeys]
-    ax.bar(fx - w2 / 2, s6m, width=w2, yerr=s6s, capsize=2.5, color="#1D4ED8", edgecolor="#0F172A", linewidth=0.6, label="20% S6N3")
-    ax.bar(fx + w2 / 2, s7m, width=w2, yerr=s7s, capsize=2.5, color="#0D9488", edgecolor="#0F172A", linewidth=0.6, hatch="//", label="20% S7N4 (OOD)")
-    ax.set_xticks(fx)
-    ax.set_xticklabels(flabels, rotation=32, ha="right", fontsize=8.2)
-    ax.set_ylim(0.55, 0.98)
-    ax.set_ylabel("Closed-Loop Success (20% = 900 eps)")
-    ax.set_title("(b) Step-Matched 20% Low-Data Generalization", fontsize=10.5, fontweight="bold")
-    ax.grid(axis="y", linestyle="--", alpha=0.35)
-    ax.legend(fontsize=8.2, loc="lower right")
-
-    # Panel C
-    ax = axes[2]
-    tkeys = [k for k in keys if k in fail_summary]
-    tlabels = [lbl for k, lbl in LADDER_MODELS if k in tkeys]
-    tx = np.arange(len(tkeys))
-    repr_m = [fail_summary[k]["repr_failures"]["mean"] for k in tkeys]
-    cov_m = [fail_summary[k]["cov_failures"]["mean"] for k in tkeys]
-    ax.bar(tx, repr_m, width=0.58, color="#DC2626", alpha=0.88, edgecolor="#0F172A", linewidth=0.6, label="Repr. Grounding")
-    ax.bar(tx, cov_m, bottom=repr_m, width=0.58, color="#3B82F6", alpha=0.88, edgecolor="#0F172A", linewidth=0.6, label="POMDP Coverage Loops")
-    for i, (r, c) in enumerate(zip(repr_m, cov_m)):
-        ax.text(i, r + c + 0.8, f"{r+c:.1f}\n({r:.1f}+{c:.1f})", ha="center", va="bottom", fontsize=7.0, fontweight="bold")
-    ax.set_xticks(tx)
-    ax.set_xticklabels(tlabels, rotation=32, ha="right", fontsize=8.2)
-    ax.set_ylim(0, max(r + c for r, c in zip(repr_m, cov_m)) * 1.18 + 3)
-    ax.set_ylabel("Mean Failures / 300 unseen S6N3 eps")
-    ax.set_title("(c) 300-Ep Failure Funnel: Grounding + Blind-Spot Loops", fontsize=10.5, fontweight="bold")
-    ax.grid(axis="y", linestyle="--", alpha=0.35)
-    ax.legend(fontsize=8.2, loc="upper right")
-
-    fig.tight_layout()
-    fig_path = ROOT / "reports" / "figures" / "b6_georel_unified" / "b6_paradigm1_ladder.png"
-    fig_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(fig_path, bbox_inches="tight")
-    plt.close(fig)
-
-    # Markdown report
-    lines = [
-        "# Branch 6 · Paradigm 1 Unified Composable Architecture (`GeoRel-BCNet` & `GeoRel-GRU`)",
-        "",
-        "All models trained strictly on frozen `data/expert_5000.pkl` (4,500 train + 500 val, **zero extra expert queries**),",
-        "`30` epochs, `Adam lr=1e-3, wd=0`, checkpoint strictly by offline `val_action_acc`, evaluated on `300` unseen seeds (`mean ± SD`, `ddof=0`, `n = 3`).",
-        "",
-        "## 1. Paradigm 1 Composable Ablation Ladder (Multi-Scale, 20% Low-Data, Failures & Key Cases)",
-        "",
-        "| Stage / Model | Params | `val_acc` | `S6N3` (ID) | `S7N4` (OOD) | `S8N6` (OOD) | `20%` S6 / S7 | Fails /300 (`Repr+Cov`) | `4501` / `4502` / `4568` |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
-    ]
-    for k, lbl in LADDER_MODELS:
-        if k not in eval_summary:
-            continue
-        ev = eval_summary[k]
-        p = ev["S6N3"]["n_params"]
-        va = ev["S6N3"]["val_action_acc"]["mean"]
-        s6 = ev["S6N3"]["closed_loop_success"]
-        s7 = ev["S7N4"]["closed_loop_success"]
-        s8 = ev["S8N6"]["closed_loop_success"]
-        if k in f020_summary:
-            f6 = f020_summary[k]["S6N3"]["closed_loop_success"]["mean"]
-            f7 = f020_summary[k]["S7N4"]["closed_loop_success"]["mean"]
-            fstr = f"{f6:.3f} / {f7:.3f}"
-        else:
-            fstr = "—"
-        fs = fail_summary[k]
-        f_tot = fs["total_failures"]["mean"]
-        f_r = fs["repr_failures"]["mean"]
-        f_c = fs["cov_failures"]["mean"]
-        fail_str = f"{f_tot:.1f} (`{f_r:.1f}+{f_c:.1f}`)"
-        cs = fs.get("cases", {})
-        c4501 = cs.get("4501", {}).get("solved", "—")
-        c4502 = cs.get("4502", {}).get("solved", "—")
-        c4568 = cs.get("4568", {}).get("solved", "—")
-        case_str = f"{c4501}/3 · {c4502}/3 · {c4568}/3"
-        lines.append(
-            f"| {lbl} | {p:,} | {va:.3f} | {s6['mean']:.3f} ± {s6['sd']:.3f} | {s7['mean']:.3f} ± {s7['sd']:.3f} | "
-            f"{s8['mean']:.3f} ± {s8['sd']:.3f} | {fstr} | {fail_str} | {case_str} |"
-        )
-
-    p1 = res["probe1_counterfactual"]
-    p2 = res["probe2_feature_geometry"]
-    lines += [
-        "",
-        "## 2. Mechanistic Probes (Probe 1 Counterfactual Swap & Probe 2 Feature Geometry)",
-        "",
-        "| Model | Color Swap | Type Swap | S6 `h_mod T/maxD` | S8 `h_mod T/maxD` | S8 `h2 Partial SNR` | S8 Selectivity | S8 Bg Drift |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|",
-    ]
-    for var in NEW_VARIANTS:
-        if var not in p1:
-            continue
-        r1 = p1[var]
-        r2s6 = p2["S6N3"][var]
-        r2s8 = p2["S8N6"][var]
-        lines.append(
-            f"| `{var}` | {r1['color_swap_rate']['mean']:.3f} | {r1['type_swap_rate']['mean']:.3f} | "
-            f"{r2s6['h_mod_T_over_maxD']['mean']:.3f}× | {r2s8['h_mod_T_over_maxD']['mean']:.3f}× | "
-            f"{r2s8['h2_T_over_partialD']['mean']:.3f}× | {r2s8['spatial_selectivity']['mean']:.2f}× | "
-            f"{r2s8['background_drift']['mean']:.3f} |"
-        )
-
-    out_md = ROOT / "reports" / "b6_georel_summary.md"
-    out_md.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print("\n".join(lines))
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--focus-results", action="store_true", help="Filter inherited JSON and repair reference adapters")
+    ap.add_argument("--out-dir", type=Path)
+    args = ap.parse_args()
+    res = json.loads(RESULT_PATH.read_text(encoding="utf-8"))
+    if args.focus_results:
+        res = assemble_results(res)
+        RESULT_PATH.write_text(json.dumps(res, indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
+    for path in render_summary(res, args.out_dir):
+        print(path)
 
 
 if __name__ == "__main__":
