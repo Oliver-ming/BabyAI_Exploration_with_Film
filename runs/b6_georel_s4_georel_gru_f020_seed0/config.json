@@ -1,0 +1,34 @@
+{
+  "branch": "b6_georel_unified",
+  "env_id": "BabyAI-GoToLocalS6N3-v0",
+  "git_commit": "unknown",
+  "seed": 0,
+  "frac": 0.2,
+  "match_steps": true,
+  "epochs": 30,
+  "batch_size": 32,
+  "lr": 0.001,
+  "weight_decay": 0.0,
+  "data": "data/expert_5000.pkl",
+  "n_train_episodes": 900,
+  "n_val_episodes": 500,
+  "n_train_transitions": 3283,
+  "n_val_transitions": 1844,
+  "arch": {
+    "variant": "s4_georel_gru",
+    "is_recurrent": true,
+    "obj_emb_dim": 8,
+    "lang_dim": 32,
+    "hidden": 128,
+    "dropout": 0.0,
+    "n_params": 329764
+  },
+  "result": {
+    "best_val_acc": 0.857375,
+    "best_epoch": 12,
+    "train_seconds": 419.46,
+    "best_scalars": {
+      "rel_scale": 0.04758
+    }
+  }
+}
